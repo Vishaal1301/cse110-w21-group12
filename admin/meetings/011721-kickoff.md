@@ -4,6 +4,7 @@
 ### Attendance:
 - [ ] Alan Li
 - [x] Annie Van
+- [ ] Jessica Lam
 - [ ] Kevin Luo
 - [ ] Muhammad Fajar
 - [ ] Nigel Lipps
