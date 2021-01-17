@@ -22,10 +22,7 @@ something.
 something. 
 
 ### General Responsibilities for All Team Members
-something. 
-
-### General Responsibilities for All Team Members
-something. 
+something.
 
 ### Conflict Resolution
 something. 
