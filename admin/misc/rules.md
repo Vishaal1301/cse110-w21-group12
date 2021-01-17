@@ -27,7 +27,7 @@ something.
 ### Conflict Resolution
 something. 
 
-### Expectations of Faculty and GTA’s
+### Expectations of Faculty
 something. 
 
 ### Team Signatures
