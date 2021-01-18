@@ -1,5 +1,5 @@
-## CSE 110 Team 12 (ADD TEAM NAME) - Team Meeting
-###### Type: Team Cadance <br/> Location: Zoom <br/> Date: 01/17/21 <br/> Start Time: 7 p.m. <br/> End Time:
+## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Team Meeting
+###### Type: Team Cadance <br/> Location: Zoom <br/> Date: 01/17/21 <br/> Start Time: 7 p.m. <br/> End Time: 8:20 p.m.
 
 ### Attendance:
 - [x] Alan Li
