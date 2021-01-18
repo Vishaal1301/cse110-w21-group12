@@ -32,12 +32,17 @@ The team members will agree to promptly attend team meetings at the scheduled me
 8. Be patient and prepared to learn throughout the project
 9. Be prepared to say "I don't know"
 10. Ask for help when overwhelmed and offer help when team meber is overwhelmed
+11. Should address team members by the abbrevation for Mighty Morphin Power Rangers - "MMPR"
 
 ### Conflict Resolution
-1. If member does not attend meeting, does not attempty
+1. If member does not attend meeting, team leads will contact member privately, discuss the situation, and offer help. If the same situation arises several times (3 or more major meetings), TA will be contacted to resolve the situation.
+2. Schedule team wide meetings to address larger issues with tasks or with team leads.
+3. Allow for damage control and promote greater bus factor by working closely with sub-team member working with you on a particular task and offering help.
 ### Expectations of Faculty
-something. 
+1. Be open to holding a transparent discussion with the student(s) involved or even the whole team, depending on the situation
+2. Take an active advisory/mentorship role
+3. Be a source of truth by responding to team issues
+4. Establish a clear grading policy
 
 ### Team Signatures
-something. 
-
+Found in corresponding member documents.
