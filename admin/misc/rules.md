@@ -1,4 +1,4 @@
-## CSE 110 Team 12 (ADD TEAM NAME) Working Agreement
+## CSE 110 Team 12 (Mighty Morphin Powell Rangers) Working Agreement
 ###### Creation Data: 01/17/2021
 
 ### Group Identification:
@@ -32,7 +32,7 @@ The team members will agree to promptly attend team meetings at the scheduled me
 8. Be patient and prepared to learn throughout the project
 9. Be prepared to say "I don't know"
 10. Ask for help when overwhelmed and offer help when a team member is overwhelmed
-11. Should address team members by the abbreviation for Mighty Morphin Power Rangers - "MMPR"
+11. Should address team members by the abbreviation for Mighty Morphin Powell Rangers - "MMPR"
 
 ### Conflict Resolution
 1. If member does not attend a meeting, team leads will contact the member privately, discuss the situation, and offer help. If the same situation arises several times (3 or more major meetings), the TA will be contacted to resolve the situation.
