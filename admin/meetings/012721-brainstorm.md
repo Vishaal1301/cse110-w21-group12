@@ -25,23 +25,42 @@ _New Business to be Discussed:_
 - Survey Competition
 
 _Undiscussed Business from Today's Agenda:_
+- UI/Design
 - 
 
-### Decisions
+### Decisions/Points Discussed
 
-_Decision 1:_
-- Okay with everyone
+_Agreed on the principles of the Pomodoro technique:_
+- Step 1: choose task(s)
+- Step 2: run Pomodoro timer for 25 mins
+- Step 3: 5-minute break between sessions
+- Step 4: every 4 sessions, 20-minute break
 
-_Decision 2:_
-- Mighty Morphin Powell Rangers
-- Majority vote. Other names were paw patrol, durian destroyer, powell puff girls, gary's guys
+_Build a Minimum Viable Product first:_
+- The MVP will only include features essential for an operating Pomodoro timer
+  - these include: 
+    - An accurate timer
+    - User-inputted task list or total num of work-hours
+    - Start and Stop button (no pause)
+    - An operating short-break, long-break mechanism
+    - Audio (preset ringtone)/visual notification after every session
+    - One-click start - include ability to get into web-page and quickly start a session
+    - Preset light/dark theme
+- Debate: should we include autoplay feature based on user-inputted tasks in MVP?
+  - Not essential for MVP b/c looping based on several tasks would sacrifice quick adoption
+  - User would have input several tasks manually or we would have to include option to import tasks 
+  - Importing tasks from Google Calendar or some other place would not be an MVP feature
 
-_Decision 3:_
-- Found on wiki
-- Everyone worked together to finalize this
+_Would our product be an app/web-page/chrome-extension? Web-page:_
+- Start with web-page b/c
+  - Team have more knowledge with webdev 
+  - So team will be able to meet timelines quicker
 
-_Decision 4:_
-- Concensus, found on rules page
+_Mood/Theme:_
+- Designed for college students
+- Work quickly without setup 
+- Maximize efficiency
+- light-hearted wording
 
-_Decision 5:_
-- Concensus, found on rules page
+_Ideas from Competitors:_
+- Start 
