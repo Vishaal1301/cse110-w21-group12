@@ -63,4 +63,6 @@ _Mood/Theme:_
 - light-hearted wording
 
 _Ideas from Competitors:_
-- Start 
+- Choosing serene desktop background (we are going w/ default light theme in MVP)
+- Avoid clutter
+- Minimize features for user convenience
