@@ -23,10 +23,11 @@ _New Business to be Discussed:_
 - Decide on your app's theme or mood
 - Scheduling meetings
 - Survey Competition
+- Team member roles
+- Repo structure
 
 _Undiscussed Business from Today's Agenda:_
 - UI/Design
-- 
 
 ### Decisions/Points Discussed
 
