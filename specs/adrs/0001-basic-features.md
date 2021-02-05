@@ -12,6 +12,7 @@ After brainstorming several ideas to include in our website, which features are 
 * Audio/visual notification at end of sessions
 * One click start
 
+## Additional Features
 * Checklist with history of saved sessions
 * Activity log and statistics
 * Change theme, dark mode, light mode
@@ -22,7 +23,9 @@ After brainstorming several ideas to include in our website, which features are 
 * API integration
 * Recommending other apps/websites to use alongside ours
 
+
 ## Decision Outcome
 
-Chosen options: first seven features, because it's essential to narrow down to the most important features implementable within the given development period of 2 weeks. 
-These features allow us to focus on the priciples of the Pomodoro methodology while keeping the project under control
+Chosen options: first seven features, because it's essential to narrow down to the most important features implementable within the given development period of 2 weeks. we plan to implement the MVP features during the first week of phase 2 and spend the second week developing the additional features. we aim to prioritize the additional features to somewhat of a similar level to the mvp.
+These features allow us to focus on the priciples of the Pomodoro methodology while keeping the project under control.
+
