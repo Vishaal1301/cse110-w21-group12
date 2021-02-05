@@ -6,7 +6,7 @@
 - [x] Annie Van
 - [x] Jessica Lam
 - [x] Kevin Luo
-- [x ] Muhammad Fajar
+- [x] Muhammad Fajar
 - [ ] Nigel Lipps
 - [x] Tristin Xie
 - [x] Vishaal Ramaswamy Kasi Vasu
