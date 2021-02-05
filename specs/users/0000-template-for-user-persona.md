@@ -2,8 +2,8 @@
 
 ## Example
 * Your User: Liam, CA
-* Who they are: 25, SWE
-* Passions: Frontend development
+* Who they are: 25 years old, Android Developer at Chick-fil-A
+* Passions: Mobile development
 * Pain Points: writing spaghetti code because of constant distraction when working from home due to the pandemic
 * Desired Outcomes: focus and write bug-less codes to meet the deadline
 * Strategy: go to a coffee shop with calm music to focus
