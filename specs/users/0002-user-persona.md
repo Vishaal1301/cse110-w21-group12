@@ -1,4 +1,4 @@
-## User Persona 1
+## User Persona 2
 * Your User: Lucy, (San Diego, CA)
 * Who they are: 19 years old, Physics Student at UC San Diego
 * Passions: Physics, math
