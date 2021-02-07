@@ -1,7 +1,10 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "amd": true,
+        "jest/globals": true,
+        "node": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -24,5 +27,6 @@
             "error",
             "always"
         ]
-    }
+    },
+    "plugins": ["jest"]
 }
