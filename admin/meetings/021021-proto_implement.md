@@ -22,8 +22,7 @@ _New Business to be Discussed:_
 - Code Quality
 - Discuss timeline w actual calendar dates to estimate how much we prioritize the additional features
 - Structure for commits
-- Estimate tasks - small, medium, large
-- Project backlog
+- ZenHub: Estimate tasks (small, medium, large), Project backlog
 - Stand-ups
 - Details of implementation - closer look at flowchart
 
