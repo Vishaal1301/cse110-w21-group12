@@ -19,43 +19,50 @@ _Unresolved Business from Previous Meeting:_
 - Exact task distribution
 
 _New Business to be Discussed:_
-- Code Quality
-- Discuss timeline w actual calendar dates to estimate how much we prioritize the additional features
 - Structure for commits
-- ZenHub: Estimate tasks (small, medium, large), Project backlog
+- ZenHub: Estimate tasks (small, medium, large), poker, Product Backlog
 - Stand-ups on Slack
 - Clarify ZenHub vs Clickup usage
 - Details of implementation - closer look at flowchart
+- Testing, Code Quality
 
 _Undiscussed Business from Today's Agenda:_
-- 
+- Testing
 
 ### Decisions/Points Discussed
 
-Business Ideas:
+_Start and Stop Button Design:_
+- Extra start and stop buttons clutter design
+- Solution: when mouse hovers over coffee cup, coffee cup turns red to act as stop button
+- Other option: double click coffee cup to stop - not intuitive
 
-_CI/CD Pipeline:_
-- Done research on CI Pipeline and tools
-- VSLint JS Docs etc
-- Keep pipeline in github actions
-- Going to meet after the labs because we'll learn about github actions 
-might use NPM because it might be useful
-- Need to figure out how this will work locally for everyone
+_Task List Display During Break:_
+- Realized real-estate for task list is too small during break screen display
+- Simplest Solution for MVP: scroll down from timer display to view task list
+- Other options: swipe left or right to view task list, make timer small, put timer and task list side by side
 
-_Design Change:_
-- Decided to go with coffee shop themed
-- In person, people like going to coffee shops and study in that environment
-- Other options were to target students with ADHD, or Computer Science students for interviewing 
-- Have default sounds to go with the theme
+_MVP Sprint Tasks Assigned:_
+- Due Monday (02/15/20)
+- Create Task Item - Save item into localStorage, retrieve Javascript (Alan & Kevin)
+- Task List - flexbox, look at figma, task item CSS (Tristin)
+- Shadow Dom for settings change vol, default work sessions Javascript (Gary & Jessica)
+- Settings CSS (Gary & Vishaal)
+- Timer Logic, Start Stop, Font, CSS (Tristin)
+- HTML Template - agreed deadline 02/11/21 (Gary & Vishaal & Annie)
+- Testing (Fajar)
 
-_Representatives for Discussion Meetings:_
-- Feb 10 (Jessica & Annie)
-- Feb 17 (Gary & Alan)
-- Feb 24 (Tristin & Kevin)
-- March 3rd (Vishaal & Muhammad)
-- March 10th (Vishaal & Annie)
-
-_Timeline for Phase 2:_
-- We want to implement the additional features into our final product
-- Week 1 of Phase 2 will be for MVP
-- Week 2 will be fore additional features
+_GitHub Issue Conventions:_
+- Naming: Task_Name
+- When Creating Issue
+  - Choose appropriate template 
+  - Choose Sprint Backlog for current sprint items, Product Backlog for future sprints under pipelines
+  - Choose appropriate labels
+  - Choose appropriate assignees
+  - Choose appropriate sprint (under Milestone - current one is MVP)
+  - Check on Zenhub (get the free chrome extension)
+    - Link to join: [invite](https://app.zenhub.com/workspaces/mmpr-6024890d1c27d40013f6b3a7/board)
+  - Move task from backlog to in-progress when starting on assignement, then review/QA for testing
+  - Use Click Up for Canvas assignemnts and other non-technical activity
+  
+_Stand-up:_
+- Agreed to do stand-ups on Slack channel titled "daily-standups"
