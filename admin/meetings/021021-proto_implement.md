@@ -15,7 +15,7 @@
 ### Agenda
 
 _Unresolved Business from Previous Meeting:_
-- HTML Prototype
+- HTML Prototype - mob programming
 - Exact task distribution
 
 _New Business to be Discussed:_
@@ -23,7 +23,8 @@ _New Business to be Discussed:_
 - Discuss timeline w actual calendar dates to estimate how much we prioritize the additional features
 - Structure for commits
 - ZenHub: Estimate tasks (small, medium, large), Project backlog
-- Stand-ups
+- Stand-ups on Slack
+- Clarify ZenHub vs Clickup usage
 - Details of implementation - closer look at flowchart
 
 _Undiscussed Business from Today's Agenda:_
