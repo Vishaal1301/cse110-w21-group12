@@ -45,6 +45,6 @@ _Naming Conventions:_
 - File naming: custom-component.js
 - camelCase for id and class
 - custom-component for custom components (i.e. task-item)
-
+- Issues: Word1-Word2
 _Code Commenting:_
 - Follow these conventions: [JSDocs!](https://jsdoc.app/)
