@@ -1,0 +1,1 @@
+This folder is for components, for components related notes please put them here

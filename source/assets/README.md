@@ -1,0 +1,1 @@
+This folder is for assets, for assets related notes please put them here

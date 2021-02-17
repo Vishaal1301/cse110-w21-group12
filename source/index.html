@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!-- <!DOCTYPE html> 
 <html lang="en"> 
   
 <head> 
@@ -22,4 +22,115 @@
 
 <script type="module" src="app.js"></script>
   
-</html> 
+</html>  -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pomo</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<header>
+</header>
+
+<!--
+    - Naming concentions
+        id: camelCase
+        class: camelCase
+        custom component/element: x-y
+-->
+
+<body>
+    <main class="container">
+        <h1> Welcome to Coffeetivity! </h1>
+
+        <!-- 
+            Focus session time
+                minimum: tbd
+                default: 25
+                maximum: tbd
+            short session time
+                minimum: tbd
+                default: 5
+                maximum: tbd
+            long session time
+                minimum: tbd
+                default: 15
+                maximum: tbd
+            add-on feature
+                - play background music during break session, NO music during work session
+                - add slider to adjust the background music volume
+            image icon gear or 3 dots
+            exit settings by clicking out of space
+            settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
+        -->
+        <div id="toolBar">
+            <setting />
+        </div>
+
+        <!-- 
+            - Switch between 'TIMER' tab and 'TASKS'tab
+                - when 'TIMER' is clicked, hide 'taskListContainer'. vice versa
+                - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
+                - switching between TIMER and TASK should follow Google RAIL
+        -->
+        <div id="navBar">
+            <p class="navTxt">TIMER</p>
+            <p class="navTxt">TASKS</p>
+        </div>
+
+        <!-- task list 
+            - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
+            - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
+            - hide 'taskListContainer' when 'Timer' nav clicked
+            - Fit 6 tasks (fixed size for flexbox - even if 0 tasks inputted, above six = scroll bar)
+            - Max task limit - 12 
+                (think about clearing tasks each day - not for MVP)
+            - All numbers are modifiable after discussion
+            - positioning determined by "taskListContainer"
+        -->
+        <div id="taskListContainer">
+            <p>Task List</p>
+            <input id="taskInput" type="text" maxlength="120">
+            <ul class="flexContainer" id="taskList">
+                <!-- Sample task 
+                    <li class="task-container">
+                        <input id="taskCheckbox" type="checkbox" name="CheckboxName" value="the task name here">  
+                        <label id="taskCheckboxLabel" for="taskCheckbox"> the task name here </label>
+                    </li>
+                -->
+                <task-item attr=someVal></task-item>
+            </ul>
+        </div>
+
+        <!--
+            - The Timer component
+            - This component should have
+                - coffee cup image
+                - timer (display logic, css, javascript)
+                - hovering mechanism (change coffee cup img to green when we first start, red while we work or break) based on state attribute
+                - audio notification when timer runs out
+                - pop-up for ending session (during work and break) - 
+                    - stop click during work = go to start state
+                    - stop click during break = go to start state
+            - specify which segment we're in (state attribute values: start, work, break)
+            - for different states (developers should consider which approach is better)
+                - approach 1: create a separate js file that stores all the constant we will be using (ENUM)
+                - approach 2: put literal strings. i.e. "start", "work", "break"
+            - duration of timer depends on the state
+            - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
+                - might want to use HIDDEN attribute for the hiding logic  
+        -->
+        <div id="timerContainer">
+            <timer state="start">
+                <h2>25:00</h2>
+            </timer>
+        </div>
+
+    </main>
+    <!-- <script src="./components/product-item.js"></script> -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
