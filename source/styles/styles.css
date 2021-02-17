@@ -31,7 +31,7 @@ ul {
 li * {
   float: left;
   padding: 0;
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 1px dotted red;
 }
 
 li,
@@ -149,7 +149,7 @@ li > .delete:hover {
 
 /* Completed */
 
-#completed-tasks label {
+.finished label {
   text-decoration: line-through;
   color: #888;
 }
