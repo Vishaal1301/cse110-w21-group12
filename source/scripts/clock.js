@@ -5,9 +5,9 @@
 
 // Timer setting variables
 const POMO_CYCLES = 5;
-let autoCycle = false;
+let autoCycle = true;
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 300, 1500, 900];
-let session = 0;
+let sessionNum= 0;
 
 // Global timer variables
 let isCountdown = false;
@@ -16,16 +16,16 @@ let countdown;
 // Start the timer
 function startTimer(clock, callback) {
     isCountdown = true;
-    let timer = sessionLengths[session] - 1;
+    let timer = sessionLengths[sessionNum] - 1;
     countdown = setInterval(() => {
 
         // Update the HTML text
         clock.innerHTML = secondsToString(timer);
 
         if (--timer < 0) {
-            stopTimer(clock, callback);
+            stopTimer(clock, false, callback);
 
-            // If autoCycle is enabled, retart the timer immediately
+            // If autoCycle is enabled, restart the timer immediately
             if (autoCycle)
                 startTimer(clock, callback);
         }
@@ -34,15 +34,19 @@ function startTimer(clock, callback) {
 }
 
 // Stop the timer
-function stopTimer(clock, callback) {
+function stopTimer(clock, reset, callback) {
     isCountdown = false;
-    session = ++session >= sessionLengths.length ? 0 : session;
+    if(reset){
+        sessionNum = 0;
+    }else{
+        sessionNum= ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+    }
 
     clearInterval(countdown);
 
-    const state = session == POMO_CYCLES*2 - 1? 'Long Break' : session % 2 == 0 ? "Focus Session" : "Short Break";
+    const state = sessionNum == POMO_CYCLES*2 - 1? 'Long Break' : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
     callback(state);
-    clock.innerHTML = secondsToString(sessionLengths[session]);
+    clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
 }
 
 // Given a number in seconds, return the string equivalent in time format
@@ -73,8 +77,8 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
     if(isCountdown)
         return false;
 
-    session = 0;
-    clock.innerHTML = sessionLengths[session];
+    sessionNum= 0;
+    clock.innerHTML = sessionLengths[sessionNum];
 
     sessionLengths = [];
     for (let i = 0; i < POMO_CYCLES; i++) {
@@ -84,7 +88,7 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
         else
             sessionLengths.push(longBreakLength);
     }
-    clock.innerHTML = secondsToString(sessionLengths[session]);
+    clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
 
     return true;
 }
@@ -99,7 +103,8 @@ function startStopTimer(clock, callback) {
         startTimer(clock, callback);
     }
     else {
-        stopTimer(clock, callback);
+        const reset = true;
+        stopTimer(clock, reset, callback);
     }
 }
 

@@ -1,17 +1,17 @@
-import {startStopTimer, updateTimerSettings} from './modules/clock.js'
-const start = document.getElementById("start")
+import {startStopTimer, updateTimerSettings} from './scripts/clock.js'
+const cup = document.getElementById("cup")
 const clock = document.getElementById("clock");
-const set = document.getElementById("set")
 const session = document.getElementById("session");
 
-set.onclick = function(){
-    updateTimerSettings(clock, 10, 5, 7);
-}
-
-start.onclick = function(){
-    start.innerHTML = start.innerHTML === "Start" ? "Stop" : "Start";
+clock.onclick = function(){
     startStopTimer(clock, (state) => {
-        start.innerHTML = "Start";
+        session.innerHTML = state;
+    });
+}
+   
+
+cup.onclick = function(){
+    startStopTimer(clock, (state) => {
         session.innerHTML = state;
     });
 }

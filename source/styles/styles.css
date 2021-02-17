@@ -1,0 +1,51 @@
+#timerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90;
+}
+#cup:hover{
+    border: 5px solid red;
+}
+#cup {
+    position: absolute;
+}
+#clock { 
+    position: absolute;
+    color: white;
+    font-size: 90px; 
+    z-index: 100;
+    user-select: none;
+} 
+
+#session{
+    position: relative;
+    top: 250px;
+    color: white;
+    z-index: 100;
+    font-size: 50px;
+}
+
+/* .buttonStyle{
+    position: absolute;
+    color: white;
+    font-size: 35px;
+    background-color: #dcdcdc00;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 2px solid white;
+} */
+
+/* *:focus{
+    outline: 0 !important;
+} */
+
+/* .buttonStyle:hover {
+    background-color: rgba(69, 252, 63, 0.336);
+} */
+
+
+
+body{
+    background-color: #C8E3C4;
+}
