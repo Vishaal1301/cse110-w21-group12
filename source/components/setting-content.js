@@ -57,6 +57,7 @@ class SettingContent extends HTMLElement {
         border: 1px solid #888;
         min-width: 300px;
         display: inline-block;
+        text-align: left;
       }
 
       .closeSetting {
