@@ -2,10 +2,24 @@ var taskInput = document.getElementById("new-task"); //new-task
 var addButton = document.getElementById("add-btn"); //add button
 var TasksHolder = document.getElementById("tasks"); //the tasks
 
+// Instantiate localStorage and unique ID counter
+const stor = window.localStorage;
+var idCounter = stor.getItem('idCounter');
+
+if(idCounter == null){
+	idCounter = 0;
+	stor.setItem('idCounter', JSON.stringify(idCounter));
+}
+else {
+	idCounter = JSON.parse(idCounter);
+}
+
+
 //New Task List Item
 var createNewTaskElement = function(taskString) {
 	//Create List Item
 	var listItem = document.createElement("li");
+	listItem.setAttribute('id', idCounter);
 
 	//input (checkbox)
 	var checkBox = document.createElement("input"); // checkbox
@@ -36,6 +50,62 @@ var createNewTaskElement = function(taskString) {
 	return listItem;
 }
 
+// Add task to tasklist in localStorage
+var storeTask = function(label) {
+	if(stor.getItem('tasks') == null){
+		const tasks = [];
+		stor.setItem('tasks', JSON.stringify(tasks));
+	}
+
+	const tasks = JSON.parse(stor.getItem('tasks'));
+
+	// console.log(tasks); // Debug check to console
+	
+	const task = {
+		name: label,
+		id: idCounter,
+		progress: "in progress"
+	}
+
+	tasks.push(task);
+	stor.setItem('tasks', JSON.stringify(tasks));
+
+	idCounter++;
+	stor.setItem('idCounter', JSON.stringify(idCounter));
+}
+
+// Remove task from tasklist in localStorage
+var unstoreTask = function(id) {
+	const tasks = JSON.parse(stor.getItem('tasks'));
+
+	for(let index = 0; index < tasks.length; index++){
+		const task = tasks[index];
+
+		if(task['id'] == id){
+			tasks.splice(index, 1);
+			break;
+		}
+	}
+
+	stor.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Update progress of task in tasklist in localStorage
+var updateTask = function(id) {
+	const tasks = JSON.parse(stor.getItem('tasks'));
+
+	for(let index = 0; index < tasks.length; index++){
+		const task = tasks[index];
+
+		if(task['id'] == id){
+			task['progress'] = "finished";
+			break;
+		}
+	}
+
+	stor.setItem('tasks', JSON.stringify(tasks));
+}
+
 //Add a new task
 var addTask = function() {
 	console.log("Add task...");
@@ -46,7 +116,7 @@ var addTask = function() {
 
 	bindTaskEvents(listItem);
 
-    //LOCAL STORAGE HERE:
+	storeTask(taskInput.value);
     //delete the item
 
 	taskInput.value = "";
@@ -58,7 +128,7 @@ var editTask = function() {
 
 	var listItem = this.parentNode;
 
-	var editInput = listItem.querySelector("input[type=text");
+	var editInput = listItem.querySelector("input[type=text]");
 	var label = listItem.querySelector("label");
 
 	var containsClass = listItem.classList.contains("editMode");
@@ -85,9 +155,8 @@ var deleteTask = function() {
 	var listItem = this.parentNode;
 	var ul = listItem.parentNode;
 
-    //LOCAL STORAGE HERE
+	unstoreTask(listItem.getAttribute('id'));
     //delete the item
-
 	//Remove the parent list item from the ul
 	ul.removeChild(listItem);
 }
@@ -114,7 +183,7 @@ var bindTaskEvents = function(taskListItem) {
         console.log("Task complete...");
         taskListItem.classList.toggle("finished");
 
-        //LOCAL STORAGE HERE:
+		updateTask(taskListItem.getAttribute('id'));
         //update the status of the item
     };
 }
