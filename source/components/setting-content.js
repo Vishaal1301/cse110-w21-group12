@@ -98,4 +98,3 @@ class SettingContent extends HTMLElement {
 }
 
 customElements.define('setting-content', SettingContent)
-
