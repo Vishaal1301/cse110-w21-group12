@@ -56,13 +56,13 @@
             settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
         -->
         <div id="toolBar">
-            <button id="settingButton" onclick=openSetting()>. . .</button>
-
+            <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
+            
             <div id="settingWindow" class="settingWindow">
 
-                <setting-content id="settingContent" />
-                
-            </div>
+            <setting-content id="settingContent">
+   
+        </div>
         </div>
 
         <!-- 
