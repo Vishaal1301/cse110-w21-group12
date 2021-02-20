@@ -17,6 +17,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   lint:
+    if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +27,7 @@ jobs:
       run: yarn run eslint . --ext .js,.jsx,.ts,.tsx
       
   jest:
+    if: github.event.pull_request.base.ref == 'testing'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +37,7 @@ jobs:
       run: yarn test
       
   deploy:
+    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
