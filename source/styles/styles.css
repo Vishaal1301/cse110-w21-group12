@@ -4,11 +4,13 @@
     justify-content: center;
     margin-top: 90;
 }
-#cup:hover{
-    border: 5px solid red;
-}
+
 #cup {
     position: absolute;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+
 }
 #clock { 
     position: absolute;
@@ -16,14 +18,19 @@
     font-size: 90px; 
     z-index: 100;
     user-select: none;
+    pointer-events: none;
 } 
 
-#session{
+#taskbar{
     position: relative;
-    top: 250px;
-    color: white;
+    top: 375px;
+}
+#session{
+    position: absolute;
+    top: 800px;
+    color: black;
     z-index: 100;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 /* .buttonStyle{
@@ -36,9 +43,9 @@
     border: 2px solid white;
 } */
 
-/* *:focus{
+input:focus{
     outline: 0 !important;
-} */
+}
 
 /* .buttonStyle:hover {
     background-color: rgba(69, 252, 63, 0.336);

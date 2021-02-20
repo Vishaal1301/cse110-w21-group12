@@ -1,18 +1,35 @@
-import {startStopTimer, updateTimerSettings} from './scripts/clock.js'
+import {startStopTimer, updateTimerSettings, isCountdown} from './scripts/clock.js'
 const cup = document.getElementById("cup")
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
 
-clock.onclick = function(){
-    startStopTimer(clock, (state) => {
-        session.innerHTML = state;
-    });
-}
-   
+let currentState = session.innerHTML;
+let mouseOver = false;
 
-cup.onclick = function(){
+session.onclick = function(){
+    updateTimerSettings(clock, 10, 5, 7);
+}
+cup.onmouseenter = () => {
+    mouseOver = true;
+    if(isCountdown) {
+        session.innerHTML = "Stop Brewing?"
+        cup.src = "./assets/coffee_red.png";
+    }else{
+        session.innerHTML = "Start Brewing!"
+        cup.src = "./assets/coffee_green.png";
+    }
+}
+cup.onmouseleave = () => {
+    mouseOver = false
+    session.innerHTML = currentState;
+    cup.src = "./assets/coffee_default.png";
+}
+cup.onclick = () => {
     startStopTimer(clock, (state) => {
-        session.innerHTML = state;
+        currentState = state;
+        if(!mouseOver){
+            session.innerHTML = state;
+        }
     });
 }
 

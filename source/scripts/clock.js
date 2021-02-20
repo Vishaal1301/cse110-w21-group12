@@ -108,4 +108,4 @@ function startStopTimer(clock, callback) {
     }
 }
 
-export { startStopTimer, updateTimerSettings };
+export { startStopTimer, updateTimerSettings, isCountdown };
