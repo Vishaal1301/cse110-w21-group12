@@ -6,11 +6,10 @@ const session = document.getElementById("session");
 let currentState = session.innerHTML;
 let mouseOver = false;
 
-session.onclick = function(){
-    updateTimerSettings(clock, 10, 5, 7);
-}
-cup.onmouseenter = () => {
-    mouseOver = true;
+// session.onclick = function(){
+//     updateTimerSettings(clock, 10, 5, 7);
+// }
+const updateCoffeeCup = () => {
     if(isCountdown) {
         session.innerHTML = "Stop Brewing?"
         cup.src = "./assets/coffee_red.png";
@@ -18,6 +17,10 @@ cup.onmouseenter = () => {
         session.innerHTML = "Start Brewing!"
         cup.src = "./assets/coffee_green.png";
     }
+}
+cup.onmouseenter = () => {
+    mouseOver = true;
+    updateCoffeeCup();
 }
 cup.onmouseleave = () => {
     mouseOver = false
@@ -31,5 +34,6 @@ cup.onclick = () => {
             session.innerHTML = state;
         }
     });
+    updateCoffeeCup();
 }
 
