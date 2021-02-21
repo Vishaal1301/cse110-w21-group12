@@ -52,10 +52,12 @@ var createNewTaskElement = function(taskString) {
 
 // Add task to tasklist in localStorage
 var storeTask = function(label) {
+
 	if(stor.getItem('tasks') == null){
 		const tasks = [];
 		stor.setItem('tasks', JSON.stringify(tasks));
 	}
+
 
 	const tasks = JSON.parse(stor.getItem('tasks'));
 
@@ -108,6 +110,11 @@ var updateTask = function(id) {
 
 //Add a new task
 var addTask = function() {
+
+	
+	if(idCounter > 11){
+		return;
+	}
 	console.log("Add task...");
 	//Create a new list item with the text from #new-task:
 	var listItem = createNewTaskElement(taskInput.value);

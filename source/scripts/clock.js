@@ -29,7 +29,6 @@ function startTimer(clock, callback) {
             if (autoCycle)
                 startTimer(clock, callback);
         }
-
     }, 1000);
 }
 
@@ -43,7 +42,7 @@ function stopTimer(clock, reset, callback) {
     }
 
     clearInterval(countdown);
-
+    
     const state = sessionNum == POMO_CYCLES*2 - 1? 'Long Break' : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);

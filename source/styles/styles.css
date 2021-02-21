@@ -1,3 +1,8 @@
+body{
+    background-color: #C8E3C4;
+    /* background-color: #BDAB98; color code for brown color*/ 
+}
+
 #timerContainer {
     display: flex;
     align-items: center;
@@ -20,6 +25,10 @@
     user-select: none;
     pointer-events: none;
 } 
+
+#session{
+    position: absolute;
+}
 
 #taskbar{
     position: relative;
@@ -51,8 +60,18 @@ input:focus{
     background-color: rgba(69, 252, 63, 0.336);
 } */
 
-
-
-body{
-    background-color: #C8E3C4;
+#navBar {
+    font-family: 'Cutive', serif;
+    font-size: 48px;
 }
+
+#timerNav {
+    text-align:center
+}
+
+#tasksNav {
+    text-align:center
+} 
+
+
+

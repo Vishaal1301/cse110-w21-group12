@@ -1,13 +1,14 @@
 /* Basic Style */
-
+/*
 body {
   background: #fff;
   color: #333;
   font-family: courier, sans-serif;
   background-color: #e4e4e4;
 }
+*/
 
-.container {
+#taskListContainer .container {
   color: #555;
   display: block;
   width: 400px;
@@ -17,36 +18,36 @@ body {
   border-radius: 5px;
 }
 
-h2 {
+#taskListContainer h2 {
   text-align: center;
   padding-top: 10px;
   margin-bottom: 0px;
 }
 
-ul {
+#taskListContainer ul {
   margin: 0;
   padding: 0;
 }
 
-li * {
+#taskListContainer li * {
   float: left;
   padding: 0;
   border-bottom: 1px dotted red;
 }
 
-li,
-h3 {
+#taskListContainer li,
+#taskListContainer h3 {
   clear: both;
   list-style: none;
   text-indent: 5px;
 }
 
-input,
-button {
+#taskListContainer input,
+#taskListContainer button {
   outline: none;
 }
 
-button {
+#taskListContainer button {
   background: none;
   border: 0px;
   color: #888;
@@ -62,14 +63,14 @@ button {
   vertical-align: top;
 }
 
-button:hover {
+#taskListContainer button:hover {
   color: #333;
 }
 
 /* Heading */
 
-h3,
-label[for='new-task'] {
+#taskListContainer h3,
+#taskListContainer label[for='new-task'] {
   color: #333;
   font-weight: 800;
   font-size: 15px;
@@ -77,8 +78,8 @@ label[for='new-task'] {
   text-transform: uppercase;
 }
 
-input[type='text'],
-textarea {
+#taskListContainer input[type='text'],
+#taskListContainer textarea {
   margin: 0;
   font-size: 18px;
   line-height: 18px;
@@ -91,18 +92,18 @@ textarea {
   color: #888;
 }
 
-input[type='text']:focus {
+#taskListContainer input[type='text']:focus {
   color: #333;
 }
 
 /* New Task */
 
-label[for='new-task'] {
+#taskListContainer label[for='new-task'] {
   display: block;
   margin: 0 0 20px;
 }
 
-#new-task {
+#taskListContainer #new-task {
   float: center;
   width: 318px;
   padding: 0;
@@ -112,56 +113,56 @@ label[for='new-task'] {
   border-radius: 5px;
 }
 
-p > button:hover {
+#taskListContainer p > button:hover {
   color: #0fc57c;
 }
 
 /* Task list */
 
-li {
+#taskListContainer li {
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
 }
 
-li > input[type='checkbox'] {
+#taskListContainer li > input[type='checkbox'] {
   margin: 0 10px;
   position: relative;
   top: 15px;
 }
 
-li > label {
+#taskListContainer li > label {
   font-size: 18px;
   line-height: 40px;
   width: 237px;
   padding: 0 0 0 11px;
 }
 
-li > input[type='text'] {
+#taskListContainer li > input[type='text'] {
   width: 226px;
 }
 
-li > .delete:hover {
+#taskListContainer li > .delete:hover {
   color: #cf2323;
 }
 
 /* Completed */
 
-.finished label {
+#taskListContainer .finished label {
   text-decoration: line-through;
   color: #888;
 }
 
 /* Edit Task */
 
-ul li input[type='text'] {
+#taskListContainer ul li input[type='text'] {
   display: none;
 }
 
-ul li.editMode input[type='text'] {
+#taskListContainer ul li.editMode input[type='text'] {
   display: block;
 }
 
-ul li.editMode label {
+#taskListContainer ul li.editMode label {
   display: none;
 }
