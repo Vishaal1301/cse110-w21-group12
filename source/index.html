@@ -1,9 +1,39 @@
+
+<!-- <!DOCTYPE html> 
+<html lang="en"> 
+  
+<head> 
+    <meta charset="UTF-8" /> 
+    <meta name="viewport" content= 
+        "width=device-width,  
+        initial-scale=1.0" /> 
+    <title>Digital Clock</title> 
+    <link rel="stylesheet" href="style.css">
+</head> 
+  
+<body> 
+    <div class="center">
+        <div id="clock" class="text">25:00</div>
+        <button class="buttonStyle" id="start" type="button">Start</button>
+        <button class="buttonStyle" id="set" type="button">set</button>
+        <div id="session">Focus Session</div>
+    </div>
+
+</body> 
+
+<script type="module" src="app.js"></script>
+  
+</html>  -->
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
     <title>Pomo</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
     <style>
         .settingWindow {
             display: none;
@@ -61,12 +91,14 @@
             settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
         -->
         <div id="toolBar">
+
             <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
             
             <div id="settingWindow" class="settingWindow">
 
             <setting-content id="settingContent">
         </div>
+              
         </div>
 
         <!-- 
@@ -104,8 +136,6 @@
             </ul>
         </div>
 
-      
-
         <!--
             - The Timer component
             - This component should have
@@ -125,14 +155,17 @@
                 - might want to use HIDDEN attribute for the hiding logic  
         -->
         <div id="timerContainer">
-            <timer state="start">
-                <h2>25:00</h2>
-            </timer>
+            <!-- <timer state="start"> -->
+                <div id="clock" class="text">25:00</div>
+                <input id="cup" type="image" src="./assets/coffee_default.png" />
+                <div id="session">Focus Session</div>
+                <img id="taskbar" src="./assets/taskbar.png" />
+            <!-- </timer> -->
         </div>
 
     </main>
-    <script src="./components/setting-content.js"></script>
-    <script src="./scripts/setting-script.js"></script>
+    <!-- <script src="./components/product-item.js"></script> -->
+    <script src="app.js"></script>
 </body>
-
 </html>
+

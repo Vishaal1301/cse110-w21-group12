@@ -1,0 +1,58 @@
+#timerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90;
+}
+
+#cup {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+
+}
+#clock { 
+    position: absolute;
+    color: white;
+    font-size: 90px; 
+    z-index: 100;
+    user-select: none;
+    pointer-events: none;
+} 
+
+#taskbar{
+    position: relative;
+    top: 375px;
+}
+#session{
+    position: absolute;
+    top: 800px;
+    color: black;
+    z-index: 100;
+    font-size: 40px;
+}
+
+/* .buttonStyle{
+    position: absolute;
+    color: white;
+    font-size: 35px;
+    background-color: #dcdcdc00;
+    padding: 10px 30px;
+    border-radius: 30px;
+    border: 2px solid white;
+} */
+
+input:focus{
+    outline: 0 !important;
+}
+
+/* .buttonStyle:hover {
+    background-color: rgba(69, 252, 63, 0.336);
+} */
+
+
+
+body{
+    background-color: #C8E3C4;
+}
