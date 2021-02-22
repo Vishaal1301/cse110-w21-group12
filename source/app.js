@@ -36,7 +36,7 @@ const updateCoffeeCup = () => {
     if(isCountdown) {
         session.innerHTML = "Stop Brewing?"
         cup.src = "./assets/coffee_red.png";
-    }else{
+    } else{
         session.innerHTML = "Start Brewing!"
         cup.src = "./assets/coffee_green.png";
     }
