@@ -33,13 +33,14 @@ _Show and Tell:_
   - can adjust default setting time and volume of alarm
   - created custom component for settings
   - set min and max time for the focus, short and long break sessions
+  - stores in local storage
 - Alan + Muhammad:
   - task list 
   - add or delete task
   - can check off task when done and it stays there
   - if you dont want to see it, users can delete it
   - can add as many tasks as user wants up to 12
-  - code- keep track of items in local storage to keep task when refreshed
+  - code - keep track of items in local storage to keep task when refreshed
 - Tristin + Kevin:  
   - got the clock interface working
   - green ring means timer started
@@ -51,5 +52,5 @@ _Show and Tell:_
   - clock is a module and only controls timers
   - pass events time through a callback
   - callback- pass a function as a parameter
-  - hover- instead of checking html, tristen passes the countdown to the javascript
+  - hover- instead of checking html, Tristin passes the countdown to the javascript
 
