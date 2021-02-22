@@ -1,9 +1,10 @@
-// product-item.js
+/**
+ * Setting Contents Custom Component
+ */
 class SettingContent extends HTMLElement {
   constructor() {
     super()
     const shadow = this.attachShadow({mode: 'open'})
-    
     const defaultVolume = localStorage.getItem('volume') || 100; 
     const focusTime = localStorage.getItem('focusTime') || 25;
     const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;

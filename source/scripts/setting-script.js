@@ -1,34 +1,41 @@
+/**
+ * Settings Logic
+ */
+
+ // Setting variables
 let settingWindow = document.getElementById("settingWindow");
 let closeSetting = document.getElementsByClassName("closeSetting")[0];
 let settingContent = document.getElementById("settingContent");
+let volumeSlider = settingContent.shadowRoot.querySelector('#volumeSlider');
+let volumeNumber = settingContent.shadowRoot.querySelector('#volumeNumber');
+let focusNumber = settingContent.shadowRoot.querySelector('#focusNumber');
+let shortBreakNumber = settingContent.shadowRoot.querySelector('#shortBreakNumber');
+let longBreakNumber = settingContent.shadowRoot.querySelector('#longBreakNumber');
 
-// open and close settings popup
+// open settings dialog
 const openSetting = () => {
     settingWindow.style.display = "flex";
-}
+};
 
+// close settings dialog
 const closeSettingButton = () => {
     settingWindow.style.display = "none";
-}
+};
 
 window.onclick = function(event) {
+    // If the user clicks outside of the Setting dialog, close the dialog
     if (settingWindow.contains(event.target) && !settingContent.contains(event.target)) {
         settingWindow.style.display = "none";
     }
-}
+};
 
-// volume settings
-let volumeSlider = settingContent.shadowRoot.querySelector('#volumeSlider')
-let volumeNumber = settingContent.shadowRoot.querySelector('#volumeNumber')
-
-volumeSlider.addEventListener('input', (event) => {
+volumeSlider.addEventListener('input', () => {
     localStorage.setItem('volume', volumeSlider.value);
     volumeNumber.textContent = volumeSlider.value;
-})
+});
 
-// focus time settings
-let focusNumber = settingContent.shadowRoot.querySelector('#focusNumber')
-focusNumber.addEventListener('change', (event) => {
+focusNumber.addEventListener('change', () => {
+    // If the user enters invalid focus session time, alert them
     if (focusNumber.value > parseInt(focusNumber.getAttribute('max'))) {
         alert('Focus session should be 60min or less');
         focusNumber.value = focusNumber.getAttribute('max');
@@ -38,10 +45,10 @@ focusNumber.addEventListener('change', (event) => {
         focusNumber.value = focusNumber.getAttribute('min');
     }
     localStorage.setItem('focusTime', focusNumber.value);
-})
+});
 
-let shortBreakNumber = settingContent.shadowRoot.querySelector('#shortBreakNumber')
-shortBreakNumber.addEventListener('change', (event) => {
+shortBreakNumber.addEventListener('change', () => {
+    // If the user enters invalid short break session time, alert them
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute('max'))) {
         alert('Short Break session should be 20 min or less');
         shortBreakNumber.value = shortBreakNumber.getAttribute('max');
@@ -51,10 +58,10 @@ shortBreakNumber.addEventListener('change', (event) => {
         shortBreakNumber.value = shortBreakNumber.getAttribute('min');
     }
     localStorage.setItem('shortBreakTime', shortBreakNumber.value);
-})
+});
 
-let longBreakNumber = settingContent.shadowRoot.querySelector('#longBreakNumber')
-longBreakNumber.addEventListener('change', (event) => {
+longBreakNumber.addEventListener('change', () => {
+    // If the user enters invalid long break session time, alert them
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute('max'))) {
         alert('Focus session should be 40 min or less');
         longBreakNumber.value = longBreakNumber.getAttribute('max');
@@ -64,4 +71,4 @@ longBreakNumber.addEventListener('change', (event) => {
         longBreakNumber.value = longBreakNumber.getAttribute('min');
     }
     localStorage.setItem('longBreakTime', longBreakNumber.value);
-})
+});
