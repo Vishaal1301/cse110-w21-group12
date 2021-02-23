@@ -4,7 +4,8 @@ class SettingContent extends HTMLElement {
     super()
     const shadow = this.attachShadow({mode: 'open'})
     
-    const defaultVolume = localStorage.getItem('volume') || 100; 
+    const defaultAlarmVolume = localStorage.getItem('alarmVolume') || 100;
+    const defaultCafeVolume = localStorage.getItem('cafeVolume') || 100;
     const focusTime = localStorage.getItem('focusTime') || 25;
     const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;
     const longBreakTime = localStorage.getItem('longBreakTime') || 15;
@@ -37,15 +38,16 @@ class SettingContent extends HTMLElement {
 
       <hr class="sectionBreak">
       
-      <div id="backgroundVolumeContainer">
+      <div id="cafeVolumeContainer">
         <label class="inputLabel">Cafe Volume: </label>
-        <input id="volumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultVolume}>
-        <label class="inputLabel" id="volumeNumber">${defaultVolume}</label>
+        <input id="cafeVolumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultCafeVolume}>
+        <label class="inputLabel" id="cafeVolumeNumber">${defaultCafeVolume}</label>
       </div>
+
       <div id="alarmVolumeContainer">
         <label class="inputLabel">Alarm Volume: </label>
-        <input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultVolume}>
-        <label class="inputLabel" id="alarmVolumeNumber">${defaultVolume}</label>
+        <input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultAlarmVolume}>
+        <label class="inputLabel" id="alarmVolumeNumber">${defaultAlarmVolume}</label>
       </div>
 
     </div>
@@ -99,6 +101,14 @@ class SettingContent extends HTMLElement {
         background-color: #181d28;
         color: white;
         outline: none;
+      }
+
+      #focusNumber {
+        margin-left: 35px;
+      }
+
+      #cafeVolumeSlider {
+        margin-left: 9px;
       }
     `
     shadow.appendChild(style)
