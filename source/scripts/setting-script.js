@@ -18,12 +18,12 @@ window.onclick = function(event) {
 }
 
 // volume settings
-let volumeSlider = settingContent.shadowRoot.querySelector('#volumeSlider')
-let volumeNumber = settingContent.shadowRoot.querySelector('#volumeNumber')
+let alarmVolumeSlider = settingContent.shadowRoot.querySelector('#alarmVolumeSlider')
+let alarmVolumeNumber = settingContent.shadowRoot.querySelector('#alarmVolumeNumber')
 
-volumeSlider.addEventListener('input', (event) => {
-    localStorage.setItem('volume', volumeSlider.value);
-    volumeNumber.textContent = volumeSlider.value;
+alarmVolumeSlider.addEventListener('input', (event) => {
+    localStorage.setItem('alarmVolume', alarmVolumeSlider.value);
+    alarmVolumeNumber.textContent = alarmVolumeSlider.value;
 })
 
 // focus time settings

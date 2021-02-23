@@ -37,11 +37,17 @@ class SettingContent extends HTMLElement {
 
       <hr class="sectionBreak">
       
-      <div id="volumeContainer">
-        <label class="inputLabel">Volume: </label>
+      <div id="backgroundVolumeContainer">
+        <label class="inputLabel">Cafe Volume: </label>
         <input id="volumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultVolume}>
         <label class="inputLabel" id="volumeNumber">${defaultVolume}</label>
       </div>
+      <div id="alarmVolumeContainer">
+        <label class="inputLabel">Alarm Volume: </label>
+        <input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultVolume}>
+        <label class="inputLabel" id="alarmVolumeNumber">${defaultVolume}</label>
+      </div>
+
     </div>
     `
     const style = document.createElement('style')
@@ -83,7 +89,7 @@ class SettingContent extends HTMLElement {
         color:white;
       }
 
-      #volumeSlider {
+      #alarmVolumeSlider {
         vertical-align: middle;
       }
 
