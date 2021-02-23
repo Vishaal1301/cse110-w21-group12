@@ -14,25 +14,23 @@ class SettingContent extends HTMLElement {
       <span class="closeSetting" onclick=closeSettingButton() >&times;</span>
       <h1 id="settingHeader">SETTINGS</h1>
       
-      <hr class="sectionBreak">
-      
       <div id="focusContainer">
         <label class="inputLabel">Focus: </label>
-        <input id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
+        <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
         value="${focusTime}">
         <label class="inputLabel"> min</label>
       </div>
       
       <div id="shortBreakContainer">
         <label class="inputLabel">Short Break: </label>
-        <input id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
+        <input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
         value="${shortBreakTime}">
         <label class="inputLabel"> min</label>
       </div>
       
       <div id="longBreakContainer">
         <label class="inputLabel">Long Break: </label>
-        <input id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
+        <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
         value="${longBreakTime}">
         <label class="inputLabel"> min</label>
       </div>
@@ -54,7 +52,7 @@ class SettingContent extends HTMLElement {
       }
 
       .settingContent {
-        background-color: #1A120F; 
+        background-color: #181d28; 
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
@@ -87,6 +85,14 @@ class SettingContent extends HTMLElement {
 
       #volumeSlider {
         vertical-align: middle;
+      }
+
+      .textInputBox {
+        border-style: solid;
+        border-width: 0px 0px 1px 0px;
+        background-color: #181d28;
+        color: white;
+        outline: none;
       }
     `
     shadow.appendChild(style)
