@@ -5,9 +5,9 @@ let cafeVolumeSlider = settingContent.shadowRoot.querySelector('#cafeVolumeSlide
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector('#cafeVolumeNumber');
 let alarmVolumeSlider = settingContent.shadowRoot.querySelector('#alarmVolumeSlider');
 let alarmVolumeNumber = settingContent.shadowRoot.querySelector('#alarmVolumeNumber');
-let focusNumber = settingContent.shadowRoot.querySelector('#focusNumber')
-let shortBreakNumber = settingContent.shadowRoot.querySelector('#shortBreakNumber')
-let longBreakNumber = settingContent.shadowRoot.querySelector('#longBreakNumber')
+let focusNumber = settingContent.shadowRoot.querySelector('#focusNumber');
+let shortBreakNumber = settingContent.shadowRoot.querySelector('#shortBreakNumber');
+let longBreakNumber = settingContent.shadowRoot.querySelector('#longBreakNumber');
 
 // open and close settings popup
 const openSetting = () => {
@@ -47,7 +47,7 @@ focusNumber.addEventListener('change', () => {
         focusNumber.value = focusNumber.getAttribute('min');
     }
     localStorage.setItem('focusTime', focusNumber.value);
-})
+});
 
 // short break session length settings
 shortBreakNumber.addEventListener('change', () => {
@@ -60,7 +60,7 @@ shortBreakNumber.addEventListener('change', () => {
         shortBreakNumber.value = shortBreakNumber.getAttribute('min');
     }
     localStorage.setItem('shortBreakTime', shortBreakNumber.value);
-})
+});
 
 // long break session length settings
 longBreakNumber.addEventListener('change', () => {
@@ -73,4 +73,4 @@ longBreakNumber.addEventListener('change', () => {
         longBreakNumber.value = longBreakNumber.getAttribute('min');
     }
     localStorage.setItem('longBreakTime', longBreakNumber.value);
-})
+});
