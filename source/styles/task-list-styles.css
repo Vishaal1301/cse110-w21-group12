@@ -1,29 +1,63 @@
 /* Basic Style */
-/*
-body {
-  background: #fff;
-  color: #333;
-  font-family: courier, sans-serif;
-  background-color: #e4e4e4;
-}
-*/
 
-#taskListContainer .container {
-  color: #555;
-  display: block;
-  width: 400px;
+
+#taskListContainer {
+  color: white;
+  display: inline-block;
+  width: 600px;
   margin: 10px auto 100px;
-  background-color: #f5f5f5;
+  background-color: #000033;
   padding: 0px 10px 10px 10px;
   border-radius: 5px;
+  position: absolute;
+  right: 0;
+}
+
+#tasks {
+  width: 100%
+}
+
+.taskItem {
+  list-style: none;
+  font-size: 2em;
+}
+
+.menu{
+  color: white;
+  background: transparent;
+  border: none !important;
+  font-size: 30px;
+  position: absolute;
+  right: 0;
+}
+
+input[type="text"]
+{
+    background: transparent;
+    border: none;
 }
 
 #taskListContainer h2 {
   text-align: center;
   padding-top: 10px;
   margin-bottom: 0px;
+  font-size: 70px;
 }
 
+#new-task{
+  background: transparent;
+  border: none !important;
+  font-size: 2em;
+  margin-left: 3.2em;
+}
+
+#taskListContainer input[type='checkbox'] {
+  margin: 0 10px;
+  height: 25px;
+  width: 25px;
+}
+
+/*
 #taskListContainer ul {
   margin: 0;
   padding: 0;
@@ -65,11 +99,11 @@ body {
 
 #taskListContainer button:hover {
   color: #333;
-}
+} */
 
 /* Heading */
 
-#taskListContainer h3,
+/* #taskListContainer h3,
 #taskListContainer label[for='new-task'] {
   color: #333;
   font-weight: 800;
@@ -94,11 +128,11 @@ body {
 
 #taskListContainer input[type='text']:focus {
   color: #333;
-}
+} */
 
 /* New Task */
 
-#taskListContainer label[for='new-task'] {
+/* #taskListContainer label[for='new-task'] {
   display: block;
   margin: 0 0 20px;
 }
@@ -115,22 +149,20 @@ body {
 
 #taskListContainer p > button:hover {
   color: #0fc57c;
-}
+} */
 
 /* Task list */
 
-#taskListContainer li {
+/* #taskListContainer li {
   overflow: hidden;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
 }
+*/
 
-#taskListContainer li > input[type='checkbox'] {
-  margin: 0 10px;
-  position: relative;
-  top: 15px;
-}
 
+
+/*
 #taskListContainer li > label {
   font-size: 18px;
   line-height: 40px;
@@ -144,18 +176,18 @@ body {
 
 #taskListContainer li > .delete:hover {
   color: #cf2323;
-}
+} */
 
 /* Completed */
 
-#taskListContainer .finished label {
+/* #taskListContainer .finished label {
   text-decoration: line-through;
   color: #888;
-}
+} */
 
 /* Edit Task */
 
-#taskListContainer ul li input[type='text'] {
+/* #taskListContainer ul li input[type='text'] {
   display: none;
 }
 
@@ -165,4 +197,4 @@ body {
 
 #taskListContainer ul li.editMode label {
   display: none;
-}
+} */

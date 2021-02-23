@@ -15,16 +15,26 @@ else {
 }
 
 
+window.addEventListener("DOMContentLoaded", function(){
+	const tasks = JSON.parse(stor.getItem('tasks'));
+	console.log(tasks)
+
+	for(let i = 0; i < tasks.length; i++){
+		const task = tasks[i]
+		addTask(task['name']);
+	}
+});
+
+
 //New Task List Item
 var createNewTaskElement = function(taskString) {
 	//Create List Item
 	var listItem = document.createElement("li");
+	listItem.setAttribute('class', 'taskItem');
 	listItem.setAttribute('id', idCounter);
 
 	//input (checkbox)
 	var checkBox = document.createElement("input"); // checkbox
-	//label
-	var label = document.createElement("label");
 
 	//input (text)
 	var editInput = document.createElement("input"); // text
@@ -36,13 +46,12 @@ var createNewTaskElement = function(taskString) {
 	checkBox.type = "checkbox";
 	editInput.type = "text";
 
-	deleteButton.innerText = "Delete";
-	deleteButton.className = "delete";
+	deleteButton.innerText = "...";
+	deleteButton.className = "menu";
 
-	label.innerText = taskString;
+	editInput.value = taskString;
 
 	listItem.appendChild(checkBox);
-	listItem.appendChild(label);
 	listItem.appendChild(editInput);
 	listItem.appendChild(deleteButton);
 
@@ -52,6 +61,8 @@ var createNewTaskElement = function(taskString) {
 
 // Add task to tasklist in localStorage
 var storeTask = function(label) {
+
+	console.log(label)
 
 	if(stor.getItem('tasks') == null){
 		const tasks = [];
@@ -109,24 +120,22 @@ var updateTask = function(id) {
 }
 
 //Add a new task
-var addTask = function() {
+var addTask = function(taskName) {
 
-	
 	if(idCounter > 11){
 		return;
 	}
-	console.log("Add task...");
 	//Create a new list item with the text from #new-task:
-	var listItem = createNewTaskElement(taskInput.value);
+	if(!taskName)
+		return;
+	console.log("Add task...");
+	var listItem = createNewTaskElement(taskName);
 	//Append listItem to TasksHolder
 	TasksHolder.appendChild(listItem);
 
 	bindTaskEvents(listItem);
-
-	storeTask(taskInput.value);
     //delete the item
 
-	taskInput.value = "";
 }
 
 //Edit an existing task
@@ -162,6 +171,9 @@ var deleteTask = function() {
 	var listItem = this.parentNode;
 	var ul = listItem.parentNode;
 
+	idCounter--;
+	stor.setItem('idCounter', JSON.stringify(idCounter));
+
 	unstoreTask(listItem.getAttribute('id'));
     //delete the item
 	//Remove the parent list item from the ul
@@ -173,12 +185,9 @@ var bindTaskEvents = function(taskListItem) {
 	console.log("Bind list item events");
 	//select taskListItem's children
 	var checkBox = taskListItem.querySelector("input[type=checkbox]");
-	var deleteButton = taskListItem.querySelector("button.delete");
-    var label = taskListItem.querySelector("label");
+	var deleteButton = taskListItem.querySelector("button.menu");
     var text = taskListItem.querySelector("input[type=text]");
 
-
-    label.onmouseover = editTask;
     text.onmouseout = editTask;
 
 	//bind deleteTask to delete button
@@ -196,12 +205,18 @@ var bindTaskEvents = function(taskListItem) {
 }
 
 //Set the click handler to the addTask function
-addButton.addEventListener("click", addTask);
+addButton.addEventListener("click", (e) => {
+	addTask(taskInput.value);
+	storeTask(taskInput.value);
+	taskInput.value = null;
+});
 
 //Set the enter key to the addTask function
 taskInput.addEventListener("keyup", (event) => {
     if(event.key === 'Enter'){
-        addTask();
+        addTask(taskInput.value);
+		storeTask(taskInput.value);
+		taskInput.value = null;
     }
 })
 

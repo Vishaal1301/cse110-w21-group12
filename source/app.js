@@ -29,8 +29,8 @@ const showTimer = () => {
     timerDiv.style.display = "flex";
 }
 
-document.getElementById("timerNav").addEventListener("click", showTimer);
-document.getElementById("tasksNav").addEventListener("click", showTasks);
+// document.getElementById("timerNav").addEventListener("click", showTimer);
+// document.getElementById("tasksNav").addEventListener("click", showTasks);
 
 const updateCoffeeCup = () => {
     if(isCountdown) {
