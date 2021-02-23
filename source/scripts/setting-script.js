@@ -4,7 +4,7 @@ let settingContent = document.getElementById("settingContent");
 
 // open and close settings popup
 const openSetting = () => {
-    settingWindow.style.display = "flex";
+    settingWindow.style.display = "block";
 }
 
 const closeSettingButton = () => {
