@@ -41,17 +41,19 @@ _Documentation and Code Style:_
 - CSS and HTML commenting to be discussed Tuesday
 
 _Branches:_
-- Inconsistent naming, so change personal branch names to follow #-issueWord1-issueWord2 where # corresponds to issue id
+- Inconsistent naming, so change personal branch names to follow #_IssueWord1_IssueWord2 where # corresponds to issue id
 - Add and commit only essential files pertaining to task (don't include other changes), don't do git add . 
+  - git ignore can used to resolve this problem
 
 _Pipeline:_
-- Branches were updating during sprint (html/css and javascript branches were removed, features branch added)
+- Branches were updated during sprint (html/css and javascript branches were removed, features branch added)
 - Updating pipeline led to commit and issue history clutter (minimize clutter in next sprint)
 - Status: Github actions working properly in all branches
   - Decided not to do ES Lint on features - fits its purpose better in testing branch
 
 _Software Status:_
 - MVP complete, all components integrated into 1 base HTML
+- All goals in road map were met except Audio notification at the end of session!
 - "Pixelated"-look did not turn out well, so new design required (almost complete)
 - Page does not fetch data from local storage upon reload, but everything is stored in local storage properly
   - Does page reload take user back to "not counting down" state?
