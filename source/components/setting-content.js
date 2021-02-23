@@ -11,45 +11,48 @@ class SettingContent extends HTMLElement {
 
     shadow.innerHTML = `
     <div class="settingContent">
-
       <span class="closeSetting" onclick=closeSettingButton() >&times;</span>
-      <h2>Setting</h2>
+      <h1 id="settingHeader">SETTINGS</h1>
       
-      <hr>
+      <hr class="sectionBreak">
       
       <div id="focusContainer">
-        <label>Focus: </label>
+        <label class="inputLabel">Focus: </label>
         <input id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
         value="${focusTime}">
-        <label> min</label>
+        <label class="inputLabel"> min</label>
       </div>
       
       <div id="shortBreakContainer">
-        <label>Short Break: </label>
+        <label class="inputLabel">Short Break: </label>
         <input id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
         value="${shortBreakTime}">
-        <label> min</label>
+        <label class="inputLabel"> min</label>
       </div>
       
       <div id="longBreakContainer">
-        <label>Long Break: </label>
+        <label class="inputLabel">Long Break: </label>
         <input id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
         value="${longBreakTime}">
-        <label> min</label>
+        <label class="inputLabel"> min</label>
       </div>
 
-      <hr>
+      <hr class="sectionBreak">
       
       <div id="volumeContainer">
-        <label>Volume: </label>
+        <label class="inputLabel">Volume: </label>
         <input id="volumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultVolume}>
-        <label id="volumeNumber">${defaultVolume}</label>
+        <label class="inputLabel" id="volumeNumber">${defaultVolume}</label>
       </div>
-
     </div>
     `
     const style = document.createElement('style')
     style.textContent = `
+      #settingHeader {
+        text-align: center;
+        color: white;
+      }
+
       .settingContent {
         background-color: #1A120F; 
         margin: auto;
@@ -74,24 +77,16 @@ class SettingContent extends HTMLElement {
         cursor: pointer;
       }
 
-      h2 {
-        color: white;
+      .sectionBreak {
+        visibility: hidden;
       }
 
-      p {
-        color: white;
-      }
-
-      label {
+      .inputLabel {
         color:white;
       }
 
       #volumeSlider {
         vertical-align: middle;
-      }
-
-      input[type='number'] {
-        max-width: 2.5em;
       }
     `
     shadow.appendChild(style)
