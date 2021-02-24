@@ -9,6 +9,7 @@ let mouseOver = false;
 // session.onclick = function(){
 //     updateTimerSettings(clock, 10, 5, 7);
 // }
+let taskListDiv = document.getElementById("taskListContainer");
 
 
 const showTasks = () => {
@@ -55,11 +56,9 @@ cup.onmouseleave = () => {
 cup.onclick = () => {
     if(!isCountdown){
         showTimer();
-        document.getElementById("toolBar").style.display = "none";
-        document.getElementById("navBar").style.display = "none";
+        taskListDiv.style.display = "none";
     } else{
-        document.getElementById("toolBar").style.display = "block";
-        document.getElementById("navBar").style.display = "block"; 
+        taskListDiv.style.display = "block";
     }
     startStopTimer(clock, (state) => {
         currentState = state;
