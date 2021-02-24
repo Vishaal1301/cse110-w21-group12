@@ -4,87 +4,104 @@ var TasksHolder = document.getElementById("tasks"); //the tasks
 
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
-var idCounter = stor.getItem('idCounter');
-
-if(idCounter == null){
-	idCounter = 0;
-	stor.setItem('idCounter', JSON.stringify(idCounter));
-}
-else {
-	idCounter = JSON.parse(idCounter);
+var tasks = JSON.parse(stor.getItem("tasks"));
+if(stor.getItem('tasks') == null){
+	const tasks = [];
+	stor.setItem('tasks', JSON.stringify(tasks));
 }
 
+// var tasks.length = stor.getItem('tasks').length;
 
-window.addEventListener("DOMContentLoaded", function(){
-	const tasks = JSON.parse(stor.getItem('tasks'));
-	console.log(tasks)
+// if(tasks.length == null){
+// 	tasks.length = 0;
+// 	stor.setItem('tasks.length', JSON.stringify(idCounter));
+// }
+// else {
+// 	idCounter = JSON.parse(idCounter);
+// }
 
+
+window.addEventListener("DOMContentLoaded", function() {
 	for(let i = 0; i < tasks.length; i++){
-		const task = tasks[i]
-		addTask(task['name']);
+		const task = tasks[i];
+		addTask(task['name'], task['mainTask']);
 	}
 });
 
 
 //New Task List Item
-var createNewTaskElement = function(taskString) {
+var createNewTaskElement = function(taskString, mainTask) {
 	//Create List Item
 	var listItem = document.createElement("li");
 	listItem.setAttribute('class', 'taskItem');
-	listItem.setAttribute('id', idCounter);
+	// listItem.setAttribute('id', tasks.length);
 
 	//input (checkbox)
 	var checkBox = document.createElement("input"); // checkbox
 
 	//input (text)
 	var editInput = document.createElement("input"); // text
+	if(mainTask)
+		editInput.style.color = "yellow";
 
 	//button.delete
-	var deleteButton = document.createElement("button");
+	var dropdownDiv = document.createElement("div");
+	dropdownDiv.setAttribute("class", "dropdown");
+
+	
+	var dropDownSetting = document.createElement("input");
+	dropDownSetting.setAttribute("id", "dropDownSetting");
+	dropDownSetting.setAttribute("type", "image");
+	dropDownSetting.setAttribute("src", "assets/task-item-setting.png");
+	dropDownSetting.setAttribute("width", "30");
+	dropDownSetting.setAttribute("height", "30");
+	
+	var dropDownContentDiv = document.createElement("div");
+	dropDownContentDiv.setAttribute("class", "dropdown-content");
+	
+	
+	var deleteLink = document.createElement("a");
+	deleteLink.setAttribute("id", "deleteButton");
+	deleteLink.innerHTML = "Delete";
+
+	var focusLink = document.createElement("a");
+	focusLink.setAttribute("id", "mainTaskSelector");
+	focusLink.innerHTML = "Focus";
+
+	var numPomosLink = document.createElement("a");
+	numPomosLink.setAttribute("id", "pomoCycles");
+	numPomosLink.innerHTML = "1";
+
+	dropDownContentDiv.appendChild(deleteLink)
+	dropDownContentDiv.appendChild(focusLink)
+	dropDownContentDiv.appendChild(numPomosLink)
+
+	dropdownDiv.appendChild(dropDownSetting);
+	dropdownDiv.appendChild(dropDownContentDiv);
 
 
 	checkBox.type = "checkbox";
 	editInput.type = "text";
-
-	deleteButton.innerText = "...";
-	deleteButton.className = "menu";
-
 	editInput.value = taskString;
 
+	
 	listItem.appendChild(checkBox);
 	listItem.appendChild(editInput);
-	listItem.appendChild(deleteButton);
-
+	listItem.appendChild(dropdownDiv);
 
 	return listItem;
 }
 
 // Add task to tasklist in localStorage
 var storeTask = function(label) {
-
-	console.log(label)
-
-	if(stor.getItem('tasks') == null){
-		const tasks = [];
-		stor.setItem('tasks', JSON.stringify(tasks));
-	}
-
-
-	const tasks = JSON.parse(stor.getItem('tasks'));
-
-	// console.log(tasks); // Debug check to console
-	
 	const task = {
 		name: label,
-		id: idCounter,
-		progress: "in progress"
+		progress: "in progress",
+		mainTask: false
 	}
 
 	tasks.push(task);
 	stor.setItem('tasks', JSON.stringify(tasks));
-
-	idCounter++;
-	stor.setItem('idCounter', JSON.stringify(idCounter));
 }
 
 // Remove task from tasklist in localStorage
@@ -100,10 +117,12 @@ var unstoreTask = function(id) {
 		}
 	}
 
+	console.log(tasks);
+
 	stor.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Update progress of task in tasklist in localStorage
+// Update tasklist in localStorage
 var updateTask = function(id) {
 	const tasks = JSON.parse(stor.getItem('tasks'));
 
@@ -120,16 +139,16 @@ var updateTask = function(id) {
 }
 
 //Add a new task
-var addTask = function(taskName) {
-
-	if(idCounter > 11){
+var addTask = function(taskName, mainTask=false) {
+	tasks = JSON.parse(stor.getItem("tasks"));
+	if(tasks.length > 11){
 		return;
 	}
 	//Create a new list item with the text from #new-task:
 	if(!taskName)
 		return;
 	console.log("Add task...");
-	var listItem = createNewTaskElement(taskName);
+	var listItem = createNewTaskElement(taskName, mainTask);
 	//Append listItem to TasksHolder
 	TasksHolder.appendChild(listItem);
 
@@ -145,20 +164,20 @@ var editTask = function() {
 	var listItem = this.parentNode;
 
 	var editInput = listItem.querySelector("input[type=text]");
-	var label = listItem.querySelector("label");
+	var label = listItem.querySelector("new-task");
 
 	var containsClass = listItem.classList.contains("editMode");
 
-	//if the class of the parent is .editMode
-	if (containsClass) {
-		//Switch from .editMode
-		//label text become the input's value
-		label.innerText = editInput.value;
-	} else {
-		//Switch to .editMode
-		//input value becomes the label's text
-		editInput.value = label.innerText;
-	}
+	// //if the class of the parent is .editMode
+	// if (containsClass) {
+	// 	//Switch from .editMode
+	// 	//label text become the input's value
+	// 	label.value = editInput.value;
+	// } else {
+	// 	//Switch to .editMode
+	// 	//input value becomes the label's text
+	// 	editInput.value = label.value;
+	// }
 
 	//Toggle .editMode on the list item
 	listItem.classList.toggle("editMode");
@@ -168,30 +187,80 @@ var editTask = function() {
 //Delete an existing task
 var deleteTask = function() {
 	console.log("Delete task...");
-	var listItem = this.parentNode;
+	var listItem = this.parentNode.parentNode.parentNode;
 	var ul = listItem.parentNode;
 
-	idCounter--;
-	stor.setItem('idCounter', JSON.stringify(idCounter));
-
+	tasks = JSON.parse(stor.getItem("tasks"));
+	// stor.setItem('tasks.length', JSON.stringify(tasks.length));
+	console.log("listItem id", listItem.getAttribute('id'))
 	unstoreTask(listItem.getAttribute('id'));
     //delete the item
 	//Remove the parent list item from the ul
+	
 	ul.removeChild(listItem);
 }
 
+var selectMainTask = function(){
+	var listItem = this.parentNode.parentNode.parentNode; // <li> taskItem
+	var text = listItem.querySelector("input[type=text]");
+
+	tasks = JSON.parse(stor.getItem("tasks"));
+
+	// Determine the current main task
+	let currMainTask = null;
+
+	for(let i = 0; i < tasks.length; i++) {
+		let task = tasks[i]
+		// case1: no main task selected in tasks 
+			// find the corresponding task in tasks, set 
+		// case2: one main task is selected in tasks, user tries to select a different task as main
+			// TODO: need to include this
+		// case3: one main task is selected in tasks, user tries to select the same task
+
+		if(task.name === text.value && task.mainTask === true) {
+			text.style.color = "white"
+			task.mainTask = false;
+			break;
+		}
+		else if(task.name === text.value && task.mainTask === false) {
+			text.style.color = "yellow"
+			task.mainTask = true;
+			currMainTask = task.name
+			break;
+		}
+	}
+
+	for(let i=0; i < tasks.length; i++){
+		let task = tasks[i]
+		console.log(task.name, currMainTask)
+		if(task.name != currMainTask){
+			task.mainTask = false;
+			text.style.color = "white"
+		}
+	}
+
+	console.log(tasks)
+	stor.setItem('tasks', JSON.stringify(tasks));
+	
+}
 
 var bindTaskEvents = function(taskListItem) {
 	console.log("Bind list item events");
 	//select taskListItem's children
+
+	// var deleteButton = taskListItem.querySelector("button.menu");
 	var checkBox = taskListItem.querySelector("input[type=checkbox]");
-	var deleteButton = taskListItem.querySelector("button.menu");
     var text = taskListItem.querySelector("input[type=text]");
+	var deleteButton = taskListItem.querySelector("#deleteButton");
+	var mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
+
+
+	mainTaskSelector.onclick = selectMainTask;
+	deleteButton.onclick = deleteTask;
 
     text.onmouseout = editTask;
 
 	//bind deleteTask to delete button
-	deleteButton.onclick = deleteTask;
 
 
 	//toggle for checkbox
@@ -205,11 +274,11 @@ var bindTaskEvents = function(taskListItem) {
 }
 
 //Set the click handler to the addTask function
-addButton.addEventListener("click", (e) => {
-	addTask(taskInput.value);
-	storeTask(taskInput.value);
-	taskInput.value = null;
-});
+// addButton.addEventListener("click", (e) => {
+// 	addTask(taskInput.value);
+// 	storeTask(taskInput.value);
+// 	taskInput.value = null;
+// });
 
 //Set the enter key to the addTask function
 taskInput.addEventListener("keyup", (event) => {
