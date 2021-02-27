@@ -34,16 +34,33 @@ function startTimer(clock, callback) {
 
 // Stop the timer
 function stopTimer(clock, reset, callback) {
+    const state = sessionNum == POMO_CYCLES*2 - 1? 'Long Break' : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
+    let alarm;
     isCountdown = false;
     if(reset){
         sessionNum = 0;
     }else{
         sessionNum= ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+        switch(state){
+            case "Focus Session": 
+                alarm = new Audio("./assets/focus.mp3");
+                alarm.volume = localStorage.getItem("volume") / 100;
+                alarm.play();
+                break;
+            case "Short Break":
+                alarm = new Audio("./assets/short.mp3");
+                alarm.volume = localStorage.getItem("volume") / 100;
+                alarm.play();
+                break;
+            case "Long Break":
+                alarm = new Audio("./assets/long.mp3");
+                alarm.volume = localStorage.getItem("volume") / 100;
+                alarm.play();
+                break;
+        }
     }
-
     clearInterval(countdown);
     
-    const state = sessionNum == POMO_CYCLES*2 - 1? 'Long Break' : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
 }

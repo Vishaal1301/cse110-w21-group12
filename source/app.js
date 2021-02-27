@@ -1,22 +1,27 @@
-import {startStopTimer, updateTimerSettings, isCountdown} from './scripts/clock.js'
-const cup = document.getElementById("cup")
+import {startStopTimer, updateTimerSettings, isCountdown} from './scripts/clock.js';
+const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
-
+const settings = document.getElementById("settingWindow");
 let currentState = session.innerHTML;
 let mouseOver = false;
 
-// session.onclick = function(){
-//     updateTimerSettings(clock, 10, 5, 7);
-// }
-
+session.onclick = function(){
+    updateTimerSettings(clock, 5, 3, 4);
+};
+window.addEventListener("load", function(){
+    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60, localStorage.getItem("shortBreakTime") * 60, localStorage.getItem("longBreakTime") * 60);
+});
+settings.addEventListener("click", function(){
+    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60, localStorage.getItem("shortBreakTime") * 60, localStorage.getItem("longBreakTime") * 60);
+})
 const updateCoffeeCup = () => {
     if(isCountdown) {
         session.innerHTML = "Stop Brewing?"
-        cup.src = "./assets/coffee_red.png";
+        clock.style.color = "red";
     }else{
         session.innerHTML = "Start Brewing!"
-        cup.src = "./assets/coffee_green.png";
+        clock.style.color = "green";
     }
 }
 
@@ -27,7 +32,7 @@ cup.onmouseenter = () => {
 cup.onmouseleave = () => {
     mouseOver = false
     session.innerHTML = currentState;
-    cup.src = "./assets/coffee_default.png";
+    clock.style.color = "white";
 }
 
 cup.onclick = () => {
