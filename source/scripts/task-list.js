@@ -18,13 +18,13 @@ if(stor.getItem('tasks') == null){
 window.addEventListener("DOMContentLoaded", function() {
 	for(let i = 0; i < tasks.list.length; i++){
 		const task = tasks.list[i];
-		addTask(task.name, task.checked, tasks.mainTask.name);
+		addTask(task.name, task.checked, i, tasks.mainTask.name);
 	}
 });
 
 
 //New Task List Item
-var createNewTaskElement = function(taskString, checked, mainTask) {
+var createNewTaskElement = function(taskString, checked, id, mainTask) {
 
 	//Create List Item
 	var listItem = document.createElement("li");
@@ -79,13 +79,12 @@ var createNewTaskElement = function(taskString, checked, mainTask) {
 
 	editInput.type = "text";
 	editInput.value = taskString;
+	editInput.id = id;
 	if(checked){
 		editInput.style.textDecoration = 'line-through';
 
 	}
 
-
-	
 	listItem.appendChild(checkBox);
 	listItem.appendChild(editInput);
 	listItem.appendChild(dropdownDiv);
@@ -99,6 +98,7 @@ var storeTask = function(label) {
 	const task = {
 		name: label,
 		checked: false,
+		id: tasks.list.length
 	}
 
 	tasks.list.push(task);
@@ -118,6 +118,12 @@ var unstoreTask = function(name) {
 		}
 	}
 
+	// Shift the id of all other tasks
+	for(let index = 0; index < tasks.list.length; index++){
+		const task = tasks.list[index];
+		task.id = index;
+	}
+
 	stor.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -130,7 +136,7 @@ var updateTask = function(id, state) {
 	for(let index = 0; index < tasks.list.length; index++){
 		const task = tasks.list[index];
 		console.log(id, state)
-		if(task.name == id && task.checked != state){
+		if(task.id == id){
 			task.checked = state;
 			break;
 		}
@@ -140,13 +146,13 @@ var updateTask = function(id, state) {
 }
 
 //Add a new task
-var addTask = function(taskName, checked, mainTask=null) {
+var addTask = function(taskName, checked, id, mainTask=null) {
 	//Create a new list item with the text from #new-task:
 	if(!taskName)
 		return false;
 	console.log("Add task...");
 	
-	var listItem = createNewTaskElement(taskName, checked, mainTask);
+	var listItem = createNewTaskElement(taskName, checked, id, mainTask);
 	//Append listItem to TasksHolder
 	TasksHolder.appendChild(listItem);
 
@@ -158,16 +164,22 @@ var addTask = function(taskName, checked, mainTask=null) {
 //Edit an existing task
 var editTask = function() {
 	console.log("Edit task...");
+	
+	const newName = this.value;
 
-	var listItem = this.parentNode;
+	tasks = JSON.parse(stor.getItem("tasks"));
 
-	var editInput = listItem.querySelector("input[type=text]");
-	var label = listItem.querySelector("new-task");
+	// Update the task in local storage
+	for(let i=0; i < tasks.list.length; i++){
+		let task = tasks.list[i]
+		console.log(task, this.id)
+		if(task.id == this.id){
+			task.name = newName;
+		}
+	}
 
-	var containsClass = listItem.classList.contains("editMode");
-
-	//Toggle .editMode on the list item
-	listItem.classList.toggle("editMode");
+	// Update local storage
+	stor.setItem('tasks', JSON.stringify(tasks));
 
 }
 
@@ -175,16 +187,19 @@ var editTask = function() {
 var deleteTask = function() {
 	console.log("Delete task...");
 	var listItem = this.parentNode.parentNode.parentNode;
-	console.log(listItem);
 	var ul = listItem.parentNode;
-
-	tasks = JSON.parse(stor.getItem("tasks"));
-	// stor.setItem('tasks.length', JSON.stringify(tasks.length));
 
 	unstoreTask(listItem.children[1].value);
 
 	//Remove the parent list item from the ul
 	ul.removeChild(listItem);
+
+	let children = ul.children;
+
+	for(let i = 0; i < children.length; i++){
+		children[i].children[1].id = i;
+	}
+
 }
 
 var selectMainTask = function(){
@@ -253,16 +268,8 @@ var bindTaskEvents = function(taskListItem) {
 
 	mainTaskSelector.onclick = selectMainTask;
 	deleteButton.onclick = deleteTask;
-	// dropdownButton.onclick = function() {
-	// 	SHOWING = true;
-	// 	console.log("test");
-	// 	dropDownContent.style.display = "block"
-	// }
 
-    text.onmouseout = editTask;
-
-	//bind deleteTask to delete button
-
+    text.onchange = editTask;
 
 	//toggle for checkbox
 	checkBox.onchange = () => {
@@ -270,11 +277,11 @@ var bindTaskEvents = function(taskListItem) {
 
 		if (checkBox.checked){
 			taskListItem.style.textDecoration = 'line-through';
-			updateTask(text.value, true);
+			updateTask(text.id, true);
 		}
 		else{
 			taskListItem.style.textDecoration = 'none';
-			updateTask(text.value, false);
+			updateTask(text.id, false);
 		}
 
 		
@@ -287,7 +294,7 @@ var bindTaskEvents = function(taskListItem) {
 taskInput.addEventListener("keyup", (event) => {
     if(event.key === 'Enter'){
 		tasks = JSON.parse(stor.getItem("tasks"));
-        if(tasks.list.length <= 11 && addTask(taskInput.value))
+        if(tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
 			storeTask(taskInput.value);
 		taskInput.value = null;
     }
