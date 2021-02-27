@@ -26,17 +26,13 @@ body{
     pointer-events: none;
 } 
 
-#session{
-    position: absolute;
-}
-
 #taskbar{
     position: relative;
     top: 375px;
 }
 #session{
     position: absolute;
-    top: 800px;
+    margin-top: 735px;
     color: black;
     z-index: 100;
     font-size: 40px;
