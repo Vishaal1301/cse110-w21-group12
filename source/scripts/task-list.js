@@ -1,3 +1,4 @@
+import {storeTask, unstoreTask, updateTask, editTask} from './task-list-local-storage.js'
 const MENU_BUTTON_SIZE = 25;
 const DEBUG = false
 
@@ -97,103 +98,6 @@ let createNewTaskElement = function(taskString, checked, id) {
 }
 
 /**
- * Helper function to store a new task into local storage
- * @param {string} label - The name of the task
- */
-let storeTask = function(label) {
-	// print to console if DEBUG is enabled
-	if(DEBUG)
-		console.log("storing")
-
-	const task = {
-		name: label,
-		checked: false,
-		id: tasks.list.length
-	}
-
-	tasks.list.push(task);
-	stor.setItem('tasks', JSON.stringify(tasks));
-}
-
-/**
- * Helper function to remove a new task from local storage
- * @param {number} id - The ID of the task to remove
- */
-let unstoreTask = function(id) {
-	const tasks = JSON.parse(stor.getItem('tasks'));
-
-	// Find the task ID and remove it from local storage
-	for(let index = 0; index < tasks.list.length; index++){
-		const task = tasks.list[index];
-		if(task.id == id){
-			tasks.list.splice(index, 1);
-			break;
-		}
-	}
-
-	// Shift the IDs of all other tasks
-	for(let index = 0; index < tasks.list.length; index++){
-		const task = tasks.list[index];
-		task.id = index;
-	}
-
-	// Update main task ID
-	if(id == tasks.mainTask.id){
-		tasks.mainTask.name = null;
-		tasks.mainTask.checked = false;
-		tasks.mainTask.id = null;
-	}
-	else if (id < tasks.mainTask.id){
-		console.log("here");
-		tasks.mainTask.id = id;
-	}
-
-	stor.setItem('tasks', JSON.stringify(tasks));
-}
-
-/**
- * Helper function to update the state of checkbox in local storage
- * @param {number} id - The ID of the task to remove
- * @param {number} state - The state of the new checkbox
- */
-let updateTask = function(id, state) {
-	const tasks = JSON.parse(stor.getItem('tasks'));
-
-	// Find the task by ID and update the checkbox
-	for(let index = 0; index < tasks.list.length; index++){
-		const task = tasks.list[index];
-		if(task.id == id){
-			task.checked = state;
-			break;
-		}
-	}
-
-	stor.setItem('tasks', JSON.stringify(tasks));
-}
-
-/**
- * Edit the name of an existing task in local storage
- */
-let editTask = function() {
-	console.log("Edit task...");
-	
-	const newName = this.value;
-
-	tasks = JSON.parse(stor.getItem("tasks"));
-
-	// Update the task in local storage
-	for(let i=0; i < tasks.list.length; i++){
-		let task = tasks.list[i]
-		if(task.id == this.id){
-			task.name = newName;
-		}
-	}
-
-	// Update local storage
-	stor.setItem('tasks', JSON.stringify(tasks));
-}
-
-/**
  * Add a new task element 
  * @param {string} taskName - The name of the new task
  * @param {boolean} checked - whether or not the task should be checked
@@ -263,7 +167,7 @@ let selectMainTask = function(){
 	let currMainTask = tasks.mainTask;
 	
 	// If the selected task was already main task, remove main task. Otherwise set it as main task. 
-	if(currMainTask.name === text.value) {
+	if(currMainTask.id === text.id) {
 		text.style.color = "white";
 		currMainTask.name = null;
 		currMainTask.id = null;
@@ -276,8 +180,8 @@ let selectMainTask = function(){
 
 	// Set all other tasks to white
 	for (let i = 0; i < TasksHolder.children.length; i++) {
-		taskElement = TasksHolder.children[i].children[1]
-		if(taskElement.value !== currMainTask.name){
+		const taskElement = TasksHolder.children[i].children[1]
+		if(taskElement.id !== currMainTask.id){
 			taskElement.style.color = "white"
 		}
 	}
@@ -348,5 +252,3 @@ taskInput.addEventListener("keyup", (event) => {
 		taskInput.value = null;
     }
 })
-
-
