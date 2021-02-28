@@ -7,7 +7,7 @@
 const POMO_CYCLES = 5;
 let autoCycle = true;
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 300, 1500, 900];
-let sessionNum= 0;
+let sessionNum = 0;
 
 // Global timer variables
 let isCountdown = false;
@@ -34,16 +34,33 @@ function startTimer(clock, callback) {
 
 // Stop the timer
 function stopTimer(clock, reset, callback) {
+    const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+    let alarm;
     isCountdown = false;
-    if(reset){
+    if (reset) {
         sessionNum = 0;
-    }else{
-        sessionNum= ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+    } else {
+        sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+        switch (state) {
+        case "Focus Session":
+            alarm = new Audio("./assets/focus.mp3");
+            alarm.volume = localStorage.getItem("volume") / 100;
+            alarm.play();
+            break;
+        case "Short Break":
+            alarm = new Audio("./assets/short.mp3");
+            alarm.volume = localStorage.getItem("volume") / 100;
+            alarm.play();
+            break;
+        case "Long Break":
+            alarm = new Audio("./assets/long.mp3");
+            alarm.volume = localStorage.getItem("volume") / 100;
+            alarm.play();
+            break;
+        }
     }
-
     clearInterval(countdown);
-    
-    const state = sessionNum == POMO_CYCLES*2 - 1? 'Long Break' : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
+
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
 }
@@ -73,10 +90,10 @@ function secondsToString(time) {
 function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLength) {
 
     // Do nothing if the timer is currently on
-    if(isCountdown)
+    if (isCountdown)
         return false;
 
-    sessionNum= 0;
+    sessionNum = 0;
     clock.innerHTML = sessionLengths[sessionNum];
 
     sessionLengths = [];
