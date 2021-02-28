@@ -18,7 +18,7 @@ const closeSettingButton = () => {
     settingWindow.style.display = "none";
 }
 
-window.onclick = function(event) {
+window.onclick = (event) => {
     if (settingWindow.contains(event.target) && !settingContent.contains(event.target)) {
         settingWindow.style.display = "none";
     }
@@ -39,11 +39,11 @@ alarmVolumeSlider.addEventListener('input', () => {
 // focus session length settings
 focusNumber.addEventListener('change', () => {
     if (focusNumber.value > parseInt(focusNumber.getAttribute('max'))) {
-        alert('Focus session should be 60min or less');
+        alert('Focus session should be 60 min or less');
         focusNumber.value = focusNumber.getAttribute('max');
     }
     else if (focusNumber.value < parseInt(focusNumber.getAttribute('min'))) {
-        alert('Focus session should be 15min or more');
+        alert('Focus session should be 15 min or more');
         focusNumber.value = focusNumber.getAttribute('min');
     }
     localStorage.setItem('focusTime', focusNumber.value);
