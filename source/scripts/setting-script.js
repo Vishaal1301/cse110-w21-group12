@@ -1,3 +1,6 @@
+/**
+ * Setting Window/Content Variables
+ */
 let settingWindow = document.getElementById("settingWindow");
 let closeSetting = document.getElementsByClassName("closeSetting")[0];
 let settingContent = document.getElementById("settingContent");
