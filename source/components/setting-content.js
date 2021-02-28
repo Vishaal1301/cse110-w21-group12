@@ -1,9 +1,12 @@
-// product-item.js
+/**
+ * SettingContent custom Component
+ */
 class SettingContent extends HTMLElement {
   constructor() {
     super()
     const shadow = this.attachShadow({mode: 'open'})
     
+    // Session length and Volume variables
     const defaultAlarmVolume = localStorage.getItem('alarmVolume') || 100;
     const defaultCafeVolume = localStorage.getItem('cafeVolume') || 100;
     const focusTime = localStorage.getItem('focusTime') || 25;
