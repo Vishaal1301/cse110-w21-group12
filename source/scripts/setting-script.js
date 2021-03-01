@@ -1,46 +1,58 @@
+/**
+ * Setting Window/Content Variables
+ */
 let settingWindow = document.getElementById("settingWindow");
 let closeSetting = document.getElementsByClassName("closeSetting")[0];  // eslint-disable-line no-unused-vars 
 let settingContent = document.getElementById("settingContent");
+let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
+let cafeVolumeNumber = settingContent.shadowRoot.querySelector("#cafeVolumeNumber");
+let alarmVolumeSlider = settingContent.shadowRoot.querySelector("#alarmVolumeSlider");
+let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNumber");
+let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
+let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
+let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
 
 // open and close settings popup
 const openSetting = () => {  // eslint-disable-line no-unused-vars
-    settingWindow.style.display = "flex";
+    settingWindow.style.display = "block";
 };
 
 const closeSettingButton = () => {  // eslint-disable-line no-unused-vars
     settingWindow.style.display = "none";
 };
 
-window.onclick = function(event) {
+window.onclick = (event) => {
     if (settingWindow.contains(event.target) && !settingContent.contains(event.target)) {
         settingWindow.style.display = "none";
     }
 };
 
-// volume settings
-let volumeSlider = settingContent.shadowRoot.querySelector("#volumeSlider");
-let volumeNumber = settingContent.shadowRoot.querySelector("#volumeNumber");
-
-volumeSlider.addEventListener("input", () => {
-    localStorage.setItem("volume", volumeSlider.value);
-    volumeNumber.textContent = volumeSlider.value;
+// cafe volume settings
+cafeVolumeSlider.addEventListener("input", () => {
+    localStorage.setItem("cafeVolume", cafeVolumeSlider.value);
+    cafeVolumeNumber.textContent = cafeVolumeSlider.value;
 });
 
-// focus time settings
-let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
+// alarm volume settings
+alarmVolumeSlider.addEventListener("input", () => {
+    localStorage.setItem("alarmVolume", alarmVolumeSlider.value);
+    alarmVolumeNumber.textContent = alarmVolumeSlider.value;
+});
+
+// focus session length settings
 focusNumber.addEventListener("change", () => {
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
-        alert("Focus session should be 60min or less");
+        alert("Focus session should be 60 min or less");
         focusNumber.value = focusNumber.getAttribute("max");
     }
     else if (focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
-        alert("Focus session should be 15min or more");
+        alert("Focus session should be 15 min or more");
         focusNumber.value = focusNumber.getAttribute("min");
     }
     localStorage.setItem("focusTime", focusNumber.value);
 });
 
-let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
+// short break session length settings
 shortBreakNumber.addEventListener("change", () => {
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
         alert("Short Break session should be 20 min or less");
@@ -53,7 +65,7 @@ shortBreakNumber.addEventListener("change", () => {
     localStorage.setItem("shortBreakTime", shortBreakNumber.value);
 });
 
-let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
+// long break session length settings
 longBreakNumber.addEventListener("change", () => {
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
         alert("Focus session should be 40 min or less");

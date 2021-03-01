@@ -65,7 +65,7 @@ body{
     border: 2px solid white;
 } */
 
-input:focus{
+input:focus {
     outline: 0 !important;
 }
 
