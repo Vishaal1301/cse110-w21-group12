@@ -1,7 +1,7 @@
 # Singular HTML and CSS files
 
 * Status: accepted
-* Deciders: Kevin, Alan, Muhammad, Tristen
+* Deciders: Kevin, Alan, Muhammad, Tristin
 * Date: 02-03-2021
 
 ## Context and Problem Statement
