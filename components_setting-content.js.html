@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/setting-content.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/setting-content.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * SettingContent custom Component
+ */
+class SettingContent extends HTMLElement {
+constructor() {
+    super()
+    const shadow = this.attachShadow({mode: 'open'})
+    
+    // Session length and Volume variables
+    const defaultAlarmVolume = localStorage.getItem('alarmVolume') || 100;
+    const defaultCafeVolume = localStorage.getItem('cafeVolume') || 100;
+    const focusTime = localStorage.getItem('focusTime') || 25;
+    const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;
+    const longBreakTime = localStorage.getItem('longBreakTime') || 15;
+
+        shadow.innerHTML = `
+    &lt;div class="settingContent">
+      &lt;span class="closeSetting" onclick=closeSettingButton() >&amp;times;&lt;/span>
+      &lt;h1 id="settingHeader">SETTINGS&lt;/h1>
+      
+      &lt;div id="focusContainer">
+        &lt;label class="inputLabel">Focus: &lt;/label>
+        &lt;input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
+        value="${focusTime}">
+        &lt;label class="inputLabel"> min&lt;/label>
+      &lt;/div>
+      
+      &lt;div id="shortBreakContainer">
+        &lt;label class="inputLabel">Short Break: &lt;/label>
+        &lt;input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
+        value="${shortBreakTime}">
+        &lt;label class="inputLabel"> min&lt;/label>
+      &lt;/div>
+      
+      &lt;div id="longBreakContainer">
+        &lt;label class="inputLabel">Long Break: &lt;/label>
+        &lt;input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
+        value="${longBreakTime}">
+        &lt;label class="inputLabel"> min&lt;/label>
+      &lt;/div>
+
+      &lt;hr class="sectionBreak">
+      
+      &lt;div id="cafeVolumeContainer">
+        &lt;label class="inputLabel">Cafe Volume: &lt;/label>
+        &lt;input id="cafeVolumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultCafeVolume}>
+        &lt;label class="inputLabel" id="cafeVolumeNumber">${defaultCafeVolume}&lt;/label>
+      &lt;/div>
+
+      &lt;div id="alarmVolumeContainer">
+        &lt;label class="inputLabel">Alarm Volume: &lt;/label>
+        &lt;input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultAlarmVolume}>
+        &lt;label class="inputLabel" id="alarmVolumeNumber">${defaultAlarmVolume}&lt;/label>
+      &lt;/div>
+
+    &lt;/div>
+ `;
+    const style = document.createElement('style')
+    style.textContent = `
+      #settingHeader {
+        text-align: center;
+        color: white;
+      }
+      .settingContent {
+        background-color: #181d28; 
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        min-width: 300px;
+        display: inline-block;
+        text-align: left;
+      }
+
+      .closeSetting {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .closeSetting:hover,
+      .closeSetting:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .sectionBreak {
+        visibility: hidden;
+      }
+
+      .inputLabel {
+        color:white;
+      }
+
+      #alarmVolumeSlider {
+        vertical-align: middle;
+      }
+
+ .textInputBox {
+        border-style: solid;
+        border-width: 0px 0px 1px 0px;
+        background-color: #181d28;
+        color: white;
+        outline: none;
+      }
+
+      #focusNumber {
+        margin-left: 35px;
+      }
+
+      #cafeVolumeSlider {
+        margin-left: 9px;
+      }
+    `;
+        shadow.appendChild(style);
+    }
+}
+
+customElements.define("setting-content", SettingContent);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#settingWindow">settingWindow</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Mar 01 2021 00:37:14 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
