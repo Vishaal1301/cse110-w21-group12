@@ -1,213 +1,245 @@
-var taskInput = document.getElementById("new-task"); //new-task
-var addButton = document.getElementById("add-btn"); //add button
-var TasksHolder = document.getElementById("tasks"); //the tasks
+import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
+const MENU_BUTTON_SIZE = 25;
+const DEBUG = false;
+
+let taskInput = document.getElementById("new-task"); //new-task
+let TasksHolder = document.getElementById("tasks"); //the tasks
 
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
-var idCounter = stor.getItem("idCounter");
-
-if (idCounter == null) {
-    idCounter = 0;
-    stor.setItem("idCounter", JSON.stringify(idCounter));
+let tasks = JSON.parse(stor.getItem("tasks"));
+if(stor.getItem("tasks") == null){
+    const newTasks = {"mainTask": {"name": null, 
+        "checked": false, 
+        "id": null}, 
+    "list": []};
+    stor.setItem("tasks", JSON.stringify(newTasks));
+    tasks = JSON.parse(stor.getItem("tasks"));
 }
-else {
-    idCounter = JSON.parse(idCounter);
-}
+
+// On window load, render all tasks in the task list
+window.addEventListener("DOMContentLoaded", function() {
+    for(let i = 0; i < tasks.list.length; i++){
+        const task = tasks.list[i];
+        addTask(task.name, task.checked, i, tasks.mainTask.id);
+    }
+});
 
 
-//New Task List Item
-var createNewTaskElement = function (taskString) {
-    //Create List Item
-    var listItem = document.createElement("li");
-    listItem.setAttribute("id", idCounter);
+/**
+ * Create a new Task HTML element, and append it to the parent ul element
+ * @param {string} taskString - The name of the task
+ * @param {boolean} checked - Whether or not the task is checked off
+ * @param {number} id - Unique ID to give the task
+ * @returns {object} A reference to the new li element
+ */
+let createNewTaskElement = function(taskString, checked, id) {
 
-    //input (checkbox)
-    var checkBox = document.createElement("input"); // checkbox
-    //label
-    var label = document.createElement("label");
+    // Create List Item
+    let listItem = document.createElement("li");
+    listItem.setAttribute("class", "taskItem");
 
-    //input (text)
-    var editInput = document.createElement("input"); // text
-
-    //button.delete
-    var deleteButton = document.createElement("button");
-
-
+    // Create checkbox
+    let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
+    checkBox.checked = checked;
+
+    // Create text element
+    let editInput = document.createElement("input");
     editInput.type = "text";
+    editInput.value = taskString;
+    editInput.id = id;
+    if(checkBox.checked){
+        editInput.style.textDecoration = "line-through";
+    }
 
-    deleteButton.innerText = "Delete";
-    deleteButton.className = "delete";
+    // If this task is the main task, set the color to yellow
+    const mainTask = JSON.parse(stor.getItem("tasks")).mainTask.id;
+    if(mainTask == id)
+        editInput.style.color = "yellow";
 
-    label.innerText = taskString;
+    // Create div for the drop down components
+    let dropdownDiv = document.createElement("div");
+    dropdownDiv.setAttribute("class", "dropdown");
+
+    // Create the drop down menu button
+    let dropDownButton = document.createElement("input");
+    dropDownButton.setAttribute("id", "dropDownButton");
+    dropDownButton.setAttribute("type", "image");
+    dropDownButton.setAttribute("src", "assets/task-item-setting.png");
+    dropDownButton.setAttribute("width", MENU_BUTTON_SIZE);
+    dropDownButton.setAttribute("height", MENU_BUTTON_SIZE);
+	
+    // Create a div for the drop down content
+    let dropDownContentDiv = document.createElement("div");
+    dropDownContentDiv.setAttribute("class", "dropdown-content");
+	
+    // Delete button
+    let deleteLink = document.createElement("a");
+    deleteLink.setAttribute("id", "deleteButton");
+    deleteLink.innerHTML = "Delete";
+
+    // Focus button
+    let focusLink = document.createElement("a");
+    focusLink.setAttribute("id", "mainTaskSelector");
+    focusLink.innerHTML = "Focus";
+
+    dropDownContentDiv.appendChild(deleteLink);
+    dropDownContentDiv.appendChild(focusLink);
+
+    dropdownDiv.appendChild(dropDownButton);
+    dropdownDiv.appendChild(dropDownContentDiv);
 
     listItem.appendChild(checkBox);
-    listItem.appendChild(label);
     listItem.appendChild(editInput);
-    listItem.appendChild(deleteButton);
-
+    listItem.appendChild(dropdownDiv);
 
     return listItem;
 };
 
-// Add task to tasklist in localStorage
-var storeTask = function (label) {
+/**
+ * Add a new task element 
+ * @param {string} taskName - The name of the new task
+ * @param {boolean} checked - whether or not the task should be checked
+ * @param {number} id - The unique ID of the task
+ * @returns {boolean} True if sucessful, false otherwise
+ */
+let addTask = function(taskName, checked, id) {
+    // If there is no task name, return false
+    if(!taskName)
+        return false;
 
-    if (stor.getItem("tasks") == null) {
-        const tasks = [];
-        stor.setItem("tasks", JSON.stringify(tasks));
-    }
-
-
-    const tasks = JSON.parse(stor.getItem("tasks"));
-
-    // console.log(tasks); // Debug check to console
-
-    const task = {
-        name: label,
-        id: idCounter,
-        progress: "in progress"
-    };
-
-    tasks.push(task);
-    stor.setItem("tasks", JSON.stringify(tasks));
-
-    idCounter++;
-    stor.setItem("idCounter", JSON.stringify(idCounter));
-};
-
-// Remove task from tasklist in localStorage
-var unstoreTask = function (id) {
-    const tasks = JSON.parse(stor.getItem("tasks"));
-
-    for (let index = 0; index < tasks.length; index++) {
-        const task = tasks[index];
-
-        if (task["id"] == id) {
-            tasks.splice(index, 1);
-            break;
-        }
-    }
-
-    stor.setItem("tasks", JSON.stringify(tasks));
-};
-
-// Update progress of task in tasklist in localStorage
-var updateTask = function (id) {
-    const tasks = JSON.parse(stor.getItem("tasks"));
-
-    for (let index = 0; index < tasks.length; index++) {
-        const task = tasks[index];
-
-        if (task["id"] == id) {
-            task["progress"] = "finished";
-            break;
-        }
-    }
-
-    stor.setItem("tasks", JSON.stringify(tasks));
-};
-
-//Add a new task
-var addTask = function () {
-
-
-    if (idCounter > 11) {
-        return;
-    }
-    console.log("Add task...");
-    //Create a new list item with the text from #new-task:
-    var listItem = createNewTaskElement(taskInput.value);
+    if(DEBUG)
+        console.log("Add task...");
+	
+    let listItem = createNewTaskElement(taskName, checked, id);
     //Append listItem to TasksHolder
     TasksHolder.appendChild(listItem);
 
     bindTaskEvents(listItem);
 
-    storeTask(taskInput.value);
-    //delete the item
-
-    taskInput.value = "";
+    return true;
 };
 
-//Edit an existing task
-var editTask = function () {
-    console.log("Edit task...");
 
-    var listItem = this.parentNode;
+/**
+ * Delete an existing task element
+ * @param {string} taskName - The name of the new task
+ * @param {boolean} checked - whether or not the task should be checked
+ * @param {number} id - The unique ID of the task
+ * @returns {boolean} True if sucessful, false otherwise
+ */
+let deleteTask = function() {
+    if(DEBUG)
+        console.log("Delete task...");
+	
+    // Get the task element
+    let listItem = this.parentNode.parentNode.parentNode;
+    let ul = listItem.parentNode;
 
-    var editInput = listItem.querySelector("input[type=text]");
-    var label = listItem.querySelector("label");
+    // remove the task element from local storage
+    unstoreTask(listItem.children[1].id);
 
-    var containsClass = listItem.classList.contains("editMode");
-
-    //if the class of the parent is .editMode
-    if (containsClass) {
-        //Switch from .editMode
-        //label text become the input's value
-        label.innerText = editInput.value;
-    } else {
-        //Switch to .editMode
-        //input value becomes the label's text
-        editInput.value = label.innerText;
-    }
-
-    //Toggle .editMode on the list item
-    listItem.classList.toggle("editMode");
-
-};
-
-//Delete an existing task
-var deleteTask = function () {
-    console.log("Delete task...");
-    var listItem = this.parentNode;
-    var ul = listItem.parentNode;
-
-    unstoreTask(listItem.getAttribute("id"));
-    //delete the item
     //Remove the parent list item from the ul
     ul.removeChild(listItem);
+
+    // Shift the ID's of all elements
+    let children = ul.children;
+    for(let i = 0; i < children.length; i++){
+        children[i].children[1].id = i;
+    }
 };
 
+/**
+ * Set a task as the main task
+ * @returns {boolean} True if sucessful, false otherwise
+ */
+let selectMainTask = function(){
+    let listItem = this.parentNode.parentNode.parentNode; // <li> taskItem
+    let text = listItem.querySelector("input[type=text]");
 
-var bindTaskEvents = function (taskListItem) {
-    console.log("Bind list item events");
-    //select taskListItem's children
-    var checkBox = taskListItem.querySelector("input[type=checkbox]");
-    var deleteButton = taskListItem.querySelector("button.delete");
-    var label = taskListItem.querySelector("label");
-    var text = taskListItem.querySelector("input[type=text]");
+    if(!listItem || !text)
+        return false;
 
+    tasks = JSON.parse(stor.getItem("tasks"));
 
-    label.onmouseover = editTask;
-    text.onmouseout = editTask;
+    // Determine the current main task
+    let currMainTask = tasks.mainTask;
+	
+    // If the selected task was already main task, remove main task. Otherwise set it as main task. 
+    if(currMainTask.id === text.id) {
+        text.style.color = "white";
+        currMainTask.name = null;
+        currMainTask.id = null;
+    }
+    else{
+        currMainTask.name = text.value;
+        currMainTask.id = text.id;
+        text.style.color = "yellow";
+    }
 
-    //bind deleteTask to delete button
+    // Set all other tasks to white
+    for (let i = 0; i < TasksHolder.children.length; i++) {
+        const taskElement = TasksHolder.children[i].children[1];
+        if(taskElement.id !== currMainTask.id){
+            taskElement.style.color = "white";
+        }
+    }
+
+    updateMainTask(text);
+
+    return true;
+};
+
+/**
+ * Helper function for binding all functions to task elements
+ * @param {Object} - reference to the task element
+ * @returns {boolean} True if sucessful, false otherwise
+ */
+let bindTaskEvents = function(taskListItem) {
+
+    // let deleteButton = taskListItem.querySelector("button.menu");
+    let checkBox = taskListItem.querySelector("input[type=checkbox]");
+    let text = taskListItem.querySelector("input[type=text]");
+    let dropdownButton = taskListItem.querySelector("#dropDownButton");
+
+    // show the button on hover
+    taskListItem.onmouseover = function(){
+        dropdownButton.style.display = "inline-block";
+    };
+
+    // hide the button when no longer hovering
+    taskListItem.onmouseout = function(){
+        dropdownButton.style.display = "none";
+    };
+
+    let deleteButton = taskListItem.querySelector("#deleteButton");
+    let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
+
+    mainTaskSelector.onclick = selectMainTask;
     deleteButton.onclick = deleteTask;
 
+    text.onchange = editTask(text.value, text.id);
 
     //toggle for checkbox
     checkBox.onchange = () => {
-        console.log("Task complete...");
-        taskListItem.classList.toggle("finished");
-
-        updateTask(taskListItem.getAttribute("id"));
-        //update the status of the item
+        if (checkBox.checked){
+            taskListItem.style.textDecoration = "line-through";
+            updateTask(text.id, true);
+        }
+        else{
+            taskListItem.style.textDecoration = "none";
+            updateTask(text.id, false);
+        }
     };
 };
 
-//Set the click handler to the addTask function
-addButton.addEventListener("click", addTask);
-
 //Set the enter key to the addTask function
 taskInput.addEventListener("keyup", (event) => {
-    if (event.key === "Enter") {
-        addTask();
+    if(event.key === "Enter"){
+        tasks = JSON.parse(stor.getItem("tasks"));
+        if(tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
+            storeTask(taskInput.value);
+        taskInput.value = null;
     }
 });
-
-
-//cycle over TasksHolder ul list items
-for (var i = 0; i < TasksHolder.children.length; i++) {
-    bindTaskEvents(TasksHolder.children[i]);
-}
-
