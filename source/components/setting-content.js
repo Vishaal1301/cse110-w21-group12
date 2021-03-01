@@ -2,16 +2,16 @@
  * SettingContent custom Component
  */
 class SettingContent extends HTMLElement {
-constructor() {
-    super()
-    const shadow = this.attachShadow({mode: 'open'})
+    constructor() {
+        super();
+        const shadow = this.attachShadow({mode: "open"});
     
-    // Session length and Volume variables
-    const defaultAlarmVolume = localStorage.getItem('alarmVolume') || 100;
-    const defaultCafeVolume = localStorage.getItem('cafeVolume') || 100;
-    const focusTime = localStorage.getItem('focusTime') || 25;
-    const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;
-    const longBreakTime = localStorage.getItem('longBreakTime') || 15;
+        // Session length and Volume variables
+        const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
+        const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
+        const focusTime = localStorage.getItem("focusTime") || 25;
+        const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
+        const longBreakTime = localStorage.getItem("longBreakTime") || 15;
 
         shadow.innerHTML = `
     <div class="settingContent">
@@ -55,8 +55,8 @@ constructor() {
 
     </div>
  `;
-    const style = document.createElement('style')
-    style.textContent = `
+        const style = document.createElement("style");
+        style.textContent = `
       #settingHeader {
         text-align: center;
         color: white;
