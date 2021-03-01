@@ -1,5 +1,5 @@
-import {startStopTimer, updateTimerSettings, isCountdown} from './scripts/clock.js'
-const cup = document.getElementById("cup")
+import {startStopTimer, updateTimerSettings, isCountdown} from "./scripts/clock.js";
+const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
 
@@ -19,7 +19,7 @@ const showTasks = () => {
     //show task list
     let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "block";
-}
+};
 
 const showTimer = () => {
     //hide task list
@@ -28,30 +28,30 @@ const showTimer = () => {
     //show timer
     let timerDiv = document.getElementById("timerContainer");
     timerDiv.style.display = "flex";
-}
+};
 
 // document.getElementById("timerNav").addEventListener("click", showTimer);
 // document.getElementById("tasksNav").addEventListener("click", showTasks);
 
 const updateCoffeeCup = () => {
     if(isCountdown) {
-        session.innerHTML = "Stop Brewing?"
+        session.innerHTML = "Stop Brewing?";
         cup.src = "./assets/coffee_red.png";
     }else{
-        session.innerHTML = "Start Brewing!"
+        session.innerHTML = "Start Brewing!";
         cup.src = "./assets/coffee_green.png";
     }
-}
+};
 
 cup.onmouseenter = () => {
     mouseOver = true;
     updateCoffeeCup();
-}
+};
 cup.onmouseleave = () => {
-    mouseOver = false
+    mouseOver = false;
     session.innerHTML = currentState;
     cup.src = "./assets/coffee_default.png";
-}
+};
 
 cup.onclick = () => {
     if(!isCountdown){
@@ -67,4 +67,4 @@ cup.onclick = () => {
         }
     });
     updateCoffeeCup();
-}
+};

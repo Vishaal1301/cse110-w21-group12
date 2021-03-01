@@ -1,15 +1,15 @@
 // product-item.js
 class SettingContent extends HTMLElement {
-  constructor() {
-    super()
-    const shadow = this.attachShadow({mode: 'open'})
+    constructor() {
+        super();
+        const shadow = this.attachShadow({mode: "open"});
     
-    const defaultVolume = localStorage.getItem('volume') || 100; 
-    const focusTime = localStorage.getItem('focusTime') || 25;
-    const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;
-    const longBreakTime = localStorage.getItem('longBreakTime') || 15;
+        const defaultVolume = localStorage.getItem("volume") || 100; 
+        const focusTime = localStorage.getItem("focusTime") || 25;
+        const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
+        const longBreakTime = localStorage.getItem("longBreakTime") || 15;
 
-    shadow.innerHTML = `
+        shadow.innerHTML = `
     <div class="settingContent">
 
       <span class="closeSetting" onclick=closeSettingButton() >&times;</span>
@@ -47,9 +47,9 @@ class SettingContent extends HTMLElement {
       </div>
 
     </div>
-    `
-    const style = document.createElement('style')
-    style.textContent = `
+    `;
+        const style = document.createElement("style");
+        style.textContent = `
       .settingContent {
         background-color: #1A120F; 
         margin: auto;
@@ -93,9 +93,9 @@ class SettingContent extends HTMLElement {
       input[type='number'] {
         max-width: 2.5em;
       }
-    `
-    shadow.appendChild(style)
-  }
+    `;
+        shadow.appendChild(style);
+    }
 }
 
-customElements.define('setting-content', SettingContent)
+customElements.define("setting-content", SettingContent);
