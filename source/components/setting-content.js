@@ -2,7 +2,7 @@
  * SettingContent custom Component
  */
 class SettingContent extends HTMLElement {
-  constructor() {
+constructor() {
     super()
     const shadow = this.attachShadow({mode: 'open'})
     
@@ -13,7 +13,7 @@ class SettingContent extends HTMLElement {
     const shortBreakTime = localStorage.getItem('shortBreakTime') || 5;
     const longBreakTime = localStorage.getItem('longBreakTime') || 15;
 
-    shadow.innerHTML = `
+        shadow.innerHTML = `
     <div class="settingContent">
       <span class="closeSetting" onclick=closeSettingButton() >&times;</span>
       <h1 id="settingHeader">SETTINGS</h1>
@@ -54,14 +54,13 @@ class SettingContent extends HTMLElement {
       </div>
 
     </div>
-    `
+ `;
     const style = document.createElement('style')
     style.textContent = `
       #settingHeader {
         text-align: center;
         color: white;
       }
-
       .settingContent {
         background-color: #181d28; 
         margin: auto;
@@ -98,7 +97,7 @@ class SettingContent extends HTMLElement {
         vertical-align: middle;
       }
 
-      .textInputBox {
+ .textInputBox {
         border-style: solid;
         border-width: 0px 0px 1px 0px;
         background-color: #181d28;
@@ -113,9 +112,9 @@ class SettingContent extends HTMLElement {
       #cafeVolumeSlider {
         margin-left: 9px;
       }
-    `
-    shadow.appendChild(style)
-  }
+    `;
+        shadow.appendChild(style);
+    }
 }
 
-customElements.define('setting-content', SettingContent)
+customElements.define("setting-content", SettingContent);

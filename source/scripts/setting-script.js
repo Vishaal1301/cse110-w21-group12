@@ -2,7 +2,7 @@
  * Setting Window/Content Variables
  */
 let settingWindow = document.getElementById("settingWindow");
-let closeSetting = document.getElementsByClassName("closeSetting")[0];
+let closeSetting = document.getElementsByClassName("closeSetting")[0];  // eslint-disable-line no-unused-vars 
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector('#cafeVolumeSlider');
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector('#cafeVolumeNumber');
@@ -17,15 +17,15 @@ const openSetting = () => {
     settingWindow.style.display = "block";
 }
 
-const closeSettingButton = () => {
+const closeSettingButton = () => {  // eslint-disable-line no-unused-vars
     settingWindow.style.display = "none";
-}
+};
 
 window.onclick = (event) => {
     if (settingWindow.contains(event.target) && !settingContent.contains(event.target)) {
         settingWindow.style.display = "none";
     }
-}
+};
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener('input', () => {
@@ -58,11 +58,11 @@ shortBreakNumber.addEventListener('change', () => {
         alert('Short Break session should be 20 min or less');
         shortBreakNumber.value = shortBreakNumber.getAttribute('max');
     }
-    else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute('min'))) {
-        alert('Short Break session should be 5 min or more');
-        shortBreakNumber.value = shortBreakNumber.getAttribute('min');
+    else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
+        alert("Short Break session should be 5 min or more");
+        shortBreakNumber.value = shortBreakNumber.getAttribute("min");
     }
-    localStorage.setItem('shortBreakTime', shortBreakNumber.value);
+  localStorage.setItem('shortBreakTime', shortBreakNumber.value);
 });
 
 // long break session length settings
@@ -71,9 +71,9 @@ longBreakNumber.addEventListener('change', () => {
         alert('Focus session should be 40 min or less');
         longBreakNumber.value = longBreakNumber.getAttribute('max');
     }
-    else if (longBreakNumber.value < parseInt(longBreakNumber.getAttribute('min'))) {
-        alert('Long Break session should be 10 min or more');
-        longBreakNumber.value = longBreakNumber.getAttribute('min');
+    else if (longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
+        alert("Long Break session should be 10 min or more");
+        longBreakNumber.value = longBreakNumber.getAttribute("min");
     }
-    localStorage.setItem('longBreakTime', longBreakNumber.value);
+localStorage.setItem("longBreakTime", longBreakNumber.value);
 });

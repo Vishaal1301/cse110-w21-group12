@@ -46,7 +46,7 @@
 
     <body>
         <main class="myContainer">
-            
+            <!-- <img id="background" src="assets/CoffeetivityBackground.png" /> --> -->
             <!-- 
                 Focus session time
                     minimum: tbd
@@ -80,10 +80,6 @@
                     - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
                     - switching between TIMER and TASK should follow Google RAIL
             -->
-            <div id="navBar" class="row">
-                <p id="timerNav" class="col-md-6" >TIMER</button>
-                <p id="tasksNav" class="col-md-6" style="text-align:center">TASKS</button>
-            </div>
 
             <!-- task list 
                 - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
@@ -95,49 +91,47 @@
                 - All numbers are modifiable after discussion
                 - positioning determined by "taskListContainer"
             -->
-            <div id="taskListContainer" style="display:none;">
-                <div class="container">
-                    <h2>Task List</h2>
-                    <ul id="tasks" >
-                        <li>
-                            <input type="checkbox">
-                            <label>New Task</label>
-                            <input type="text">
-                            <button class="delete">Delete</button>
-                        </li>
-                    </ul>
-                    <h3>Add Task</h3>
-                    <p>
-                        <textarea id="new-task" maxlength=40> </textarea><button id="add-btn">Add</button>
-                    </p>
+
+            <div id="timeAndTaskWrapper">
+
+
+                <!--
+                    - The Timer component
+                    - This component should have
+                        - coffee cup image
+                        - timer (display logic, css, javascript)
+                        - hovering mechanism (change coffee cup img to green when we first start, red while we work or break) based on state attribute
+                        - audio notification when timer runs out
+                        - pop-up for ending session (during work and break) - 
+                            - stop click during work = go to start state
+                            - stop click during break = go to start state
+                    - specify which segment we're in (state attribute values: start, work, break)
+                    - for different states (developers should consider which approach is better)
+                        - approach 1: create a separate js file that stores all the constant we will be using (ENUM)
+                        - approach 2: put literal strings. i.e. "start", "work", "break"
+                    - duration of timer depends on the state
+                    - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
+                        - might want to use HIDDEN attribute for the hiding logic  
+                -->
+                <div id="timerContainer" style="padding-top:120px">
+                    <div id="clock" class="text">25:00</div>
+                    <div id="cup"></div>
+                    <div id="session">Focus Session</div>
+                    <img id="taskbar" src="./assets/taskbar.png" />
+                </div>
+                <div id="taskListContainer" >
+                    <div class="container">
+                        <h2>Task List</h2>
+                        <ul id="tasks" >
+                            <li><input type="checkbox"><label>New Task</label><input type="text"><button class="delete">Delete</button></li>
+                        </ul>
+                        <h3>Add Task</h3>
+                        <p>
+                            <textarea id="new-task" maxlength=40> </textarea><button id="add-btn">Add</button>
+                        </p>
+                    </div>
                 </div>
             </div>
-
-            <!--
-                - The Timer component
-                - This component should have
-                    - coffee cup image
-                    - timer (display logic, css, javascript)
-                    - hovering mechanism (change coffee cup img to green when we first start, red while we work or break) based on state attribute
-                    - audio notification when timer runs out
-                    - pop-up for ending session (during work and break) - 
-                        - stop click during work = go to start state
-                        - stop click during break = go to start state
-                - specify which segment we're in (state attribute values: start, work, break)
-                - for different states (developers should consider which approach is better)
-                    - approach 1: create a separate js file that stores all the constant we will be using (ENUM)
-                    - approach 2: put literal strings. i.e. "start", "work", "break"
-                - duration of timer depends on the state
-                - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
-                    - might want to use HIDDEN attribute for the hiding logic  
-            -->
-            <div id="timerContainer" style="padding-top:120px">
-                <div id="clock" class="text">25:00</div>
-                <input id="cup" type="image" src="./assets/coffee_default.png" />
-                <div id="session">Focus Session</div>
-                <img id="taskbar" src="./assets/taskbar.png" />
-            </div>
-
         </main>
         <script type="module" src="app.js"></script>
         <script src="./components/setting-content.js"></script>
