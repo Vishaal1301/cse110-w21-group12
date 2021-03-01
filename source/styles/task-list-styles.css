@@ -1,18 +1,18 @@
 /* Basic Style */
 
-
-#taskListContainer {
+#rightSideContainer {
   color: white;
   display: inline-block;
   width: 25%;
-  margin: 10px auto 10px;
-  background-color: #000033;
-  padding: 0px 10px 10px 10px;
-  border-radius: 5px;
-  position: absolute;
+  margin: 10px auto 10px; 
+  background-color: #181d28;
+ 
+  border-radius: 5px 0px 0px 5px;
+  position: absolute; 
   right: 0;
+  /*margin-left: auto;
+  margin-right: auto; */
 }
-
 
 .taskItem {
   list-style: none;
@@ -37,19 +37,24 @@ input[type="text"]
     color: white;
     background: transparent;
     border: none;
-    font-size: 2em;
+    font-size: 1.5vw;
+    padding-top:10px;
+    width: 80%;
 }
 
 input[type="checkbox"]{
   transform: scale(1.5);
   margin-right: 10px;
+  height: 1vw;
+  width: 1vw;
 }
 
 #taskListHeader {
   text-align: center;
   padding-top: 10px;
+  padding-bottom: 10px;
   margin-bottom: 0px;
-  font-size: 3.5em;
+  font-size: 3.5vw;
 }
 
 #new-task{
@@ -59,7 +64,6 @@ input[type="checkbox"]{
   margin-left: 3em;
   color: white;
 }
-
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -71,7 +75,6 @@ input[type="checkbox"]{
 #dropDownButton{
   display: none;
 }
-
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {

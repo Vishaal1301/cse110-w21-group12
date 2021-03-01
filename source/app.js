@@ -51,6 +51,14 @@ cup.onmouseleave = () => {
 };
 
 cup.onclick = () => {
+    /*if(!isCountdown){
+        showTimer();
+        document.getElementById("toolBar").style.display = "none";
+        document.getElementById("navBar").style.display = "none";
+    } else{
+        document.getElementById("toolBar").style.display = "block";
+        document.getElementById("navBar").style.display = "block"; 
+    }*/
     startStopTimer(clock, (state) => {
         currentState = state;
         if(!mouseOver){
@@ -59,3 +67,6 @@ cup.onclick = () => {
     });
     updateCoffeeCup();
 };
+
+// document.getElementById("timerNav").addEventListener("click", showTimer);
+// document.getElementById("tasksNav").addEventListener("click", showTasks);

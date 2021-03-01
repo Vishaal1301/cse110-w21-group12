@@ -46,33 +46,6 @@
 
     <body>
         <main class="myContainer">
-            <!-- <img id="background" src="assets/CoffeetivityBackground.png" /> --> -->
-            <!-- 
-                Focus session time
-                    minimum: tbd
-                    default: 25
-                    maximum: tbd
-                short session time
-                    minimum: tbd
-                    default: 5
-                    maximum: tbd
-                long session time
-                    minimum: tbd
-                    default: 15
-                    maximum: tbd
-                add-on feature
-                    - play background music during break session, NO music during work session
-                    - add slider to adjust the background music volume
-                image icon gear or 3 dots
-                exit settings by clicking out of space
-                settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
-            -->
-            <div id="toolBar">
-                <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
-                <div id="settingWindow" class="settingWindow">
-                    <setting-content id="settingContent">
-                </div>
-            </div>
 
             <!-- 
                 - Switch between 'TIMER' tab and 'TASKS'tab
@@ -80,47 +53,89 @@
                     - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
                     - switching between TIMER and TASK should follow Google RAIL
             -->
-
-            <!-- task list 
-                - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
-                - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
-                - hide 'taskListContainer' when 'Timer' nav clicked
-                - Fit 6 tasks (fixed size for flexbox - even if 0 tasks inputted, above six = scroll bar)
-                - Max task limit - 12 
-                    (think about clearing tasks each day - not for MVP)
-                - All numbers are modifiable after discussion
-                - positioning determined by "taskListContainer"
-            -->
-
-            <div id="timeAndTaskWrapper">
-
-
+            <div id="navBar" class="row">
+                <input id="navIcon" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="toggleTasksSettings()">
                 <!--
-                    - The Timer component
-                    - This component should have
-                        - coffee cup image
-                        - timer (display logic, css, javascript)
-                        - hovering mechanism (change coffee cup img to green when we first start, red while we work or break) based on state attribute
-                        - audio notification when timer runs out
-                        - pop-up for ending session (during work and break) - 
-                            - stop click during work = go to start state
-                            - stop click during break = go to start state
-                    - specify which segment we're in (state attribute values: start, work, break)
-                    - for different states (developers should consider which approach is better)
-                        - approach 1: create a separate js file that stores all the constant we will be using (ENUM)
-                        - approach 2: put literal strings. i.e. "start", "work", "break"
-                    - duration of timer depends on the state
-                    - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
-                        - might want to use HIDDEN attribute for the hiding logic  
+                <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
                 -->
-                <div id="timerContainer" style="padding-top:120px">
-                    <div id="clock" class="text">25:00</div>
-                    <div id="cup"></div>
+                
+                <!--
+                <p id="timerNav" class="col-md-6" >TIMER</button>
+                <p id="tasksNav" class="col-md-6" style="text-align:center">TASKS</button>
+                -->
+            </div>
+
+            <!--
+                - The Timer component
+                - This component should have
+                    - coffee cup image
+                    - timer (display logic, css, javascript)
+                    - hovering mechanism (change coffee cup img to green when we first start, red while we work or break) based on state attribute
+                    - audio notification when timer runs out
+                    - pop-up for ending session (during work and break) - 
+                        - stop click during work = go to start state
+                        - stop click during break = go to start state
+                - specify which segment we're in (state attribute values: start, work, break)
+                - for different states (developers should consider which approach is better)
+                    - approach 1: create a separate js file that stores all the constant we will be using (ENUM)
+                    - approach 2: put literal strings. i.e. "start", "work", "break"
+                - duration of timer depends on the state
+                - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
+                    - might want to use HIDDEN attribute for the hiding logic  
+            -->
+            <div class="container">
+                <div id="timerContainer">
+                    <div id="cup">
+                        <div id="clock" class="text">25:00</div>
+                    </div>
                     <div id="session">Focus Session</div>
                     <img id="taskbar" src="./assets/taskbar.png" />
                 </div>
+
+            <h2 id="rightSideHeader">TASK LIST</h2> 
+                <!-- task list 
+                    - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
+                    - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
+                    - hide 'taskListContainer' when 'Timer' nav clicked
+                    - Fit 6 tasks (fixed size for flexbox - even if 0 tasks inputted, above six = scroll bar)
+                    - Max task limit - 12 
+                        (think about clearing tasks each day - not for MVP)
+                    - All numbers are modifiable after discussion
+                    - positioning determined by "taskListContainer"
+                -->
+            <div id="rightSideContainer">
+                
+                <!-- 
+                    Focus session time
+                        minimum: tbd
+                        default: 25
+                        maximum: tbd
+                    short session time
+                        minimum: tbd
+                        default: 5
+                        maximum: tbd
+                    long session time
+                        minimum: tbd
+                        default: 15
+                        maximum: tbd
+                    add-on feature
+                        - play background music during break session, NO music during work session
+                        - add slider to adjust the background music volume
+                    image icon gear or 3 dots
+                    exit settings by clicking out of space
+                    settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
+                -->
+                <div id="toolBar">
+                    <!--
+                    <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
+                    -->
+                    <div id="settingWindow" class="settingWindow">
+                        <setting-content id="settingContent">
+                    </div>
+                </div>
+
                 <div id="taskListContainer">
-                    <h2 id="taskListHeader">TASK LIST</h2>
+                    
                     <ul id="tasks">
                         <!-- <li class="taskItem">
                             <input type="checkbox">
@@ -138,12 +153,13 @@
                         <!-- <button id="add-btn">Add</button>                   -->
                     </p>
                 </div>
-        
             </div>
+
         </main>
         <script type="module" src="app.js"></script>
         <script src="./components/setting-content.js"></script>
         <script src="./scripts/setting-script.js"></script>
         <script type="module" src="./scripts/task-list.js"></script>
+        <script src="./scripts/nav-icon.js"></script> 
     </body>
 </html>
