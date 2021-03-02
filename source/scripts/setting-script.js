@@ -1,8 +1,7 @@
 /**
  * Setting Window/Content Variables
  */
-let settingWindow = document.getElementById("settingWindow");
-let closeSetting = document.getElementsByClassName("closeSetting")[0];  // eslint-disable-line no-unused-vars 
+let settingWindow = document.getElementById("settingsContainer");
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector("#cafeVolumeNumber");
@@ -11,21 +10,6 @@ let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNum
 let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
-
-// open and close settings popup
-const openSetting = () => {  // eslint-disable-line no-unused-vars
-    settingWindow.style.display = "block";
-};
-
-const closeSettingButton = () => {  // eslint-disable-line no-unused-vars
-    settingWindow.style.display = "none";
-};
-
-window.onclick = (event) => {
-    if (settingWindow.contains(event.target) && !settingContent.contains(event.target)) {
-        settingWindow.style.display = "none";
-    }
-};
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {

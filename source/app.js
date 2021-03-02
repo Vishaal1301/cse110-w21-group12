@@ -9,7 +9,7 @@ import {startStopTimer, updateTimerSettings, isCountdown} from "./scripts/clock.
 const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
-const settings = document.getElementById("settingWindow");
+const settings = document.getElementById("settingsContainer");
 let currentState = session.innerHTML;
 let mouseOver = false;
 

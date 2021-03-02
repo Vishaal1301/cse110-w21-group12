@@ -9,30 +9,15 @@
 
         <!-- Importing font -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
 
         <title>Pomo</title>
         <link rel="stylesheet" href="./styles/styles.css">
         <link rel="stylesheet" href="./styles/task-list-styles.css">
-         
-        <style>
-            .settingWindow {
-                display: none;
-                position: fixed;
-                padding-top: 10%;
-                padding-bottom: 25%;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%; 
-                height: 100%; 
-                background-color: rgb(0,0,0); 
-                background-color: rgba(0,0,0,0.4); 
-            }
 
-            #toolBar {
-                text-align: right;
-                width: 100%;
+        <style>
+            .settingsContainer {
+                display: none;
             }
         </style>
     </head>
@@ -46,25 +31,6 @@
 
     <body>
         <main class="myContainer">
-
-            <!-- 
-                - Switch between 'TIMER' tab and 'TASKS'tab
-                    - when 'TIMER' is clicked, hide 'taskListContainer'. vice versa
-                    - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
-                    - switching between TIMER and TASK should follow Google RAIL
-            -->
-            <div id="navBar" class="row">
-                <input id="navIcon" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="toggleTasksSettings()">
-                <!--
-                <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
-                -->
-                
-                <!--
-                <p id="timerNav" class="col-md-6" >TIMER</button>
-                <p id="tasksNav" class="col-md-6" style="text-align:center">TASKS</button>
-                -->
-            </div>
-
             <!--
                 - The Timer component
                 - This component should have
@@ -86,13 +52,18 @@
             <div class="container">
                 <div id="timerContainer">
                     <div id="cup">
-                        <div id="clock" class="text">25:00</div>
+                        <div id="clock" class="text">
+                            25:00
+                        </div>
                     </div>
                     <div id="session">Focus Session</div>
                     <img id="taskbar" src="./assets/taskbar.png" />
                 </div>
+        
 
-            <h2 id="rightSideHeader">TASK LIST</h2> 
+            <div id="rightSideContainer">
+                <p id="rightSideHeader">TASK LIST</p> 
+
                 <!-- task list 
                     - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
                     - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
@@ -103,7 +74,14 @@
                     - All numbers are modifiable after discussion
                     - positioning determined by "taskListContainer"
                 -->
-            <div id="rightSideContainer">
+                <div id="taskListContainer">
+                    <ul id="tasks">
+                    </ul>
+                    <p>
+                        <input id="new-task" maxlength=40 placeholder="Add new item"></input>
+                        <!-- <button id="add-btn">Add</button>                   -->
+                    </p>
+                </div>
                 
                 <!-- 
                     Focus session time
@@ -125,33 +103,18 @@
                     exit settings by clicking out of space
                     settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
                 -->
-                <div id="toolBar">
-                    <!--
-                    <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30" onclick="openSetting()">
-                    -->
-                    <div id="settingWindow" class="settingWindow">
-                        <setting-content id="settingContent">
-                    </div>
+                <div id="settingsContainer" class="settingsContainer">
+                    <setting-content id="settingContent"></setting-content>
                 </div>
 
-                <div id="taskListContainer">
-                    
-                    <ul id="tasks">
-                        <!-- <li class="taskItem">
-                            <input type="checkbox">
-                            <input type="text" value="new task">
-                            <input id="dropDownSetting" type="image" src="assets/task-item-setting.png" width="20" height="20" onclick="">
-                            <div class="dropdown-content">
-                                <a id="deleteButton">Delete</a>
-                                <a id="mainTaskSelector">Focus</a>
-                                <a class="pomoCycles">1</a>
-                            </div>
-                        </li> -->
-                    </ul>
-                    <p>
-                        <input id="new-task" maxlength=40 placeholder="Add new item"></input>
-                        <!-- <button id="add-btn">Add</button>                   -->
-                    </p>
+                <!-- 
+                    - Switch between 'TIMER' tab and 'TASKS'tab
+                        - when 'TIMER' is clicked, hide 'taskListContainer'. vice versa
+                        - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
+                        - switching between TIMER and TASK should follow Google RAIL
+                -->
+                <div id="navIconContainer" class="row">
+                    <input id="navIcon" type="image" src="./assets/setting-icon.png" width="30" height="30" onclick="toggleTasksSettings()">
                 </div>
             </div>
 
