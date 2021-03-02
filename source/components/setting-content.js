@@ -74,10 +74,6 @@ class SettingContent extends HTMLElement {
         font-family: 'Open Sans', sans-serif
       }
 
-      #alarmVolumeSlider {
-        vertical-align: middle;
-      }
-
       .textInputBox {
         border-style: solid;
         border-width: 0px 0px 1px 0px;
@@ -93,7 +89,11 @@ class SettingContent extends HTMLElement {
       }
 
       #cafeVolumeSlider {
-        margin-left: 16px;
+        margin-left: 8%;
+      }
+
+      #alarmVolumeSlider {
+        margin-left: 5%;
       }
     `;
     
