@@ -8,7 +8,7 @@ const toggleTasksSettings = () => {
         settingsDiv.style.display = "block";  
        
         var rightHeader = document.getElementById("rightSideHeader");
-        rightHeader.innerText = "SETTINGS"
+        rightHeader.innerText = "SETTINGS";
 
         let taskInput = document.getElementById("new-task");
         taskInput.style.visibility = "hidden";
@@ -26,7 +26,7 @@ const toggleTasksSettings = () => {
         taskInput.style.visibility = "visible";
 
         let rightHeader = document.getElementById("rightSideHeader");
-        rightHeader.innerText = "TASK LIST"
+        rightHeader.innerText = "TASK LIST";
         
         navIcon.setAttribute('src', "assets/setting-icon.png");
     }
