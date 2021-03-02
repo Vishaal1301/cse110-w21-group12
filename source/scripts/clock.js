@@ -53,7 +53,7 @@ function stopTimer(clock, reset, callback) {
             alarm.play();
             break;
         case "Long Break":
-            alarm = new Audio("./assets/long.mp3");
+            //alarm = new Audio("./assets/long.mp3");
             alarm.volume = localStorage.getItem("volume") / 100;
             alarm.play();
             break;

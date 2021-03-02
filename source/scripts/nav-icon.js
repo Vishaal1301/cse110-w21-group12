@@ -9,6 +9,9 @@ const toggleTasksSettings = () => {
        
         var rightHeader = document.getElementById("rightSideHeader");
         rightHeader.innerText = "SETTINGS"
+
+        let taskInput = document.getElementById("new-task");
+        taskInput.style.visibility = "hidden";
         
         navIcon.setAttribute('src', "assets/list-icon.png");
     }
@@ -18,6 +21,9 @@ const toggleTasksSettings = () => {
         
         let settingsDiv = document.getElementById("settingsContainer");
         settingsDiv.style.display = "none";  
+
+        let taskInput = document.getElementById("new-task");
+        taskInput.style.visibility = "visible";
 
         let rightHeader = document.getElementById("rightSideHeader");
         rightHeader.innerText = "TASK LIST"

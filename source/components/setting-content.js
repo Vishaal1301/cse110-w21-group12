@@ -57,11 +57,11 @@ class SettingContent extends HTMLElement {
   
     style.textContent = `
       .settingContent {
-        margin: auto;
-        padding: 20px;
-        min-width: 300px;
-        display: inline-block;
-        text-align: left;
+        margin-left: 3vw;
+        margin-bottom: 1vw;
+        color: white;
+        font-size: 100%;
+        font-family: 'Open Sans', sans-serif
       }
 
       .sectionBreak {
@@ -70,6 +70,8 @@ class SettingContent extends HTMLElement {
 
       .inputLabel {
         color:white;
+        font-size: 100%;
+        font-family: 'Open Sans', sans-serif
       }
 
       #alarmVolumeSlider {
@@ -82,6 +84,8 @@ class SettingContent extends HTMLElement {
         background-color: #181d28;
         color: white;
         outline: none;
+        font-size: 100%;
+        font-family: 'Open Sans', sans-serif
       }
 
       #focusNumber {
@@ -89,7 +93,7 @@ class SettingContent extends HTMLElement {
       }
 
       #cafeVolumeSlider {
-        margin-left: 9px;
+        margin-left: 16px;
       }
     `;
     

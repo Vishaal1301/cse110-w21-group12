@@ -14,12 +14,6 @@
         <title>Pomo</title>
         <link rel="stylesheet" href="./styles/styles.css">
         <link rel="stylesheet" href="./styles/task-list-styles.css">
-
-        <style>
-            .settingsContainer {
-                display: none;
-            }
-        </style>
     </head>
 
 <!--
@@ -77,12 +71,8 @@
                 <div id="taskListContainer">
                     <ul id="tasks">
                     </ul>
-                    <p>
-                        <input id="new-task" maxlength=40 placeholder="Add new item"></input>
-                        <!-- <button id="add-btn">Add</button>                   -->
-                    </p>
                 </div>
-                
+
                 <!-- 
                     Focus session time
                         minimum: tbd
@@ -114,6 +104,7 @@
                         - switching between TIMER and TASK should follow Google RAIL
                 -->
                 <div id="navIconContainer" class="row">
+                    <input id="new-task" maxlength=40 placeholder="Add new item">
                     <input id="navIcon" type="image" src="./assets/setting-icon.png" width="30" height="30" onclick="toggleTasksSettings()">
                 </div>
             </div>
