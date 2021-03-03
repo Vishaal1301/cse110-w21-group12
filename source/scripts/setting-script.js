@@ -11,6 +11,8 @@ let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
 let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
+let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
+let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
@@ -26,34 +28,42 @@ alarmVolumeSlider.addEventListener("input", () => {
 
 // focus session length settings
 focusNumber.addEventListener("change", () => {
-    if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
-        focusNumber.value = focusNumber.getAttribute("max");
-        invalidFocusMessage.innerHTML = "Should be > 15 or < 60";
+    if (focusNumber.value > parseInt(focusNumber.getAttribute("max")) ||
+    focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
+        focusNumber.style.backgroundColor = "red";
+        invalidFocusMessage.innerHTML = "Should be >= 15 or =< 60";
     }
-    else if (focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
-        focusNumber.value = focusNumber.getAttribute("min");
+    else {
+        localStorage.setItem("focusTime", focusNumber.value);
+        focusNumber.style.backgroundColor = "#181d28";
+        invalidFocusMessage.innerHTML = " ";
     }
-    localStorage.setItem("focusTime", focusNumber.value);
 });
 
 // short break session length settings
 shortBreakNumber.addEventListener("change", () => {
-    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
-        shortBreakNumber.value = shortBreakNumber.getAttribute("max");
+    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max")) ||
+    shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
+        shortBreakNumber.style.backgroundColor = "red";
+        invalidShortBreakMessage.innerHTML = "Should be >= 5 or =< 20";
     }
-    else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
-        shortBreakNumber.value = shortBreakNumber.getAttribute("min");
+    else {
+        localStorage.setItem("shortBreakTime", shortBreakNumber.value);
+        shortBreakNumber.style.backgroundColor = "#181d28";
+        invalidShortBreakMessage.innerHTML = " ";
     }
-    localStorage.setItem("shortBreakTime", shortBreakNumber.value);
 });
 
 // long break session length settings
 longBreakNumber.addEventListener("change", () => {
-    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
-        longBreakNumber.value = longBreakNumber.getAttribute("max");
+    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max")) ||
+    longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
+        longBreakNumber.style.backgroundColor = "red";
+        invalidLongBreakMessage.innerHTML = "Should be >= 10 or =< 40";
     }
-    else if (longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
-        longBreakNumber.value = longBreakNumber.getAttribute("min");
+    else {
+        localStorage.setItem("longBreakTime", longBreakNumber.value);
+        longBreakNumber.style.backgroundColor = "#181d28";
+        invalidLongBreakMessage.innerHTML = " ";
     }
-    localStorage.setItem("longBreakTime", longBreakNumber.value);
 });

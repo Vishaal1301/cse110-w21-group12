@@ -12,7 +12,7 @@ class SettingContent extends HTMLElement {
       const focusTime = localStorage.getItem("focusTime") || 25;
       const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
       const longBreakTime = localStorage.getItem("longBreakTime") || 15;
-
+      
       shadow.innerHTML = `
       <div class="settingContent"> 
         <div id="focusContainer">
@@ -28,6 +28,7 @@ class SettingContent extends HTMLElement {
           <input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
           value="${shortBreakTime}">
           <label class="inputLabel"> min</label>
+          <span id="invalidShortBreakMessage" class="invalidMessage"> </span>
         </div>
         
         <div id="longBreakContainer">
@@ -35,6 +36,7 @@ class SettingContent extends HTMLElement {
           <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
           value="${longBreakTime}">
           <label class="inputLabel"> min</label>
+          <span id="invalidLongBreakMessage" class="invalidMessage"> </span>
         </div>
 
         <hr class="sectionBreak">
@@ -95,15 +97,8 @@ class SettingContent extends HTMLElement {
         margin-left: 5%;
       }
 
-      input:invalid {
-        background-color: red;
-      }
-
-      #invalidFocusMessage {
-        color: red;
-      }
-
       .invalidMessage {
+        color: red;
         margin-left: 7%;
       }
     `;
