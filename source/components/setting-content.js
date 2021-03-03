@@ -70,7 +70,7 @@ class SettingContent extends HTMLElement {
         margin-left: 10%;
         margin-bottom: 1vw;
         color: white;
-        font-size: 100%;
+        font-size: 1vw;
         font-family: 'Open Sans', sans-serif
       }
 
@@ -98,10 +98,12 @@ class SettingContent extends HTMLElement {
 
       #cafeVolumeSlider {
         margin-left: 8%;
+        width: 8vw;
       }
 
       #alarmVolumeSlider {
         margin-left: 5%;
+        width: 8vw;
       }
 
       .invalidMessage {
