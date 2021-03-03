@@ -29,8 +29,7 @@
             <pre class="prettyprint source linenums"><code>/**
  * Setting Window/Content Variables
  */
-let settingWindow = document.getElementById("settingWindow");
-let closeSetting = document.getElementsByClassName("closeSetting")[0];  // eslint-disable-line no-unused-vars 
+let settingWindow = document.getElementById("settingsContainer");
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector("#cafeVolumeNumber");
@@ -39,21 +38,9 @@ let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNum
 let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
-
-// open and close settings popup
-const openSetting = () => {  // eslint-disable-line no-unused-vars
-    settingWindow.style.display = "block";
-};
-
-const closeSettingButton = () => {  // eslint-disable-line no-unused-vars
-    settingWindow.style.display = "none";
-};
-
-window.onclick = (event) => {
-    if (settingWindow.contains(event.target) &amp;&amp; !settingContent.contains(event.target)) {
-        settingWindow.style.display = "none";
-    }
-};
+let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
+let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
+let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
@@ -69,41 +56,44 @@ alarmVolumeSlider.addEventListener("input", () => {
 
 // focus session length settings
 focusNumber.addEventListener("change", () => {
-    if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
-        alert("Focus session should be 60 min or less");
-        focusNumber.value = focusNumber.getAttribute("max");
+    if (focusNumber.value > parseInt(focusNumber.getAttribute("max")) ||
+    focusNumber.value &lt; parseInt(focusNumber.getAttribute("min"))) {
+        focusNumber.style.backgroundColor = "red";
+        invalidFocusMessage.innerHTML = "Should be >= 15 or =&lt; 60";
     }
-    else if (focusNumber.value &lt; parseInt(focusNumber.getAttribute("min"))) {
-        alert("Focus session should be 15 min or more");
-        focusNumber.value = focusNumber.getAttribute("min");
+    else {
+        localStorage.setItem("focusTime", focusNumber.value);
+        focusNumber.style.backgroundColor = "#181d28";
+        invalidFocusMessage.innerHTML = " ";
     }
-    localStorage.setItem("focusTime", focusNumber.value);
 });
 
 // short break session length settings
 shortBreakNumber.addEventListener("change", () => {
-    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
-        alert("Short Break session should be 20 min or less");
-        shortBreakNumber.value = shortBreakNumber.getAttribute("max");
+    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max")) ||
+    shortBreakNumber.value &lt; parseInt(shortBreakNumber.getAttribute("min"))) {
+        shortBreakNumber.style.backgroundColor = "red";
+        invalidShortBreakMessage.innerHTML = "Should be >= 5 or =&lt; 20";
     }
-    else if (shortBreakNumber.value &lt; parseInt(shortBreakNumber.getAttribute("min"))) {
-        alert("Short Break session should be 5 min or more");
-        shortBreakNumber.value = shortBreakNumber.getAttribute("min");
+    else {
+        localStorage.setItem("shortBreakTime", shortBreakNumber.value);
+        shortBreakNumber.style.backgroundColor = "#181d28";
+        invalidShortBreakMessage.innerHTML = " ";
     }
-    localStorage.setItem("shortBreakTime", shortBreakNumber.value);
 });
 
 // long break session length settings
 longBreakNumber.addEventListener("change", () => {
-    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
-        alert("Focus session should be 40 min or less");
-        longBreakNumber.value = longBreakNumber.getAttribute("max");
+    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max")) ||
+    longBreakNumber.value &lt; parseInt(longBreakNumber.getAttribute("min"))) {
+        longBreakNumber.style.backgroundColor = "red";
+        invalidLongBreakMessage.innerHTML = "Should be >= 10 or =&lt; 40";
     }
-    else if (longBreakNumber.value &lt; parseInt(longBreakNumber.getAttribute("min"))) {
-        alert("Long Break session should be 10 min or more");
-        longBreakNumber.value = longBreakNumber.getAttribute("min");
+    else {
+        localStorage.setItem("longBreakTime", longBreakNumber.value);
+        longBreakNumber.style.backgroundColor = "#181d28";
+        invalidLongBreakMessage.innerHTML = " ";
     }
-    localStorage.setItem("longBreakTime", longBreakNumber.value);
 });</code></pre>
         </article>
     </section>
@@ -114,13 +104,13 @@ longBreakNumber.addEventListener("change", () => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#settingWindow">settingWindow</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li><li><a href="module-scripts_task-list-local-storage.html">scripts/task-list-local-storage</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#bindTaskEvents">bindTaskEvents</a></li><li><a href="global.html#createNewTaskElement">createNewTaskElement</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#selectMainTask">selectMainTask</a></li><li><a href="global.html#settingWindow">settingWindow</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Mar 01 2021 02:14:16 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Mar 03 2021 02:53:59 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Module: scripts/task-list-local-storage</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Module: scripts/task-list-local-storage</h1>
 
     
 
@@ -28,7 +28,8 @@
 
 <header>
     
-        <h2></h2>
+        
+            
         
     
 </header>
@@ -37,8 +38,24 @@
     <div class="container-overview">
     
         
+            <div class="description">Module handling all local storage operations for task list</div>
+        
 
         
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -68,6 +85,11 @@
     
 
     
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
 
     
 
@@ -75,6 +97,24 @@
 
     
 </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
@@ -94,72 +134,6 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="settingWindow"><span class="type-signature"></span>settingWindow<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Setting Window/Content Variables
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_setting-script.js.html">scripts/setting-script.js</a>, <a href="scripts_setting-script.js.html#line4">line 4</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-    
 
     
         <h3 class="subsection-title">Methods</h3>
@@ -170,7 +144,7 @@
     
 
     
-    <h4 class="name" id="addTask"><span class="type-signature"></span>addTask<span class="signature">(taskName, checked, id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~editTask"><span class="type-signature">(inner) </span>editTask<span class="signature">(name, id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -178,7 +152,7 @@
 
 
 <div class="description">
-    Add a new task element
+    Edit the name of an existing task in local storage
 </div>
 
 
@@ -214,7 +188,7 @@
 
         <tr>
             
-                <td class="name"><code>taskName</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -230,30 +204,7 @@
 
             
 
-            <td class="description last">The name of the new task</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>checked</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">whether or not the task should be checked</td>
+            <td class="description last">The new name of the task</td>
         </tr>
 
     
@@ -276,7 +227,7 @@
 
             
 
-            <td class="description last">The unique ID of the task</td>
+            <td class="description last">The id of the task</td>
         </tr>
 
     
@@ -317,7 +268,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list.js.html">scripts/task-list.js</a>, <a href="scripts_task-list.js.html#line107">line 107</a>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line99">line 99</a>
     </li></ul></dd>
     
 
@@ -346,7 +297,7 @@
 
         
 <div class="param-desc">
-    True if sucessful, false otherwise
+    true if edit was sucessful, false otherwise
 </div>
 
 
@@ -375,7 +326,7 @@
     
 
     
-    <h4 class="name" id="bindTaskEvents"><span class="type-signature"></span>bindTaskEvents<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~storeTask"><span class="type-signature">(inner) </span>storeTask<span class="signature">(label)</span><span class="type-signature"> &rarr; {object}</span></h4>
     
 
     
@@ -383,162 +334,7 @@
 
 
 <div class="description">
-    Helper function for binding all functions to task elements
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">reference to the task element</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list.js.html">scripts/task-list.js</a>, <a href="scripts_task-list.js.html#line199">line 199</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    True if sucessful, false otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createNewTaskElement"><span class="type-signature"></span>createNewTaskElement<span class="signature">(taskString, checked, id)</span><span class="type-signature"> &rarr; {object}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Create a new Task HTML element, and append it to the parent ul element
+    Helper function to store a new task into local storage
 </div>
 
 
@@ -574,7 +370,7 @@
 
         <tr>
             
-                <td class="name"><code>taskString</code></td>
+                <td class="name"><code>label</code></td>
             
 
             <td class="type">
@@ -594,52 +390,6 @@
         </tr>
 
     
-
-        <tr>
-            
-                <td class="name"><code>checked</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Whether or not the task is checked off</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Unique ID to give the task</td>
-        </tr>
-
-    
     </tbody>
 </table>
 
@@ -677,7 +427,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list.js.html">scripts/task-list.js</a>, <a href="scripts_task-list.js.html#line36">line 36</a>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -706,7 +456,7 @@
 
         
 <div class="param-desc">
-    A reference to the new li element
+    - The task object that was added to local storage
 </div>
 
 
@@ -735,7 +485,7 @@
     
 
     
-    <h4 class="name" id="deleteTask"><span class="type-signature"></span>deleteTask<span class="signature">(taskName, checked, id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~unstoreTask"><span class="type-signature">(inner) </span>unstoreTask<span class="signature">(id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -743,7 +493,7 @@
 
 
 <div class="description">
-    Delete an existing task element
+    Helper function to remove a new task from local storage
 </div>
 
 
@@ -779,52 +529,6 @@
 
         <tr>
             
-                <td class="name"><code>taskName</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the new task</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>checked</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">whether or not the task should be checked</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>id</code></td>
             
 
@@ -841,7 +545,7 @@
 
             
 
-            <td class="description last">The unique ID of the task</td>
+            <td class="description last">The ID of the task to remove</td>
         </tr>
 
     
@@ -882,7 +586,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list.js.html">scripts/task-list.js</a>, <a href="scripts_task-list.js.html#line132">line 132</a>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -911,7 +615,7 @@
 
         
 <div class="param-desc">
-    True if sucessful, false otherwise
+    - True if removing was sucessful, false otherwise
 </div>
 
 
@@ -940,7 +644,7 @@
     
 
     
-    <h4 class="name" id="selectMainTask"><span class="type-signature"></span>selectMainTask<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~updateMainTask"><span class="type-signature">(inner) </span>updateMainTask<span class="signature">(mainTask)</span><span class="type-signature"></span></h4>
     
 
     
@@ -948,7 +652,7 @@
 
 
 <div class="description">
-    Set a task as the main task
+    Updates the current main task in local storage
 </div>
 
 
@@ -957,6 +661,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mainTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A reference to the task that is selected</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -992,7 +745,167 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list.js.html">scripts/task-list.js</a>, <a href="scripts_task-list.js.html#line157">line 157</a>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line121">line 121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updateTask"><span class="type-signature">(inner) </span>updateTask<span class="signature">(id, state)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function to update the state of checkbox in local storage
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the task to update</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The state of the new checkbox</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -1021,7 +934,7 @@
 
         
 <div class="param-desc">
-    True if sucessful, false otherwise
+    - true if update was sucessful, false otherwise
 </div>
 
 
