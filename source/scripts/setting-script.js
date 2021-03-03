@@ -58,7 +58,7 @@ focusNumber.addEventListener("input", () => {
 });
 
 // short break session length settings
-shortBreakNumber.addEventListener("change", () => {
+shortBreakNumber.addEventListener("input", () => {
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
         shortBreakNumber.style.backgroundColor = "red";
         invalidShortBreakMessage.innerHTML = "maximum: 20";
@@ -81,7 +81,7 @@ shortBreakNumber.addEventListener("change", () => {
 });
 
 // long break session length settings
-longBreakNumber.addEventListener("change", () => {
+longBreakNumber.addEventListener("input", () => {
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
         longBreakNumber.style.backgroundColor = "red";
         invalidLongBreakMessage.innerHTML = "maximum: 40";
