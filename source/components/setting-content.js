@@ -13,17 +13,10 @@ class SettingContent extends HTMLElement {
       const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
       const longBreakTime = localStorage.getItem("longBreakTime") || 15;
 
-      // Update the localStorage to default session length
-      localStorage.setItem("cafeVolume", defaultCafeVolume);
-      localStorage.setItem("alarmVolume", defaultAlarmVolume);
-      localStorage.setItem("focusTime", focusTime);
-      localStorage.setItem("shortBreakTime", shortBreakTime);
-      localStorage.setItem("longBreakTime", longBreakTime);
-      
       shadow.innerHTML = `
       <div class="settingContent"> 
         <div id="focusContainer">
-          <label class="inputLabel" id="focusLabel">Focus: </label>
+          <label class="inputLabel">Focus: </label>
           <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
           value="${focusTime}">
           <label class="inputLabel"> min</label>
@@ -39,27 +32,25 @@ class SettingContent extends HTMLElement {
         </div>
         
         <div id="longBreakContainer">
-          <label class="inputLabel" id="longBreakLabel">Long Break: </label>
+          <label class="inputLabel">Long Break: </label>
           <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
           value="${longBreakTime}">
           <label class="inputLabel"> min</label>
           <span id="invalidLongBreakMessage" class="invalidMessage"> </span>
         </div>
-
         <hr class="sectionBreak">
         
         <div id="cafeVolumeContainer">
           <label class="inputLabel">Cafe Volume: </label>
+          <div class = "space" style="display:inline-block; width:2%;"></div>
           <input id="cafeVolumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultCafeVolume}>
           <label class="inputLabel" id="cafeVolumeNumber">${defaultCafeVolume}</label>
         </div>
-
         <div id="alarmVolumeContainer">
           <label class="inputLabel">Alarm Volume: </label>
           <input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultAlarmVolume}>
           <label class="inputLabel" id="alarmVolumeNumber">${defaultAlarmVolume}</label>
         </div>
-
       </div>
     `;
 
@@ -67,48 +58,45 @@ class SettingContent extends HTMLElement {
   
     style.textContent = `
       .settingContent {
-        margin-left: 10%;
+        margin-left: 3vw;
         margin-bottom: 1vw;
         color: white;
-        font-size: 1vw;
+        font-size: 1.2vw;
         font-family: 'Open Sans', sans-serif
       }
-
       .sectionBreak {
         visibility: hidden;
       }
-
-      #focusLabel {
-        padding-right: 11.5%;
+      .inputLabel {
+        color:white;
+        font-size: 1.2vw;
+        font-family: 'Open Sans', sans-serif
       }
-
-      #longBreakLabel {
-        padding-right: 1%;
+      #alarmVolumeSlider {
+        vertical-align: middle;
+        display:inline-block;
+        width: 45%;
+        margin-bottom:10px;
       }
-
       .textInputBox {
         border-style: solid;
         border-width: 0px 0px 1px 0px;
         background-color: #181d28;
         color: white;
         outline: none;
-        font-size: 100%;
-        font-family: 'Open Sans', sans-serif;
+        font-size: 1.2vw;
+        font-family: 'Open Sans', sans-serif
+      }
+      #focusNumber {
+        margin-left: 14%;
       }
 
+      #longBreakNumber{
+        margin-left: 1%;
+      }
       #cafeVolumeSlider {
-        margin-left: 8%;
-        width: 8vw;
-      }
-
-      #alarmVolumeSlider {
-        margin-left: 5%;
-        width: 8vw;
-      }
-
-      .invalidMessage {
-        color: white;
-        margin-left: 7%;
+        display:inline-block;
+        width: 45%;
       }
     `;
     
