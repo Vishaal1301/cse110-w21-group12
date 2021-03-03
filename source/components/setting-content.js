@@ -16,10 +16,11 @@ class SettingContent extends HTMLElement {
       shadow.innerHTML = `
       <div class="settingContent"> 
         <div id="focusContainer">
-          <label class="inputLabel">Focus: </label>
+          <label class="inputLabel" id="focusLabel">Focus: </label>
           <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
           value="${focusTime}">
           <label class="inputLabel"> min</label>
+          <span id="invalidFocusMessage" class="invalidMessage"> </span>
         </div>
         
         <div id="shortBreakContainer">
@@ -30,7 +31,7 @@ class SettingContent extends HTMLElement {
         </div>
         
         <div id="longBreakContainer">
-          <label class="inputLabel">Long Break: </label>
+          <label class="inputLabel" id="longBreakLabel">Long Break: </label>
           <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
           value="${longBreakTime}">
           <label class="inputLabel"> min</label>
@@ -57,7 +58,7 @@ class SettingContent extends HTMLElement {
   
     style.textContent = `
       .settingContent {
-        margin-left: 3vw;
+        margin-left: 10%;
         margin-bottom: 1vw;
         color: white;
         font-size: 100%;
@@ -68,10 +69,12 @@ class SettingContent extends HTMLElement {
         visibility: hidden;
       }
 
-      .inputLabel {
-        color:white;
-        font-size: 100%;
-        font-family: 'Open Sans', sans-serif
+      #focusLabel {
+        padding-right: 11%;
+      }
+
+      #longBreakLabel {
+        padding-right: 1%;
       }
 
       .textInputBox {
@@ -81,11 +84,7 @@ class SettingContent extends HTMLElement {
         color: white;
         outline: none;
         font-size: 100%;
-        font-family: 'Open Sans', sans-serif
-      }
-
-      #focusNumber {
-        margin-left: 35px;
+        font-family: 'Open Sans', sans-serif;
       }
 
       #cafeVolumeSlider {
@@ -94,6 +93,18 @@ class SettingContent extends HTMLElement {
 
       #alarmVolumeSlider {
         margin-left: 5%;
+      }
+
+      input:invalid {
+        background-color: red;
+      }
+
+      #invalidFocusMessage {
+        color: red;
+      }
+
+      .invalidMessage {
+        margin-left: 7%;
       }
     `;
     

@@ -10,6 +10,7 @@ let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNum
 let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
+let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
@@ -26,11 +27,10 @@ alarmVolumeSlider.addEventListener("input", () => {
 // focus session length settings
 focusNumber.addEventListener("change", () => {
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
-        alert("Focus session should be 60 min or less");
         focusNumber.value = focusNumber.getAttribute("max");
+        invalidFocusMessage.innerHTML = "Should be > 15 or < 60";
     }
     else if (focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
-        alert("Focus session should be 15 min or more");
         focusNumber.value = focusNumber.getAttribute("min");
     }
     localStorage.setItem("focusTime", focusNumber.value);
@@ -39,11 +39,9 @@ focusNumber.addEventListener("change", () => {
 // short break session length settings
 shortBreakNumber.addEventListener("change", () => {
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
-        alert("Short Break session should be 20 min or less");
         shortBreakNumber.value = shortBreakNumber.getAttribute("max");
     }
     else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
-        alert("Short Break session should be 5 min or more");
         shortBreakNumber.value = shortBreakNumber.getAttribute("min");
     }
     localStorage.setItem("shortBreakTime", shortBreakNumber.value);
@@ -52,11 +50,9 @@ shortBreakNumber.addEventListener("change", () => {
 // long break session length settings
 longBreakNumber.addEventListener("change", () => {
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
-        alert("Focus session should be 40 min or less");
         longBreakNumber.value = longBreakNumber.getAttribute("max");
     }
     else if (longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
-        alert("Long Break session should be 10 min or more");
         longBreakNumber.value = longBreakNumber.getAttribute("min");
     }
     localStorage.setItem("longBreakTime", longBreakNumber.value);
