@@ -17,14 +17,14 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   lint:
-    if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
       run: yarn
     - name: Run ESLint
-      run: yarn run eslint . --ext .js,.jsx,.ts,.tsx
+      run: yarn run eslint source/**/*.js
       
   jest:
     if: github.event.pull_request.base.ref == 'testing'
@@ -46,7 +46,7 @@ jobs:
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
-          source_dir: ./
+          source_dir: ./source
           recurse: true
           output_dir: ./out
           front_page: README.md  
