@@ -13,11 +13,18 @@ class SettingContent extends HTMLElement {
       const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
       const longBreakTime = localStorage.getItem("longBreakTime") || 15;
 
+      // Update the localStorage to default session length
+      localStorage.setItem("cafeVolume", defaultCafeVolume);
+      localStorage.setItem("alarmVolume", defaultAlarmVolume);
+      localStorage.setItem("focusTime", focusTime);
+      localStorage.setItem("shortBreakTime", shortBreakTime);
+      localStorage.setItem("longBreakTime", longBreakTime);
+      
       shadow.innerHTML = `
       <div class="settingContent"> 
         <div id="focusContainer">
           <label class="inputLabel">Focus: </label>
-          <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
+          <input class="textInputBox" id="focusNumber" type="number" min="15" max="60"
           value="${focusTime}">
           <label class="inputLabel"> min</label>
           <span id="invalidFocusMessage" class="invalidMessage"> </span>
@@ -25,7 +32,7 @@ class SettingContent extends HTMLElement {
         
         <div id="shortBreakContainer">
           <label class="inputLabel">Short Break: </label>
-          <input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
+          <input class="textInputBox" id="shortBreakNumber" type="number" min="5" max="20"
           value="${shortBreakTime}">
           <label class="inputLabel"> min</label>
           <span id="invalidShortBreakMessage" class="invalidMessage"> </span>
@@ -33,7 +40,7 @@ class SettingContent extends HTMLElement {
         
         <div id="longBreakContainer">
           <label class="inputLabel">Long Break: </label>
-          <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
+          <input class="textInputBox" id="longBreakNumber" type="number" min="10" max="40"
           value="${longBreakTime}">
           <label class="inputLabel"> min</label>
           <span id="invalidLongBreakMessage" class="invalidMessage"> </span>

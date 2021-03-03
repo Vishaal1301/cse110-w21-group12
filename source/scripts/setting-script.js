@@ -1,6 +1,7 @@
 /**
  * Setting Window/Content Variables
  */
+import {updateTimerSettings} from "./clock.js";
 let settingWindow = document.getElementById("settingsContainer");
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
@@ -13,6 +14,7 @@ let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber"
 let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
 let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
 let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
+const clock = document.getElementById("clock");
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
@@ -27,7 +29,13 @@ alarmVolumeSlider.addEventListener("input", () => {
 });
 
 // focus session length settings
-focusNumber.addEventListener("change", () => {
+focusNumber.addEventListener("input", () => {
+    // if (focusNumber.value.length >= 2) {
+    //     focusNumber.setAttribute("readonly", true)
+    // }
+    // else {
+    //     focusNumber.removeAttribute("readonly")
+    // }
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
         focusNumber.style.backgroundColor = "red";
         invalidFocusMessage.innerHTML = "maximum: 60";
@@ -40,6 +48,12 @@ focusNumber.addEventListener("change", () => {
         localStorage.setItem("focusTime", focusNumber.value);
         focusNumber.style.backgroundColor = "#181d28";
         invalidFocusMessage.innerHTML = " ";
+        updateTimerSettings(
+            clock,
+            localStorage.getItem("focusTime") * 60,
+            localStorage.getItem("shortBreakTime") * 60,
+            localStorage.getItem("longBreakTime") * 60
+        );
     }
 });
 
@@ -57,6 +71,12 @@ shortBreakNumber.addEventListener("change", () => {
         localStorage.setItem("shortBreakTime", shortBreakNumber.value);
         shortBreakNumber.style.backgroundColor = "#181d28";
         invalidShortBreakMessage.innerHTML = " ";
+        updateTimerSettings(
+            clock,
+            localStorage.getItem("focusTime") * 60,
+            localStorage.getItem("shortBreakTime") * 60,
+            localStorage.getItem("longBreakTime") * 60
+        );
     }
 });
 
@@ -74,5 +94,11 @@ longBreakNumber.addEventListener("change", () => {
         localStorage.setItem("longBreakTime", longBreakNumber.value);
         longBreakNumber.style.backgroundColor = "#181d28";
         invalidLongBreakMessage.innerHTML = " ";
+        updateTimerSettings(
+            clock,
+            localStorage.getItem("focusTime") * 60,
+            localStorage.getItem("shortBreakTime") * 60,
+            localStorage.getItem("longBreakTime") * 60
+        );
     }
 });
