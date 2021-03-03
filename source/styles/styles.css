@@ -51,6 +51,7 @@ body {
 
 #settingsContainer {
     display: none;
+    top: 2vh;
 }
 
 #rightSideContainer {
@@ -64,6 +65,7 @@ body {
     color: white;
     display: inline-block;
     width: 80%;
+    padding-bottom: 1%;
     margin: 10px auto 10px; 
     background-color: #181d28;
     border-radius: 5px 0px 0px 5px;
@@ -73,7 +75,7 @@ body {
   
 
 #timerContainer {
-    border: solid white 5px;
+    /*border: solid white 5px; */
     grid-column-start: 2;
     grid-column-end: 2;
     display: flex;
@@ -92,7 +94,7 @@ body {
     display: flex;
     cursor: pointer;
     background: transparent;
-    border: solid white 5px;
+    /* border: solid white 5px; */
     border-radius: 50%;
     width: 20vw;
     height: 20vw;
@@ -106,6 +108,8 @@ body {
     z-index: 100;
     user-select: none;
     pointer-events: none;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
 } 
 
 #taskbar {

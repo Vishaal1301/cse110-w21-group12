@@ -13,6 +13,28 @@ let sessionNum = 0;
 let isCountdown = false;
 let countdown;
 
+//show settings menu and task list when in short and long break state and at beginining
+function showRightSideMenu() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "TASK LIST";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "block";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "block";
+    //navIcon.setAttribute('src', "assets/setting-icon.png");
+}
+//hide settings menu and task list when in focus mode
+function hideRightSideMenu() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "FOCUS";
+    let settingsDiv = document.getElementById("settingsContainer");
+    settingsDiv.style.display = "none";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "none";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "none";
+}
+
 // Start the timer
 function startTimer(clock, callback) {
     const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
