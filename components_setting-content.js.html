@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/setting-content.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/setting-content.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * SettingContent custom Component
+ */
+class SettingContent extends HTMLElement {
+  constructor() {
+      super();
+      const shadow = this.attachShadow({mode: "open"});
+  
+      // Session length and Volume variables
+      const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
+      const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
+      const focusTime = localStorage.getItem("focusTime") || 25;
+      const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
+      const longBreakTime = localStorage.getItem("longBreakTime") || 15;
+
+      // Update the localStorage to default session length
+      localStorage.setItem("cafeVolume", defaultCafeVolume);
+      localStorage.setItem("alarmVolume", defaultAlarmVolume);
+      localStorage.setItem("focusTime", focusTime);
+      localStorage.setItem("shortBreakTime", shortBreakTime);
+      localStorage.setItem("longBreakTime", longBreakTime);
+      
+      shadow.innerHTML = `
+      &lt;div class="settingContent"> 
+        &lt;div id="focusContainer">
+          &lt;label class="inputLabel">Focus: &lt;/label>
+          &lt;input class="textInputBox" id="focusNumber" type="number" min="15" max="60"
+          value="${focusTime}">
+          &lt;label class="inputLabel"> min&lt;/label>
+          &lt;span id="invalidFocusMessage" class="invalidMessage"> &lt;/span>
+        &lt;/div>
+        
+        &lt;div id="shortBreakContainer">
+          &lt;label class="inputLabel">Short Break: &lt;/label>
+          &lt;input class="textInputBox" id="shortBreakNumber" type="number" min="5" max="20"
+          value="${shortBreakTime}">
+          &lt;label class="inputLabel"> min&lt;/label>
+          &lt;span id="invalidShortBreakMessage" class="invalidMessage"> &lt;/span>
+        &lt;/div>
+        
+        &lt;div id="longBreakContainer">
+          &lt;label class="inputLabel">Long Break: &lt;/label>
+          &lt;input class="textInputBox" id="longBreakNumber" type="number" min="10" max="40"
+          value="${longBreakTime}">
+          &lt;label class="inputLabel"> min&lt;/label>
+          &lt;span id="invalidLongBreakMessage" class="invalidMessage"> &lt;/span>
+        &lt;/div>
+        &lt;hr class="sectionBreak">
+        
+        &lt;div id="cafeVolumeContainer">
+          &lt;label class="inputLabel">Cafe Volume: &lt;/label>
+          &lt;div class = "space" style="display:inline-block; width:2%;">&lt;/div>
+          &lt;input id="cafeVolumeSlider" name="volumeSlider" type="range" min="0" max="100" value=${defaultCafeVolume}>
+          &lt;label class="inputLabel" id="cafeVolumeNumber">${defaultCafeVolume}&lt;/label>
+        &lt;/div>
+        &lt;div id="alarmVolumeContainer">
+          &lt;label class="inputLabel">Alarm Volume: &lt;/label>
+          &lt;input id="alarmVolumeSlider" name="alarmVolumeSlider" type="range" min="0" max="100" value=${defaultAlarmVolume}>
+          &lt;label class="inputLabel" id="alarmVolumeNumber">${defaultAlarmVolume}&lt;/label>
+        &lt;/div>
+      &lt;/div>
+    `;
+
+    const style = document.createElement("style");
+  
+    style.textContent = `
+      .settingContent {
+        margin-left: 3vw;
+        margin-bottom: 1vw;
+        color: white;
+        font-size: 1.2vw;
+        font-family: 'Open Sans', sans-serif
+      }
+      .sectionBreak {
+        visibility: hidden;
+      }
+      .inputLabel {
+        color:white;
+        font-size: 1.2vw;
+        font-family: 'Open Sans', sans-serif
+      }
+      #alarmVolumeSlider {
+        vertical-align: middle;
+        display:inline-block;
+        width: 45%;
+        margin-bottom:10px;
+      }
+      .textInputBox {
+        border-style: solid;
+        border-width: 0px 0px 1px 0px;
+        background-color: #181d28;
+        color: white;
+        outline: none;
+        font-size: 1.2vw;
+        font-family: 'Open Sans', sans-serif
+      }
+      #focusNumber {
+        margin-left: 14%;
+      }
+
+      #longBreakNumber{
+        margin-left: 1%;
+      }
+      #cafeVolumeSlider {
+        display:inline-block;
+        width: 45%;
+      }
+    `;
+    
+    shadow.appendChild(style);
+  }
+}
+
+customElements.define("setting-content", SettingContent);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li><li><a href="module-scripts_task-list-local-storage.html">scripts/task-list-local-storage</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#bindTaskEvents">bindTaskEvents</a></li><li><a href="global.html#createNewTaskElement">createNewTaskElement</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#selectMainTask">selectMainTask</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Mar 03 2021 23:37:12 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
