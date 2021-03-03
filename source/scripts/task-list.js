@@ -56,7 +56,7 @@ let createNewTaskElement = function(taskString, checked, id) {
     // If this task is the main task, set the color to yellow
     const mainTask = JSON.parse(stor.getItem("tasks")).mainTask.id;
     if(mainTask == id)
-        editInput.style.color = "yellow";
+        editInput.style.color = "#eed039";
 
     // Create div for the drop down components
     let dropdownDiv = document.createElement("div");
@@ -175,7 +175,7 @@ let selectMainTask = function(){
     else{
         currMainTask.name = text.value;
         currMainTask.id = text.id;
-        text.style.color = "yellow";
+        text.style.color = "#eed039";
     }
 
     // Set all other tasks to white

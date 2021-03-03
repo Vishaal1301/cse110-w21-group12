@@ -1,44 +1,20 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">     
 
-    <!-- Importing font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cutive&display=swap" rel="stylesheet">
+        <!-- Importing font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
 
-    <title>Pomo</title>
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/task-list-styles.css">
-
-
-    <style>
-        .settingWindow {
-            display: none;
-            justify-content: center;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        #toolBar {
-            text-align: right;
-            width: 100%;
-        }
-    </style>
-</head>
+        <title>Pomo</title>
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/task-list-styles.css">
+    </head>
 
 <!--
     - Naming concentions
@@ -47,79 +23,9 @@
         custom component/element: x-y
 -->
 
-<body>
-    <main class="myContainer">
-
-        <!-- 
-                Focus session time
-                    minimum: tbd
-                    default: 25
-                    maximum: tbd
-                short session time
-                    minimum: tbd
-                    default: 5
-                    maximum: tbd
-                long session time
-                    minimum: tbd
-                    default: 15
-                    maximum: tbd
-                add-on feature
-                    - play background music during break session, NO music during work session
-                    - add slider to adjust the background music volume
-                image icon gear or 3 dots
-                exit settings by clicking out of space
-                settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
-            -->
-        <div id="toolBar">
-            <input id="settingButton" type="image" src="assets/setting-icon.jpg" width="30" height="30"
-                onclick="openSetting()">
-            <div id="settingWindow" class="settingWindow">
-                <setting-content id="settingContent">
-            </div>
-        </div>
-
-        <!-- 
-                - Switch between 'TIMER' tab and 'TASKS'tab
-                    - when 'TIMER' is clicked, hide 'taskListContainer'. vice versa
-                    - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
-                    - switching between TIMER and TASK should follow Google RAIL
-            -->
-        <!-- <div id="navBar" class="row">
-                <p id="timerNav" class="col-md-6" >TIMER</button>
-                <p id="tasksNav" class="col-md-6" style="text-align:center">TASKS</button>
-            </div> -->
-
-        <!-- task list 
-                - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
-                - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
-                - hide 'taskListContainer' when 'Timer' nav clicked
-                - Fit 6 tasks (fixed size for flexbox - even if 0 tasks inputted, above six = scroll bar)
-                - Max task limit - 12 
-                    (think about clearing tasks each day - not for MVP)
-                - All numbers are modifiable after discussion
-                - positioning determined by "taskListContainer"
-            -->
-        <div id="taskListContainer">
-            <h2 id="taskListHeader">TASK LIST</h2>
-            <ul id="tasks">
-                <!-- <li class="taskItem">
-                    <input type="checkbox">
-                    <input type="text" value="new task">
-                    <input id="dropDownSetting" type="image" src="assets/task-item-setting.png" width="20" height="20" onclick="">
-                    <div class="dropdown-content">
-                        <a id="deleteButton">Delete</a>
-                        <a id="mainTaskSelector">Focus</a>
-                        <a class="pomoCycles">1</a>
-                    </div>
-                </li> -->
-            </ul>
-            <p>
-                <input id="new-task" maxlength=40 placeholder="Add new item"></input>
-                <!-- <button id="add-btn">Add</button>                   -->
-            </p>
-        </div>
-
-        <!--
+    <body>
+        <main class="myContainer">
+            <!--
                 - The Timer component
                 - This component should have
                     - coffee cup image
@@ -137,18 +43,77 @@
                 - positioning is determined by "timerContainer" (relative to the whole window), hide "timerContainer" when TASKS clicked 
                     - might want to use HIDDEN attribute for the hiding logic  
             -->
-        <div id="timerContainer" style="padding-top:120px">
-            <div id="clock" class="text">25:00</div>
-            <input id="cup" type="image" src="./assets/coffee_default.png" />
-            <div id="session">Focus Session</div>
-            <img id="taskbar" src="./assets/taskbar.png" />
-        </div>
+            <div class="container">
+                <div id="timerContainer">
+                    <div id="cup">
+                        <div id="clock" class="text">
+                            25:00
+                        </div>
+                    </div>
+                    <div id="session">Focus Session</div>
+                    <img id="taskbar" src="./assets/taskbar.png" />
+                </div>
+        
 
-    </main>
-    <script type="module" src="app.js"></script>
-    <script src="./components/setting-content.js"></script>
-    <script src="./scripts/setting-script.js"></script>
-    <script type="module" src="./scripts/task-list.js"></script>
-</body>
+            <div id="rightSideContainer">
+                <p id="rightSideHeader">TASK LIST</p> 
 
+                <!-- task list 
+                    - User inputs task into text box, hits enter - think about RAIL and how long it takes to push to local storage
+                    - task-item is created (dynamically creates label with input from text box and checkbox to remove task),allocate task to local storage
+                    - hide 'taskListContainer' when 'Timer' nav clicked
+                    - Fit 6 tasks (fixed size for flexbox - even if 0 tasks inputted, above six = scroll bar)
+                    - Max task limit - 12 
+                        (think about clearing tasks each day - not for MVP)
+                    - All numbers are modifiable after discussion
+                    - positioning determined by "taskListContainer"
+                -->
+                <div id="taskListContainer">
+                    <ul id="tasks">
+                    </ul>
+                </div>
+
+                <!-- 
+                    Focus session time
+                        minimum: tbd
+                        default: 25
+                        maximum: tbd
+                    short session time
+                        minimum: tbd
+                        default: 5
+                        maximum: tbd
+                    long session time
+                        minimum: tbd
+                        default: 15
+                        maximum: tbd
+                    add-on feature
+                        - play background music during break session, NO music during work session
+                        - add slider to adjust the background music volume
+                    image icon gear or 3 dots
+                    exit settings by clicking out of space
+                    settings - local storage for every setting (remember what they chose), store actual changes in shadow dom
+                -->
+                <div id="settingsContainer" class="settingsContainer">
+                    <setting-content id="settingContent"></setting-content>
+                </div>
+
+                <!-- 
+                    - Switch between 'TIMER' tab and 'TASKS'tab
+                        - when 'TIMER' is clicked, hide 'taskListContainer'. vice versa
+                        - NOTE for developer: choose most approp. button/other input to implement 'TIMER' and 'TASKS' (change <p> below)
+                        - switching between TIMER and TASK should follow Google RAIL
+                -->
+                <div id="navIconContainer">
+                    <input id="new-task" maxlength=40 placeholder="Add new item">
+                    <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettings()">
+                </div>
+            </div>
+
+        </main>
+        <script type="module" src="app.js"></script>
+        <script src="./components/setting-content.js"></script>
+        <script src="./scripts/setting-script.js"></script>
+        <script type="module" src="./scripts/task-list.js"></script>
+        <script src="./scripts/nav-icon.js"></script> 
+    </body>
 </html>

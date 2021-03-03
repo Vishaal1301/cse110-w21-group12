@@ -1,4 +1,4 @@
-import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from '../source/scripts/task-list-local-storage.js'
+import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from '../scripts/task-list-local-storage.js'
 const stor = window.localStorage;
 
 beforeEach(() => {

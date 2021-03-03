@@ -7,14 +7,42 @@
 const POMO_CYCLES = 5;
 let autoCycle = true;
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 300, 1500, 900];
-let sessionNum= 0;
+let sessionNum = 0;
 
 // Global timer variables
 let isCountdown = false;
 let countdown;
 
+//show settings menu and task list when in short and long break state and at beginining
+function showRightSideMenu() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "TASK LIST";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "block";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "block";
+    //navIcon.setAttribute('src', "assets/setting-icon.png");
+}
+//hide settings menu and task list when in focus mode
+function hideRightSideMenu() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "FOCUS";
+    let settingsDiv = document.getElementById("settingsContainer");
+    settingsDiv.style.display = "none";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "none";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "none";
+}
+
 // Start the timer
 function startTimer(clock, callback) {
+    const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+   
+    if(state == "Focus Session") {
+        hideRightSideMenu();
+    }
+
     isCountdown = true;
     let timer = sessionLengths[sessionNum] - 1;
     countdown = setInterval(() => {
@@ -34,16 +62,40 @@ function startTimer(clock, callback) {
 
 // Stop the timer
 function stopTimer(clock, reset, callback) {
-    isCountdown = false;
-    if(reset){
-        sessionNum = 0;
-    }else{
-        sessionNum= ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+    const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+
+    if(state == "Focus Session"){
+        showRightSideMenu();
+    } else{
+        hideRightSideMenu();
     }
 
+    let alarm;
+    isCountdown = false;
+    if (reset) {
+        sessionNum = 0;
+    } else {
+        sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+        switch (state) {
+            // case "Focus Session":
+            //     alarm = new Audio("./assets/focus.mp3");
+            //     alarm.volume = localStorage.getItem("volume") / 100;
+            //     alarm.play();
+            //     break;
+            // case "Short Break":
+            //     alarm = new Audio("./assets/short.mp3");
+            //     alarm.volume = localStorage.getItem("volume") / 100;
+            //     alarm.play();
+            //     break;
+            // case "Long Break":
+            //     //alarm = new Audio("./assets/long.mp3");
+            //     alarm.volume = localStorage.getItem("volume") / 100;
+            //     alarm.play();
+            //     break;
+        }
+    }
     clearInterval(countdown);
-    
-    const state = sessionNum == POMO_CYCLES*2 - 1? "Long Break" : sessionNum% 2 == 0 ? "Focus Session" : "Short Break";
+
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
 }
@@ -73,10 +125,10 @@ function secondsToString(time) {
 function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLength) {
 
     // Do nothing if the timer is currently on
-    if(isCountdown)
+    if (isCountdown)
         return false;
 
-    sessionNum= 0;
+    sessionNum = 0;
     clock.innerHTML = sessionLengths[sessionNum];
 
     sessionLengths = [];
