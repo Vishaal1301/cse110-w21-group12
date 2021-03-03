@@ -79,7 +79,7 @@ class SettingContent extends HTMLElement {
       }
 
       #focusLabel {
-        padding-right: 11%;
+        padding-right: 11.5%;
       }
 
       #longBreakLabel {
@@ -105,7 +105,7 @@ class SettingContent extends HTMLElement {
       }
 
       .invalidMessage {
-        color: red;
+        color: white;
         margin-left: 7%;
       }
     `;

@@ -28,10 +28,13 @@ alarmVolumeSlider.addEventListener("input", () => {
 
 // focus session length settings
 focusNumber.addEventListener("change", () => {
-    if (focusNumber.value > parseInt(focusNumber.getAttribute("max")) ||
-    focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
+    if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
         focusNumber.style.backgroundColor = "red";
-        invalidFocusMessage.innerHTML = "Should be >= 15 or =< 60";
+        invalidFocusMessage.innerHTML = "maximum: 60";
+    }
+    else if(focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
+        focusNumber.style.backgroundColor = "red";
+        invalidFocusMessage.innerHTML = "minimum: 15";
     }
     else {
         localStorage.setItem("focusTime", focusNumber.value);
@@ -42,10 +45,13 @@ focusNumber.addEventListener("change", () => {
 
 // short break session length settings
 shortBreakNumber.addEventListener("change", () => {
-    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max")) ||
-    shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
+    if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
         shortBreakNumber.style.backgroundColor = "red";
-        invalidShortBreakMessage.innerHTML = "Should be >= 5 or =< 20";
+        invalidShortBreakMessage.innerHTML = "maximum: 20";
+    }
+    else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
+        shortBreakNumber.style.backgroundColor = "red";
+        invalidShortBreakMessage.innerHTML = "minimum: 5";
     }
     else {
         localStorage.setItem("shortBreakTime", shortBreakNumber.value);
@@ -56,10 +62,13 @@ shortBreakNumber.addEventListener("change", () => {
 
 // long break session length settings
 longBreakNumber.addEventListener("change", () => {
-    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max")) ||
-    longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
+    if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
         longBreakNumber.style.backgroundColor = "red";
-        invalidLongBreakMessage.innerHTML = "Should be >= 10 or =< 40";
+        invalidLongBreakMessage.innerHTML = "maximum: 40";
+    }
+    else if(longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
+        longBreakNumber.style.backgroundColor = "red";
+        invalidLongBreakMessage.innerHTML = "minimum: 10";
     }
     else {
         localStorage.setItem("longBreakTime", longBreakNumber.value);
