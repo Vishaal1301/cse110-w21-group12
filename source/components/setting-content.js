@@ -12,6 +12,13 @@ class SettingContent extends HTMLElement {
       const focusTime = localStorage.getItem("focusTime") || 25;
       const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
       const longBreakTime = localStorage.getItem("longBreakTime") || 15;
+
+      // Update the localStorage to default session length
+      localStorage.setItem("cafeVolume", defaultCafeVolume);
+      localStorage.setItem("alarmVolume", defaultAlarmVolume);
+      localStorage.setItem("focusTime", focusTime);
+      localStorage.setItem("shortBreakTime", shortBreakTime);
+      localStorage.setItem("longBreakTime", longBreakTime);
       
       shadow.innerHTML = `
       <div class="settingContent"> 
