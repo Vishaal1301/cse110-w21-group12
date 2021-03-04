@@ -32,4 +32,4 @@ const toggleTasksSettings = () => {
     }
 }
 
-export default toggleTasksSettings;
+export { toggleTasksSettings };
