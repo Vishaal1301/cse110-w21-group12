@@ -31,3 +31,5 @@ const toggleTasksSettings = () => {
         navIcon.setAttribute("src", "./assets/setting-icon.png");
     }
 };
+
+let dummy = toggleTasksSettings() // dummy call to prevent eslint error
