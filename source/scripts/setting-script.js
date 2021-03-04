@@ -2,7 +2,7 @@
  * Setting Window/Content Variables
  */
 import {updateTimerSettings} from "./clock.js";
-let settingWindow = document.getElementById("settingsContainer");
+
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector("#cafeVolumeNumber");
