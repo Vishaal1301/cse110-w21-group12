@@ -8,6 +8,7 @@ let TasksHolder = document.getElementById("tasks"); //the tasks
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
 let tasks = JSON.parse(stor.getItem("tasks"));
+
 if(stor.getItem("tasks") == null){
     const newTasks = {"mainTask": {"name": null, 
         "checked": false, 
