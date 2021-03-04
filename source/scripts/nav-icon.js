@@ -1,4 +1,4 @@
-function toggleTasksSettings() {
+const toggleTasksSettings = () => {
     let navIcon = document.getElementById("navIcon"); 
     if (navIcon.getAttribute("src") === "./assets/setting-icon.png") {
         let taskListDiv = document.getElementById("taskListContainer");
@@ -31,3 +31,5 @@ function toggleTasksSettings() {
         navIcon.setAttribute("src", "./assets/setting-icon.png");
     }
 }
+
+export default toggleTasksSettings;
