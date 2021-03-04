@@ -107,7 +107,20 @@
                     <input id="new-task" maxlength=40 placeholder="Add new item">
                     <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettings()">
                 </div>
+
+                <p id="focusTask" style="display:none">No focus task selected</p>
+                
+                <div id="areYouSureOptions">
+                    <button id="areYouSureYes" onclick="showRightSideMenu()">Yes</button>
+                    <button id="areYouSureNo" onclick="hideRightSideMenu()">No</button>
+                </div>
+
             </div>
+            
+            <div class="helpContainer">
+                <img id="helpIcon" src="./assets/setting-icon.png" width="30" height="30">
+            </div>
+            
 
         </main>
         <script type="module" src="app.js"></script>

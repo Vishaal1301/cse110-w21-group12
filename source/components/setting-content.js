@@ -124,7 +124,7 @@ class SettingContent extends HTMLElement {
       <div class="settingContent"> 
         <div id="focusContainer">
           <label class="inputLabel">Focus: </label>
-          <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min="15" max="60"
+          <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min=".1" max="60"
           value="${focusTime}">
           <label class="inputLabel"> min</label>
         </div>

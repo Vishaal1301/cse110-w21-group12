@@ -25,7 +25,6 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
 /**
  * Create a new Task HTML element, and append it to the parent ul element
  * @param {string} taskString - The name of the task
@@ -176,6 +175,8 @@ let selectMainTask = function(){
         currMainTask.name = text.value;
         currMainTask.id = text.id;
         text.style.color = "#eed039";
+        // set focus task name
+        document.getElementById("focusTask").textContent = currMainTask.name;
     }
 
     // Set all other tasks to white
