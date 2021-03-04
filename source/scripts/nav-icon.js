@@ -30,4 +30,6 @@ function toggleTasksSettings() {
         
         navIcon.setAttribute("src", "./assets/setting-icon.png");
     }
-};
+}
+
+export default toggleTasksSettings;
