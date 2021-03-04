@@ -44,12 +44,13 @@ input[type="checkbox"]{
   margin-bottom: 1vw;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  width: 10vw;
 }
 
 #navIcon{
   display:inline;
   max-width:29px;
-  margin-left: 6.2vw;
+  margin-left: 4vw;
   max-height:29px;
   width: 10%;
   height: 10%;
