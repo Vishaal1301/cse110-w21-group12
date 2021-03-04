@@ -3,24 +3,24 @@
  */
 class SettingContent extends HTMLElement {
   constructor() {
-      super();
-      const shadow = this.attachShadow({mode: "open"});
-  
-      // Session length and Volume variables
-      const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
-      const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
-      const focusTime = localStorage.getItem("focusTime") || 25;
-      const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
-      const longBreakTime = localStorage.getItem("longBreakTime") || 15;
+    super();
+    const shadow = this.attachShadow({mode: "open"});
 
-      // Update the localStorage to default session length
-      localStorage.setItem("cafeVolume", defaultCafeVolume);
-      localStorage.setItem("alarmVolume", defaultAlarmVolume);
-      localStorage.setItem("focusTime", focusTime);
-      localStorage.setItem("shortBreakTime", shortBreakTime);
-      localStorage.setItem("longBreakTime", longBreakTime);
+    // Session length and Volume variables
+    const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
+    const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
+    const focusTime = localStorage.getItem("focusTime") || 25;
+    const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
+    const longBreakTime = localStorage.getItem("longBreakTime") || 15;
+
+    // Update the localStorage to default session length
+    localStorage.setItem("cafeVolume", defaultCafeVolume);
+    localStorage.setItem("alarmVolume", defaultAlarmVolume);
+    localStorage.setItem("focusTime", focusTime);
+    localStorage.setItem("shortBreakTime", shortBreakTime);
+    localStorage.setItem("longBreakTime", longBreakTime);
       
-      shadow.innerHTML = `
+    shadow.innerHTML = `
       <div class="settingContent"> 
         <div id="focusContainer">
           <label class="inputLabel">Focus: </label>
@@ -59,53 +59,53 @@ class SettingContent extends HTMLElement {
           <label class="inputLabel" id="alarmVolumeNumber">${defaultAlarmVolume}</label>
         </div>
       </div>
-    `;
+      `;
 
-    const style = document.createElement("style");
+        const style = document.createElement("style");
   
-    style.textContent = `
-      .settingContent {
-        margin-left: 3vw;
-        margin-bottom: 1vw;
-        color: white;
-        font-size: 1.2vw;
-        font-family: 'Open Sans', sans-serif
-      }
-      .sectionBreak {
-        visibility: hidden;
-      }
-      .inputLabel {
-        color:white;
-        font-size: 1.2vw;
-        font-family: 'Open Sans', sans-serif
-      }
-      #alarmVolumeSlider {
-        vertical-align: middle;
-        display:inline-block;
-        width: 45%;
-        margin-bottom:10px;
-      }
-      .textInputBox {
-        border-style: solid;
-        border-width: 0px 0px 1px 0px;
-        background-color: #181d28;
-        color: white;
-        outline: none;
-        font-size: 1.2vw;
-        font-family: 'Open Sans', sans-serif
-      }
-      #focusNumber {
-        margin-left: 14%;
-      }
+        style.textContent = `
+          .settingContent {
+            margin-left: 3vw;
+            margin-bottom: 1vw;
+            color: white;
+            font-size: 1.2vw;
+            font-family: 'Open Sans', sans-serif
+          }
+          .sectionBreak {
+            visibility: hidden;
+          }
+          .inputLabel {
+            color:white;
+            font-size: 1.2vw;
+            font-family: 'Open Sans', sans-serif
+          }
+          #alarmVolumeSlider {
+            vertical-align: middle;
+            display:inline-block;
+            width: 45%;
+            margin-bottom:10px;
+          }
+          .textInputBox {
+            border-style: solid;
+            border-width: 0px 0px 1px 0px;
+            background-color: #181d28;
+            color: white;
+            outline: none;
+            font-size: 1.2vw;
+            font-family: 'Open Sans', sans-serif
+          }
+          #focusNumber {
+            margin-left: 14%;
+          }
 
-      #longBreakNumber{
-        margin-left: 1%;
-      }
-      #cafeVolumeSlider {
-        display:inline-block;
-        width: 45%;
-      }
-    `;
+          #longBreakNumber{
+            margin-left: 1%;
+          }
+          #cafeVolumeSlider {
+            display:inline-block;
+            width: 45%;
+          }
+        `;
     
     shadow.appendChild(style);
   }

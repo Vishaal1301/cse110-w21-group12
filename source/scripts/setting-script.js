@@ -30,12 +30,6 @@ alarmVolumeSlider.addEventListener("input", () => {
 
 // focus session length settings
 focusNumber.addEventListener("input", () => {
-    // if (focusNumber.value.length >= 2) {
-    //     focusNumber.setAttribute("readonly", true)
-    // }
-    // else {
-    //     focusNumber.removeAttribute("readonly")
-    // }
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
         focusNumber.style.backgroundColor = "red";
         invalidFocusMessage.innerHTML = "maximum: 60";

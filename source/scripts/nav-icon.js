@@ -1,6 +1,6 @@
 const toggleTasksSettings = () => {
     let navIcon = document.getElementById("navIcon"); 
-    if (navIcon.getAttribute('src') === "./assets/setting-icon.png") {
+    if (navIcon.getAttribute("src") === "./assets/setting-icon.png") {
         let taskListDiv = document.getElementById("taskListContainer");
         taskListDiv.style.display = "none";
 
@@ -13,7 +13,7 @@ const toggleTasksSettings = () => {
         let taskInput = document.getElementById("new-task");
         taskInput.style.visibility = "hidden";
         
-        navIcon.setAttribute('src', "assets/list-icon.png");
+        navIcon.setAttribute("src", "assets/list-icon.png");
     }
     else {
         let taskListDiv = document.getElementById("taskListContainer");
@@ -28,6 +28,6 @@ const toggleTasksSettings = () => {
         let rightHeader = document.getElementById("rightSideHeader");
         rightHeader.innerText = "TASK LIST";
         
-        navIcon.setAttribute('src', "./assets/setting-icon.png");
+        navIcon.setAttribute("src", "./assets/setting-icon.png");
     }
-}
+};
