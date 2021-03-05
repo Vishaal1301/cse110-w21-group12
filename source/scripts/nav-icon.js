@@ -13,6 +13,7 @@ function toggleTasksSettings() { // eslint-disable-line no-unused-vars
         let taskInput = document.getElementById("new-task");
         taskInput.style.visibility = "hidden";
         
+
         navIcon.setAttribute("src", "assets/list-icon.png");
     }
     else {

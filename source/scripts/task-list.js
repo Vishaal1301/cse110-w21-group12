@@ -1,6 +1,10 @@
 import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
 const MENU_BUTTON_SIZE = 25;
 const DEBUG = false;
+const TEXT_COLOR = "white";
+const FOCUS_COLOR = "#eed039";
+const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
+const MAX_INPUT_LENGTH = 30;
 
 let taskInput = document.getElementById("new-task"); //new-task
 let TasksHolder = document.getElementById("tasks"); //the tasks
@@ -8,6 +12,7 @@ let TasksHolder = document.getElementById("tasks"); //the tasks
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
 let tasks = JSON.parse(stor.getItem("tasks"));
+
 if(stor.getItem("tasks") == null){
     const newTasks = {"mainTask": {"name": null, 
         "checked": false, 
@@ -49,14 +54,21 @@ let createNewTaskElement = function(taskString, checked, id) {
     editInput.type = "text";
     editInput.value = taskString;
     editInput.id = id;
+    editInput.minLength = 3;
+    editInput.setAttribute("maxlength", MAX_INPUT_LENGTH);
     if(checkBox.checked){
+        editInput.style.color = TEXT_CROSSED_OUT_COLOR;
         editInput.style.textDecoration = "line-through";
+    }
+    else{
+        editInput.style.color = TEXT_COLOR;
+        editInput.style.textDecoration = "none";
     }
 
     // If this task is the main task, set the color to yellow
     const mainTask = JSON.parse(stor.getItem("tasks")).mainTask.id;
     if(mainTask == id)
-        editInput.style.color = "#eed039";
+        editInput.style.color = FOCUS_COLOR;
 
     // Create div for the drop down components
     let dropdownDiv = document.createElement("div");
@@ -65,6 +77,7 @@ let createNewTaskElement = function(taskString, checked, id) {
     // Create the drop down menu button
     let dropDownButton = document.createElement("input");
     dropDownButton.setAttribute("id", "dropDownButton");
+    dropDownButton.active = false;
     dropDownButton.setAttribute("type", "image");
     dropDownButton.setAttribute("src", "assets/task-item-setting.png");
     dropDownButton.setAttribute("width", MENU_BUTTON_SIZE);
@@ -168,25 +181,31 @@ let selectMainTask = function(){
 	
     // If the selected task was already main task, remove main task. Otherwise set it as main task. 
     if(currMainTask.id === text.id) {
-        text.style.color = "white";
+        text.style.color = TEXT_COLOR;
         currMainTask.name = null;
         currMainTask.id = null;
+        updateMainTask(currMainTask);
     }
     else{
         currMainTask.name = text.value;
         currMainTask.id = text.id;
-        text.style.color = "#eed039";
+        text.style.color = FOCUS_COLOR;
+        updateMainTask(text);
     }
 
     // Set all other tasks to white
     for (let i = 0; i < TasksHolder.children.length; i++) {
         const taskElement = TasksHolder.children[i].children[1];
+        const checkbox = TasksHolder.children[i].children[0];
         if(taskElement.id !== currMainTask.id){
-            taskElement.style.color = "white";
+            if(checkbox.checked){
+                taskElement.style.color = TEXT_CROSSED_OUT_COLOR;
+            }
+            else{
+                taskElement.style.color = TEXT_COLOR;
+            }
         }
     }
-
-    updateMainTask(text);
 
     return true;
 };
@@ -202,15 +221,56 @@ let bindTaskEvents = function(taskListItem) {
     let checkBox = taskListItem.querySelector("input[type=checkbox]");
     let text = taskListItem.querySelector("input[type=text]");
     let dropdownButton = taskListItem.querySelector("#dropDownButton");
+    let focusButton =  taskListItem.querySelector("#mainTaskSelector");
+    let dropdownContent =  taskListItem.querySelector(".dropdown-content");
+
 
     // show the button on hover
     taskListItem.onmouseover = function(){
+        // Show the dropdown menu
         dropdownButton.style.display = "inline-block";
     };
 
     // hide the button when no longer hovering
     taskListItem.onmouseout = function(){
-        dropdownButton.style.display = "none";
+        if (!dropdownButton.active)
+            dropdownButton.style.display = "none";
+    };
+
+    dropdownButton.onclick = function(){
+
+        // Disable the focus button if the item is checked
+        if(checkBox.checked){
+            focusButton.style.display = "none";
+        }
+        else{
+            focusButton.style.display = "block";
+        }
+
+        // Toggle showing the dropdown menu
+        if(!dropdownButton.active){
+            dropdownContent.style.display = "block";
+        }
+        else{
+            dropdownContent.style.display = "none";
+        }
+
+        dropdownButton.active = !dropdownButton.active;
+    };
+
+    window.onclick = function(e) {
+        let tasks = TasksHolder.children;
+        for(let i = 0; i < tasks.length; i++){
+            let task = tasks[i];
+            let dropdownButton = task.children[2].children[0];
+            let dropdownContent = task.children[2].children[1];
+            if(!(e.target == dropdownButton) && dropdownButton.active){
+                dropdownButton.active = false;
+                dropdownContent.style.display = "none";
+                dropdownButton.style.display = "none";
+            }
+        }
+    
     };
 
     let deleteButton = taskListItem.querySelector("#deleteButton");
@@ -219,16 +279,37 @@ let bindTaskEvents = function(taskListItem) {
     mainTaskSelector.onclick = selectMainTask;
     deleteButton.onclick = deleteTask;
 
-    text.onchange = editTask(text.value, text.id);
+    text.onchange = function () {
+        if(text.value == ""){
+            let listItem = text.parentNode;
+            let ul = listItem.parentNode;
+            ul.removeChild(listItem);
+            unstoreTask(listItem.id);
+        }
+        else{
+            editTask(text.value, text.id);
+        }
+    };
 
     //toggle for checkbox
     checkBox.onchange = () => {
         if (checkBox.checked){
-            taskListItem.style.textDecoration = "line-through";
+            text.style.textDecoration = "line-through";
+            text.style.color = TEXT_CROSSED_OUT_COLOR;
             updateTask(text.id, true);
+
+            // If the task is the main task, remove the main task
+            tasks = JSON.parse(stor.getItem("tasks"));
+            if (tasks.mainTask.id == text.id){
+                text.style.color = TEXT_CROSSED_OUT_COLOR;
+                tasks.mainTask.name = null;
+                tasks.mainTask.id = null;
+                updateMainTask(tasks.mainTask);
+            }
         }
         else{
-            taskListItem.style.textDecoration = "none";
+            text.style.textDecoration = "none";
+            text.style.color = TEXT_COLOR;
             updateTask(text.id, false);
         }
     };

@@ -76,6 +76,7 @@ function stopTimer(clock, reset, callback) {
         sessionNum = 0;
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+
         // switch (state) {
         //     // case "Focus Session":
         //     //     alarm = new Audio("./assets/focus.mp3");

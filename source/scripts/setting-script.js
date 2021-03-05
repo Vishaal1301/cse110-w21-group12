@@ -1,6 +1,7 @@
 /**
  * Setting Window/Content Variables
  */
+
 import {updateTimerSettings} from "./clock.js";
 
 let settingContent = document.getElementById("settingContent");
@@ -11,6 +12,7 @@ let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNum
 let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
+
 let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
 let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
 let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
