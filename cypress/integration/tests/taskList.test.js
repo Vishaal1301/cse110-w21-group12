@@ -7,7 +7,12 @@ describe("TaskList test", () => {
         it("add 1 task", () => {
             cy.get("#new-task")
                 .type("task 1")
-                .type("{enter}", {force: true});
+                .type("{enter}", {force: true})
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).list.length).to.eq(1);
+                    }
+                );
     
             cy.get("#taskListContainer")
                 .get("#tasks")
@@ -28,7 +33,12 @@ describe("TaskList test", () => {
                 .find(".dropdown-content")
                 .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#deleteButton")
-                .click();
+                .click()
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).list.length).to.eq(0);
+                    }
+                );
     
             cy.get("#taskListContainer")
                 .get("#tasks")
@@ -51,7 +61,13 @@ describe("TaskList test", () => {
                 .find(".dropdown-content")
                 .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#mainTaskSelector")
-                .click();
+                .click()
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
+                        .to.eq("task 1");
+                    }
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
@@ -87,7 +103,13 @@ describe("TaskList test", () => {
                 .find(".dropdown-content")
                 .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#mainTaskSelector")
-                .click();
+                .click()
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
+                        .to.eq(null);
+                    }
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
@@ -112,6 +134,12 @@ describe("TaskList test", () => {
                 .find(".taskItem")
                 .get("input[type=checkbox]")
                 .click()
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).list[0].checked)
+                        .to.eq(true);
+                    }
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
@@ -120,7 +148,7 @@ describe("TaskList test", () => {
                     $el => {
                         expect($el).to.have.attr("style", "text-decoration: line-through;");
                     }
-                )
+                );
         });
 
         it("uncheck task", () => {
@@ -132,13 +160,19 @@ describe("TaskList test", () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
-                .click()
+                .click();
 
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
                 .click()
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).list[0].checked)
+                        .to.eq(false);
+                    }
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
@@ -147,7 +181,7 @@ describe("TaskList test", () => {
                     $el => {
                         expect($el).to.have.attr("style", "text-decoration: none;");
                     }
-                )
+                );
         });
     })
 });
