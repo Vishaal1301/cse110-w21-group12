@@ -2,11 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   pull_request:
-    branches: 
+    branches:
       - main
       - features
       - testing
@@ -20,22 +20,22 @@ jobs:
     if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm install
-    - name: Run ESLint
-      run: npm run lint
-      
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint
+
   jest:
     if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm install
-    - name: Run tests
-      run: npm test
-      
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        run: npm test
+
   deploy:
     if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
     runs-on: ubuntu-latest
@@ -49,10 +49,11 @@ jobs:
           source_dir: ./source
           recurse: true
           output_dir: ./out
-          front_page: README.md  
-          
+          front_page: README.md
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./out  
+          publish_dir: ./out
+  #for cypress: key: cypress run --record --key c80eeaeb-80f9-493c-bf04-a9f6963a96be
