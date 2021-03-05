@@ -2,7 +2,7 @@
     "scripts": {
         "test": "jest __tests__ --coverage",
         "lint": "eslint source/**/*.js",
-        "start": "http-server"
+        "start": "http-server -a 127.0.0.1 -p 5500"
     },
     "devDependencies": {
         "@babel/core": "^7.13.8",
