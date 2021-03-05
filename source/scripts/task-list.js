@@ -301,7 +301,7 @@ let bindTaskEvents = function(taskListItem) {
             // If the task is the main task, remove the main task
             tasks = JSON.parse(stor.getItem("tasks"));
             if (tasks.mainTask.id == text.id){
-                text.style.color = TEXT_COLOR;
+                text.style.color = TEXT_CROSSED_OUT_COLOR;
                 tasks.mainTask.name = null;
                 tasks.mainTask.id = null;
                 updateMainTask(tasks.mainTask);
