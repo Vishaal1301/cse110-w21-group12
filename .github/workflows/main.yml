@@ -27,7 +27,7 @@ jobs:
       run: yarn run eslint source/**/*.js
       
   jest:
-    if: github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
