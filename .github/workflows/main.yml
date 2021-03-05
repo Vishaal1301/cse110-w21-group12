@@ -24,7 +24,7 @@ jobs:
     - name: Install modules
       run: npm install
     - name: Run ESLint
-      run: npm run eslint -- source/**/*.js
+      run: npm run lint
       
   jest:
     if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
