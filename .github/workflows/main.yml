@@ -22,9 +22,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: yarn
+      run: npm install
     - name: Run ESLint
-      run: yarn run eslint source/**/*.js
+      run: npm run eslint -- source/**/*.js
       
   jest:
     if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
