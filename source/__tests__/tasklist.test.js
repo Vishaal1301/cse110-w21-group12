@@ -140,7 +140,6 @@ test("Update the main task (When current task is already main task)", () => {
     let mainTask = getMainTask();
 
     expect(mainTask.checked).toBe(false);
-    expect(mainTask.id).toBe(null);
 });
 
 test("unstore the main task", () => {
