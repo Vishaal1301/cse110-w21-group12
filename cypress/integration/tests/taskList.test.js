@@ -23,10 +23,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#deleteButton")
                 .click();
     
@@ -46,10 +46,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#mainTaskSelector")
                 .click();
 
@@ -72,20 +72,20 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#mainTaskSelector")
                 .click();
             
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList 
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
                 .find("#mainTaskSelector")
                 .click();
 
