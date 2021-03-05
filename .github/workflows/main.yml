@@ -34,7 +34,9 @@ jobs:
       - name: Install modules
         run: npm install
       - name: Run tests
-        run: npm test
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
