@@ -3,7 +3,7 @@ const MENU_BUTTON_SIZE = 25;
 const DEBUG = false;
 const TEXT_COLOR = "white";
 const FOCUS_COLOR = "#eed039";
-const TEXT_CROSSED_OUT_COLOR = "#b3b3b3"
+const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
 const MAX_INPUT_LENGTH = 30;
 
 let taskInput = document.getElementById("new-task"); //new-task
@@ -256,12 +256,12 @@ let bindTaskEvents = function(taskListItem) {
         }
 
         dropdownButton.active = !dropdownButton.active;
-    }
+    };
 
     window.onclick = function(e) {
         let tasks = TasksHolder.children;
         for(let i = 0; i < tasks.length; i++){
-            let task = tasks[i]
+            let task = tasks[i];
             let dropdownButton = task.children[2].children[0];
             let dropdownContent = task.children[2].children[1];
             if(!(e.target == dropdownButton) && dropdownButton.active){
@@ -271,7 +271,7 @@ let bindTaskEvents = function(taskListItem) {
             }
         }
     
-    }
+    };
 
     let deleteButton = taskListItem.querySelector("#deleteButton");
     let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
@@ -289,7 +289,7 @@ let bindTaskEvents = function(taskListItem) {
         else{
             editTask(text.value, text.id);
         }
-    }
+    };
 
     //toggle for checkbox
     checkBox.onchange = () => {
@@ -309,7 +309,7 @@ let bindTaskEvents = function(taskListItem) {
         }
         else{
             text.style.textDecoration = "none";
-            text.style.color = TEXT_COLOR
+            text.style.color = TEXT_COLOR;
             updateTask(text.id, false);
         }
     };
