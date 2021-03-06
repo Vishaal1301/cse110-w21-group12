@@ -63,7 +63,7 @@ class SettingContent extends HTMLElement {
 
         const style = document.createElement("style");
 
-/*
+        /*
       // Session length and Volume variables
       const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
       const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
