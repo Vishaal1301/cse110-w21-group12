@@ -188,14 +188,8 @@ let selectMainTask = function(){
     else{
         currMainTask.name = text.value;
         currMainTask.id = text.id;
-<<<<<<< HEAD
         text.style.color = FOCUS_COLOR;
         updateMainTask(text);
-=======
-        text.style.color = "#eed039";
-        // set focus task name
-        document.getElementById("focusTask").textContent = currMainTask.name;
->>>>>>> 88c36f1f3cc8dae7c7978bea29d5d2266891fab2
     }
 
     // Set all other tasks to white

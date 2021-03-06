@@ -17,11 +17,12 @@ let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocus
 let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
 let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
 const clock = document.getElementById("clock");
-
+const cafeSounds = document.getElementById("cafeSounds");
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
     localStorage.setItem("cafeVolume", cafeVolumeSlider.value);
     cafeVolumeNumber.textContent = cafeVolumeSlider.value;
+    cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
 });
 
 // alarm volume settings
