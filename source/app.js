@@ -9,19 +9,14 @@ import {startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMen
 const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
-const settings = document.getElementById("settingsContainer");
+const cafeSounds = document.getElementById("cafeSounds");
 let currentState = session.innerHTML;
 let mouseOver = false;
 
-// session.onclick = function(){
-//     updateTimerSettings(clock, 5, 3, 4);
-// };
-
 window.addEventListener("load", function(){
     updateTimerSettings(clock, localStorage.getItem("focusTime") * 60, localStorage.getItem("shortBreakTime") * 60, localStorage.getItem("longBreakTime") * 60);
-});
-settings.addEventListener("click", function(){
-    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60, localStorage.getItem("shortBreakTime") * 60, localStorage.getItem("longBreakTime") * 60);
+    clock.style.display = "block";
+    cafeSounds.loop = true;
 });
 
 /**
@@ -31,11 +26,21 @@ settings.addEventListener("click", function(){
  */
 const updateCoffeeCup = () => {
     if(isCountdown) {
-        session.innerHTML = "Stop Brewing?";
-        clock.style.color = "red";
+        if(mouseOver){
+            session.innerHTML = "Stop Brewing?";
+            clock.style.color = "red";
+        }else{
+            session.innerHTML = "Start Brewing!";
+            clock.style.color = "white";
+        }
     }else{
-        session.innerHTML = "Start Brewing!";
-        clock.style.color = "green";
+        if(mouseOver){
+            session.innerHTML = "Start Brewing!";
+            clock.style.color = "green";
+        }else{
+            session.innerHTML = "Start Brewing!";
+            clock.style.color = "white";
+        }
     }
 };
 
@@ -63,6 +68,8 @@ cup.onclick = () => {
 
     } else{
         changeScreen();
+        cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+        cafeSounds.play();
     }
 };
 
@@ -73,7 +80,6 @@ function changeScreen(){
             session.innerHTML = state;
         }
     });
-
     updateCoffeeCup();
 }
 

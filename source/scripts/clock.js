@@ -20,7 +20,7 @@ function showRightSideMenu() {
     let areYouSureOptions = document.getElementById("areYouSureOptions");
     areYouSureOptions.style.display = "none";
     let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none"; 
+    focusTask.style.display = "none";
     let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "block";
     let navIconContainer = document.getElementById("navIconContainer");
@@ -57,8 +57,7 @@ function hideRightSideMenu() {
 // Start the timer
 function startTimer(clock, callback) {
     const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
-   
-    if(state == "Focus Session") {
+    if (state == "Focus Session") {
         hideRightSideMenu();
     }
 
@@ -80,44 +79,52 @@ function startTimer(clock, callback) {
 }
 
 // Stop the timer
-function stopTimer(clock, reset, callback) {
-    const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
-
-    if(state == "Focus Session"){
+function stopTimer(clock, resetSkip, callback) {
+    let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+    let alarm;
+    let skip = false;
+    if (state == "Focus Session") {
         showRightSideMenu();
-    } else{
+    } else {
         hideRightSideMenu();
     }
 
     // let alarm;
     isCountdown = false;
-    if (reset) {
-        sessionNum = 0;
+    if (resetSkip) {
+        if (state == "Focus Session") {
+            sessionNum = 0;
+        } else {
+            sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
+            skip = true;
+        }
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
 
-        // switch (state) {
-        //     // case "Focus Session":
-        //     //     alarm = new Audio("./assets/focus.mp3");
-        //     //     alarm.volume = localStorage.getItem("volume") / 100;
-        //     //     alarm.play();
-        //     //     break;
-        //     // case "Short Break":
-        //     //     alarm = new Audio("./assets/short.mp3");
-        //     //     alarm.volume = localStorage.getItem("volume") / 100;
-        //     //     alarm.play();
-        //     //     break;
-        //     // case "Long Break":
-        //     //     //alarm = new Audio("./assets/long.mp3");
-        //     //     alarm.volume = localStorage.getItem("volume") / 100;
-        //     //     alarm.play();
-        //     //     break;
-        // }
+        switch (state) {
+        case "Focus Session":
+            alarm = new Audio("./assets/focus.mp3");
+            alarm.volume = localStorage.getItem("alarmVolume") / 100;
+            alarm.play();
+            break;
+        case "Short Break":
+            alarm = new Audio("./assets/short.mp3");
+            alarm.volume = localStorage.getItem("alarmVolume") / 100;
+            alarm.play();
+            break;
+        case "Long Break":
+            alarm = new Audio("./assets/long.mp3");
+            alarm.volume = localStorage.getItem("alarmVolume") / 100;
+            alarm.play();
+            break;
+        }
     }
     clearInterval(countdown);
-
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
+    if (skip) {
+        startTimer(clock, callback);
+    }
 }
 
 // Given a number in seconds, return the string equivalent in time format
@@ -174,9 +181,9 @@ function startStopTimer(clock, callback) {
         startTimer(clock, callback);
     }
     else {
-        const reset = true;
-        stopTimer(clock, reset, callback);
+        const resetSkip = true;
+        stopTimer(clock, resetSkip, callback);
     }
 }
 
-export { startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMenu, isCountdown, sessionNum, POMO_CYCLES};
+export { startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMenu, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, secondsToString };
