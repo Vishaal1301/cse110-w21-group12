@@ -1,11 +1,11 @@
 /**
  * Setting Window/Content Variables
  */
-
 import {updateTimerSettings} from "./clock.js";
 const DEFAULT_FOCUS = 25;
 const DEFAULT_SHORT_BREAK = 5;
 const DEFAULT_LONG_BREAK = 15;
+const clock = document.getElementById("clock");
 let settingContent = document.getElementById("settingContent");
 let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
 let cafeVolumeNumber = settingContent.shadowRoot.querySelector("#cafeVolumeNumber");
@@ -14,11 +14,9 @@ let alarmVolumeNumber = settingContent.shadowRoot.querySelector("#alarmVolumeNum
 let focusNumber = settingContent.shadowRoot.querySelector("#focusNumber");
 let shortBreakNumber = settingContent.shadowRoot.querySelector("#shortBreakNumber");
 let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber");
-
 let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
 let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
 let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
-const clock = document.getElementById("clock");
 
 // cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
