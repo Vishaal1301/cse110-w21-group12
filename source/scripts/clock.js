@@ -30,6 +30,8 @@ function showRightSideMenu() {
 //hide settings menu and task list when in focus mode
 function hideRightSideMenu() {
     let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
+    // set focus task name
+    document.getElementById("focusTask").textContent = currMainTask.name;
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "FOCUS";
     let focusTask = document.getElementById("focusTask");
