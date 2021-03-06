@@ -6,6 +6,10 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">     
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 
         <!-- Importing font -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -44,7 +48,7 @@
                     - might want to use HIDDEN attribute for the hiding logic  
             -->
             <audio id="cafeSounds" src="./assets/cafeSounds.mp3"></audio>
-            <div class="container">
+            <div class="gridContainer">
                 <div id="timerContainer">
                     <div id="cup">
                         <div id="clock" class="text">
@@ -54,7 +58,6 @@
                     <div id="session">Focus Session</div>
                     <img id="taskbar" src="./assets/taskbar.png" />
                 </div>
-        
 
             <div id="rightSideContainer">
                 <p id="rightSideHeader">TASK LIST</p> 
@@ -117,13 +120,52 @@
                 </div>
 
             </div>
-            
-            <div class="helpContainer">
-                <img id="helpIcon" src="./assets/setting-icon.png" width="30" height="30">
-            </div>
-            
 
+            
         </main>
+
+            <!-- <img id="helpIcon" src="./assets/question.png" width="15" height="15"> -->
+            <img id="xIcon" src="./assets/xicon.png" width="12" height="12">
+
+        
+
+        <!-- <div id="onboardingContainer" style="margin: 0;">
+        <div class="in-middle" style="  flex-direction: column; justify-content: center; align-items: center; display: flex; height: 100vh; background-color: pink;">
+            <div id="popup" style="background-color: cadetblue; width:1000px; height:600px;">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: auto; margin-right: auto; padding-top:1.5% ; width:850px; height:600px">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" style="width:850px; height:600px;">
+                      <div class="carousel-item active">
+                        <p style="text-align: center; font-size: 4vw; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif;">hi</p>
+                        <img class="d-block w-100" src="./assets/slide1.png" alt="First slide" > 
+                      </div>
+                      <div class="carousel-item">
+                        <p style="text-align: center; font-size: 4vw; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif;">sup</p>
+                        <img class="d-block w-100" src="./assets/slide2.png" alt="Second slide">
+                      </div>
+                      <div class="carousel-item">
+                        <p style="text-align: center; font-size: 4vw; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif;">bye</p>
+                        <img class="d-block w-100" src="./assets/slide3.png" alt="Third slide">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div> 
+                
+            </div>
+        </div>
+        </div> -->
+
         <script type="module" src="app.js"></script>
         <script src="./components/setting-content.js"></script>
         <script type="module" src="./scripts/setting-script.js"></script>

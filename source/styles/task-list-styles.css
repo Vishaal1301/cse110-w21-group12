@@ -50,7 +50,9 @@ input[type="checkbox"]{
 #navIcon{
   display:inline;
   max-width:29px;
+  /* added */
   margin-left: 4vw;
+
   max-height:29px;
   width: 10%;
   height: 10%;
