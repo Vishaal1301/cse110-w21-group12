@@ -122,14 +122,8 @@ let updateMainTask = function(mainTask){
     tasks = JSON.parse(stor.getItem("tasks"));
     let currMainTask = tasks.mainTask;
 
-    if(currMainTask.id != null && currMainTask.id === mainTask.id) {
-        currMainTask.name = null;
-        currMainTask.id = null;
-    }
-    else{
-        currMainTask.name = mainTask.value;
-        currMainTask.id = mainTask.id;
-    }
+    currMainTask.name = mainTask.value;
+    currMainTask.id = mainTask.id;
 
     // Update local storage
     stor.setItem("tasks", JSON.stringify(tasks));

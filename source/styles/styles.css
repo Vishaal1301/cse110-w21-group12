@@ -37,6 +37,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+/* added by 56 */
 #navIconContainer {
     display: flex;
     justify-content: center;
@@ -45,9 +46,14 @@ body {
     margin-bottom: 0px;
 }
 
+/* added by 56 */
 #navIcon {
     margin-left: 6vw;
 } 
+
+#new-task {
+    margin-right: 25%;
+}
 
 #settingsContainer {
     display: none;

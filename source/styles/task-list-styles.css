@@ -44,11 +44,15 @@ input[type="checkbox"]{
   margin-bottom: 2vw;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  width: 10vw;
 }
 
 #navIcon{
   display:inline;
   max-width:29px;
+  /* added */
+  margin-left: 4vw;
+
   max-height:29px;
   width: 10%;
   height: 10%;
@@ -90,9 +94,12 @@ input[type="checkbox"]{
 .dropdown-content a:hover {background-color: #f1f1f1}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+.dropdown:focus .dropdown-content {
   display: block;
+  outline: blue auto 5px; 
 }
+
+
 
 a {
   font-family: 'Open Sans', sans-serif;
