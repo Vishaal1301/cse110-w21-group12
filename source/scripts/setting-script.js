@@ -34,11 +34,11 @@ alarmVolumeSlider.addEventListener("input", () => {
 focusNumber.addEventListener("input", () => {
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
         focusNumber.style.backgroundColor = "red";
-        invalidFocusMessage.innerHTML = "maximum: 60";
+        invalidFocusMessage.innerHTML = "(maximum: 60)";
     }
     else if(focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
         focusNumber.style.backgroundColor = "red";
-        invalidFocusMessage.innerHTML = "minimum: 15";
+        invalidFocusMessage.innerHTML = "(minimum: 15)";
     }
     else {
         localStorage.setItem("focusTime", focusNumber.value);
@@ -57,11 +57,11 @@ focusNumber.addEventListener("input", () => {
 shortBreakNumber.addEventListener("input", () => {
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
         shortBreakNumber.style.backgroundColor = "red";
-        invalidShortBreakMessage.innerHTML = "maximum: 20";
+        invalidShortBreakMessage.innerHTML = "(maximum: 20)";
     }
     else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
         shortBreakNumber.style.backgroundColor = "red";
-        invalidShortBreakMessage.innerHTML = "minimum: 5";
+        invalidShortBreakMessage.innerHTML = ("minimum: 5)";
     }
     else {
         localStorage.setItem("shortBreakTime", shortBreakNumber.value);
@@ -80,11 +80,11 @@ shortBreakNumber.addEventListener("input", () => {
 longBreakNumber.addEventListener("input", () => {
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
         longBreakNumber.style.backgroundColor = "red";
-        invalidLongBreakMessage.innerHTML = "maximum: 40";
+        invalidLongBreakMessage.innerHTML = "(maximum: 40)";
     }
     else if(longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
         longBreakNumber.style.backgroundColor = "red";
-        invalidLongBreakMessage.innerHTML = "minimum: 10";
+        invalidLongBreakMessage.innerHTML = "(minimum: 10)";
     }
     else {
         localStorage.setItem("longBreakTime", longBreakNumber.value);
