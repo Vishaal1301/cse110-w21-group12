@@ -61,7 +61,7 @@ class SettingContent extends HTMLElement {
           </div>
           `;
 
-        const style = document.createElement("style");
+        //const style = document.createElement("style");
     }
 }
 
