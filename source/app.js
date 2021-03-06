@@ -4,7 +4,7 @@
 */
 
 //Import clock logic from clock module
-import {startStopTimer, updateTimerSettings, isCountdown} from "./scripts/clock.js";
+import {startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMenu, isCountdown, sessionNum, POMO_CYCLES} from "./scripts/clock.js";
 
 const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
@@ -51,22 +51,57 @@ cup.onmouseleave = () => {
 };
 
 cup.onclick = () => {
-    /*if(!isCountdown){
-        showTimer();
-        document.getElementById("toolBar").style.display = "none";
-        document.getElementById("navBar").style.display = "none";
+    if(isCountdown){
+        const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+
+        if(state == "Focus Session"){
+            askResetFocus();
+        } 
+        else {
+            askResetBreak();
+        }
+
     } else{
-        document.getElementById("toolBar").style.display = "block";
-        document.getElementById("navBar").style.display = "block"; 
-    }*/
+        changeScreen();
+    }
+};
+
+function changeScreen(){
     startStopTimer(clock, (state) => {
         currentState = state;
         if(!mouseOver){
             session.innerHTML = state;
         }
     });
-    updateCoffeeCup();
-};
 
-// document.getElementById("timerNav").addEventListener("click", showTimer);
-// document.getElementById("tasksNav").addEventListener("click", showTasks);
+    updateCoffeeCup();
+}
+
+//are you sure pop up for focus session
+function askResetFocus() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "RESET FOCUS?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.addEventListener("click", hideRightSideMenu);
+}
+
+//are you sure pop up for break session
+function askResetBreak() {
+    hideRightSideMenu();
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "SKIP BREAK?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.addEventListener("click", showRightSideMenu);
+}

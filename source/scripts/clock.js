@@ -17,22 +17,34 @@ let countdown;
 function showRightSideMenu() {
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "TASK LIST";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none"; 
     let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "block";
     let navIconContainer = document.getElementById("navIconContainer");
     navIconContainer.style.display = "block";
-    //navIcon.setAttribute('src', "assets/setting-icon.png");
 }
+
 //hide settings menu and task list when in focus mode
 function hideRightSideMenu() {
+    let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
+    // set focus task name
+    document.getElementById("focusTask").textContent = currMainTask.name;
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "FOCUS";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "block";
     let settingsDiv = document.getElementById("settingsContainer");
     settingsDiv.style.display = "none";
     let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "none";
     let navIconContainer = document.getElementById("navIconContainer");
     navIconContainer.style.display = "none";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
+
 }
 
 // Start the timer
@@ -160,4 +172,4 @@ function startStopTimer(clock, callback) {
     }
 }
 
-export { startStopTimer, updateTimerSettings, isCountdown };
+export { startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMenu, isCountdown, sessionNum, POMO_CYCLES};

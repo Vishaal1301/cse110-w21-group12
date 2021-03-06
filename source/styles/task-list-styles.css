@@ -41,7 +41,7 @@ input[type="checkbox"]{
   border: none !important;
   font-size: 1.25vw;
   margin-left: 3vw;
-  margin-bottom: 1vw;
+  margin-bottom: 2vw;
   color: white;
   font-family: 'Open Sans', sans-serif;
   width: 10vw;
@@ -50,7 +50,9 @@ input[type="checkbox"]{
 #navIcon{
   display:inline;
   max-width:29px;
+  /* added */
   margin-left: 4vw;
+
   max-height:29px;
   width: 10%;
   height: 10%;

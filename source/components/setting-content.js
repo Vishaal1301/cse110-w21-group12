@@ -62,7 +62,40 @@ class SettingContent extends HTMLElement {
           `;
 
         const style = document.createElement("style");
-  
+
+/*
+      // Session length and Volume variables
+      const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
+      const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
+      const focusTime = localStorage.getItem("focusTime") || 25;
+      const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
+      const longBreakTime = localStorage.getItem("longBreakTime") || 15;
+
+      shadow.innerHTML = `
+      <div class="settingContent"> 
+        <div id="focusContainer">
+          <label class="inputLabel">Focus: </label>
+          <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min=".1" max="60"
+          value="${focusTime}">
+          <label class="inputLabel"> min</label>
+        </div>
+        
+        <div id="shortBreakContainer">
+          <label class="inputLabel">Short Break: </label>
+          <input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
+          value="${shortBreakTime}">
+          <label class="inputLabel"> min</label>
+        </div>
+        
+        <div id="longBreakContainer">
+          <label class="inputLabel">Long Break: </label>
+          <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
+          value="${longBreakTime}">
+          <label class="inputLabel"> min</label>
+        </div>
+        <hr class="sectionBreak">
+       */
+
         style.textContent = `
           .settingContent {
             margin-left: 3vw;
@@ -105,6 +138,7 @@ class SettingContent extends HTMLElement {
             width: 45%;
           }
         `;
+
         
         shadow.appendChild(style);
     }

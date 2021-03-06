@@ -30,14 +30,26 @@ body {
 
 #rightSideHeader {
     text-align: center;
-    padding-top: 30px;
-    padding-bottom: 10px;
-    margin-bottom: 0px;
-    font-size: 2.5vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 2.75vw;
     font-weight: 800;
     font-family: 'Open Sans', sans-serif;
 }
 
+/* added by 56 */
+#navIconContainer {
+    display: flex;
+    justify-content: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+/* added by 56 */
+#navIcon {
+    margin-left: 6vw;
+} 
 
 #new-task {
     margin-right: 25%;
@@ -123,3 +135,37 @@ body {
 input:focus {
     outline: 0 !important;
 }
+
+#focusTask {
+    text-align: center;
+    margin-bottom: 3vh;
+    font-size: 1.35vw;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#areYouSureOptions {
+    font-size: 1.25vw;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: none;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+
+#areYouSureYes {
+    background: none;
+    border: none;
+    padding-right: 4vw;
+}
+
+#areYouSureNo {
+    background: none;
+    border: none;
+    padding-left: 4vw;
+}
+
+#helpIcon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+} 

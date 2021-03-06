@@ -30,7 +30,6 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
 /**
  * Create a new Task HTML element, and append it to the parent ul element
  * @param {string} taskString - The name of the task
