@@ -283,7 +283,14 @@ let bindTaskEvents = function(taskListItem) {
             let listItem = text.parentNode;
             let ul = listItem.parentNode;
             ul.removeChild(listItem);
-            unstoreTask(listItem.id);
+
+            unstoreTask(listItem.children[1].id);
+
+            let children = ul.children;
+            for(let i = 0; i < children.length; i++){
+                children[i].children[1].id = i;
+            }
+            
         }
         else{
             editTask(text.value, text.id);

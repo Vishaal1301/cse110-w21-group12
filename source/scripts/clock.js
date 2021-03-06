@@ -137,13 +137,6 @@ function secondsToString(time) {
  */
 function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLength) {
 
-    // Do nothing if the timer is currently on
-    if (isCountdown)
-        return false;
-
-    sessionNum = 0;
-    clock.innerHTML = sessionLengths[sessionNum];
-
     sessionLengths = [];
     for (let i = 0; i < POMO_CYCLES; i++) {
         sessionLengths.push(focusLength);
@@ -152,7 +145,10 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
         else
             sessionLengths.push(longBreakLength);
     }
-    clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
+
+    if(sessionNum %2 == 0){
+        clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
+    }
 
     return true;
 }
