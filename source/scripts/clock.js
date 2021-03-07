@@ -64,15 +64,17 @@ function startTimer(clock, callback) {
     isCountdown = true;
     let timer = sessionLengths[sessionNum] - 1;
     countdown = setInterval(() => {
-
+        console.log("Timer running: " + secondsToString(timer))
         // Update the HTML text
         clock.innerHTML = secondsToString(timer);
 
         if (--timer < 0) {
+            console.log("Timer at 0")
             stopTimer(clock, false, callback);
 
             // If autoCycle is enabled, restart the timer immediately
             if (autoCycle)
+                console.log("autocycle")
                 startTimer(clock, callback);
         }
     }, 1000);
@@ -80,7 +82,9 @@ function startTimer(clock, callback) {
 
 // Stop the timer
 function stopTimer(clock, resetSkip, callback) {
+    console.log("stopTimer called")
     let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+    console.log(state);
     let alarm;
     let skip = false;
     if (state == "Focus Session") {
@@ -179,10 +183,12 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
 function startStopTimer(clock, callback) {
     if (!isCountdown) {
         startTimer(clock, callback);
+        return false;
     }
     else {
         const resetSkip = true;
         stopTimer(clock, resetSkip, callback);
+        return true;
     }
 }
 
