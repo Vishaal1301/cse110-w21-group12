@@ -89,7 +89,6 @@ describe('Setting test', () => {
                     .find("#focusContainer")
                     .find("#focusNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -100,7 +99,34 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
+
+            it("inputting more than maximum focus session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .find("#focusNumber")
+                    .type("9999")
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#shortBreakContainer")
+                                .find("#shortBreakNumber")
+                                .click();
+
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#focusNumber")
+                                .then(
+                                    $el => {
+                                        expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                                    }
+                                );
+                        }
+                    );
+            });
+
             it("inputting less than minimum focus session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
@@ -109,7 +135,6 @@ describe('Setting test', () => {
                     .find("#focusNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -117,6 +142,34 @@ describe('Setting test', () => {
                     .then(
                         $el => {
                             expect($el).to.have.attr("style", "background-color: red;");
+                        }
+                    );
+            });
+
+            it("inputting less than minimum focus session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .find("#focusNumber")
+                    .clear()
+                    .invoke('val', 1).trigger('input')
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#shortBreakContainer")
+                                .find("#shortBreakNumber")
+                                .click();
+                            
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#focusNumber")
+                                .then(
+                                    $el => {
+                                        expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                                    }
+                                );
                         }
                     );
             });
@@ -151,14 +204,13 @@ describe('Setting test', () => {
                     );
             });
     
-            it("inputting more than maximum focus session length", () => {
+            it("inputting more than maximum short break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -169,8 +221,36 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
-            it("inputting less than minimum focus session length", () => {
+            
+            it("inputting more than maximum short break session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakContainer")
+                    .find("#shortBreakNumber")
+                    .type("9999")
+                    .type("{enter}", {force: true})
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#longBreakContainer")
+                                .find("#longBreakNumber")
+                                .click()
+                        }
+                    );
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
+
+            it("inputting less than minimum short break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
@@ -178,7 +258,6 @@ describe('Setting test', () => {
                     .find("#shortBreakNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -186,6 +265,33 @@ describe('Setting test', () => {
                     .then(
                         $el => {
                             expect($el).to.have.attr("style", "background-color: red;");
+                        }
+                    );
+            });
+
+            it("inputting less than minimum short break session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakContainer")
+                    .find("#shortBreakNumber")
+                    .clear()
+                    .invoke('val', 1).trigger('input')
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#longBreakContainer")
+                                .find("#longBreakNumber")
+                                .click();
+                        }
+                    );
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
                         }
                     );
             });
@@ -227,7 +333,6 @@ describe('Setting test', () => {
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -238,7 +343,35 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
+            
+            it("inputting more than maximum long break session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakContainer")
+                    .find("#longBreakNumber")
+                    .type("9999")
+                    .type("{enter}", {force: true})
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#shortBreakContainer")
+                                .find("#shortBreakNumber")
+                                .click()
+                        }
+                    );
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
+
             it("inputting less than minimum long break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
@@ -247,7 +380,6 @@ describe('Setting test', () => {
                     .find("#longBreakNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -255,6 +387,34 @@ describe('Setting test', () => {
                     .then(
                         $el => {
                             expect($el).to.have.attr("style", "background-color: red;");
+                        }
+                    );
+            });
+
+            it("inputting less than minimum long break session length (on focusout)", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakContainer")
+                    .find("#longBreakNumber")
+                    .type("9999")
+                    .type("{enter}", {force: true})
+                    .then(
+                        () => {
+                            cy.get("#settingContent")
+                                .shadow()
+                                .find("#shortBreakContainer")
+                                .find("#shortBreakNumber")
+                                .click()
+                        }
+                    );
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
                         }
                     );
             });
