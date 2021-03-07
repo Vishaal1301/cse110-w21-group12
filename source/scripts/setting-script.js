@@ -32,11 +32,7 @@
  
  // focus session length settings
  focusNumber.addEventListener("input", () => {
-     if (focusNumber.value == 0) {
-         focusNumber.style.backgroundColor = "red";
-         invalidFocusMessage.innerHTML = "(minimum: 15)";
-     }
-     else if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
+     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
          focusNumber.style.backgroundColor = "red";
          invalidFocusMessage.innerHTML = "(maximum: 60)";
      }
@@ -67,11 +63,7 @@
  
  // short break session length settings
  shortBreakNumber.addEventListener("input", () => {
-     if (shortBreakNumber.value == 0) {
-         shortBreakNumber.style.backgroundColor = "red";
-         invalidShortBreakMessage.innerHTML = "(minimum: 5)";
-     }
-     else if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
+     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
          shortBreakNumber.style.backgroundColor = "red";
          invalidShortBreakMessage.innerHTML = "(maximum: 20)";
      }
@@ -102,11 +94,7 @@
  
  // long break session length settings
  longBreakNumber.addEventListener("input", () => {
-     if (longBreakNumber.value == 0) {
-         longBreakNumber.style.backgroundColor = "red";
-         invalidLongBreakMessage.innerHTML = "(minimum: 10)";
-     }
-     else if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
+     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
          longBreakNumber.style.backgroundColor = "red";
          invalidLongBreakMessage.innerHTML = "(maximum: 40)";
      }

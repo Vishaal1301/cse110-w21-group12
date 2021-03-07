@@ -24,7 +24,7 @@ class SettingContent extends HTMLElement {
           <div class="settingContent"> 
             <div id="focusContainer">
               <label class="inputLabel">Focus: </label>
-              <input class="textInputBox" id="focusNumber" type="number" min="15" max="60"
+              <input class="textInputBox" id="focusNumber" type="number" min="0.5" max="60"
               value="${focusTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidFocusMessage" class="invalidMessage"> </span>
@@ -32,7 +32,7 @@ class SettingContent extends HTMLElement {
             
             <div id="shortBreakContainer">
               <label class="inputLabel">Short Break: </label>
-              <input class="textInputBox" id="shortBreakNumber" type="number" min="5" max="20"
+              <input class="textInputBox" id="shortBreakNumber" type="number" min="0.5" max="20"
               value="${shortBreakTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidShortBreakMessage" class="invalidMessage"> </span>
@@ -40,7 +40,7 @@ class SettingContent extends HTMLElement {
             
             <div id="longBreakContainer">
               <label class="inputLabel">Long Break: </label>
-              <input class="textInputBox" id="longBreakNumber" type="number" min="10" max="40"
+              <input class="textInputBox" id="longBreakNumber" type="number" min="0.5" max="40"
               value="${longBreakTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidLongBreakMessage" class="invalidMessage"> </span>
@@ -63,39 +63,7 @@ class SettingContent extends HTMLElement {
 
         const style = document.createElement("style");
 
-        /*
-      // Session length and Volume variables
-      const defaultAlarmVolume = localStorage.getItem("alarmVolume") || 100;
-      const defaultCafeVolume = localStorage.getItem("cafeVolume") || 100;
-      const focusTime = localStorage.getItem("focusTime") || 25;
-      const shortBreakTime = localStorage.getItem("shortBreakTime") || 5;
-      const longBreakTime = localStorage.getItem("longBreakTime") || 15;
-
-      shadow.innerHTML = `
-      <div class="settingContent"> 
-        <div id="focusContainer">
-          <label class="inputLabel">Focus: </label>
-          <input class="textInputBox" id="focusNumber" name="shortBreakNumber" type="number" min=".1" max="60"
-          value="${focusTime}">
-          <label class="inputLabel"> min</label>
-        </div>
-        
-        <div id="shortBreakContainer">
-          <label class="inputLabel">Short Break: </label>
-          <input class="textInputBox" id="shortBreakNumber" name="shortBreakNumber" type="number" min="5" max="20"
-          value="${shortBreakTime}">
-          <label class="inputLabel"> min</label>
-        </div>
-        
-        <div id="longBreakContainer">
-          <label class="inputLabel">Long Break: </label>
-          <input class="textInputBox" id="longBreakNumber" name="longBreakNumber" type="number" min="10" max="40"
-          value="${longBreakTime}">
-          <label class="inputLabel"> min</label>
-        </div>
-        <hr class="sectionBreak">
-       */
-
+        // Settings Commponent styles
         style.textContent = `
           .settingContent {
             margin-left: 3vw;
@@ -131,14 +99,13 @@ class SettingContent extends HTMLElement {
             margin-left: 14%;
           }
           #longBreakNumber{
-            margin-left: 1%;
+            margin-left: 0.9%;
           }
           #cafeVolumeSlider {
             display:inline-block;
             width: 45%;
           }
         `;
-
         
         shadow.appendChild(style);
     }

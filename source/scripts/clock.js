@@ -3,74 +3,47 @@
  * @module modules/clock
 */
 
+import {displayFocusContent, displayBreakContent} from "../app.js";
+
 // Timer setting variables
-const POMO_CYCLES = 5;
-let autoCycle = true;
-let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 300, 1500, 900];
-let sessionNum = 0;
+const POMO_CYCLES = 4; // Default Pomo cycle length
+let autoCycle = true; // Automatically start a new cycle when the current one ends
+let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}
+let sessionNum = 0; // Default start session is Focus Session
 
 // Global timer variables
 let isCountdown = false;
 let countdown;
 
-//show settings menu and task list when in short and long break state and at beginining
-function showRightSideMenu() {
-    let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "TASK LIST";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
-    let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
-    let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "block";
-    let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "flex";
-
-    let navIcon = document.getElementById("navIcon");
-    navIcon.src = "./assets/setting-icon.png";
-}
-
-//hide settings menu and task list when in focus mode
-function hideRightSideMenu() {
-    let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
-    // set focus task name
-    if (currMainTask.name == null) {
-        document.getElementById("focusTask").textContent = "No task selected";
-    } else {
-        document.getElementById("focusTask").textContent = currMainTask.name;
-    }
-
-    let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "FOCUS";
-    let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "block";
-    let settingsDiv = document.getElementById("settingsContainer");
-    settingsDiv.style.display = "none";
-    let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "none";
-    let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "none";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
-}
-
-// Start the timer
+/**
+ * Start timer logic
+ * 
+ * default start state is Focus Session
+ * if session number is the last (8, index 7) of the pomo cycle:
+ *  current state is Long Break
+ * else if session number is even:
+ *  current state is Focus Session
+ * else:
+ *  current state is Short Break
+ * 
+ * @param {object} clock - The HTML element for the clock
+ * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
+ */
 function startTimer(clock, callback) {
     const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+    document.getElementById("session").innerHTML = state;
     if (state == "Focus Session") {
-        hideRightSideMenu();
+        displayFocusContent();
     }
 
     isCountdown = true;
     let timer = sessionLengths[sessionNum] - 1;
     countdown = setInterval(() => {
-
         // Update the HTML text
         clock.innerHTML = secondsToString(timer);
 
         if (--timer < 0) {
             stopTimer(clock, false, callback);
-
             // If autoCycle is enabled, restart the timer immediately
             if (autoCycle)
                 startTimer(clock, callback);
@@ -78,29 +51,45 @@ function startTimer(clock, callback) {
     }, 1000);
 }
 
-// Stop the timer
+/**
+ * top timer logic
+ * 
+ * default start state is Focus Session
+ * if session number is the last (8, index 7) of the pomo cycle:
+ *  current state is Long Break
+ * else if session number is even:
+ *  current state is Focus Session
+ * else:
+ *  current state is Short Break
+ * 
+ * @param {object} clock - The HTML element for the clock
+ * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
+ */
 function stopTimer(clock, resetSkip, callback) {
     let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+    document.getElementById("session").innerHTML = state;
     let alarm;
     let skip = false;
     if (state == "Focus Session") {
-        showRightSideMenu();
+        displayBreakContent();
     } else {
-        hideRightSideMenu();
+        displayFocusContent();
     }
 
-    // let alarm;
+    // Set alarm;
     isCountdown = false;
     if (resetSkip) {
         if (state == "Focus Session") {
             sessionNum = 0;
         } else {
+            // If a pomo cycle ends: automatically start the next cycle
             sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
             skip = true;
         }
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
 
+        // Change audio based on the current state
         switch (state) {
         case "Focus Session":
             alarm = new Audio("./assets/focus.mp3");
@@ -140,7 +129,6 @@ function secondsToString(time) {
     return minutes + ":" + seconds;
 }
 
-
 /**
  * Update the timer settings, and also resets all sessions. 
  * @param {object} clock - The HTML element for the clock
@@ -150,14 +138,7 @@ function secondsToString(time) {
  * @returns {boolean} True if the settings were updated, false if some error occured
  */
 function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLength) {
-
     // Do nothing if the timer is currently on
-    if (isCountdown)
-        return false;
-
-    sessionNum = 0;
-    clock.innerHTML = sessionLengths[sessionNum];
-
     sessionLengths = [];
     for (let i = 0; i < POMO_CYCLES; i++) {
         sessionLengths.push(focusLength);
@@ -166,7 +147,10 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
         else
             sessionLengths.push(longBreakLength);
     }
-    clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
+
+    if(sessionNum %2 == 0){
+        clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
+    }
 
     return true;
 }
@@ -186,4 +170,4 @@ function startStopTimer(clock, callback) {
     }
 }
 
-export { startStopTimer, updateTimerSettings, hideRightSideMenu, showRightSideMenu, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, secondsToString };
+export { startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, secondsToString};

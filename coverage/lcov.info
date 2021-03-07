@@ -1,7 +1,7 @@
 TN:
 SF:source/scripts/clock.js
-FN:17,showRightSideMenu
-FN:31,hideRightSideMenu
+FN:17,displayBreakContent
+FN:31,displayFocusContent
 FN:49,startTimer
 FN:57,(anonymous_3)
 FN:73,stopTimer
@@ -10,8 +10,8 @@ FN:143,updateTimerSettings
 FN:170,startStopTimer
 FNF:8
 FNH:2
-FNDA:0,showRightSideMenu
-FNDA:0,hideRightSideMenu
+FNDA:0,displayBreakContent
+FNDA:0,displayFocusContent
 FNDA:0,startTimer
 FNDA:0,(anonymous_3)
 FNDA:0,stopTimer

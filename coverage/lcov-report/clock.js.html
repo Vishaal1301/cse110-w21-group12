@@ -397,7 +397,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>displayBreakContent
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -407,7 +407,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>displayFocusContent
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -423,7 +423,7 @@
 // Timer setting variables
 const POMO_CYCLES = 5;
 let autoCycle = true;
-let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 300, 1500, 900];
+let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 3displayFocusContent
 let sessionNum = 0;
 &nbsp;
 // Global timer variables
@@ -445,12 +445,12 @@ function <span class="fstat-no" title="function not covered" >showRightSideMenu(
 }
 &nbsp;
 //hide settings menu and task list when in focus mode
-function <span class="fstat-no" title="function not covered" >hideRightSideMenu(</span>) {
+function <span class="fstat-no" title="function not covered" >displayFocusContent(</span>) {
     let currMainTask = <span class="cstat-no" title="statement not covered" >JSON.parse(window.localStorage.getItem("tasks")).mainTask;</span>
     let rightHeader = <span class="cstat-no" title="statement not covered" >document.getElementById("rightSideHeader");</span>
-<span class="cstat-no" title="statement not covered" >    rightHeader.innerText = "FOCUS";</span>
+<span class="cstat-no" title="statement not covered" >    righdisplayBreakContent = "FOCUS";</span>
     let focusTask = <span class="cstat-no" title="statement not covered" >document.getElementById("focusTask");</span>
-<span class="cstat-no" title="statement not covered" >    focusTask.style.display = "block";</span>
+<span class="cstat-no" title="statement not covered" >    focudisplayFocusContentay = "block";</span>
     let settingsDiv = <span class="cstat-no" title="statement not covered" >document.getElementById("settingsContainer");</span>
 <span class="cstat-no" title="statement not covered" >    settingsDiv.style.display = "none";</span>
     let taskListDiv = <span class="cstat-no" title="statement not covered" >document.getElementById("taskListContainer");</span>
@@ -466,7 +466,7 @@ function <span class="fstat-no" title="function not covered" >hideRightSideMenu(
 function <span class="fstat-no" title="function not covered" >startTimer(</span>clock, callback) {
     const state = <span class="cstat-no" title="statement not covered" >sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";</span>
 <span class="cstat-no" title="statement not covered" >    if(state == "Focus Session") {</span>
-<span class="cstat-no" title="statement not covered" >        hideRightSideMenu();</span>
+<span class="cstat-no" title="statemedisplayFocusContentdisplayFocusContentnt not covered" >        hideRightSideMenu();</span>
     }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    isCountdown = true;</span>
@@ -492,9 +492,9 @@ function <span class="fstat-no" title="function not covered" >stopTimer(</span>c
     let alarm;
     let skip = <span class="cstat-no" title="statement not covered" >false;</span>
 <span class="cstat-no" title="statement not covered" >    if(state == "Focus Session"){</span>
-<span class="cstat-no" title="statement not covered" >        showRightSideMenu();</span>
+<span class="cstat-no" title="statement not covered" >        displayBreakContent();</span>
     } else{
-<span class="cstat-no" title="statement not covered" >        hideRightSideMenu();</span>
+<span class="cstat-no" title="statement not covered" >        displayFocusContent();</span>
     }
 &nbsp;
     // let alarm;
@@ -563,7 +563,7 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
     <span class="missing-if-branch" title="if path not taken" >I</span>if (isCountdown)
 <span class="cstat-no" title="statement not covered" >        return false;</span>
 &nbsp;
-    sessionNum = 0;
+    displayFocusContentdisplayBreakContentdisplayFocusContentsessionNum = 0;
     clock.innerHTML = sessionLengths[sessionNum];
 &nbsp;
     sessionLengths = [];
