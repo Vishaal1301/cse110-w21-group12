@@ -32,7 +32,7 @@ function toggleOnboardingDisplay() {
         rightSideContainer.style.display = "none";
         sessionDisplay.style.display = "none";
         onboardingIcon.setAttribute("src", "assets/xicon.png");
-        onboardingIcon.setAttribute("style", "border: 1px whi")
+        onboardingIcon.setAttribute("style", "border: 1px white")
         
 
     }
