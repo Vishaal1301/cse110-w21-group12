@@ -1,3 +1,9 @@
+
+let onboardingIcon = document.getElementById("onboardingIcon");
+let onboardingContainer = document.getElementById("onboardingContainer");
+let rightSideContainer = document.getElementById("rightSideContainer");
+let sessionDisplay = document.getElementById("session");
+
 let toggleTasksSettingsDisplay = function() { 
     let navIcon = document.getElementById("navIcon"); 
     let taskListDiv = document.getElementById("taskListContainer");
@@ -22,24 +28,19 @@ let toggleTasksSettingsDisplay = function() {
 }
 
 function toggleOnboardingDisplay() {
-    let onboardingIcon = document.getElementById("onboardingIcon");
-    let onboardingContainer = document.getElementById("onboardingContainer");
-    let rightSideContainer = document.getElementById("rightSideContainer");
-    let sessionDisplay = document.getElementById("session");
-
     if (onboardingIcon.getAttribute("src") === "./assets/question.png") {
         onboardingContainer.style.display = "block";
         rightSideContainer.style.display = "none";
         sessionDisplay.style.display = "none";
-        onboardingIcon.setAttribute("src", "assets/xicon.png");
-        onboardingIcon.setAttribute("style", "border: 1px white")
+        onboardingIcon.style.width = "10px";
+        onboardingIcon.setAttribute("src", "./assets/xicon.png");
         
-
     }
     else {
         onboardingContainer.style.display = "none";
         rightSideContainer.style.display = "inline-block";
         sessionDisplay.style.display = "block";
         onboardingIcon.setAttribute("src", "./assets/question.png");
+
     }
 }

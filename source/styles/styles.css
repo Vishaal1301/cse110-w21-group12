@@ -147,10 +147,8 @@ input:focus {
     outline: none;
 }
 
-#onboardingIcon {
+/*#onboardingIcon {
     position: absolute;
     bottom: 4;
     left: 1;
-    width: 25px;
-    height: 25px;
-}  
+}  */
