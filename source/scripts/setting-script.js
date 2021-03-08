@@ -2,9 +2,6 @@
  * Setting Window/Content Variables
  */
  import {updateTimerSettings} from "./clock.js";
- const DEFAULT_FOCUS = 25;
- const DEFAULT_SHORT_BREAK = 5;
- const DEFAULT_LONG_BREAK = 15;
  const clock = document.getElementById("clock");
  let settingContent = document.getElementById("settingContent");
  let cafeVolumeSlider = settingContent.shadowRoot.querySelector("#cafeVolumeSlider");
@@ -18,19 +15,19 @@
  let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
  let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
  
- // cafe volume settings
+ // Cafe volume settings
  cafeVolumeSlider.addEventListener("input", () => {
      localStorage.setItem("cafeVolume", cafeVolumeSlider.value);
      cafeVolumeNumber.textContent = cafeVolumeSlider.value;
  });
  
- // alarm volume settings
+ // Alarm volume settings
  alarmVolumeSlider.addEventListener("input", () => {
      localStorage.setItem("alarmVolume", alarmVolumeSlider.value);
      alarmVolumeNumber.textContent = alarmVolumeSlider.value;
  });
  
- // focus session length settings
+ // Focus session length settings
  focusNumber.addEventListener("input", () => {
      if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
          focusNumber.style.backgroundColor = "red";
@@ -52,7 +49,8 @@
          );
      }
  });
- 
+
+ // Revert invalid input back to the last valid user input when exiting the input field
  focusNumber.addEventListener("focusout", () => {
      if(focusNumber.style.backgroundColor == "red") {
          focusNumber.value = localStorage.getItem("focusTime");
@@ -61,7 +59,7 @@
      }
  });
  
- // short break session length settings
+ // Short break session length settings
  shortBreakNumber.addEventListener("input", () => {
      if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
          shortBreakNumber.style.backgroundColor = "red";
@@ -84,6 +82,7 @@
      }
  });
  
+ // Revert invalid input back to the last valid user input when exiting the input field
  shortBreakNumber.addEventListener("focusout", () => {
      if(shortBreakNumber.style.backgroundColor == "red") {
          shortBreakNumber.value = localStorage.getItem("shortBreakTime");
@@ -92,7 +91,7 @@
      }
  });
  
- // long break session length settings
+ // Long break session length settings
  longBreakNumber.addEventListener("input", () => {
      if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
          longBreakNumber.style.backgroundColor = "red";
@@ -115,6 +114,7 @@
      }
  });
  
+ // Revert invalid input back to the last valid user input when exiting the input field
  longBreakNumber.addEventListener("focusout", () => {
      if(longBreakNumber.style.backgroundColor == "red") {
          longBreakNumber.value = localStorage.getItem("longBreakTime");

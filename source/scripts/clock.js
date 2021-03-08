@@ -18,7 +18,8 @@ let isCountdown = false;
 let countdown;
 
 /**
- * Start timer logic.
+ * Starts timer when user manually starts focus session 
+ * Changes display of rightSideContainer (the blue box)
  * 
  * @param {object} clock - The HTML element for the clock
  * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
@@ -48,7 +49,7 @@ function startTimer(clock, callback) {
 }
 
 /**
- * Stops timer when user manually stops focus session/skips break, and gets automatically called whenever timer hits 0
+ * Stops timer when user manually stops focus session/skips break
  * Changes display of rightSideContainer (the blue box)
  * Plays alarm and updates background audio
  * 

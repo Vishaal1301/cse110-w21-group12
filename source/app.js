@@ -3,7 +3,7 @@
  * @module modules/app
 */
 
-//Import clock logic from clock module
+// Import clock logic from clock module
 import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES} from "./scripts/clock.js";
 
 // App variables
@@ -23,9 +23,7 @@ window.addEventListener("load", function() {
     cafeSounds.loop = true;
 });
 
-/**
- * Update description and styling for cup and the current session text
- */
+// Update description and styling for cup and the current session text
 const updateCoffeeCup = () => {
     // Change clock color and displayed session on user mouse hover
     if (isCountdown) {
