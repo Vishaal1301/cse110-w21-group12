@@ -4,7 +4,7 @@ const DEBUG = false;
 const TEXT_COLOR = "white";
 const FOCUS_COLOR = "#eed039";
 const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
-const MAX_INPUT_LENGTH = 30;
+const MAX_INPUT_LENGTH = 20;
 
 let taskInput = document.getElementById("new-task"); //new-task
 let TasksHolder = document.getElementById("tasks"); //the tasks

@@ -30,7 +30,6 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
-/* added by 56 */
 #navIconContainer {
     display: flex;
     justify-content: space-between;
@@ -66,7 +65,6 @@ body {
     grid-column-end: 2;
     display: flex;
     align-content: center;
-    /* justify-content: center; */
     flex: 1;
     flex-direction: column;
     position: relative;
@@ -146,11 +144,3 @@ input:focus {
     color: white;
     outline: none;
 }
-
-#onboardingIcon {
-    position: absolute;
-    bottom: 4;
-    left: 1;
-    width: 25px;
-    height: 25px;
-}  
