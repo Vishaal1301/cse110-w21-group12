@@ -65,6 +65,7 @@ describe('Clock tests', () => {
             cy.tick(1000);
 
             cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
             cy.get('#clock').then(
                 $el => {
                     expect($el.text().trim()).equal(time);
@@ -159,7 +160,7 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(1000); //1 second
 
@@ -181,7 +182,7 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(300000); // Second break
 
@@ -205,11 +206,11 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(300000); // Second break
 
-            cy.tick(15000000); // Third focus
+            cy.tick(1500000); // Third focus
 
             cy.tick(1000); //1 second
 
@@ -231,11 +232,11 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(300000); // Second break
 
-            cy.tick(15000000); // Third focus
+            cy.tick(1500000); // Third focus
 
             cy.tick(300000); // Third break
 
@@ -259,15 +260,15 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(300000); // Second break
 
-            cy.tick(15000000); // Third focus
+            cy.tick(1500000); // Third focus
 
             cy.tick(300000); // Third break
 
-            cy.tick(15000000); // Fourth focus
+            cy.tick(1500000); // Fourth focus
 
             cy.tick(1000); // 1 second
 
@@ -289,15 +290,15 @@ describe('Clock tests', () => {
 
             cy.tick(300000); // First break
 
-            cy.tick(15000000); // Second focus
+            cy.tick(1500000); // Second focus
 
             cy.tick(300000); // Second break
 
-            cy.tick(15000000); // Third focus
+            cy.tick(1500000); // Third focus
 
             cy.tick(300000); // Third break
 
-            cy.tick(15000000); // Fourth focus
+            cy.tick(1500000); // Fourth focus
 
             cy.tick(900000); // Fourth/extended break
 
