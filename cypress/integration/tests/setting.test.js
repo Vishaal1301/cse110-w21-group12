@@ -89,7 +89,6 @@ describe('Setting test', () => {
                     .find("#focusContainer")
                     .find("#focusNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -100,7 +99,7 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
+
             it("inputting less than minimum focus session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
@@ -109,7 +108,6 @@ describe('Setting test', () => {
                     .find("#focusNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -151,14 +149,13 @@ describe('Setting test', () => {
                     );
             });
     
-            it("inputting more than maximum focus session length", () => {
+            it("inputting more than maximum short break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -169,8 +166,8 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
-            it("inputting less than minimum focus session length", () => {
+
+            it("inputting less than minimum short break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
@@ -178,7 +175,6 @@ describe('Setting test', () => {
                     .find("#shortBreakNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -227,7 +223,6 @@ describe('Setting test', () => {
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
                     .type("9999")
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -238,7 +233,7 @@ describe('Setting test', () => {
                         }
                     );
             });
-    
+
             it("inputting less than minimum long break session length", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
@@ -247,7 +242,6 @@ describe('Setting test', () => {
                     .find("#longBreakNumber")
                     .clear()
                     .invoke('val', 1).trigger('input')
-                    .type("{enter}", {force: true});
                 
                 cy.get("#settingContent")
                     .shadow()

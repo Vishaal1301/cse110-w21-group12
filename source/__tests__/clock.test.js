@@ -1,5 +1,4 @@
-import { isCountdown, updateTimerSettings, sessionLengths, secondsToString, startStopTimer, countdown} from "../scripts/clock.js";
-
+import { isCountdown, updateTimerSettings, sessionLengths, secondsToString, startStopTimer} from "../scripts/clock.js";
 const callback = jest.fn();
 const testClock = document.createElement("div");
 const mockElem = {

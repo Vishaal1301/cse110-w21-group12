@@ -3,9 +3,10 @@
  * @module modules/app
 */
 
-//Import clock logic from clock module
+// Import clock logic from clock module
 import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent} from "./scripts/clock.js";
 
+// App variables
 const cup = document.getElementById("cup");
 const clock = document.getElementById("clock");
 const session = document.getElementById("session");
@@ -13,22 +14,21 @@ const cafeSounds = document.getElementById("cafeSounds");
 let currentState = session.innerHTML;
 let mouseOver = false;
 
-window.addEventListener("load", function(){
-    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60, localStorage.getItem("shortBreakTime") * 60, localStorage.getItem("longBreakTime") * 60);
-    // window.player.setVolume(localStorage.getItem("cafeVolume");
+// Update page setting to user customizations or default on initial render
+window.addEventListener("load", function() {
+    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60,
+        localStorage.getItem("shortBreakTime") * 60,
+        localStorage.getItem("longBreakTime") * 60);
     clock.style.display = "block";
     cafeSounds.loop = true;
 });
 
-/**
- * Update description and styling for cup
- * @param {void}
- * @returns {void}
- */
+// Update description and styling for cup and the current session text
 const updateCoffeeCup = () => {
-    if(isCountdown) {
+    // Change clock color and displayed session on user mouse hover
+    if (isCountdown) {
         currentState = session.innerHTML;
-        if(mouseOver && currentState == "Focus Session") {
+        if (mouseOver && currentState == "Focus Session") {
             session.innerHTML = "Stop Session?";
             clock.style.color = "red";
         } else if (mouseOver && (currentState == "Short Break" || currentState == "Long Break")) {
@@ -36,7 +36,7 @@ const updateCoffeeCup = () => {
             clock.style.color = "red";
         }
     } else {
-        if(mouseOver) {
+        if (mouseOver) {
             session.innerHTML = "Start Focus?";
             clock.style.color = "green";
         } else {
@@ -47,30 +47,26 @@ const updateCoffeeCup = () => {
     }
 };
 
-/**
- * Updates the session name and color of the time when mouse hovers over the cup
- */
+// Updates the session name and color of the time when mouse hovers over the cup
 cup.onmouseenter = () => {
     mouseOver = true;
     updateCoffeeCup();
 };
 
-/**
- * Resets the session name and color of the time when mouse stops hovering over the cup
- */
+// Resets the session name and color of the time when mouse stops hovering over the cup
 cup.onmouseleave = () => {
     mouseOver = false;
     session.innerHTML = currentState;
     clock.style.color = "white";
 };
 
-/**
- * Updates displays and timer state when user clicks on the cup
- */
+// Updates displays and timer state when user clicks on the cup
 cup.onclick = () => {
-    if(isCountdown){
+    if (isCountdown){
         const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
-        if(state == "Focus Session"){
+
+        // Show pop up based on the current session
+        if (state == "Focus Session"){
             displayAskResetFocus();
         } 
         else {
@@ -78,28 +74,28 @@ cup.onclick = () => {
         }
     } else {
         changeScreen();
-        // window.player.playVideo();
+        //window.player.playVideo();
         cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
         cafeSounds.play();
     }
 };
 
-/**
- * Starts / Stops timer depending on clock state
- * Updates coffee cup and session name as well
- */
-export function changeScreen(){
+// Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
+function changeScreen(){
     startStopTimer(clock, (state) => {
         currentState = state;
-        if(!mouseOver){
+        if (!mouseOver){
             session.innerHTML = state;
         }
     });
     currentState = session.innerHTML;
     updateCoffeeCup();
-}
+};
 
-//are you sure pop up for focus session
+/**
+ * Display "Are You Sure?" pop up when trying to end focus session
+ * Change the current session text accordingly
+ */
 function displayAskResetFocus() {
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "RESET FOCUS?";
@@ -111,9 +107,13 @@ function displayAskResetFocus() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayFocusContent);
-}
+};
 
-//are you sure pop up for break session
+/**
+ * Display "Are You Sure?"" pop up when trying to end break session
+ * Change the current session text accordingly
+ * Update eventlisterners 
+ */
 function displayAskResetBreak() {
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
@@ -126,4 +126,7 @@ function displayAskResetBreak() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayBreakContent);
-}
+};
+
+
+export {changeScreen};

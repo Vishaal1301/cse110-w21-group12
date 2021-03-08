@@ -2,8 +2,6 @@
  * Clock module
  * @module modules/clock
 */
-
-
 // Timer setting variables
 const POMO_CYCLES = 4; // Default Pomo cycle length
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}
@@ -13,7 +11,32 @@ let sessionNum = 0; // Default start session is Focus Session
 let isCountdown = false;
 let countdown;
 
-// Hide settings menu and task list when in focus mode
+/**
+ * Show settings menu, task list, and nav icon when in short, long break, or reset timer states
+ * Hides "Are You Sure?" display, the task being focused on, and change header to show "TASK LIST"
+ */
+function displayBreakContent() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "TASK LIST";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let newTask = document.getElementById("new-task");
+    newTask.style.visibility = "visible";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "block";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "flex";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
+
+    let navIcon = document.getElementById("navIcon");
+    navIcon.src = "./assets/setting-icon.png";
+};
+
+/**
+ * Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
+ * Displays selected task and updates rightSideContainer header to "Focus"
+ */
 function displayFocusContent() {
     // Set the current main task
     let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
@@ -35,44 +58,20 @@ function displayFocusContent() {
     navIconContainer.style.display = "none";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
     areYouSureOptions.style.display = "none";
-}
-
-// Show settings menu and task list when in short and long break state and at beginining
-function displayBreakContent() {
-    let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "TASK LIST";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
-    let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
-    let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "block";
-    let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "flex";
-    let newTask = document.getElementById("new-task");
-    newTask.style.visibility = "visible";
-
-    let navIcon = document.getElementById("navIcon");
-    navIcon.src = "./assets/setting-icon.png";
-}
+};
 
 /**
- * Start timer logic
- * 
- * default start state is Focus Session
- * if session number is the last (8, index 7) of the pomo cycle:
- *  current state is Long Break
- * else if session number is even:
- *  current state is Focus Session
- * else:
- *  current state is Short Break
+ * Starts timer when user manually starts focus session 
+ * Changes display of rightSideContainer (the blue box)
  * 
  * @param {object} clock - The HTML element for the clock
  * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function startTimer(clock, callback) {
+    // Get current state based on the current session nunmber
     const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
     document.getElementById("session").innerHTML = state;
+
     if (state == "Focus Session") {
         displayFocusContent();
     }
@@ -91,29 +90,27 @@ function startTimer(clock, callback) {
 }
 
 /**
- * top timer logic
- * 
- * default start state is Focus Session
- * if session number is the last (8, index 7) of the pomo cycle:
- *  current state is Long Break
- * else if session number is even:
- *  current state is Focus Session
- * else:
- *  current state is Short Break
+ * Stops timer when user manually stops focus session/skips break
+ * Changes display of rightSideContainer (the blue box)
+ * Plays alarm and updates background audio
  * 
  * @param {object} clock - The HTML element for the clock
  * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function stopTimer(clock, resetSkip, callback) {
+    // Get current state based on the current session number
     let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
     document.getElementById("session").innerHTML = state;
-    let alarm;
-    let skip = false;
+
+    //when curr state is focus session, we want to display, 
     if (state == "Focus Session") {
         displayBreakContent();
     } else {
         displayFocusContent();
     }
+
+    let alarm;
+    let skip = false;
 
     // Set alarm;
     isCountdown = false;
@@ -147,6 +144,7 @@ function stopTimer(clock, resetSkip, callback) {
             break;
         }
     }
+
     clearInterval(countdown);
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
