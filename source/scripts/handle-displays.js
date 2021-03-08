@@ -3,6 +3,7 @@ let onboardingIcon = document.getElementById("onboardingIcon");
 let onboardingContainer = document.getElementById("onboardingContainer");
 let rightSideContainer = document.getElementById("rightSideContainer");
 let sessionDisplay = document.getElementById("session");
+let xicon = document.getElementById("xicon");
 
 let toggleTasksSettingsDisplay = function() { 
     let navIcon = document.getElementById("navIcon"); 
@@ -27,7 +28,7 @@ let toggleTasksSettingsDisplay = function() {
     }
 }
 
-function toggleOnboardingDisplay() {
+/*function toggleOnboardingDisplay1() {
     if (onboardingIcon.getAttribute("src") === "./assets/question.png") {
         onboardingContainer.style.display = "block";
         rightSideContainer.style.display = "none";
@@ -43,4 +44,22 @@ function toggleOnboardingDisplay() {
         onboardingIcon.setAttribute("src", "./assets/question.png");
 
     }
-}
+} */
+
+function toggleOnboardingDisplay1() {
+    onboardingContainer.style.display = "block";
+    rightSideContainer.style.display = "none";
+    sessionDisplay.style.display = "none";
+    onboardingIcon.style.display = "none";
+    xicon.style.display = "block";
+
+} 
+
+function toggleOnboardingDisplay2() {
+    onboardingContainer.style.display = "none";
+    rightSideContainer.style.display = "inline-block";
+    sessionDisplay.style.display = "block";
+    onboardingIcon.style.display = "block";
+    xIcon.style.display = "none";
+
+} 

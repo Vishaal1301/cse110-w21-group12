@@ -11,7 +11,7 @@ let autoCycle = true; // Automatically start a new cycle when the current one en
 
 // {defaultFocusTime: 1500s, defaultShortBreak: 300s, defaultLongBreak: 900s}
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  
-let sessionNum = 0; // Iterator to keep track of the current session and its length
+let sessionNum = 0; // Index to keep track of the current session and its length
 
 // Global timer variables
 let isCountdown = false;
@@ -49,7 +49,8 @@ function startTimer(clock, callback) {
 
 /**
  * Stops timer when user manually stops focus session/skips break, and gets automatically called whenever timer hits 0
- *  
+ * Changes display of rightSideContainer (the blue box)
+ * Plays alarm and updates background audio
  * 
  * @param {object} clock - The HTML element for the clock
  * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
@@ -101,6 +102,7 @@ function stopTimer(clock, resetSkip, callback) {
             break;
         }
     }
+
     clearInterval(countdown);
     callback(state);
     clock.innerHTML = secondsToString(sessionLengths[sessionNum]);

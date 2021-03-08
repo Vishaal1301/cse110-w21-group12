@@ -15,7 +15,7 @@ let currentState = session.innerHTML;
 let mouseOver = false;
 
 // Update page setting to user customizations or default on initial render
-window.addEventListener("load", function(){
+window.addEventListener("load", function() {
     updateTimerSettings(clock, localStorage.getItem("focusTime") * 60,
         localStorage.getItem("shortBreakTime") * 60,
         localStorage.getItem("longBreakTime") * 60);
@@ -23,8 +23,11 @@ window.addEventListener("load", function(){
     cafeSounds.loop = true;
 });
 
-// Update description and styling for cup
+/**
+ * Update description and styling for cup and the current session text
+ */
 const updateCoffeeCup = () => {
+    // Change clock color and displayed session on user mouse hover
     if (isCountdown) {
         currentState = session.innerHTML;
         if (mouseOver && currentState == "Focus Session") {
@@ -63,6 +66,8 @@ cup.onmouseleave = () => {
 cup.onclick = () => {
     if (isCountdown){
         const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+
+        // Show pop up based on the current session
         if (state == "Focus Session"){
             displayAskResetFocus();
         } 
@@ -77,7 +82,7 @@ cup.onclick = () => {
     }
 };
 
-//Starts/Stops timer depending on clock state and updates coffee cup and session name accordingly
+// Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
 function changeScreen(){
     startStopTimer(clock, (state) => {
         currentState = state;
@@ -89,7 +94,10 @@ function changeScreen(){
     updateCoffeeCup();
 };
 
-// "Are You Sure?" pop up when trying to end focus session
+/**
+ * Display "Are You Sure?" pop up when trying to end focus session
+ * Change the current session text accordingly
+ */
 function displayAskResetFocus() {
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "RESET FOCUS?";
@@ -103,7 +111,11 @@ function displayAskResetFocus() {
     areYouSureNo.addEventListener("click", displayFocusContent);
 };
 
-// "Are You Sure?"" pop up when trying to end break session
+/**
+ * Display "Are You Sure?"" pop up when trying to end break session
+ * Change the current session text accordingly
+ * Update eventlisterners 
+ */
 function displayAskResetBreak() {
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
@@ -118,26 +130,32 @@ function displayAskResetBreak() {
     areYouSureNo.addEventListener("click", displayBreakContent);
 };
 
-// Show settings menu and task list when in short, long break state, and at beginining
+/**
+ * Show settings menu, task list, and nav icon when in short, long break, or reset timer states
+ * Hides "Are You Sure?" display, the task being focused on, and change header to show "TASK LIST"
+ */
 function displayBreakContent() {
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "TASK LIST";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
     let focusTask = document.getElementById("focusTask");
     focusTask.style.display = "none";
+    let newTask = document.getElementById("new-task");
+    newTask.style.visibility = "visible";
     let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "block";
     let navIconContainer = document.getElementById("navIconContainer");
     navIconContainer.style.display = "flex";
-    let newTask = document.getElementById("new-task");
-    newTask.style.visibility = "visible";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
 
     let navIcon = document.getElementById("navIcon");
     navIcon.src = "./assets/setting-icon.png";
 };
 
-// Hide settings menu and task list when in focus session
+/**
+ * Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
+ * Displays selected task and updates rightSideContainer header to "Focus"
+ */
 function displayFocusContent() {
     // Set the current main task
     let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;

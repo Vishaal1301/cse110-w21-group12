@@ -11,7 +11,7 @@
 } 
 
 .menu{
-  color: white;
+  color: red;
   background: transparent;
   border: none !important;
   font-size: 30px;
@@ -37,6 +37,10 @@ input[type="checkbox"]{
   width: 0.9vw;
 }
 
+#tasks{
+  margin-left: 3.8vh;
+}
+
 #new-task{
   display: inline;
   background: transparent;
@@ -46,7 +50,7 @@ input[type="checkbox"]{
   color: white;
   font-family: 'Open Sans', sans-serif;
   width: 70%; /*18vw; */
-  margin-left: 17%;
+  margin-left: 11vh;
 }
 
 /* Settings icon and task list icon (switches depending on view) */
@@ -56,7 +60,7 @@ input[type="checkbox"]{
   max-height:29px;
   width: 10%;
   height: 10%;
-  margin-right: 6%;
+  margin-right: 6.5%;
 }
 
 /* The container <div> - needed to position the dropdown content */
