@@ -78,7 +78,7 @@ cup.onclick = () => {
         }
     } else {
         changeScreen();
-        window.player.playVideo();
+        //window.player.playVideo();
         cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
         cafeSounds.play();
     }
