@@ -28,10 +28,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .invoke('show')
                 .find("#deleteButton")
                 .click()
                 .then(
@@ -56,10 +56,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .invoke('show')
                 .find("#mainTaskSelector")
                 .click()
                 .then(
@@ -75,7 +75,7 @@ describe("TaskList test", () => {
                 .get("input[type=text]")
                 .then(
                     $el => {
-                        expect($el).to.have.attr("style", "color: rgb(238, 208, 57);");
+                        expect($el).to.have.attr("style", "color: rgb(238, 208, 57); text-decoration: none;");
                     }
                 );
         });
@@ -88,26 +88,28 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .invoke('show')
                 .find("#mainTaskSelector")
                 .click();
             
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList 
+                .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show') // TODO: might need to change this to click() after Kevin update the TaskList
+                .invoke('show')
                 .find("#mainTaskSelector")
                 .click()
                 .then(
                     () => {
-                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
+                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.id)
                         .to.eq(null);
+                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
+                        .to.eq(undefined);
                     }
                 );
 
@@ -117,7 +119,7 @@ describe("TaskList test", () => {
                 .get("input[type=text]")
                 .then(
                     $el => {
-                        expect($el).to.have.attr("style", "color: white;");
+                        expect($el).to.have.attr("style", "color: white; text-decoration: none;");
                     }
                 );
         });
@@ -144,9 +146,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
+                .get("input[type=text]")
                 .then(
                     $el => {
-                        expect($el).to.have.attr("style", "text-decoration: line-through;");
+                        expect($el).to.have.attr("style", "color: rgb(179, 179, 179); text-decoration: line-through;");
                     }
                 );
         });
@@ -177,9 +180,10 @@ describe("TaskList test", () => {
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
+                .get("input[type=text]")
                 .then(
                     $el => {
-                        expect($el).to.have.attr("style", "text-decoration: none;");
+                        expect($el).to.have.attr("style", "color: white; text-decoration: none;");
                     }
                 );
         });
