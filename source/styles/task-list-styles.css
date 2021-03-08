@@ -11,7 +11,7 @@
 } 
 
 .menu{
-  color: white;
+  color: red;
   background: transparent;
   border: none !important;
   font-size: 30px;
@@ -45,19 +45,20 @@ input[type="checkbox"]{
   margin-bottom: 1vw;
   color: white;
   font-family: 'Open Sans', sans-serif;
-  width: 70%; /*18vw; */
-  margin-left: 17%;
+  width: 70%;
+  margin-left: 13%;
 }
 
 /* Settings icon and task list icon (switches depending on view) */
 #navIcon{
   display:inline;
-  max-width:29px;
-  max-height:29px;
+  max-width:20vh;
+  max-height:20vh;
   width: 10%;
   height: 10%;
-  margin-right: 6%;
+  margin-right: 10%;
 }
+
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {

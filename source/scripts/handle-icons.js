@@ -21,22 +21,26 @@ let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-v
     }
 }
 
-function toggleOnboardingDisplay() {
-    let onboardingIcon = document.getElementById("onboardingIcon");
-    let onboardingContainer = document.getElementById("onboardingContainer");
-    let rightSideContainer = document.getElementById("rightSideContainer");
-    let sessionDisplay = document.getElementById("session");
+let onboardingIcon = document.getElementById("onboardingIcon");
+let onboardingContainer = document.getElementById("onboardingContainer");
+let rightSideContainer = document.getElementById("rightSideContainer");
+let sessionDisplay = document.getElementById("session");
 
-    if (onboardingIcon.getAttribute("src") === "./assets/question.png") {
-        onboardingContainer.style.display = "block";
-        rightSideContainer.style.display = "none";
-        sessionDisplay.style.display = "none";
-        onboardingIcon.setAttribute("src", "assets/xicon.png");
-    }
-    else {
-        onboardingContainer.style.display = "none";
-        rightSideContainer.style.display = "inline-block";
-        sessionDisplay.style.display = "block";
-        onboardingIcon.setAttribute("src", "./assets/question.png");
-    }
-}
+function toggleOnboardingDisplay1() {
+    onboardingContainer.style.display = "block";
+    rightSideContainer.style.display = "none";
+    sessionDisplay.style.display = "none";
+    onboardingIcon.style.display = "none";
+    xicon.style.display = "block";
+
+} 
+
+function toggleOnboardingDisplay2() {
+    onboardingContainer.style.display = "none";
+    rightSideContainer.style.display = "inline-block";
+    sessionDisplay.style.display = "block";
+    onboardingIcon.style.display = "block";
+    xicon.style.display = "none";
+
+
+} 
