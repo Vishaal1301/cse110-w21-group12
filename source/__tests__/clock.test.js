@@ -14,7 +14,7 @@ global.window.HTMLMediaElement.prototype.play = jest.fn();
 jest.useFakeTimers();
 beforeEach(() => {
     if(isCountdown){
-        startStopTimer(testClock, callback)
+        startStopTimer(testClock, callback);
     }
     localStorage.clear();
     const newTasks = {"mainTask": {"name": null, 
@@ -67,7 +67,7 @@ test("startStopTimer called during break", () => {
 
 test("Entire Pomodoro cycle", () => {
     expect(startStopTimer(testClock, callback)).toBe(false);
-    jest.advanceTimersByTime(7800000)
+    jest.advanceTimersByTime(7800000);
     expect(setInterval).toHaveBeenCalledTimes(14);
 });
 
@@ -86,10 +86,10 @@ test("Skipping long break", () => {
     expect(testClock.innerHTML).toBe("00:01");
     expect(startStopTimer(testClock, callback)).toBe(true);
     expect(testClock.innerHTML).toBe("25:00");
-})
+});
 
 test("Updating timer while in break", () => {
     expect(startStopTimer(testClock, callback)).toBe(false);
     jest.advanceTimersByTime(1501000);
     updateTimerSettings(testClock, 30, 20, 40);
-})
+});

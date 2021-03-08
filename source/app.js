@@ -4,7 +4,7 @@
 */
 
 // Import clock logic from clock module
-import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent} from "./scripts/clock.js";
+import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent, displayBreakContent} from "./scripts/clock.js";
 
 // App variables
 const cup = document.getElementById("cup");
@@ -90,7 +90,7 @@ function changeScreen(){
     });
     currentState = session.innerHTML;
     updateCoffeeCup();
-};
+}
 
 /**
  * Display "Are You Sure?" pop up when trying to end focus session
@@ -107,7 +107,7 @@ function displayAskResetFocus() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayFocusContent);
-};
+}
 
 /**
  * Display "Are You Sure?"" pop up when trying to end break session
@@ -126,7 +126,7 @@ function displayAskResetBreak() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayBreakContent);
-};
+}
 
 
 export {changeScreen};

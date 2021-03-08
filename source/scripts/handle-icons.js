@@ -19,28 +19,25 @@ let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-v
         rightHeader.innerText = "TASK LIST";
         navIcon.setAttribute("src", "./assets/setting-icon.png");
     }
-}
+};
 
 let onboardingIcon = document.getElementById("onboardingIcon");
 let onboardingContainer = document.getElementById("onboardingContainer");
 let rightSideContainer = document.getElementById("rightSideContainer");
 let sessionDisplay = document.getElementById("session");
 
-function toggleOnboardingDisplay1() {
+function toggleOnboardingDisplay1() { // eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "block";
     rightSideContainer.style.display = "none";
     sessionDisplay.style.display = "none";
     onboardingIcon.style.display = "none";
-    xicon.style.display = "block";
-
+    xicon.style.display = "block"; //eslint-disable-line no-undef
 } 
 
-function toggleOnboardingDisplay2() {
+function toggleOnboardingDisplay2() { //eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "none";
     rightSideContainer.style.display = "inline-block";
     sessionDisplay.style.display = "block";
     onboardingIcon.style.display = "block";
-    xicon.style.display = "none";
-
-
+    xicon.style.display = "none"; //eslint-disable-line no-undef
 } 

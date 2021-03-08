@@ -31,7 +31,7 @@ function displayBreakContent() {
 
     let navIcon = document.getElementById("navIcon");
     navIcon.src = "./assets/setting-icon.png";
-};
+}
 
 /**
  * Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
@@ -58,7 +58,7 @@ function displayFocusContent() {
     navIconContainer.style.display = "none";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
     areYouSureOptions.style.display = "none";
-};
+}
 
 /**
  * Starts timer when user manually starts focus session 
@@ -209,4 +209,4 @@ function startStopTimer(clock, callback) {
     }
 }
 
-export { startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, countdown, secondsToString, displayFocusContent};
+export { startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, countdown, secondsToString, displayFocusContent, displayBreakContent};
