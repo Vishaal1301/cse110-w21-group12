@@ -135,6 +135,7 @@ input:focus {
     padding-right: 4vw;
     color: white;
     outline: none;
+    cursor: pointer;
 }
 
 #areYouSureNo {
@@ -143,4 +144,5 @@ input:focus {
     padding-left: 4vw;
     color: white;
     outline: none;
+    cursor: pointer;
 }

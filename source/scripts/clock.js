@@ -2,20 +2,63 @@
  * Clock module
  * @module modules/clock
 */
-
-import {displayFocusContent, displayBreakContent} from "../app.js";
-
 // Timer setting variables
 const POMO_CYCLES = 4; // Default Pomo cycle length
-let autoCycle = true; // Automatically start a new cycle when the current one ends
-
-// {defaultFocusTime: 1500s, defaultShortBreak: 300s, defaultLongBreak: 900s}
-let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  
-let sessionNum = 0; // Index to keep track of the current session and its length
+let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}
+let sessionNum = 0; // Default start session is Focus Session
 
 // Global timer variables
 let isCountdown = false;
 let countdown;
+
+/**
+ * Show settings menu, task list, and nav icon when in short, long break, or reset timer states
+ * Hides "Are You Sure?" display, the task being focused on, and change header to show "TASK LIST"
+ */
+function displayBreakContent() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "TASK LIST";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let newTask = document.getElementById("new-task");
+    newTask.style.visibility = "visible";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "block";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "flex";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
+
+    let navIcon = document.getElementById("navIcon");
+    navIcon.src = "./assets/setting-icon.png";
+}
+
+/**
+ * Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
+ * Displays selected task and updates rightSideContainer header to "Focus"
+ */
+function displayFocusContent() {
+    // Set the current main task
+    let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
+    if (currMainTask.name == null) {
+        document.getElementById("focusTask").textContent = "No focus task selected";
+    } else {
+        document.getElementById("focusTask").textContent = currMainTask.name;
+    }
+
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "FOCUS";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "block";
+    let settingsDiv = document.getElementById("settingsContainer");
+    settingsDiv.style.display = "none";
+    let taskListDiv = document.getElementById("taskListContainer");
+    taskListDiv.style.display = "none";
+    let navIconContainer = document.getElementById("navIconContainer");
+    navIconContainer.style.display = "none";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "none";
+}
 
 /**
  * Starts timer when user manually starts focus session 
@@ -41,9 +84,7 @@ function startTimer(clock, callback) {
 
         if (--timer < 0) {
             stopTimer(clock, false, callback);
-            // If autoCycle is enabled, restart the timer immediately
-            if (autoCycle)
-                startTimer(clock, callback);
+            startTimer(clock, callback);
         }
     }, 1000);
 }
@@ -77,7 +118,7 @@ function stopTimer(clock, resetSkip, callback) {
         if (state == "Focus Session") {
             sessionNum = 0;
         } else {
-            // If a pomo cycle ends: automatically start the next cycle
+            // If in a break session, skip to next focus session
             sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
             skip = true;
         }
@@ -159,11 +200,13 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
 function startStopTimer(clock, callback) {
     if (!isCountdown) {
         startTimer(clock, callback);
+        return false;
     }
     else {
         const resetSkip = true;
         stopTimer(clock, resetSkip, callback);
+        return true;
     }
 }
 
-export { startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, secondsToString};
+export { startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, sessionLengths, countdown, secondsToString, displayFocusContent, displayBreakContent};

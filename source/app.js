@@ -4,7 +4,7 @@
 */
 
 // Import clock logic from clock module
-import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES} from "./scripts/clock.js";
+import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent, displayBreakContent} from "./scripts/clock.js";
 
 // App variables
 const cup = document.getElementById("cup");
@@ -90,7 +90,7 @@ function changeScreen(){
     });
     currentState = session.innerHTML;
     updateCoffeeCup();
-};
+}
 
 /**
  * Display "Are You Sure?" pop up when trying to end focus session
@@ -107,7 +107,7 @@ function displayAskResetFocus() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayFocusContent);
-};
+}
 
 /**
  * Display "Are You Sure?"" pop up when trying to end break session
@@ -126,55 +126,7 @@ function displayAskResetBreak() {
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayBreakContent);
-};
+}
 
-/**
- * Show settings menu, task list, and nav icon when in short, long break, or reset timer states
- * Hides "Are You Sure?" display, the task being focused on, and change header to show "TASK LIST"
- */
-function displayBreakContent() {
-    let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "TASK LIST";
-    let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
-    let newTask = document.getElementById("new-task");
-    newTask.style.visibility = "visible";
-    let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "block";
-    let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "flex";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
 
-    let navIcon = document.getElementById("navIcon");
-    navIcon.src = "./assets/setting-icon.png";
-};
-
-/**
- * Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
- * Displays selected task and updates rightSideContainer header to "Focus"
- */
-function displayFocusContent() {
-    // Set the current main task
-    let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
-    if (currMainTask.name == null) {
-        document.getElementById("focusTask").textContent = "No focus task selected";
-    } else {
-        document.getElementById("focusTask").textContent = currMainTask.name;
-    }
-
-    let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "FOCUS";
-    let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "block";
-    let settingsDiv = document.getElementById("settingsContainer");
-    settingsDiv.style.display = "none";
-    let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "none";
-    let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "none";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
-};
-
-export {displayFocusContent, displayBreakContent, changeScreen};
+export {changeScreen};
