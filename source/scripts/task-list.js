@@ -135,7 +135,6 @@ let addTask = function(taskName, checked, id) {
  * @param {string} taskName - The name of the new task
  * @param {boolean} checked - whether or not the task should be checked
  * @param {number} id - The unique ID of the task
- * @returns {boolean} True if sucessful, false otherwise
  */
 let deleteTask = function() {	
     // Get the task element
@@ -199,7 +198,6 @@ let selectMainTask = function(){
 /**
  * Helper function for binding all functions to task elements
  * @param {Object} - reference to the task element
- * @returns {boolean} True if sucessful, false otherwise
  */
 let bindTaskEvents = function(taskListItem) {
 
