@@ -1,6 +1,6 @@
 describe('Setting test', () => {
     beforeEach(() => {
-      cy.visit("http://127.0.0.1:5500/source/index.html"); // TODO: change URL when deploy
+      cy.visit("http://127.0.0.1:5500/source_test/index.html"); // TODO: change URL when deploy
     });
     
     describe("open/close setting window test", () => {
@@ -118,6 +118,53 @@ describe('Setting test', () => {
                         }
                     );
             });
+
+            it("Focus session length focus out on valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .find("#focusNumber")
+                    .clear()
+                    .invoke('val', 25).trigger('input')
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
+
+            it("Reset invalid focus session back to last valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .find("#focusNumber")
+                    .type("9999")
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
         });
 
         describe('test setting short break session length', () => {
@@ -182,6 +229,54 @@ describe('Setting test', () => {
                     .then(
                         $el => {
                             expect($el).to.have.attr("style", "background-color: red;");
+                        }
+                    );
+            });
+
+            it("Short break focus out on valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakContainer")
+                    .find("#shortBreakNumber")
+                    .clear()
+                    .invoke('val', 5).trigger('input')
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
+
+            it("Reset invalid short break length back to last valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakContainer")
+                    .find("#shortBreakNumber")
+                    .clear()
+                    .invoke('val', 1).trigger('input')
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#shortBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
                         }
                     );
             });
@@ -252,6 +347,55 @@ describe('Setting test', () => {
                         }
                     );
             });
+
+            it("Long break focus out on valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakContainer")
+                    .find("#longBreakNumber")
+                    .clear()
+                    .invoke('val', 15).trigger('input')
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            })
+
+            it("Reset invalid long break length back to last valid input", () => {
+                cy.get("#navIcon").click();
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakContainer")
+                    .find("#longBreakNumber")
+                    .clear()
+                    .invoke('val', 1).trigger('input')
+
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#focusContainer")
+                    .click();
+                
+                cy.get("#settingContent")
+                    .shadow()
+                    .find("#longBreakNumber")
+                    .then(
+                        $el => {
+                            expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
+                        }
+                    );
+            });
+            
         });
     });
 });

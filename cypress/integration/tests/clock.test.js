@@ -91,6 +91,53 @@ describe('Clock tests', () => {
             );
         });
 
+        it('Hover over clock displays "skip break?" during short break', () => {
+            cy.clock();
+            
+            let time = secondsToString(300); // 5 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get('#cup')
+                .trigger('mouseover');
+
+            cy.get('#session')
+                .contains('Skip Break?');
+        });
+
+        it('Hover over clock displays "skip break?" during long break', () => {
+            cy.clock();
+
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000); // First focus
+
+            cy.tick(300000); // First break
+
+            cy.tick(1500000); // Second focus
+
+            cy.tick(300000); // Second break
+
+            cy.tick(1500000); // Third focus
+
+            cy.tick(300000); // Third break
+
+            cy.tick(1500000); // Fourth focus
+
+            cy.tick(1000); // Fourth/extended break
+
+            cy.get('#cup')
+                .trigger('mouseover');
+
+            cy.get('#session')
+                .contains('Skip Break?');
+
+        });
+
         it('Break clock time starts automatically', () => {
             cy.clock();
 
@@ -126,6 +173,47 @@ describe('Clock tests', () => {
                 }
             );
         });
+
+        it('Clock goes to next focus session when break clock is stopped', () => {
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+            cy.tick(1000);
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
+
+        it('Clock goes to next focus session and starts automatically when break clock is stopped', () => {
+            let time = secondsToString(1499); // 24 minutes 59 seconds
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+            cy.tick(1000);
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
+
+            cy.tick(1000);
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
+
     });
 
     describe('Clock works when going between sessions', () => {
@@ -279,10 +367,10 @@ describe('Clock tests', () => {
             );
         });
 
-        it('Clock goes back after session concludes', () => {
+        it('Clock goes back after last break session concludes', () => {
             cy.clock();
 
-            let time = secondsToString(1500); // 5 minutes
+            let time = secondsToString(1500); // 25 minutes
 
             cy.get('#cup').click();
 
@@ -301,6 +389,39 @@ describe('Clock tests', () => {
             cy.tick(1500000); // Fourth focus
 
             cy.tick(900000); // Fourth/extended break
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
+
+        it('Clock goes back to first focus session after skipping last break session', () => {
+            cy.clock();
+
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000); // First focus
+
+            cy.tick(300000); // First break
+
+            cy.tick(1500000); // Second focus
+
+            cy.tick(300000); // Second break
+
+            cy.tick(1500000); // Third focus
+
+            cy.tick(300000); // Third break
+
+            cy.tick(1500000); // Fourth focus
+
+            cy.tick(1000); // Fourth/extended break
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
 
             cy.get('#clock').then(
                 $el => {
@@ -350,6 +471,37 @@ describe('Clock tests', () => {
                     expect($el.text().trim()).equal(time);
                 }
             );
+        });
+    });
+
+    describe('Focus task clock test', () => {
+
+        it('Set focus task and start clock', () => {
+            let taskName = "Focus Task";
+
+            cy.get("#new-task")
+                .type(taskName)
+                .type("{enter}", {force: true});
+            
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+            
+            cy.clock();
+            cy.get('#cup').click();
+            cy.tick(1000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal(taskName);
+                }
+            )
         });
     });
 });

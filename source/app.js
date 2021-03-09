@@ -48,13 +48,13 @@ const updateCoffeeCup = () => {
 };
 
 // Updates the session name and color of the time when mouse hovers over the cup
-cup.onmouseenter = () => {
+cup.onmouseover = () => {
     mouseOver = true;
     updateCoffeeCup();
 };
 
 // Resets the session name and color of the time when mouse stops hovering over the cup
-cup.onmouseleave = () => {
+cup.onmouseout = () => {
     mouseOver = false;
     session.innerHTML = currentState;
     clock.style.color = "white";
