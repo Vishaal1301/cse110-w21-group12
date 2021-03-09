@@ -126,6 +126,46 @@ describe('Clock tests', () => {
                 }
             );
         });
+
+        it('Clock goes to next focus session when break clock is stopped', () => {
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+            cy.tick(1000);
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
+
+        it('Clock goes to next focus session and starts automatically when break clock is stopped', () => {
+            let time = secondsToString(1499); // 24 minutes 59 seconds
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+            cy.tick(1000);
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
+
+            cy.tick(1000);
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
     });
 
     describe('Clock works when going between sessions', () => {
@@ -350,6 +390,37 @@ describe('Clock tests', () => {
                     expect($el.text().trim()).equal(time);
                 }
             );
+        });
+    });
+
+    describe('Focus task clock test', () => {
+
+        it('Set focus task and start clock', () => {
+            let taskName = "Focus Task";
+
+            cy.get("#new-task")
+                .type(taskName)
+                .type("{enter}", {force: true});
+            
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+            
+            cy.clock();
+            cy.get('#cup').click();
+            cy.tick(1000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal(taskName);
+                }
+            )
         });
     });
 });
