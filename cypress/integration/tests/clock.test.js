@@ -319,10 +319,10 @@ describe('Clock tests', () => {
             );
         });
 
-        it('Clock goes back after session concludes', () => {
+        it('Clock goes back after last break session concludes', () => {
             cy.clock();
 
-            let time = secondsToString(1500); // 5 minutes
+            let time = secondsToString(1500); // 25 minutes
 
             cy.get('#cup').click();
 
@@ -341,6 +341,39 @@ describe('Clock tests', () => {
             cy.tick(1500000); // Fourth focus
 
             cy.tick(900000); // Fourth/extended break
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+        });
+
+        it('Clock goes back to first focus session after skipping last break session', () => {
+            cy.clock();
+
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000); // First focus
+
+            cy.tick(300000); // First break
+
+            cy.tick(1500000); // Second focus
+
+            cy.tick(300000); // Second break
+
+            cy.tick(1500000); // Third focus
+
+            cy.tick(300000); // Third break
+
+            cy.tick(1500000); // Fourth focus
+
+            cy.tick(1000); // Fourth/extended break
+
+            cy.get('#cup').click();
+            cy.get('#areYouSureYes').click();
 
             cy.get('#clock').then(
                 $el => {
