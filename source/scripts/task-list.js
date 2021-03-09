@@ -1,6 +1,5 @@
 import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
 const MENU_BUTTON_SIZE = 25;
-const DEBUG = false;
 const TEXT_COLOR = "white";
 const FOCUS_COLOR = "#eed039";
 const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
@@ -121,9 +120,6 @@ let addTask = function(taskName, checked, id) {
     if(!taskName)
         return false;
 
-    if(DEBUG)
-        console.log("Add task...");
-	
     let listItem = createNewTaskElement(taskName, checked, id);
     //Append listItem to TasksHolder
     TasksHolder.appendChild(listItem);
@@ -139,12 +135,8 @@ let addTask = function(taskName, checked, id) {
  * @param {string} taskName - The name of the new task
  * @param {boolean} checked - whether or not the task should be checked
  * @param {number} id - The unique ID of the task
- * @returns {boolean} True if sucessful, false otherwise
  */
-let deleteTask = function() {
-    if(DEBUG)
-        console.log("Delete task...");
-	
+let deleteTask = function() {	
     // Get the task element
     let listItem = this.parentNode.parentNode.parentNode;
     let ul = listItem.parentNode;
@@ -164,14 +156,10 @@ let deleteTask = function() {
 
 /**
  * Set a task as the main task
- * @returns {boolean} True if sucessful, false otherwise
  */
 let selectMainTask = function(){
     let listItem = this.parentNode.parentNode.parentNode; // <li> taskItem
     let text = listItem.querySelector("input[type=text]");
-
-    if(!listItem || !text)
-        return false;
 
     tasks = JSON.parse(stor.getItem("tasks"));
 
@@ -205,14 +193,11 @@ let selectMainTask = function(){
             }
         }
     }
-
-    return true;
 };
 
 /**
  * Helper function for binding all functions to task elements
  * @param {Object} - reference to the task element
- * @returns {boolean} True if sucessful, false otherwise
  */
 let bindTaskEvents = function(taskListItem) {
 
