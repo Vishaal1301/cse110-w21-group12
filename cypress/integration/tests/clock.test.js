@@ -91,6 +91,53 @@ describe('Clock tests', () => {
             );
         });
 
+        it('Hover over clock displays "skip break?" during short break', () => {
+            cy.clock();
+            
+            let time = secondsToString(300); // 5 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get('#cup')
+                .trigger('mouseover');
+
+            cy.get('#session')
+                .contains('Skip Break?');
+        });
+
+        it('Hover over clock displays "skip break?" during long break', () => {
+            cy.clock();
+
+            let time = secondsToString(1500); // 25 minutes
+
+            cy.get('#cup').click();
+
+            cy.tick(1500000); // First focus
+
+            cy.tick(300000); // First break
+
+            cy.tick(1500000); // Second focus
+
+            cy.tick(300000); // Second break
+
+            cy.tick(1500000); // Third focus
+
+            cy.tick(300000); // Third break
+
+            cy.tick(1500000); // Fourth focus
+
+            cy.tick(1000); // Fourth/extended break
+
+            cy.get('#cup')
+                .trigger('mouseover');
+
+            cy.get('#session')
+                .contains('Skip Break?');
+
+        });
+
         it('Break clock time starts automatically', () => {
             cy.clock();
 
