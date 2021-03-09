@@ -213,7 +213,6 @@ describe('Clock tests', () => {
                 }
             );
         });
-
     });
 
     describe('Clock works when going between sessions', () => {
