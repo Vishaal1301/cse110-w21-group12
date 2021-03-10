@@ -5,14 +5,16 @@ const FOCUS_COLOR = "#eed039";
 const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
 const MAX_INPUT_LENGTH = 20;
 
-let taskInput = document.getElementById("new-task"); //new-task
-let TasksHolder = document.getElementById("tasks"); //the tasks
+let taskInput = document.getElementById("new-task"); // New-task
+let TasksHolder = document.getElementById("tasks"); // Current tasks
+let deleteButton = taskListItem.querySelector("#deleteButton"); // Delete task button
+let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector"); // Set main task button
 
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
 let tasks = JSON.parse(stor.getItem("tasks"));
 
-if(stor.getItem("tasks") == null){
+if (stor.getItem("tasks") == null){
     const newTasks = {"mainTask": {"name": null, 
         "checked": false, 
         "id": null}, 
@@ -23,7 +25,7 @@ if(stor.getItem("tasks") == null){
 
 // On window load, render all tasks in the task list
 window.addEventListener("DOMContentLoaded", function() {
-    for(let i = 0; i < tasks.list.length; i++){
+    for (let i = 0; i < tasks.list.length; i++){
         const task = tasks.list[i];
         addTask(task.name, task.checked, i, tasks.mainTask.id);
     }
@@ -37,7 +39,6 @@ window.addEventListener("DOMContentLoaded", function() {
  * @returns {object} A reference to the new li element
  */
 let createNewTaskElement = function(taskString, checked, id) {
-
     // Create List Item
     let listItem = document.createElement("li");
     listItem.setAttribute("class", "taskItem");
@@ -54,19 +55,20 @@ let createNewTaskElement = function(taskString, checked, id) {
     editInput.id = id;
     editInput.minLength = 3;
     editInput.setAttribute("maxlength", MAX_INPUT_LENGTH);
-    if(checkBox.checked){
+    if (checkBox.checked){
         editInput.style.color = TEXT_CROSSED_OUT_COLOR;
         editInput.style.textDecoration = "line-through";
     }
-    else{
+    else {
         editInput.style.color = TEXT_COLOR;
         editInput.style.textDecoration = "none";
     }
 
     // If this task is the main task, set the color to yellow
     const mainTask = JSON.parse(stor.getItem("tasks")).mainTask.id;
-    if(mainTask == id)
+    if (mainTask == id) {
         editInput.style.color = FOCUS_COLOR;
+    }
 
     // Create div for the drop down components
     let dropdownDiv = document.createElement("div");
@@ -117,8 +119,9 @@ let createNewTaskElement = function(taskString, checked, id) {
  */
 let addTask = function(taskName, checked, id) {
     // If there is no task name, return false
-    if(!taskName)
+    if(!taskName) {
         return false;
+    }
 
     let listItem = createNewTaskElement(taskName, checked, id);
     //Append listItem to TasksHolder
@@ -167,13 +170,13 @@ let selectMainTask = function(){
     let currMainTask = tasks.mainTask;
 	
     // If the selected task was already main task, remove main task. Otherwise set it as main task. 
-    if(currMainTask.id === text.id) {
+    if (currMainTask.id === text.id) {
         text.style.color = TEXT_COLOR;
         currMainTask.name = null;
         currMainTask.id = null;
         updateMainTask(currMainTask);
     }
-    else{
+    else {
         currMainTask.name = text.value;
         currMainTask.id = text.id;
         text.style.color = FOCUS_COLOR;
@@ -184,11 +187,11 @@ let selectMainTask = function(){
     for (let i = 0; i < TasksHolder.children.length; i++) {
         const taskElement = TasksHolder.children[i].children[1];
         const checkbox = TasksHolder.children[i].children[0];
-        if(taskElement.id !== currMainTask.id){
-            if(checkbox.checked){
+        if (taskElement.id !== currMainTask.id){
+            if (checkbox.checked){
                 taskElement.style.color = TEXT_CROSSED_OUT_COLOR;
             }
-            else{
+            else {
                 taskElement.style.color = TEXT_COLOR;
             }
         }
@@ -200,14 +203,12 @@ let selectMainTask = function(){
  * @param {Object} - reference to the task element
  */
 let bindTaskEvents = function(taskListItem) {
-
     // let deleteButton = taskListItem.querySelector("button.menu");
     let checkBox = taskListItem.querySelector("input[type=checkbox]");
     let text = taskListItem.querySelector("input[type=text]");
     let dropdownButton = taskListItem.querySelector("#dropDownButton");
     let focusButton =  taskListItem.querySelector("#mainTaskSelector");
     let dropdownContent =  taskListItem.querySelector(".dropdown-content");
-
 
     // show the button on hover
     taskListItem.onmouseover = function(){
@@ -224,18 +225,18 @@ let bindTaskEvents = function(taskListItem) {
     dropdownButton.onclick = function(){
 
         // Disable the focus button if the item is checked
-        if(checkBox.checked){
+        if (checkBox.checked){
             focusButton.style.display = "none";
         }
-        else{
+        else {
             focusButton.style.display = "block";
         }
 
         // Toggle showing the dropdown menu
-        if(!dropdownButton.active){
+        if (!dropdownButton.active){
             dropdownContent.style.display = "block";
         }
-        else{
+        else {
             dropdownContent.style.display = "none";
         }
 
@@ -244,41 +245,35 @@ let bindTaskEvents = function(taskListItem) {
 
     window.onclick = function(e) {
         let tasks = TasksHolder.children;
-        for(let i = 0; i < tasks.length; i++){
+        for (let i = 0; i < tasks.length; i++){
             let task = tasks[i];
             let dropdownButton = task.children[2].children[0];
             let dropdownContent = task.children[2].children[1];
-            if(!(e.target == dropdownButton) && dropdownButton.active){
+            if (!(e.target == dropdownButton) && dropdownButton.active){
                 dropdownButton.active = false;
                 dropdownContent.style.display = "none";
                 dropdownButton.style.display = "none";
             }
         }
-    
     };
-
-    let deleteButton = taskListItem.querySelector("#deleteButton");
-    let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
 
     mainTaskSelector.onclick = selectMainTask;
     deleteButton.onclick = deleteTask;
 
     text.onchange = function () {
-        if(text.value == ""){
+        if (text.value == ""){
             let listItem = text.parentNode;
             let ul = listItem.parentNode;
-            // ul.removeChild(listItem);
-            // unstoreTask(listItem.id);
             ul.removeChild(listItem);
 
             unstoreTask(listItem.children[1].id);
 
             let children = ul.children;
-            for(let i = 0; i < children.length; i++){
+            for (let i = 0; i < children.length; i++){
                 children[i].children[1].id = i;
             }
         }
-        else{
+        else {
             editTask(text.value, text.id);
         }
     };
@@ -299,7 +294,7 @@ let bindTaskEvents = function(taskListItem) {
                 updateMainTask(tasks.mainTask);
             }
         }
-        else{
+        else {
             text.style.textDecoration = "none";
             text.style.color = TEXT_COLOR;
             updateTask(text.id, false);
@@ -309,9 +304,9 @@ let bindTaskEvents = function(taskListItem) {
 
 //Set the enter key to the addTask function
 taskInput.addEventListener("keyup", (event) => {
-    if(event.key === "Enter"){
+    if (event.key === "Enter"){
         tasks = JSON.parse(stor.getItem("tasks"));
-        if(tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
+        if (tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
             storeTask(taskInput.value);
         taskInput.value = null;
     }
