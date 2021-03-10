@@ -20,12 +20,12 @@
         <link rel="stylesheet" href="./styles/task-list-styles.css">
     </head>
 
-<!--
-    - Naming concentions
-        id: camelCase
-        class: camelCase
-        custom component/element: x-y
--->
+    <!--
+        - Naming concentions
+            id: camelCase
+            class: camelCase
+            custom component/element: x-y
+    -->
     <body>
         <main class="myContainer">
             <audio id="cafeSounds" src="./assets/cafeSounds.mp3"></audio>
@@ -65,14 +65,12 @@
             </div>
 
         <div id="music"></div>
-        <!-- <iframe id="music" width="1" height="1" wmode="transparent" src="https://www.youtube.com/embed/5qap5aO4i9A?enablejsapi=1&controls=0" frameborder="0" allow="autoplay;"></iframe> -->
+        
         </main>
 
-     
         <input id="onboardingIcon" style = "position: absolute; bottom: 4; left: 1; width: 25px; height: 25px;" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
         <input id="xicon" style = "display: none; position: absolute; bottom: 10px; left: 10px; width: 20px; height: 20px;" type="image" src="./assets/xicon.png" onclick="closeOnboardingMenu()"> 
         
-
         <div id="popup">
             <div id="onboardingContainer" style="margin: 0;display:none">
                 <div class="in-middle" style="  flex-direction: column; justify-content: center; align-items: center; display: flex; height: 100vh; background-color: rgba(24, 29, 40, 0.25);">
