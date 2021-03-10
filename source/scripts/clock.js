@@ -2,6 +2,7 @@
  * Clock module
  * @module modules/clock
 */
+
 // Timer setting variables
 const POMO_CYCLES = 4; // Default Pomo cycle length
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}

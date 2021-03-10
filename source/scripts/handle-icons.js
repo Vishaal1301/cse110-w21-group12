@@ -1,3 +1,15 @@
+/**
+ * Functions to handle display of Task List, Settings, and Onboarding menu
+ */
+
+let onboardingIcon = document.getElementById("onboardingIcon");
+let onboardingContainer = document.getElementById("onboardingContainer");
+let rightSideContainer = document.getElementById("rightSideContainer");
+let sessionDisplay = document.getElementById("session");
+
+/**
+ * Show TaskList or Settings based on the current display
+ */
 let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-vars
     let navIcon = document.getElementById("navIcon"); 
     let taskListDiv = document.getElementById("taskListContainer");
@@ -21,12 +33,10 @@ let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-v
     }
 };
 
-let onboardingIcon = document.getElementById("onboardingIcon");
-let onboardingContainer = document.getElementById("onboardingContainer");
-let rightSideContainer = document.getElementById("rightSideContainer");
-let sessionDisplay = document.getElementById("session");
-
-function toggleOnboardingDisplay1() { // eslint-disable-line no-unused-vars
+/**
+ * Show onboarding menu and hide the Task List/Settings, Clock, and the current state text
+ */
+function displayOnboardingMenu() { // eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "block";
     rightSideContainer.style.display = "none";
     sessionDisplay.style.display = "none";
@@ -34,7 +44,10 @@ function toggleOnboardingDisplay1() { // eslint-disable-line no-unused-vars
     xicon.style.display = "block"; //eslint-disable-line no-undef
 } 
 
-function toggleOnboardingDisplay2() { //eslint-disable-line no-unused-vars
+/**
+ * Hide onboarding menu and hide the Task List/Settings, Clock, and the current state text
+ */
+function closeOnboardingMenu() { //eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "none";
     rightSideContainer.style.display = "inline-block";
     sessionDisplay.style.display = "block";
