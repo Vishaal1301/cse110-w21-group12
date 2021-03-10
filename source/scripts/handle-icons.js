@@ -26,7 +26,10 @@ let onboardingContainer = document.getElementById("onboardingContainer");
 let rightSideContainer = document.getElementById("rightSideContainer");
 let sessionDisplay = document.getElementById("session");
 
-function toggleOnboardingDisplay1() { // eslint-disable-line no-unused-vars
+/**
+ * 
+ */
+function displayOnboardingMenu() { // eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "block";
     rightSideContainer.style.display = "none";
     sessionDisplay.style.display = "none";
@@ -34,7 +37,10 @@ function toggleOnboardingDisplay1() { // eslint-disable-line no-unused-vars
     xicon.style.display = "block"; //eslint-disable-line no-undef
 } 
 
-function toggleOnboardingDisplay2() { //eslint-disable-line no-unused-vars
+/**
+ * 
+ */
+function closeOnboardingMenu() { //eslint-disable-line no-unused-vars
     onboardingContainer.style.display = "none";
     rightSideContainer.style.display = "inline-block";
     sessionDisplay.style.display = "block";
