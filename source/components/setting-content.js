@@ -19,7 +19,8 @@ class SettingContent extends HTMLElement {
         localStorage.setItem("focusTime", focusTime);
         localStorage.setItem("shortBreakTime", shortBreakTime);
         localStorage.setItem("longBreakTime", longBreakTime);
-          
+        
+        // The Setting content component
         shadow.innerHTML = `
           <div class="settingContent"> 
             <div id="focusContainer">

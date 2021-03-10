@@ -129,5 +129,4 @@ let updateMainTask = function(mainTask){
     stor.setItem("tasks", JSON.stringify(tasks));
 };
 
-
 export {storeTask, unstoreTask, updateTask, editTask, updateMainTask};
