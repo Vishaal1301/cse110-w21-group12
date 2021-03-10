@@ -21,6 +21,7 @@ window.addEventListener("load", function() {
         localStorage.getItem("longBreakTime") * 60);
     clock.style.display = "block";
     cafeSounds.loop = true;
+    cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
 });
 
 // Update description and styling for cup and the current session text
@@ -74,7 +75,7 @@ cup.onclick = () => {
         }
     } else {
         changeScreen();
-        //window.player.playVideo();
+        cafeSounds.src = cafeSounds.dataset.src;
         cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
         cafeSounds.play();
     }
