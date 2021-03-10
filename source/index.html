@@ -28,7 +28,7 @@
     -->
     <body>
         <main class="myContainer">
-            <audio id="cafeSounds" src="./assets/cafeSounds.mp3"></audio>
+            <audio id="cafeSounds" data-src="./assets/cafeSounds.mp3"></audio>
             <div id="gridContainer">
                 <div id="timerContainer">
                     <div id="cup">
@@ -64,8 +64,6 @@
                 </div>
             </div>
 
-        <div id="music"></div>
-        
         </main>
 
         <input id="onboardingIcon" style = "position: absolute; bottom: 4; left: 1; width: 25px; height: 25px;" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
@@ -139,7 +137,6 @@
         <script type="module" src="./scripts/setting-script.js"></script>
         <script type="module" src="./scripts/task-list.js"></script>
         <script src="./scripts/handle-icons.js"></script>
-        <script src="./scripts/sounds.js"></script>
     </body>
 </html>
 
