@@ -31,7 +31,7 @@ body {
 }
 
 #navIconContainer {
-    display: flex;
+    display: block;
     justify-content: space-between;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -87,7 +87,7 @@ body {
 #clock { 
     display: none;
     color: white;
-    font-size: 10vh;
+    font-size: 135px;
     z-index: 100;
     user-select: none;
     pointer-events: none;
@@ -95,6 +95,31 @@ body {
     font-family: 'Open Sans', sans-serif;
 } 
 
+@media only screen and (max-width: 2335px) {
+    #clock{
+        display: none;
+        color: white;
+        font-size: 115px;
+        z-index: 100;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 800;
+        font-family: 'Open Sans', sans-serif;
+    }
+  }
+
+@media only screen and (max-width: 2000px) {
+    #clock{
+        display: none;
+        color: white;
+        font-size: 10vh;
+        z-index: 100;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 800;
+        font-family: 'Open Sans', sans-serif;
+    }
+  }
 #session {
     align-self: center;
     text-align: center;

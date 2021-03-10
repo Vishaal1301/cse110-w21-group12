@@ -24,7 +24,7 @@ class SettingContent extends HTMLElement {
           <div class="settingContent"> 
             <div id="focusContainer">
               <label class="inputLabel">Focus: </label>
-              <input class="textInputBox" id="focusNumber" type="number" min="15" max="60"
+              <input class="textInputBox" id="focusNumber" type="number" min=".1" max="60"
               value="${focusTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidFocusMessage" class="invalidMessage"> </span>
@@ -32,7 +32,7 @@ class SettingContent extends HTMLElement {
             
             <div id="shortBreakContainer">
               <label class="inputLabel">Short Break: </label>
-              <input class="textInputBox" id="shortBreakNumber" type="number" min="5" max="20"
+              <input class="textInputBox" id="shortBreakNumber" type="number" min=".1" max="20"
               value="${shortBreakTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidShortBreakMessage" class="invalidMessage"> </span>
@@ -40,7 +40,7 @@ class SettingContent extends HTMLElement {
             
             <div id="longBreakContainer">
               <label class="inputLabel">Long Break: </label>
-              <input class="textInputBox" id="longBreakNumber" type="number" min="10" max="40"
+              <input class="textInputBox" id="longBreakNumber" type="number" min=".1" max="40"
               value="${longBreakTime}">
               <label class="inputLabel"> min</label>
               <span id="invalidLongBreakMessage" class="invalidMessage"> </span>

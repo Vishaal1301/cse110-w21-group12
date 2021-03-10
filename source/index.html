@@ -45,16 +45,19 @@
                 <div id="taskListContainer">
                     <ul id="tasks">
                     </ul>
+                    <ul style="list-style-type: none; margin-left:6%"> <!--margin-left:6%-->
+                        <li>
+                                <input id="new-task" maxlength="35" placeholder="Add new item">
+                        </li> 
+                    </ul>
                 </div>
 
                 <div id="settingsContainer" class="settingsContainer">
                     <setting-content id="settingContent"></setting-content>
                 </div>
-
-                <div id="navIconContainer">
-                    <input id="new-task" maxlength="20" placeholder="Add new item">
+            <div id="navIconContainer">
                     <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettingsDisplay()">
-                </div>
+            </div>
 
                 <p id="focusTask" style="display:none">No focus task selected</p>
                 
@@ -64,8 +67,6 @@
                 </div>
             </div>
 
-        <div id="music"></div>
-        <!-- <iframe id="music" width="1" height="1" wmode="transparent" src="https://www.youtube.com/embed/5qap5aO4i9A?enablejsapi=1&controls=0" frameborder="0" allow="autoplay;"></iframe> -->
         </main>
 
      
@@ -76,8 +77,8 @@
         <div id="popup">
             <div id="onboardingContainer" style="margin: 0;display:none">
                 <div class="in-middle" style="  flex-direction: column; justify-content: center; align-items: center; display: flex; height: 100vh; background-color: rgba(24, 29, 40, 0.25);">
-                    <div id="popup" style="background-color: #181d28; width:1000px; height:600px;">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: auto; margin-right: auto; padding-top:2% ; width: 100%; max-width:850px; max-height:750px">
+                    <div id="popup" style="background-color: #181d28; width:1000px; height:620px;">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: auto; margin-right: auto; padding-top:2% ; width: 100%; max-width:850vw; max-height:750vw">
                             <ol class="carousel-indicators" style="margin:0;">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
