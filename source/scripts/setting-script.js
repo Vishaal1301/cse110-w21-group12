@@ -14,11 +14,13 @@ let longBreakNumber = settingContent.shadowRoot.querySelector("#longBreakNumber"
 let invalidFocusMessage = settingContent.shadowRoot.querySelector("#invalidFocusMessage");
 let invalidShortBreakMessage = settingContent.shadowRoot.querySelector("#invalidShortBreakMessage");
 let invalidLongBreakMessage = settingContent.shadowRoot.querySelector("#invalidLongBreakMessage");
- 
+let cafeSounds = document.querySelector("#cafeSounds");
+
 // Cafe volume settings
 cafeVolumeSlider.addEventListener("input", () => {
     localStorage.setItem("cafeVolume", cafeVolumeSlider.value);
     cafeVolumeNumber.textContent = cafeVolumeSlider.value;
+    cafeSounds.volume = cafeVolumeSlider.value / 100;
 });
  
 // Alarm volume settings
