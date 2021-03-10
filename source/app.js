@@ -97,6 +97,7 @@ function changeScreen(){
  * Change the current session text accordingly
  */
 function displayAskResetFocus() {
+    console.log("askfocus")
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "RESET FOCUS?";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
@@ -115,6 +116,7 @@ function displayAskResetFocus() {
  * Update eventlisterners 
  */
 function displayAskResetBreak() {
+    console.log("askbreak")
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "SKIP BREAK?";
