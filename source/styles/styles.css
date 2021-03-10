@@ -171,3 +171,69 @@ input:focus {
     outline: none;
     cursor: pointer;
 }
+
+#onboardingIcon {
+    position: absolute;
+    bottom: 4px;
+    left: 1px;
+    width: 25px;
+    height: 25px;
+}
+
+#xicon {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#inMiddle {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    background-color: rgba(24, 29, 40, 0.25);
+}
+
+#popup {
+    background-color: #181d28;
+    width:1000px;
+    height:620px;
+}
+
+#carouselExampleIndicators {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:2%;
+    width: 100%;
+    max-width:850vw;
+    max-height:750vw;
+}
+
+#onboardingContainer {
+    margin: 0;
+    display:none;
+}
+
+#carouselInner {
+    width:820px;
+    height:560px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.carousel-indicators {
+    margin:0;
+}
+
+.carouselPara {
+    text-align: center;
+    font-size: 6vh;
+    margin-bottom: 0;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}

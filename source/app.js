@@ -19,9 +19,16 @@ window.addEventListener("load", function() {
     updateTimerSettings(clock, localStorage.getItem("focusTime") * 60,
         localStorage.getItem("shortBreakTime") * 60,
         localStorage.getItem("longBreakTime") * 60);
+    // load and set music
+    cafeSounds.src = cafeSounds.dataset.src;
     clock.style.display = "block";
     cafeSounds.loop = true;
     cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+    // load popup images
+    var popupImages = document.querySelectorAll("img.popup");
+    popupImages.forEach(function(img) {
+        img.src = img.dataset.src;
+    });
 });
 
 // Update description and styling for cup and the current session text
@@ -97,6 +104,7 @@ function changeScreen(){
  * Change the current session text accordingly
  */
 function displayAskResetFocus() {
+    //console.log("ask focus")
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "RESET FOCUS?";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
@@ -115,6 +123,7 @@ function displayAskResetFocus() {
  * Update eventlisterners 
  */
 function displayAskResetBreak() {
+    //console.log("ask break")
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "SKIP BREAK?";
@@ -127,6 +136,5 @@ function displayAskResetBreak() {
     let areYouSureNo = document.getElementById("areYouSureNo");
     areYouSureNo.addEventListener("click", displayBreakContent);
 }
-
 
 export {changeScreen};

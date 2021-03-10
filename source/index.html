@@ -64,17 +64,16 @@
 
         </main>
 
-        <input id="onboardingIcon" style = "position: absolute; bottom: 4; left: 1; width: 25px; height: 25px;" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
-        <input id="xicon" style = "display: none; position: absolute; bottom: 10px; left: 10px; width: 20px; height: 20px;" type="image" src="./assets/xicon.png" onclick="closeOnboardingMenu()"> 
+        <input id="onboardingIcon" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
+        <input id="xicon" type="image" src="./assets/xicon.png" onclick="closeOnboardingMenu()"> 
         
         <!-- Onboarding menu content -->
-        <div id="popup">
-            <div id="onboardingContainer" style="margin: 0;display:none">
-                <div class="in-middle" style="  flex-direction: column; justify-content: center; align-items: center; display: flex; height: 100vh; background-color: rgba(24, 29, 40, 0.25);">
-
-                    <div id="popup" style="background-color: #181d28; width:1000px; height:620px;">
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="margin-left: auto; margin-right: auto; padding-top:2% ; width: 100%; max-width:850vw; max-height:750vw">
-                            <ol class="carousel-indicators" style="margin:0;">
+        <div id="mypopup">
+            <div id="onboardingContainer">
+                <div class="in-middle" id="inMiddle">
+                    <div id="popup">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -86,38 +85,38 @@
                             </ol>
 
                             <!-- Onboarding slides content -->
-                            <div class="carousel-inner" style="width:820px; height:560px; margin-right: auto; margin-left: auto;">
+                            <div class="carousel-inner" id="carouselInner">
                                 <div class="carousel-item active">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Welcome to Coffeetivity</p>
-                                    <img class="d-block w-100" src="./assets/popup1.png" alt="First slide"> 
+                                    <p class="carouselPara">Welcome to Coffeetivity</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup1.png" alt="First slide"> 
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Getting Started</p>
-                                    <img class="d-block w-100" src="./assets/popup2.png" alt="Second slide">
+                                    <p class="carouselPara">Getting Started</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup2.png" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Keep Track of Tasks</p>
-                                    <img class="d-block w-100" src="./assets/popup3.png" alt="Third slide">
+                                    <p class="carouselPara">Keep Track of Tasks</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup3.png" alt="Third slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Start a Session</p>
-                                    <img class="d-block w-100" src="./assets/popup4.png" alt="Fourth slide">
+                                    <p class="carouselPara">Start a Session</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup4.png" alt="Fourth slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Stop a Session</p>
-                                    <img class="d-block w-100" src="./assets/popup5.png" alt="Fifth slide">
+                                    <p class="carouselPara">Stop a Session</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup5.png" alt="Fifth slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Take a Break</p>
-                                    <img class="d-block w-100" src="./assets/popup6.png" alt="Sixth slide">
+                                    <p class="carouselPara">Take a Break</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup6.png" alt="Sixth slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Adjust Settings</p>
-                                    <img class="d-block w-100" src="./assets/popup7.png" alt="Seventh slide">
+                                    <p class="carouselPara">Adjust Settings</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup7.png" alt="Seventh slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <p style="text-align: center; font-size: 6vh; margin-bottom: 0; font-weight: 800; font-family: 'Open Sans', sans-serif; color: white;">Great, you're ready to begin!</p>
-                                    <img class="d-block w-100" src="./assets/popup8.png" alt="Eighth slide">
+                                    <p class="carouselPara" >Great, you're ready to begin!</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup8.png" alt="Eighth slide">
                                 </div>
                             </div>
 

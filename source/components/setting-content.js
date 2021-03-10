@@ -19,6 +19,8 @@ class SettingContent extends HTMLElement {
         localStorage.setItem("focusTime", focusTime);
         localStorage.setItem("shortBreakTime", shortBreakTime);
         localStorage.setItem("longBreakTime", longBreakTime);
+        let cafeSounds = document.querySelector("#cafeSounds");
+        cafeSounds.volume = defaultCafeVolume / 100;
         
         // The Setting content component
         shadow.innerHTML = `

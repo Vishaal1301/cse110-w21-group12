@@ -7,8 +7,6 @@ const MAX_INPUT_LENGTH = 20;
 
 let taskInput = document.getElementById("new-task"); // New-task
 let TasksHolder = document.getElementById("tasks"); // Current tasks
-let deleteButton = taskListItem.querySelector("#deleteButton"); // Delete task button
-let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector"); // Set main task button
 
 // Instantiate localStorage and unique ID counter
 const stor = window.localStorage;
@@ -209,6 +207,8 @@ let bindTaskEvents = function(taskListItem) {
     let dropdownButton = taskListItem.querySelector("#dropDownButton");
     let focusButton =  taskListItem.querySelector("#mainTaskSelector");
     let dropdownContent =  taskListItem.querySelector(".dropdown-content");
+    let deleteButton = taskListItem.querySelector("#deleteButton");
+    let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
 
     // show the button on hover
     taskListItem.onmouseover = function(){
