@@ -104,7 +104,6 @@ function changeScreen(){
  * Change the current session text accordingly
  */
 function displayAskResetFocus() {
-    //console.log("ask focus")
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "RESET FOCUS?";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
@@ -123,7 +122,6 @@ function displayAskResetFocus() {
  * Update eventlisterners 
  */
 function displayAskResetBreak() {
-    //console.log("ask break")
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "SKIP BREAK?";
