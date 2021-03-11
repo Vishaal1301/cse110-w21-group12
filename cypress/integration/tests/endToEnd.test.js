@@ -204,13 +204,14 @@ describe('End to end testing', () => {
                 .find("#shortBreakNumber")
                 .invoke('val', 10).trigger('input');
 
-            cy.get('#clock').then(
-                $el => {
-                    expect($el.text().trim()).equal(time);
-                }
-            );
+            // cy.get('#clock').then(
+            //     $el => {
+            //         expect($el.text().trim()).equal(time);
+            //     }
+            // );
 
-            cy.tick(600000);
+            // cy.tick(600000);
+            cy.tick(300000);
 
             cy.tick(1500000);
 
@@ -410,6 +411,67 @@ describe('End to end testing', () => {
             cy.get('#clock').then(
                 $el => {
                     expect($el.text().trim()).equal(time);
+                }
+            );
+
+        });
+
+        it('Editing focus and break time in settings at once is reflected in clock', () => {
+            let focusTime = secondsToString(1200); // 20 minutes
+            let shortBreakTime = secondsToString(600); // 10 minutes
+            let longBreakTime = secondsToString(1200);  // 20 minutes
+
+            cy.clock();
+
+            cy.get("#navIcon").click();
+
+            cy.get("#settingContent")
+                .shadow()
+                .find("#focusContainer")
+                .find("#focusNumber")
+                .invoke('val', 20).trigger('input');
+            cy.get("#settingContent")
+                .shadow()
+                .find("#shortBreakContainer")
+                .find("#shortBreakNumber")
+                .invoke('val', 10).trigger('input');
+            cy.get("#settingContent")
+                .shadow()
+                .find("#longBreakContainer")
+                .find("#longBreakNumber")
+                .invoke('val', 20).trigger('input');
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(focusTime);
+                }
+            );
+            
+            cy.get('#cup').click();
+
+            cy.tick(1200000); // First focus
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(shortBreakTime);
+                }
+            );
+
+            cy.tick(600000); // First break
+
+            cy.tick(1200000); // Second focus
+
+            cy.tick(600000); // Second break
+
+            cy.tick(1200000); // Third focus
+
+            cy.tick(600000); // Third break
+
+            cy.tick(1200000); // Fourth focus
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(longBreakTime);
                 }
             );
 
