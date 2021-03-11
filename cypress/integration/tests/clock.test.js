@@ -1,5 +1,3 @@
-const focusSessionLength = 10;
-
 function secondsToString(time) {
     let minutes, seconds;
 
