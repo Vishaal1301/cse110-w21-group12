@@ -207,8 +207,6 @@ let bindTaskEvents = function(taskListItem) {
     let dropdownButton = taskListItem.querySelector("#dropDownButton");
     let focusButton =  taskListItem.querySelector("#mainTaskSelector");
     let dropdownContent =  taskListItem.querySelector(".dropdown-content");
-    let deleteButton = taskListItem.querySelector("#deleteButton");
-    let mainTaskSelector = taskListItem.querySelector("#mainTaskSelector");
 
 
     // show the button on hover

@@ -113,6 +113,7 @@ function displayAskResetFocus() {
     let areYouSureYes = document.getElementById("areYouSureYes");
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayBreakContent);
     areYouSureNo.addEventListener("click", displayFocusContent);
 }
 
@@ -132,6 +133,7 @@ function displayAskResetBreak() {
     let areYouSureYes = document.getElementById("areYouSureYes");
     areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayFocusContent);
     areYouSureNo.addEventListener("click", displayBreakContent);
 }
 
