@@ -477,4 +477,477 @@ describe('End to end testing', () => {
 
         });
     });
+
+    describe('Task list and clock interaction tests', () => {
+        it('"No focus task selected" should be displayed when clock is started with no focus task or tasks', () => {
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('"No focus task selected" should be displayed when clock is started with tasks but no focus task', () => {
+            cy.get("#new-task")
+                .type("Test task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test task 2")
+                .type("{enter}", {force: true});
+
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('Focus task is correctly displayed throughout sessions when clock is started', () => {
+            cy.get("#new-task")
+                .type("Focus Task")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Focus Task");
+                }
+            );
+
+            cy.tick(1500000); // First focus
+
+            cy.tick(300000); // First break
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Focus Task");
+                }
+            );
+
+            cy.tick(1500000); // Second focus
+
+            cy.tick(300000); // Second break
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Focus Task");
+                }
+            );
+
+            cy.tick(1500000); // Third focus
+
+            cy.tick(300000); // Third break
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Focus Task");
+                }
+            );
+
+            cy.tick(1500000); // Fourth focus
+
+            cy.tick(900000); // Extended break
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Focus Task");
+                }
+            );
+        });
+
+        it('Can add tasks during break', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 3")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=0]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 1");
+                    }
+            );
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=1]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 2");
+                    }
+            );
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=2]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 3");
+                    }
+            );
+        });
+
+        it('Tasks added during break are saved across sessions', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 3")
+                .type("{enter}", {force: true});
+
+            cy.tick(300000);
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=0]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 1");
+                    }
+            );
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=1]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 2");
+                    }
+            );
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=2]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 3");
+                    }
+            );
+        });
+
+        it('Can add tasks and change focus tasks during breaks', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 3")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=0]")
+                .parent()
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.tick(300000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 1");
+                }
+            );
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=2]")
+                .parent()
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.tick(300000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 3");
+                }
+            );
+        });
+
+        it('Focus task saves across sessions and cycles', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.tick(300000);
+            
+            cy.tick(1500000);
+
+            cy.tick(300000);
+
+            cy.tick(1500000);
+
+            cy.tick(300000);
+
+            cy.tick(1500000);
+
+            cy.tick(900000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 1");
+                }
+            );
+        });
+
+        it('Adding and deleting focus task before starting the clock reflects accordingly', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#deleteButton")
+                .click()
+            
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('Adding and deleting focus task during break session reflects accordingly', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 1");
+                }
+            );
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#deleteButton")
+                .click()
+
+            cy.tick(300000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('Adding and deleting task reflects across sessions', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#deleteButton")
+                .click()
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .get(".taskItem")
+                .should('not.exist');
+        });
+
+        it('Deleting tasks during break sessions is reflected across sessions', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 3")
+                .type("{enter}", {force: true});
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=1]")
+                .parent()
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#deleteButton")
+                .click();
+
+            cy.tick(300000);
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=1]")
+                .invoke('val')
+                .then(
+                    $el => {
+                        expect($el.trim()).equal("Test Task 3");
+                });
+        });
+
+        
+    });
 });

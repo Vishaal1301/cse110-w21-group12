@@ -498,7 +498,7 @@ describe('Clock tests', () => {
                 $el => {
                     expect($el.text().trim()).equal(taskName);
                 }
-            )
+            );
         });
     });
 });
