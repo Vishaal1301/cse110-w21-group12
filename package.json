@@ -1,7 +1,7 @@
 {
     "scripts": {
         "test": "jest __tests__ --coverage",
-        "lint": "eslint source/**/*.js cypress/integration/**/*.js",
+        "lint": "eslint source/**/*.js cypress/integration/**/*.js --fix-dry-run",
         "start": "http-server -a 127.0.0.1 -p 5500"
     },
     "devDependencies": {
