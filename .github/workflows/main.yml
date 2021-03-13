@@ -44,13 +44,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
+        
       - name: Build
+        run : cp -R ./source ./out
+
+      - name: Build Docs
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./source
           recurse: true
-          output_dir: ./out
+          output_dir: ./out/docs
           front_page: README.md
 
       - name: Deploy
