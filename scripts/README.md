@@ -1,0 +1,1 @@
+This folder is for scripts, for scripts related notes please put them here

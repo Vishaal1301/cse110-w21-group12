@@ -1,32 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: scripts/task-list.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: scripts/task-list.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
+import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
 const MENU_BUTTON_SIZE = 25;
 const TEXT_COLOR = "white";
 const FOCUS_COLOR = "#eed039";
@@ -51,7 +23,7 @@ if(stor.getItem("tasks") == null){
 
 // On window load, render all tasks in the task list
 window.addEventListener("DOMContentLoaded", function() {
-    for(let i = 0; i &lt; tasks.list.length; i++){
+    for(let i = 0; i < tasks.list.length; i++){
         const task = tasks.list[i];
         addTask(task.name, task.checked, i, tasks.mainTask.id);
     }
@@ -177,7 +149,7 @@ let deleteTask = function() {
 
     // Shift the ID's of all elements
     let children = ul.children;
-    for(let i = 0; i &lt; children.length; i++){
+    for(let i = 0; i < children.length; i++){
         children[i].children[1].id = i;
     }
 };
@@ -186,7 +158,7 @@ let deleteTask = function() {
  * Set a task as the main task
  */
 let selectMainTask = function(){
-    let listItem = this.parentNode.parentNode.parentNode; // &lt;li> taskItem
+    let listItem = this.parentNode.parentNode.parentNode; // <li> taskItem
     let text = listItem.querySelector("input[type=text]");
 
     tasks = JSON.parse(stor.getItem("tasks"));
@@ -209,7 +181,7 @@ let selectMainTask = function(){
     }
 
     // Set all other tasks to white
-    for (let i = 0; i &lt; TasksHolder.children.length; i++) {
+    for (let i = 0; i < TasksHolder.children.length; i++) {
         const taskElement = TasksHolder.children[i].children[1];
         const checkbox = TasksHolder.children[i].children[0];
         if(taskElement.id !== currMainTask.id){
@@ -272,11 +244,11 @@ let bindTaskEvents = function(taskListItem) {
 
     window.onclick = function(e) {
         let tasks = TasksHolder.children;
-        for(let i = 0; i &lt; tasks.length; i++){
+        for(let i = 0; i < tasks.length; i++){
             let task = tasks[i];
             let dropdownButton = task.children[2].children[0];
             let dropdownContent = task.children[2].children[1];
-            if(!(e.target == dropdownButton) &amp;&amp; dropdownButton.active){
+            if(!(e.target == dropdownButton) && dropdownButton.active){
                 dropdownButton.active = false;
                 dropdownContent.style.display = "none";
                 dropdownButton.style.display = "none";
@@ -302,7 +274,7 @@ let bindTaskEvents = function(taskListItem) {
             unstoreTask(listItem.children[1].id);
 
             let children = ul.children;
-            for(let i = 0; i &lt; children.length; i++){
+            for(let i = 0; i < children.length; i++){
                 children[i].children[1].id = i;
             }
         }
@@ -339,30 +311,8 @@ let bindTaskEvents = function(taskListItem) {
 taskInput.addEventListener("keyup", (event) => {
     if(event.key === "Enter"){
         tasks = JSON.parse(stor.getItem("tasks"));
-        if(tasks.list.length &lt;= 11 &amp;&amp; addTask(taskInput.value, false, tasks.list.length))
+        if(tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
             storeTask(taskInput.value);
         taskInput.value = null;
     }
-});</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li><li><a href="module-scripts_task-list-local-storage.html">scripts/task-list-local-storage</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#bindTaskEvents">bindTaskEvents</a></li><li><a href="global.html#closeOnboardingMenu">closeOnboardingMenu</a></li><li><a href="global.html#createNewTaskElement">createNewTaskElement</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#displayOnboardingMenu">displayOnboardingMenu</a></li><li><a href="global.html#onboardingIcon">onboardingIcon</a></li><li><a href="global.html#selectMainTask">selectMainTask</a></li><li><a href="global.html#toggleTasksSettingsDisplay">toggleTasksSettingsDisplay</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Mar 13 2021 20:48:11 GMT+0000 (Coordinated Universal Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
+});

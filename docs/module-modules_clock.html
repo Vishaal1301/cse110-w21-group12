@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: scripts/task-list-local-storage</title>
+    <title>JSDoc: Module: modules/clock</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: scripts/task-list-local-storage</h1>
+    <h1 class="page-title">Module: modules/clock</h1>
 
     
 
@@ -38,7 +38,7 @@
     <div class="container-overview">
     
         
-            <div class="description">Module handling all local storage operations for task list</div>
+            <div class="description">Clock module</div>
         
 
         
@@ -87,7 +87,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line1">line 1</a>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -144,7 +144,7 @@
     
 
     
-    <h4 class="name" id="~editTask"><span class="type-signature">(inner) </span>editTask<span class="signature">(name, id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~displayBreakContent"><span class="type-signature">(inner) </span>displayBreakContent<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -152,7 +152,8 @@
 
 
 <div class="description">
-    Edit the name of an existing task in local storage
+    Show settings menu, task list, and nav icon when in short, long break, or reset timer states
+Hides "Are You Sure?" display, the task being focused on, and change header to show "TASK LIST"
 </div>
 
 
@@ -161,78 +162,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The new name of the task</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The id of the task</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -268,7 +197,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line99">line 99</a>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -293,28 +222,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    true if edit was sucessful, false otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -326,7 +233,7 @@
     
 
     
-    <h4 class="name" id="~storeTask"><span class="type-signature">(inner) </span>storeTask<span class="signature">(label)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    <h4 class="name" id="~displayFocusContent"><span class="type-signature">(inner) </span>displayFocusContent<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -334,7 +241,8 @@
 
 
 <div class="description">
-    Helper function to store a new task into local storage
+    Hide settings menu, task list, nav icon, and "Are You Sure?" display when in focus session
+Displays selected task and updates rightSideContainer header to "Focus"
 </div>
 
 
@@ -343,55 +251,6 @@
 
 
 
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>label</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The name of the task</td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -427,7 +286,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line15">line 15</a>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -452,28 +311,6 @@
 
 
 
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - The task object that was added to local storage
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">object</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -485,7 +322,7 @@
     
 
     
-    <h4 class="name" id="~unstoreTask"><span class="type-signature">(inner) </span>unstoreTask<span class="signature">(id)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~startStopTimer"><span class="type-signature">(inner) </span>startStopTimer<span class="signature">(clock, callback)</span><span class="type-signature"></span></h4>
     
 
     
@@ -493,7 +330,7 @@
 
 
 <div class="description">
-    Helper function to remove a new task from local storage
+    When the button is clicked, starts or stops timer based on timer state
 </div>
 
 
@@ -529,166 +366,7 @@
 
         <tr>
             
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The ID of the task to remove</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line34">line 34</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    - True if removing was sucessful, false otherwise
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="~updateMainTask"><span class="type-signature">(inner) </span>updateMainTask<span class="signature">(mainTask)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Updates the current main task in local storage
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>mainTask</code></td>
+                <td class="name"><code>clock</code></td>
             
 
             <td class="type">
@@ -704,7 +382,30 @@
 
             
 
-            <td class="description last">A reference to the task that is selected</td>
+            <td class="description last">The HTML element for the clock</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback gets called everytime the timer stops, or when the state changes</td>
         </tr>
 
     
@@ -745,7 +446,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line121">line 121</a>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -781,7 +482,7 @@
     
 
     
-    <h4 class="name" id="~updateTask"><span class="type-signature">(inner) </span>updateTask<span class="signature">(id, state)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="~startTimer"><span class="type-signature">(inner) </span>startTimer<span class="signature">(clock, callback)</span><span class="type-signature"></span></h4>
     
 
     
@@ -789,7 +490,8 @@
 
 
 <div class="description">
-    Helper function to update the state of checkbox in local storage
+    Starts timer when user manually starts focus session 
+Changes display of rightSideContainer (the blue box)
 </div>
 
 
@@ -825,13 +527,13 @@
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>clock</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">object</span>
 
 
             
@@ -841,20 +543,20 @@
 
             
 
-            <td class="description last">The ID of the task to update</td>
+            <td class="description last">The HTML element for the clock</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>state</code></td>
+                <td class="name"><code>callback</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">function</span>
 
 
             
@@ -864,7 +566,7 @@
 
             
 
-            <td class="description last">The state of the new checkbox</td>
+            <td class="description last">Callback gets called everytime the timer stops, or when the state changes</td>
         </tr>
 
     
@@ -905,7 +607,375 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="scripts_task-list-local-storage.js.html">scripts/task-list-local-storage.js</a>, <a href="scripts_task-list-local-storage.js.html#line77">line 77</a>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~stopTimer"><span class="type-signature">(inner) </span>stopTimer<span class="signature">(clock, callback)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Stops timer when user manually stops focus session/skips break
+Changes display of rightSideContainer (the blue box)
+Plays alarm and updates background audio
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clock</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The HTML element for the clock</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback gets called everytime the timer stops, or when the state changes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updateTimerSettings"><span class="type-signature">(inner) </span>updateTimerSettings<span class="signature">(clock, focusLength, shortBreakLength, longBreakLength)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Update the timer settings, and also resets all sessions.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clock</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The HTML element for the clock</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>focusLength</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The length of the focus session, in seconds</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>shortBreakLength</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The length of the short break length, in seconds</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>longBreakLength</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The length of the long break length, in seconds</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scripts_clock.js.html">scripts/clock.js</a>, <a href="scripts_clock.js.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -934,7 +1004,7 @@
 
         
 <div class="param-desc">
-    - true if update was sucessful, false otherwise
+    True if the settings were updated, false if some error occured
 </div>
 
 
@@ -979,7 +1049,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Mar 13 2021 20:48:11 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Mar 13 2021 21:24:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

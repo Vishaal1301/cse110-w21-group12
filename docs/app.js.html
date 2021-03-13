@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * App module
+ * @module modules/app
+*/
+
+// Import clock logic from clock module
+import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent, displayBreakContent} from "./scripts/clock.js";
+
+// App variables
+const cup = document.getElementById("cup");
+const clock = document.getElementById("clock");
+const session = document.getElementById("session");
+const cafeSounds = document.getElementById("cafeSounds");
+let currentState = session.innerHTML;
+let mouseOver = false;
+
+// Update page setting to user customizations or default on initial render
+window.addEventListener("load", function() {
+    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60,
+        localStorage.getItem("shortBreakTime") * 60,
+        localStorage.getItem("longBreakTime") * 60);
+    // load and set music
+    cafeSounds.src = cafeSounds.dataset.src;
+    clock.style.display = "block";
+    cafeSounds.loop = true;
+    cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+    // load popup images
+    var popupImages = document.querySelectorAll("img.popup");
+    popupImages.forEach(function(img) {
+        img.src = img.dataset.src;
+    });
+});
+
+// Update description and styling for cup and the current session text
+const updateCoffeeCup = () => {
+    // Change clock color and displayed session on user mouse hover
+    if (isCountdown) {
+        currentState = session.innerHTML;
+        if (mouseOver &amp;&amp; currentState == "Focus Session") {
+            session.innerHTML = "Stop Session?";
+            clock.style.color = "red";
+        } else if (mouseOver &amp;&amp; (currentState == "Short Break" || currentState == "Long Break")) {
+            session.innerHTML = "Skip Break?";
+            clock.style.color = "red";
+        }
+    } else {
+        if (mouseOver) {
+            session.innerHTML = "Start Focus?";
+            clock.style.color = "green";
+        } else {
+            currentState = "Start";
+            session.innerHTML = "Start";
+            clock.style.color = "white";
+        }
+    }
+};
+
+// Updates the session name and color of the time when mouse hovers over the cup
+cup.onmouseover = () => {
+    mouseOver = true;
+    updateCoffeeCup();
+};
+
+// Resets the session name and color of the time when mouse stops hovering over the cup
+cup.onmouseout = () => {
+    mouseOver = false;
+    session.innerHTML = currentState;
+    clock.style.color = "white";
+};
+
+// Updates displays and timer state when user clicks on the cup
+cup.onclick = () => {
+    if (isCountdown){
+        const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+
+        // Show pop up based on the current session
+        if (state == "Focus Session"){
+            displayAskResetFocus();
+        } 
+        else {
+            displayAskResetBreak();
+        }
+    } else {
+        changeScreen();
+        cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+        cafeSounds.play();
+    }
+};
+
+// Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
+function changeScreen(){
+    startStopTimer(clock, (state) => {
+        currentState = state;
+        if (!mouseOver){
+            session.innerHTML = state;
+        }
+    });
+    currentState = session.innerHTML;
+    updateCoffeeCup();
+}
+
+/**
+ * Display "Are You Sure?" pop up when trying to end focus session
+ * Change the current session text accordingly
+ */
+function displayAskResetFocus() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "RESET FOCUS?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayBreakContent);
+    areYouSureNo.addEventListener("click", displayFocusContent);
+}
+
+/**
+ * Display "Are You Sure?"" pop up when trying to end break session
+ * Change the current session text accordingly
+ * Update eventlisterners 
+ */
+function displayAskResetBreak() {
+    displayFocusContent();
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "SKIP BREAK?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayFocusContent);
+    areYouSureNo.addEventListener("click", displayBreakContent);
+}
+
+export {changeScreen};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-modules_app.html">modules/app</a></li><li><a href="module-modules_clock.html">modules/clock</a></li><li><a href="module-scripts_task-list-local-storage.html">scripts/task-list-local-storage</a></li></ul><h3>Classes</h3><ul><li><a href="SettingContent.html">SettingContent</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#bindTaskEvents">bindTaskEvents</a></li><li><a href="global.html#closeOnboardingMenu">closeOnboardingMenu</a></li><li><a href="global.html#createNewTaskElement">createNewTaskElement</a></li><li><a href="global.html#deleteTask">deleteTask</a></li><li><a href="global.html#displayOnboardingMenu">displayOnboardingMenu</a></li><li><a href="global.html#onboardingIcon">onboardingIcon</a></li><li><a href="global.html#selectMainTask">selectMainTask</a></li><li><a href="global.html#toggleTasksSettingsDisplay">toggleTasksSettingsDisplay</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Mar 13 2021 21:24:01 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
