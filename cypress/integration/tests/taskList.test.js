@@ -383,7 +383,7 @@ describe("TaskList test", () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .find(".dropdown")
-                .click({force: true});
+                .click();
             
             cy.get("#new-task")
                 .get("#tasks")
