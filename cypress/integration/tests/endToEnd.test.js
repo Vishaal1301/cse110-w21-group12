@@ -867,7 +867,52 @@ describe("End to end testing", () => {
             );
         });
 
-        it("Adding and deleting task reflects across sessions", () => {
+        it('Unselecting focus task reflects when clock is started', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 1");
+                }
+            );
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.tick(300000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('Adding and deleting task reflects across sessions', () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -948,6 +993,141 @@ describe("End to end testing", () => {
                     });
         });
 
-        
+        it('Checked off tasks are saved across sessions', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("input[type=checkbox]")
+                .click()
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .type("Test Task 3")
+                .type("{enter}", {force: true});
+
+            cy.clock();
+            cy.get('#cup').click();
+
+            cy.tick(1500000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=0]")
+                .then(
+                    $el => {
+                        expect($el).to.have.attr("style", "color: rgb(179, 179, 179); text-decoration: line-through;");
+                    }
+                );
+        });
+    });
+
+    describe('General interaction tests', () => {
+        it('Changing focus session length does not affect task list/focus task', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .click()
+                .find("#mainTaskSelector")
+                .click();
+
+            let time = secondsToString(900); // 15 minutes
+            cy.clock();
+
+            cy.get("#navIcon").click();
+            cy.get("#settingContent")
+                .shadow()
+                .find("#focusContainer")
+                .find("#focusNumber")
+                .invoke('val', 15).trigger('input');
+
+            cy.get('#cup').click();
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("Test Task 1");
+                }
+            );
+
+            cy.tick(900000);
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke('show')
+                .find("#mainTaskSelector")
+                .click();
+            
+            cy.tick(300000);
+
+            cy.get('#focusTask').then(
+                $el => {
+                    expect($el.text().trim()).equal("No focus task selected");
+                }
+            );
+        });
+
+        it('Settings and tasklist do not display during focus sessions', () => {
+            cy.get("#new-task")
+                .type("Test Task 1")
+                .type("{enter}", {force: true});
+
+            let time = secondsToString(900); // 15 minutes
+            cy.clock();
+
+            cy.get("#navIcon").click();
+            cy.get("#settingContent")
+                .shadow()
+                .find("#focusContainer")
+                .find("#focusNumber")
+                .invoke('val', 15).trigger('input');
+
+            cy.get('#cup').click();
+
+            cy.get('#clock').then(
+                $el => {
+                    expect($el.text().trim()).equal(time);
+                }
+            );
+
+            cy.tick(900000);
+
+            cy.get("#new-task")
+                .type("Test Task 2")
+                .type("{enter}", {force: true});
+
+            cy.get("#navIcon").click();
+            
+            cy.tick(300000);
+
+            cy.get('#navIcon')
+                .should('not.be.visible');
+
+            cy.get('#settingContent')
+                .shadow()
+                .should('not.exist');
+        });
     });
 });
