@@ -1,6 +1,6 @@
-describe('Setting test', () => {
+describe("Setting test", () => {
     beforeEach(() => {
-      cy.visit("http://127.0.0.1:5500/source/index.html"); // TODO: change URL when deploy
+        cy.visit("http://127.0.0.1:5500/source/index.html"); // TODO: change URL when deploy
     });
     
     describe("open/close setting window test", () => {
@@ -8,9 +8,9 @@ describe('Setting test', () => {
             cy.get("#navIcon").click();
             cy.get("#settingsContainer").then(
                 $el => {
-                    expect($el).to.have.attr("style", "display: block;")
+                    expect($el).to.have.attr("style", "display: block;");
                 }
-            )
+            );
             cy.get("#navIcon").click();
             cy.get("#settingsContainer").then(
                 $el => {
@@ -27,13 +27,13 @@ describe('Setting test', () => {
                 .shadow()
                 .find("#cafeVolumeContainer")
                 .find("#cafeVolumeSlider")
-                .invoke('val', 33).trigger('input')
+                .invoke("val", 33).trigger("input");
     
             cy.get("#settingContent")
                 .shadow()
                 .find("#cafeVolumeContainer")
                 .find("#cafeVolumeNumber")
-                .should('have.text',"33")
+                .should("have.text","33");
         });
 
         it("alarm volume number changes when alarm volume slider changes", () => {
@@ -42,25 +42,25 @@ describe('Setting test', () => {
                 .shadow()
                 .find("#alarmVolumeContainer")
                 .find("#alarmVolumeSlider")
-                .invoke('val', 50).trigger('input')
+                .invoke("val", 50).trigger("input");
     
             cy.get("#settingContent")
                 .shadow()
                 .find("#alarmVolumeContainer")
                 .find("#alarmVolumeNumber")
-                .should('have.text',"50");
+                .should("have.text","50");
         });
     });
 
-    describe('setting focus and break session length test', () => {
-        describe('test setting focus session length', () => {
+    describe("setting focus and break session length test", () => {
+        describe("test setting focus session length", () => {
             it("inputting valid focus session length should change focus session length display", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
                     .find("#focusContainer")
                     .find("#focusNumber")
-                    .invoke('val', 21).trigger('input');
+                    .invoke("val", 21).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -88,7 +88,7 @@ describe('Setting test', () => {
                     .shadow()
                     .find("#focusContainer")
                     .find("#focusNumber")
-                    .type("9999")
+                    .type("9999");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -107,7 +107,7 @@ describe('Setting test', () => {
                     .find("#focusContainer")
                     .find("#focusNumber")
                     .clear()
-                    .invoke('val', 1).trigger('input')
+                    .invoke("val", 1).trigger("input");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -126,7 +126,7 @@ describe('Setting test', () => {
                     .find("#focusContainer")
                     .find("#focusNumber")
                     .clear()
-                    .invoke('val', 25).trigger('input')
+                    .invoke("val", 25).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -149,7 +149,7 @@ describe('Setting test', () => {
                     .shadow()
                     .find("#focusContainer")
                     .find("#focusNumber")
-                    .type("9999")
+                    .type("9999");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -167,14 +167,14 @@ describe('Setting test', () => {
             });
         });
 
-        describe('test setting short break session length', () => {
+        describe("test setting short break session length", () => {
             it("inputting valid short break session length should change short break session length display", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
-                    .invoke('val', 10).trigger('input');
+                    .invoke("val", 10).trigger("input");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -202,7 +202,7 @@ describe('Setting test', () => {
                     .shadow()
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
-                    .type("9999")
+                    .type("9999");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -221,7 +221,7 @@ describe('Setting test', () => {
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
                     .clear()
-                    .invoke('val', 1).trigger('input')
+                    .invoke("val", 1).trigger("input");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -240,7 +240,7 @@ describe('Setting test', () => {
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
                     .clear()
-                    .invoke('val', 5).trigger('input')
+                    .invoke("val", 5).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -264,7 +264,7 @@ describe('Setting test', () => {
                     .find("#shortBreakContainer")
                     .find("#shortBreakNumber")
                     .clear()
-                    .invoke('val', 1).trigger('input')
+                    .invoke("val", 1).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -282,14 +282,14 @@ describe('Setting test', () => {
             });
         });
 
-        describe('test setting long break session length', () => {
+        describe("test setting long break session length", () => {
             it("inputting valid long break session length should change long break session length display", () => {
                 cy.get("#navIcon").click();
                 cy.get("#settingContent")
                     .shadow()
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
-                    .invoke('val', 11).trigger('input');
+                    .invoke("val", 11).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -317,7 +317,7 @@ describe('Setting test', () => {
                     .shadow()
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
-                    .type("9999")
+                    .type("9999");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -336,7 +336,7 @@ describe('Setting test', () => {
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
                     .clear()
-                    .invoke('val', 1).trigger('input')
+                    .invoke("val", 1).trigger("input");
                 
                 cy.get("#settingContent")
                     .shadow()
@@ -355,7 +355,7 @@ describe('Setting test', () => {
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
                     .clear()
-                    .invoke('val', 15).trigger('input')
+                    .invoke("val", 15).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()
@@ -370,7 +370,7 @@ describe('Setting test', () => {
                             expect($el).to.have.attr("style", "background-color: rgb(24, 29, 40);");
                         }
                     );
-            })
+            });
 
             it("Reset invalid long break length back to last valid input", () => {
                 cy.get("#navIcon").click();
@@ -379,7 +379,7 @@ describe('Setting test', () => {
                     .find("#longBreakContainer")
                     .find("#longBreakNumber")
                     .clear()
-                    .invoke('val', 1).trigger('input')
+                    .invoke("val", 1).trigger("input");
 
                 cy.get("#settingContent")
                     .shadow()

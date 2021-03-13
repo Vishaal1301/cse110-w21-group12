@@ -6,7 +6,7 @@ describe("onboarding test", () => {
     it("click question mark", () => {
         // click the onboarding icon
         cy.get("#onboardingIcon")
-            .click()
+            .click();
 
         cy.get("#onboardingContainer")
             .should("be.visible");
@@ -28,10 +28,10 @@ describe("onboarding test", () => {
     it("click x button", () => {
         // click the onboarding icon
         cy.get("#onboardingIcon")
-            .click()
+            .click();
 
         cy.get("#xicon")
-            .click()
+            .click();
 
         cy.get("#onboardingContainer")
             .should("not.be.visible");
