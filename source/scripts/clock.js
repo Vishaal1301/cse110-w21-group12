@@ -80,7 +80,7 @@ function startTimer(clock, callback) {
     if (state == "Focus Session") {
         clickSound.play();
         cafeSounds.volume = (localStorage.getItem("cafeVolume") / 100);
-        //cafeSounds.currentTime = 15; //try 14 or 15 for immediate music start
+        cafeSounds.currentTime = 15; //try 14 or 15 for immediate music start
         cafeSounds.play();
         displayFocusContent();
     }
@@ -96,22 +96,6 @@ function startTimer(clock, callback) {
             startTimer(clock, callback);
         }
     }, 1000);
-}
-
-// fades out music when timer goes from focus session to break or resets
-function fadeOutCafeMusic(){
-    //reduce volume by .01 starting from current volume every 50 ms
-    let fadeVol = setInterval(function(){
-            if(cafeSounds.volume > 0.01) {
-                cafeSounds.volume -= .01;
-            }
-        }, 50);
-
-    //stops fade after two seconds
-    setTimeout(function(){
-        clearInterval(fadeVol)
-        cafeSounds.pause();
-        cafeSounds.currentTime = 0;}, 500);
 }
 
 /**
@@ -130,7 +114,10 @@ function stopTimer(clock, resetSkip, callback) {
     //when curr state is focus session, we want to display appropriate are you sure pop ups
     if (state == "Focus Session") {
         displayBreakContent();
-        setTimeout(fadeOutCafeMusic, 1000);
+        cafeSounds.pause();
+        cafeSounds.currentTime = 0;
+        //         cafeSounds.currentTime = 0;}, 100); 
+        //setTimeout(fadeOutCafeMusic, 1000);
     } else {
         displayFocusContent();
     }
