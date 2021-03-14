@@ -144,7 +144,7 @@ function stopTimer(clock, resetSkip, callback) {
             //alarm = new Audio("./assets/focus.mp3");
             alarm = document.getElementById("alarm");
             alarm.volume = localStorage.getItem("alarmVolume") / 100;
-            alarm.currentTime = .5
+            alarm.currentTime = .5;
             alarm.play();
             //break;
         }
