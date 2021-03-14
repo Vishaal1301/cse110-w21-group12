@@ -40,7 +40,7 @@ class SettingContent extends HTMLElement {
               <label class="inputLabel"> min</label>
               <span id="invalidShortBreakMessage" class="invalidMessage"> </span>
             </div>
-
+            
             <div id="longBreakContainer">
               <label class="inputLabel">Long Break: </label>
               <input class="textInputBox" id="longBreakNumber" type="number" min="10" max="40"

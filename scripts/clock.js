@@ -3,8 +3,6 @@
  * @module modules/clock
 */
 
-const cafeSounds = document.getElementById("cafeSounds");
-
 // Timer setting variables
 const POMO_CYCLES = 4; // Default Pomo cycle length
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}
@@ -71,17 +69,11 @@ function displayFocusContent() {
  * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function startTimer(clock, callback) {
-    const clickSound = document.getElementById("clickSound");
-    const cafeSounds = document.getElementById("cafeSounds");
     // Get current state based on the current session nunmber
     const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
     document.getElementById("session").innerHTML = state;
 
     if (state == "Focus Session") {
-        clickSound.play();
-        cafeSounds.volume = (localStorage.getItem("cafeVolume") / 100);
-        cafeSounds.currentTime = 15; //try 14 or 15 for immediate music start
-        cafeSounds.play();
         displayFocusContent();
     }
 
@@ -111,13 +103,9 @@ function stopTimer(clock, resetSkip, callback) {
     let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
     document.getElementById("session").innerHTML = state;
 
-    //when curr state is focus session, we want to display appropriate are you sure pop ups
+    //when curr state is focus session, we want to display, 
     if (state == "Focus Session") {
         displayBreakContent();
-        cafeSounds.pause();
-        cafeSounds.currentTime = 0;
-        //         cafeSounds.currentTime = 0;}, 100); 
-        //setTimeout(fadeOutCafeMusic, 1000);
     } else {
         displayFocusContent();
     }
@@ -125,6 +113,7 @@ function stopTimer(clock, resetSkip, callback) {
     let alarm;
     let skip = false;
 
+    // Set alarm;
     isCountdown = false;
     if (resetSkip) {
         if (state == "Focus Session") {
@@ -137,16 +126,23 @@ function stopTimer(clock, resetSkip, callback) {
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
 
-        // Change audio of alarm based on the current state  
-        //switch (state) {
-        if( state == "Focus Session"){
-        //case "Focus Session":
-            //alarm = new Audio("./assets/focus.mp3");
-            alarm = document.getElementById("alarm");
+        // Change audio based on the current state
+        switch (state) {
+        case "Focus Session":
+            alarm = new Audio("./assets/focus.mp3");
             alarm.volume = localStorage.getItem("alarmVolume") / 100;
-            alarm.currentTime = .5;
             alarm.play();
-            //break;
+            break;
+        case "Short Break":
+            alarm = new Audio("./assets/short.mp3");
+            alarm.volume = localStorage.getItem("alarmVolume") / 100;
+            alarm.play();
+            break;
+        case "Long Break":
+            alarm = new Audio("./assets/long.mp3");
+            alarm.volume = localStorage.getItem("alarmVolume") / 100;
+            alarm.play();
+            break;
         }
     }
 

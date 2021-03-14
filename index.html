@@ -22,10 +22,7 @@
 
     <body>
         <main class="myContainer">
-            <audio id="cafeSounds" data-src="./assets/cafeSound.mp3" ></audio>
-            <audio id="clickSound" src="./assets/clickSound.mp3" type="audio/mpeg"></audio> 
-            <audio id="alarm" src="./assets/focus.mp3" type="audio/mpeg"></audio> 
-
+            <audio id="cafeSounds" data-src="./assets/cafeSounds.mp3"></audio>
             <!-- Clock Component -->
             <div id="gridContainer">
                 <div id="timerContainer">
@@ -44,7 +41,7 @@
                 <div id="taskListContainer">
                     <ul id="tasks">
                     </ul>
-                    <ul style="list-style-type: none; margin-left:6%">
+                    <ul style="list-style-type: none; margin-left:6%"> <!--margin-left:6%-->
                         <li>
                             <input id="new-task" maxlength="35" placeholder="Add new item">
                         </li> 
@@ -54,7 +51,6 @@
                 <div id="settingsContainer" class="settingsContainer">
                     <setting-content id="settingContent"></setting-content>
                 </div>
-            
             <div id="navIconContainer">
                     <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettingsDisplay()">
             </div>

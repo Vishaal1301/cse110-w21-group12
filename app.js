@@ -72,6 +72,7 @@ cup.onmouseout = () => {
 cup.onclick = () => {
     if (isCountdown){
         const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+
         // Show pop up based on the current session
         if (state == "Focus Session"){
             displayAskResetFocus();
@@ -81,6 +82,8 @@ cup.onclick = () => {
         }
     } else {
         changeScreen();
+        cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+        cafeSounds.play();
     }
 };
 
