@@ -6,7 +6,7 @@ let onboardingIcon = document.getElementById("onboardingIcon");
 let onboardingContainer = document.getElementById("onboardingContainer");
 let rightSideContainer = document.getElementById("rightSideContainer");
 let sessionDisplay = document.getElementById("session");
-
+let clock = document.getElementById("clock");
 /**
  * Show TaskList or Settings based on the current display
  */
@@ -37,6 +37,7 @@ let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-v
  * Show onboarding menu and hide the Task List/Settings, Clock, and the current state text
  */
 function displayOnboardingMenu() { // eslint-disable-line no-unused-vars
+    clock.style.display = "none";
     onboardingContainer.style.display = "block";
     rightSideContainer.style.display = "none";
     sessionDisplay.style.display = "none";
@@ -48,6 +49,7 @@ function displayOnboardingMenu() { // eslint-disable-line no-unused-vars
  * Hide onboarding menu and hide the Task List/Settings, Clock, and the current state text
  */
 function closeOnboardingMenu() { //eslint-disable-line no-unused-vars
+    clock.style.display = "block";
     onboardingContainer.style.display = "none";
     rightSideContainer.style.display = "inline-block";
     sessionDisplay.style.display = "block";
