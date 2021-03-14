@@ -157,7 +157,7 @@ input:focus {
 #areYouSureYes {
     background: none;
     border: none;
-    padding-right: 4vw;
+    margin-right: 3.5vw;
     color: white;
     outline: none;
     cursor: pointer;
@@ -166,7 +166,7 @@ input:focus {
 #areYouSureNo {
     background: none;
     border: none;
-    padding-left: 4vw;
+    margin-left: 3.5vw;
     color: white;
     outline: none;
     cursor: pointer;
