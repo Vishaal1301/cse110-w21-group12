@@ -2,6 +2,8 @@ import { isCountdown, updateTimerSettings, sessionLengths, secondsToString, star
 const callback = jest.fn();
 const testClock = document.createElement("div");
 const mockElem = {
+    play: function(){},
+    pause: function(){},
     style: {
         display: "none"
     },
@@ -11,6 +13,7 @@ global.document.getElementById = jest.fn(() => {
 });
 const stor = window.localStorage;
 global.window.HTMLMediaElement.prototype.play = jest.fn();
+
 jest.useFakeTimers();
 beforeEach(() => {
     if(isCountdown){

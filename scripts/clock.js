@@ -110,6 +110,7 @@ function stopTimer(clock, resetSkip, callback) {
     // Get current state based on the current session number
     let state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
     document.getElementById("session").innerHTML = state;
+    const cafeSounds = document.getElementById("cafeSounds");
 
     //when curr state is focus session, we want to display appropriate are you sure pop ups
     if (state == "Focus Session") {
