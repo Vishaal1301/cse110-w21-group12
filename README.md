@@ -1,1 +1,2 @@
-# cse110-w21-group12
+# Coffeetivity
+## cse110-w21-group12
