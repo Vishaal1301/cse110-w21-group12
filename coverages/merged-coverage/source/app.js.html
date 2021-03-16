@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for source\app.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">source/</a> app.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>73/73</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>23/23</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>73/73</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">1360×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">216×</span>
+<span class="cline-any cline-yes">121×</span>
+<span class="cline-any cline-yes">121×</span>
+<span class="cline-any cline-yes">91×</span>
+<span class="cline-any cline-yes">91×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">95×</span>
+<span class="cline-any cline-yes">91×</span>
+<span class="cline-any cline-yes">91×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">103×</span>
+<span class="cline-any cline-yes">103×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-yes">44×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">170×</span>
+<span class="cline-any cline-yes">113×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">91×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">113×</span>
+<span class="cline-any cline-yes">316×</span>
+<span class="cline-any cline-yes">316×</span>
+<span class="cline-any cline-yes">72×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">113×</span>
+<span class="cline-any cline-yes">113×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * App module
+ * @module app
+*/
+&nbsp;
+// Import clock logic from clock module
+import {startStopTimer, updateTimerSettings, isCountdown, sessionNum, POMO_CYCLES, displayFocusContent, displayBreakContent} from "./scripts/clock.js";
+&nbsp;
+// App variables
+const cup = document.getElementById("cup");
+const clock = document.getElementById("clock");
+const session = document.getElementById("session");
+const cafeSounds = document.getElementById("cafeSounds");
+let currentState = session.innerHTML;
+let mouseOver = false;
+&nbsp;
+// Update page setting to user customizations or default on initial render
+window.addEventListener("load", function() {
+    updateTimerSettings(clock, localStorage.getItem("focusTime") * 60,
+        localStorage.getItem("shortBreakTime") * 60,
+        localStorage.getItem("longBreakTime") * 60);
+    // load and set music
+    cafeSounds.src = cafeSounds.dataset.src;
+    clock.style.display = "block";
+    cafeSounds.loop = true;
+    cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
+    // load popup images
+    var popupImages = document.querySelectorAll("img.popup");
+    popupImages.forEach(function(img) {
+        img.src = img.dataset.src;
+    });
+});
+&nbsp;
+// Update description and styling for cup and the current session text
+const updateCoffeeCup = () =&gt; {
+    // Change clock color and displayed session on user mouse hover
+    if (isCountdown) {
+        currentState = session.innerHTML;
+        if (mouseOver &amp;&amp; currentState == "Focus Session") {
+            session.innerHTML = "Stop Session?";
+            clock.style.color = "red";
+        } else if (mouseOver &amp;&amp; (currentState == "Short Break" || currentState == "Long Break")) {
+            session.innerHTML = "Skip Break?";
+            clock.style.color = "red";
+        }
+    } else {
+        if (mouseOver) {
+            session.innerHTML = "Start Focus?";
+            clock.style.color = "green";
+        } else {
+            currentState = "Start";
+            session.innerHTML = "Start";
+            clock.style.color = "white";
+        }
+    }
+};
+&nbsp;
+// Updates the session name and color of the time when mouse hovers over the cup
+cup.onmouseover = () =&gt; {
+    mouseOver = true;
+    updateCoffeeCup();
+};
+&nbsp;
+// Resets the session name and color of the time when mouse stops hovering over the cup
+cup.onmouseout = () =&gt; {
+    mouseOver = false;
+    session.innerHTML = currentState;
+    clock.style.color = "white";
+};
+&nbsp;
+// Updates displays and timer state when user clicks on the cup
+cup.onclick = () =&gt; {
+    if (isCountdown){
+        const state = sessionNum == POMO_CYCLES * 2 - 1 ? "Long Break" : sessionNum % 2 == 0 ? "Focus Session" : "Short Break";
+        // Show pop up based on the current session
+        if (state == "Focus Session"){
+            displayAskResetFocus();
+        } 
+        else {
+            displayAskResetBreak();
+        }
+    } else {
+        changeScreen();
+    }
+};
+&nbsp;
+/**
+ * Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
+ */
+function changeScreen(){
+    startStopTimer(clock, (state) =&gt; {
+        currentState = state;
+        if (!mouseOver){
+            session.innerHTML = state;
+        }
+    });
+    currentState = session.innerHTML;
+    updateCoffeeCup();
+}
+&nbsp;
+/**
+ * Display "Are You Sure?" pop up when trying to end focus session
+ * Change the current session text accordingly
+ */
+function displayAskResetFocus() {
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "RESET FOCUS?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayBreakContent);
+    areYouSureNo.addEventListener("click", displayFocusContent);
+}
+&nbsp;
+/**
+ * Display "Are You Sure?"" pop up when trying to end break session
+ * Change the current session text accordingly
+ * Update eventlisterners 
+ */
+function displayAskResetBreak() {
+    displayFocusContent();
+    let rightHeader = document.getElementById("rightSideHeader");
+    rightHeader.innerText = "SKIP BREAK?";
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+    areYouSureOptions.style.display = "block";
+    let focusTask = document.getElementById("focusTask");
+    focusTask.style.display = "none";
+    let areYouSureYes = document.getElementById("areYouSureYes");
+    areYouSureYes.addEventListener("click", changeScreen);
+    let areYouSureNo = document.getElementById("areYouSureNo");
+    areYouSureNo.removeEventListener("click", displayFocusContent);
+    areYouSureNo.addEventListener("click", displayBreakContent);
+}
+&nbsp;
+export {changeScreen};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 16 2021 12:22:35 GMT-0700 (Pacific Daylight Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
