@@ -6,34 +6,46 @@
 import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
 
 /**
+ * The size of the menu button in pixels
  * @constant {number} 
  * @default
 */
 const MENU_BUTTON_SIZE = 25;
 
 /**
+ * The color of normal text
  * @constant {string} 
  * @default
 */
 const TEXT_COLOR = "white";
 
 /**
+ * The color of focused text
  * @constant {string} 
  * @default
 */
 const FOCUS_COLOR = "#eed039";
 
 /**
+ * The color of crossed out text
  * @constant {string} 
  * @default
 */
 const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
 
 /**
+ * The maximum input length
  * @constant {number} 
  * @default
 */
 const MAX_INPUT_LENGTH = 20;
+
+/**
+ * The maximum number of tasks
+ * @constant {number} 
+ * @default
+*/
+const MAX_TASKS = 12;
 
 let taskInput = document.getElementById("new-task"); //new-task
 let TasksHolder = document.getElementById("tasks"); //the tasks
@@ -341,7 +353,7 @@ let bindTaskEvents = function(taskListItem) {
 taskInput.addEventListener("keyup", (event) => {
     if(event.key === "Enter"){
         tasks = JSON.parse(stor.getItem("tasks"));
-        if(tasks.list.length <= 11 && addTask(taskInput.value, false, tasks.list.length))
+        if(tasks.list.length <= MAX_TASKS - 1 && addTask(taskInput.value, false, tasks.list.length))
             storeTask(taskInput.value);
         taskInput.value = null;
     }
