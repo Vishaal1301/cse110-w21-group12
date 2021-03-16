@@ -1,7 +1,11 @@
 /**
  * SettingContent custom Component
+ * @class
  */
 class SettingContent extends HTMLElement {
+    /**
+    * @constructs SettingContent
+    */
     constructor() {
         super();
         const shadow = this.attachShadow({mode: "open"});

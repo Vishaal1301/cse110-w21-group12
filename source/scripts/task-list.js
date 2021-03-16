@@ -1,8 +1,38 @@
+/**
+ * Shadow dom rendering for Task List
+ * @module scripts/task-list
+*/
+
 import {storeTask, unstoreTask, updateTask, editTask, updateMainTask} from "./task-list-local-storage.js";
+
+/**
+ * @constant {number} 
+ * @default
+*/
 const MENU_BUTTON_SIZE = 25;
+
+/**
+ * @constant {string} 
+ * @default
+*/
 const TEXT_COLOR = "white";
+
+/**
+ * @constant {string} 
+ * @default
+*/
 const FOCUS_COLOR = "#eed039";
+
+/**
+ * @constant {string} 
+ * @default
+*/
 const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
+
+/**
+ * @constant {number} 
+ * @default
+*/
 const MAX_INPUT_LENGTH = 20;
 
 let taskInput = document.getElementById("new-task"); //new-task
