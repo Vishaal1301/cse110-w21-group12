@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
   jest:
-    if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
+    if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -63,7 +63,7 @@ jobs:
           publish_dir: ./out
   #for cypress: key: cypress run --record --key c80eeaeb-80f9-493c-bf04-a9f6963a96be
   cypress-run:
-    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-16.04
     steps:
       - name: Checkout
