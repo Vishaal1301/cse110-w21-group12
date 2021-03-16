@@ -92,7 +92,7 @@ describe("Clock tests", () => {
         it("Hover over clock displays \"skip break?\" during short break", () => {
             cy.clock();
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -106,7 +106,7 @@ describe("Clock tests", () => {
         it("Hover over clock displays \"skip break?\" during long break", () => {
             cy.clock();
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000); // First focus
 
