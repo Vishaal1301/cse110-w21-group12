@@ -63,7 +63,7 @@ jobs:
           publish_dir: ./out
   #for cypress: key: cypress run --record --key c80eeaeb-80f9-493c-bf04-a9f6963a96be
   cypress-run:
-    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'main'
+    if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-16.04
     steps:
       - name: Checkout
