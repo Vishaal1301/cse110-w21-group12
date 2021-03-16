@@ -52,13 +52,10 @@ body {
     display: inline-block;
     width: 80%;
     padding-bottom: 1%;
-    margin: 10px auto;
     background-color: #181d28;
     border-radius: 5px 0 0 5px;
-    position: absolute;
     right: 0;
   }
-  
 
 #timerContainer {
     grid-column-start: 2;
