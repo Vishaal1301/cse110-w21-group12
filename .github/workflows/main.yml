@@ -2,11 +2,11 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   pull_request:
-    branches: 
+    branches:
       - main
       - features
       - testing
@@ -20,39 +20,62 @@ jobs:
     if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
-    - name: Run ESLint
-      run: yarn run eslint source/**/*.js
-      
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint
+
   jest:
-    if: github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'features'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: yarn
-    - name: Run tests
-      run: yarn test
-      
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install
+      - name: Run tests
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   deploy:
-    if: github.event.pull_request.base.ref == 'features' || github.event.pull_request.base.ref == 'testing'
+    if: github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Build
+        run : cp -R ./source ./out
+
+      - name: Build Docs
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./source
           recurse: true
-          output_dir: ./out
-          front_page: README.md  
-          
+          output_dir: ./out/docs
+          front_page: README.md
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./out  
+          publish_dir: ./out
+  #for cypress: key: cypress run --record --key c80eeaeb-80f9-493c-bf04-a9f6963a96be
+  cypress-run:
+    if: github.event.pull_request.base.ref == 'testing' || github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      # https://github.com/cypress-io/github-action
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          record: true
+          start: npm start
+          wait-on: 'http://127.0.0.1:5500'
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: c80eeaeb-80f9-493c-bf04-a9f6963a96be
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
