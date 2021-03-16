@@ -1002,7 +1002,7 @@ describe("End to end testing", () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
-                .click()
+                .click();
 
             cy.get("#new-task")
                 .type("Test Task 2")
