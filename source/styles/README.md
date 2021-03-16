@@ -1,0 +1,1 @@
+This folder is for styles, for styles related notes please put them here

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <!-- Latest compiled and minified CSS --> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="icon" href="./assets/favicon.png">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <!-- Importing font -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap" rel="stylesheet">
+
+        <title>Coffeetivity</title>
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="stylesheet" href="./styles/task-list-styles.css">
+    </head>
+
+    <body>
+        <main class="myContainer">
+            <audio id="cafeSounds" data-src="./assets/cafeSound.mp3" ></audio>
+            <audio id="clickSound" src="./assets/clickSound.mp3" type="audio/mpeg"></audio> 
+            <audio id="alarm" src="./assets/focus.mp3" type="audio/mpeg"></audio> 
+
+            <!-- Clock Component -->
+            <div id="gridContainer">
+                <div id="timerContainer">
+                    <div id="cup">
+                        <div id="clock" class="text">
+                            25:00
+                        </div>
+                    </div>
+                    <div id="session">Start</div>
+                </div>
+            
+            <!-- Container for Task List and Settings Component -->
+            <div id="rightSideContainer">
+                <p id="rightSideHeader">TASK LIST</p> 
+
+                <div id="taskListContainer">
+                    <ul id="tasks">
+                    </ul>
+                    <ul style="list-style-type: none; margin-left:6%">
+                        <li>
+                            <input id="new-task" maxlength="35" placeholder="Add new item">
+                        </li> 
+                    </ul>
+                </div>
+
+                <div id="settingsContainer" class="settingsContainer">
+                    <setting-content id="settingContent"></setting-content>
+                </div>
+            
+            <div id="navIconContainer">
+                    <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettingsDisplay()">
+            </div>
+
+                <p id="focusTask" style="display:none">No focus task selected</p>
+                
+                <div id="areYouSureOptions">
+                    <button id="areYouSureYes">Yes</button>
+                    <button id="areYouSureNo">No</button>
+                </div>
+            </div>
+
+        </main>
+
+        <input id="onboardingIcon" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
+        <input id="xicon" type="image" src="./assets/xicon.png" onclick="closeOnboardingMenu()"> 
+        
+        <!-- Onboarding menu content -->
+        <div id="mypopup">
+            <div id="onboardingContainer">
+                <div class="in-middle" id="inMiddle">
+                    <div id="popup">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
+                            </ol>
+
+                            <!-- Onboarding slides content -->
+                            <div class="carousel-inner" id="carouselInner">
+                                <div class="carousel-item active">
+                                    <p class="carouselPara">Welcome to Coffeetivity</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup1.png" alt="First slide"> 
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Getting Started</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup2.png" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Keep Track of Tasks</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup3.png" alt="Third slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Start a Session</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup4.png" alt="Fourth slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Stop a Session</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup5.png" alt="Fifth slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Take a Break</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup6.png" alt="Sixth slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara">Adjust Settings</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup7.png" alt="Seventh slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <p class="carouselPara" >Great, you're ready to begin!</p>
+                                    <img class="d-block w-100 popup" data-src="./assets/popup8.png" alt="Eighth slide">
+                                </div>
+                            </div>
+
+                            <!-- Previous/next button to switch between slides -->
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div> 
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <script type="module" src="app.js"></script>
+        <script src="./components/setting-content.js"></script>
+        <script type="module" src="./scripts/setting-script.js"></script>
+        <script type="module" src="./scripts/task-list.js"></script>
+        <script src="./scripts/handle-icons.js"></script>
+    </body>
+</html>
+
