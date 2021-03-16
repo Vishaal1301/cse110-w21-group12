@@ -10,13 +10,13 @@ function secondsToString(time) {
     return minutes + ":" + seconds;
 }
 
-describe('End to end testing', () => {
+describe("End to end testing", () => {
     beforeEach(() => {
         cy.visit("http://127.0.0.1:5500/source/index.html"); // TODO: change URL when deploy
     });
 
-    describe('Settings and clock interaction tests', () => {
-        it('Editing focus time in settings changes focus session time accordingly', () => {
+    describe("Settings and clock interaction tests", () => {
+        it("Editing focus time in settings changes focus session time accordingly", () => {
             let time = secondsToString(900); // 15 minutes
             cy.clock();
 
@@ -25,11 +25,11 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 15).trigger('input');
+                .invoke("val", 15).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -39,7 +39,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // First break
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -49,7 +49,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // Second break
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -59,7 +59,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // Third break
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -69,7 +69,7 @@ describe('End to end testing', () => {
 
             cy.tick(900000); // Fourth/extended break
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -77,7 +77,7 @@ describe('End to end testing', () => {
 
         });
 
-        it('Focus time settings save even after resetting clock', () => {
+        it("Focus time settings save even after resetting clock", () => {
             let time = secondsToString(1080); // 18 minutes
             cy.clock();
 
@@ -86,16 +86,16 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 18).trigger('input');
+                .invoke("val", 18).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(10000);
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -103,7 +103,7 @@ describe('End to end testing', () => {
 
         });
 
-        it('Focus time settings save even when skipping break', () => {
+        it("Focus time settings save even when skipping break", () => {
             let time = secondsToString(1260); // 21 minutes
             cy.clock();
 
@@ -112,11 +112,11 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 21).trigger('input');
+                .invoke("val", 21).trigger("input");
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -124,10 +124,10 @@ describe('End to end testing', () => {
 
             cy.tick(1260000); // First focus session
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -135,10 +135,10 @@ describe('End to end testing', () => {
 
             cy.tick(1260000); // Second focus session
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -146,10 +146,10 @@ describe('End to end testing', () => {
 
             cy.tick(1260000); // Third focus session
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -157,21 +157,21 @@ describe('End to end testing', () => {
 
             cy.tick(1260000); // Fourth focus session
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
         });
 
-        it('Can edit focus session length during breaks', () => {
+        it("Can edit focus session length during breaks", () => {
             let time = secondsToString(1260); // 21 minutes
             cy.clock();
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
             cy.tick(1500000);
 
             cy.get("#navIcon").click();
@@ -179,22 +179,22 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 21).trigger('input');
+                .invoke("val", 21).trigger("input");
 
             cy.tick(300000);
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
         });
 
-        it('Can edit short break session length during breaks', () => {
+        it("Can edit short break session length during breaks", () => {
             let time = secondsToString(600); // 10 minutes
             cy.clock();
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
             cy.tick(1500000);
 
             cy.get("#navIcon").click();
@@ -202,31 +202,24 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#shortBreakContainer")
                 .find("#shortBreakNumber")
-                .invoke('val', 10).trigger('input');
-
-            // cy.get('#clock').then(
-            //     $el => {
-            //         expect($el.text().trim()).equal(time);
-            //     }
-            // );
-
-            // cy.tick(600000);
+                .invoke("val", 10).trigger("input");
+            
             cy.tick(300000);
 
             cy.tick(1500000);
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
         });
 
-        it('Can edit long break session length during breaks', () => {
+        it("Can edit long break session length during breaks", () => {
             let time = secondsToString(1200); // 20 minutes
             cy.clock();
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
             cy.tick(1500000); // First focus
 
             cy.get("#navIcon").click();
@@ -234,7 +227,7 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#longBreakContainer")
                 .find("#longBreakNumber")
-                .invoke('val', 20).trigger('input');
+                .invoke("val", 20).trigger("input");
 
             cy.tick(300000);
 
@@ -248,14 +241,14 @@ describe('End to end testing', () => {
 
             cy.tick(1500000); // Fourth focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
         });
 
-        it('Editing short break time in settings changes break session time accordingly', () => {
+        it("Editing short break time in settings changes break session time accordingly", () => {
             let time = secondsToString(600); // 10 minutes
             cy.clock();
 
@@ -264,13 +257,13 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#shortBreakContainer")
                 .find("#shortBreakNumber")
-                .invoke('val', 10).trigger('input');
+                .invoke("val", 10).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000); // First focus
             
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -280,7 +273,7 @@ describe('End to end testing', () => {
 
             cy.tick(1500000); // Second focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -290,7 +283,7 @@ describe('End to end testing', () => {
 
             cy.tick(1500000); // Third focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -298,7 +291,7 @@ describe('End to end testing', () => {
 
         });
 
-        it('Edited short break time saves even when skipping', () => {
+        it("Edited short break time saves even when skipping", () => {
             let time = secondsToString(600); // 10 minutes
             cy.clock();
 
@@ -307,42 +300,42 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#shortBreakContainer")
                 .find("#shortBreakNumber")
-                .invoke('val', 10).trigger('input');
+                .invoke("val", 10).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000); // First focus
             
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
             cy.tick(1500000); // Second focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
 
-            cy.get('#cup').click();
-            cy.get('#areYouSureYes').click();
+            cy.get("#cup").click();
+            cy.get("#areYouSureYes").click();
 
             cy.tick(1500000); // Third focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
         });
 
-        it('Editing short break time in settings saves even after entire cycle', () => {
+        it("Editing short break time in settings saves even after entire cycle", () => {
             let time = secondsToString(600); // 10 minutes
             cy.clock();
 
@@ -351,9 +344,9 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#shortBreakContainer")
                 .find("#shortBreakNumber")
-                .invoke('val', 10).trigger('input');
+                .invoke("val", 10).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000); // First focus
 
@@ -373,7 +366,7 @@ describe('End to end testing', () => {
 
             cy.tick(1500000);
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -381,7 +374,7 @@ describe('End to end testing', () => {
 
         });
 
-        it('Editing long break time in settings is reflected in clock', () => {
+        it("Editing long break time in settings is reflected in clock", () => {
             let time = secondsToString(1200); // 20 minutes
             cy.clock();
 
@@ -390,9 +383,9 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#longBreakContainer")
                 .find("#longBreakNumber")
-                .invoke('val', 20).trigger('input');
+                .invoke("val", 20).trigger("input");
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000); // First focus
 
@@ -408,7 +401,7 @@ describe('End to end testing', () => {
 
             cy.tick(1500000); // Fourth focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -416,7 +409,7 @@ describe('End to end testing', () => {
 
         });
 
-        it('Editing focus and break time in settings at once is reflected in clock', () => {
+        it("Editing focus and break time in settings at once is reflected in clock", () => {
             let focusTime = secondsToString(1200); // 20 minutes
             let shortBreakTime = secondsToString(600); // 10 minutes
             let longBreakTime = secondsToString(1200);  // 20 minutes
@@ -429,29 +422,29 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 20).trigger('input');
+                .invoke("val", 20).trigger("input");
             cy.get("#settingContent")
                 .shadow()
                 .find("#shortBreakContainer")
                 .find("#shortBreakNumber")
-                .invoke('val', 10).trigger('input');
+                .invoke("val", 10).trigger("input");
             cy.get("#settingContent")
                 .shadow()
                 .find("#longBreakContainer")
                 .find("#longBreakNumber")
-                .invoke('val', 20).trigger('input');
+                .invoke("val", 20).trigger("input");
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(focusTime);
                 }
             );
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1200000); // First focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(shortBreakTime);
                 }
@@ -469,7 +462,7 @@ describe('End to end testing', () => {
 
             cy.tick(1200000); // Fourth focus
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(longBreakTime);
                 }
@@ -478,18 +471,18 @@ describe('End to end testing', () => {
         });
     });
 
-    describe('Task list and clock interaction tests', () => {
-        it('"No focus task selected" should be displayed when clock is started with no focus task or tasks', () => {
-            cy.get('#cup').click();
+    describe("Task list and clock interaction tests", () => {
+        it("\"No focus task selected\" should be displayed when clock is started with no focus task or tasks", () => {
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('"No focus task selected" should be displayed when clock is started with tasks but no focus task', () => {
+        it("\"No focus task selected\" should be displayed when clock is started with tasks but no focus task", () => {
             cy.get("#new-task")
                 .type("Test task 1")
                 .type("{enter}", {force: true});
@@ -498,16 +491,16 @@ describe('End to end testing', () => {
                 .type("Test task 2")
                 .type("{enter}", {force: true});
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('Focus task is correctly displayed throughout sessions when clock is started', () => {
+        it("Focus task is correctly displayed throughout sessions when clock is started", () => {
             cy.get("#new-task")
                 .type("Focus Task")
                 .type("{enter}", {force: true});
@@ -518,14 +511,14 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Focus Task");
                 }
@@ -535,7 +528,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // First break
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Focus Task");
                 }
@@ -545,7 +538,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // Second break
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Focus Task");
                 }
@@ -555,7 +548,7 @@ describe('End to end testing', () => {
 
             cy.tick(300000); // Third break
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Focus Task");
                 }
@@ -565,20 +558,20 @@ describe('End to end testing', () => {
 
             cy.tick(900000); // Extended break
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Focus Task");
                 }
             );
         });
 
-        it('Can add tasks during break', () => {
+        it("Can add tasks during break", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -594,43 +587,43 @@ describe('End to end testing', () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=0]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 1");
                     }
-            );
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=1]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 2");
                     }
-            );
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=2]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 3");
                     }
-            );
+                );
         });
 
-        it('Tasks added during break are saved across sessions', () => {
+        it("Tasks added during break are saved across sessions", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -650,45 +643,45 @@ describe('End to end testing', () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=0]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 1");
                     }
-            );
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=1]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 2");
                     }
-            );
+                );
 
             cy.get("#new-task")
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=2]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 3");
                     }
-            );
+                );
         });
 
-        it('Can add tasks and change focus tasks during breaks', () => {
+        it("Can add tasks and change focus tasks during breaks", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
@@ -712,13 +705,13 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.tick(300000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 1");
                 }
@@ -734,20 +727,20 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.tick(300000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 3");
                 }
             );
         });
 
-        it('Focus task saves across sessions and cycles', () => {
+        it("Focus task saves across sessions and cycles", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -758,12 +751,12 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -781,14 +774,14 @@ describe('End to end testing', () => {
 
             cy.tick(900000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 1");
                 }
             );
         });
 
-        it('Adding and deleting focus task before starting the clock reflects accordingly', () => {
+        it("Adding and deleting focus task before starting the clock reflects accordingly", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -799,7 +792,7 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
@@ -809,20 +802,20 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#deleteButton")
-                .click()
+                .click();
             
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('Adding and deleting focus task during break session reflects accordingly', () => {
+        it("Adding and deleting focus task during break session reflects accordingly", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -833,14 +826,14 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 1");
                 }
@@ -854,20 +847,20 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#deleteButton")
-                .click()
+                .click();
 
             cy.tick(300000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('Unselecting focus task reflects when clock is started', () => {
+        it("Unselecting focus task reflects when clock is started", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -878,14 +871,14 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 1");
                 }
@@ -899,20 +892,20 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
             cy.tick(300000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('Adding and deleting task reflects across sessions', () => {
+        it("Adding and deleting task reflects across sessions", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -923,7 +916,7 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
 
@@ -933,22 +926,22 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#deleteButton")
-                .click()
+                .click();
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
             cy.get("#new-task")
                 .get("#tasks")
                 .get(".taskItem")
-                .should('not.exist');
+                .should("not.exist");
         });
 
-        it('Deleting tasks during break sessions is reflected across sessions', () => {
+        it("Deleting tasks during break sessions is reflected across sessions", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -962,7 +955,7 @@ describe('End to end testing', () => {
                 .type("{enter}", {force: true});
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -974,7 +967,7 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#deleteButton")
                 .click();
 
@@ -986,14 +979,14 @@ describe('End to end testing', () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("[id=1]")
-                .invoke('val')
+                .invoke("val")
                 .then(
                     $el => {
                         expect($el.trim()).equal("Test Task 3");
-                });
+                    });
         });
 
-        it('Checked off tasks are saved across sessions', () => {
+        it("Checked off tasks are saved across sessions", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -1002,7 +995,7 @@ describe('End to end testing', () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
-                .click()
+                .click();
 
             cy.get("#new-task")
                 .type("Test Task 2")
@@ -1013,7 +1006,7 @@ describe('End to end testing', () => {
                 .type("{enter}", {force: true});
 
             cy.clock();
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
             cy.tick(1500000);
 
@@ -1029,8 +1022,8 @@ describe('End to end testing', () => {
         });
     });
 
-    describe('General interaction tests', () => {
-        it('Changing focus session length does not affect task list/focus task', () => {
+    describe("General interaction tests", () => {
+        it("Changing focus session length does not affect task list/focus task", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -1052,17 +1045,17 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 15).trigger('input');
+                .invoke("val", 15).trigger("input");
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
             );
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("Test Task 1");
                 }
@@ -1076,20 +1069,20 @@ describe('End to end testing', () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
             
             cy.tick(300000);
 
-            cy.get('#focusTask').then(
+            cy.get("#focusTask").then(
                 $el => {
                     expect($el.text().trim()).equal("No focus task selected");
                 }
             );
         });
 
-        it('Settings and tasklist do not display during focus sessions', () => {
+        it("Settings and tasklist do not display during focus sessions", () => {
             cy.get("#new-task")
                 .type("Test Task 1")
                 .type("{enter}", {force: true});
@@ -1102,11 +1095,11 @@ describe('End to end testing', () => {
                 .shadow()
                 .find("#focusContainer")
                 .find("#focusNumber")
-                .invoke('val', 15).trigger('input');
+                .invoke("val", 15).trigger("input");
 
-            cy.get('#cup').click();
+            cy.get("#cup").click();
 
-            cy.get('#clock').then(
+            cy.get("#clock").then(
                 $el => {
                     expect($el.text().trim()).equal(time);
                 }
@@ -1122,12 +1115,12 @@ describe('End to end testing', () => {
             
             cy.tick(300000);
 
-            cy.get('#navIcon')
-                .should('not.be.visible');
+            cy.get("#navIcon")
+                .should("not.be.visible");
 
-            cy.get('#settingContent')
+            cy.get("#settingContent")
                 .shadow()
-                .should('not.exist');
+                .should("not.exist");
         });
     });
 });

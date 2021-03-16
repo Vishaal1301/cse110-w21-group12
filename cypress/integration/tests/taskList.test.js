@@ -33,7 +33,7 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#deleteButton")
                 .click()
                 .then(
@@ -61,39 +61,39 @@ describe("TaskList test", () => {
         it("add 15 tasks", () => {
             for(let i = 1; i <= 15; i++){
                 cy.get("#new-task")
-                .type("task " + i)
-                .type("{enter}", {force: true});
+                    .type("task " + i)
+                    .type("{enter}", {force: true});
             }
 
             cy.get("#taskListContainer")
-            .get("#tasks")
-            .children()
-            .should("have.length", 12);
+                .get("#tasks")
+                .children()
+                .should("have.length", 12);
 
         });
 
         it("Remove task out of multiple", () => {
             for(let i = 1; i <= 3; i++){
                 cy.get("#new-task")
-                .type("task " + i)
-                .type("{enter}", {force: true});
+                    .type("task " + i)
+                    .type("{enter}", {force: true});
             }
 
             cy.get("#new-task")
-            .get("#tasks")
-            .find(".taskItem")
-            .first()
-            .click()
-            .find(".dropdown")
-            .click()
-            .find("#deleteButton")
-            .click();
+                .get("#tasks")
+                .find(".taskItem")
+                .first()
+                .click()
+                .find(".dropdown")
+                .click()
+                .find("#deleteButton")
+                .click();
 
             cy.get("#taskListContainer")
-            .get("#tasks")
-            .children()
-            .should("have.length", 2);
-        })
+                .get("#tasks")
+                .children()
+                .should("have.length", 2);
+        });
     });
     
     describe("set/unset focus", () => {
@@ -101,8 +101,8 @@ describe("TaskList test", () => {
 
             for(let i = 1; i <= 3; i++){
                 cy.get("#new-task")
-                .type("task " + i)
-                .type("{enter}", {force: true});
+                    .type("task " + i)
+                    .type("{enter}", {force: true});
             }
 
             // Check the first task
@@ -110,7 +110,7 @@ describe("TaskList test", () => {
                 .get("#tasks")
                 .get("input[type=checkbox]")
                 .first()
-                .click()
+                .click();
 
             // focus the last task
             cy.get("#new-task")
@@ -120,9 +120,9 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
-                .click()
+                .click();
 
             cy.get("#new-task")
                 .get("#tasks")
@@ -147,7 +147,7 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click();
             
@@ -157,15 +157,15 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
                 .click()
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).mainTask.id)
-                        .to.eq(null);
+                            .to.eq(null);
                         expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
-                        .to.eq(undefined);
+                            .to.eq(undefined);
                     }
                 );
 
@@ -195,7 +195,7 @@ describe("TaskList test", () => {
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).list[0].checked)
-                        .to.eq(true);
+                            .to.eq(true);
                     }
                 );
 
@@ -224,9 +224,9 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
-                .click()
+                .click();
 
             // Check the task focused task
             cy.get("#new-task")
@@ -237,7 +237,7 @@ describe("TaskList test", () => {
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).mainTask.id)
-                        .to.eq(null);
+                            .to.eq(null);
                     }
                 );
 
@@ -263,7 +263,7 @@ describe("TaskList test", () => {
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).list[0].checked)
-                        .to.eq(false);
+                            .to.eq(false);
                     }
                 );
 
@@ -277,7 +277,7 @@ describe("TaskList test", () => {
                     }
                 );
         });
-    })
+    });
 
     describe("Edit task", () => {
         it("change task name", () => {
@@ -299,7 +299,7 @@ describe("TaskList test", () => {
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).list[0].name)
-                        .to.eq("task 2");
+                            .to.eq("task 2");
                     }
                 );
         });
@@ -308,8 +308,8 @@ describe("TaskList test", () => {
 
             for(let i = 1; i <= 3; i++){
                 cy.get("#new-task")
-                .type("task " + i)
-                .type("{enter}", {force: true});
+                    .type("task " + i)
+                    .type("{enter}", {force: true});
             }
 
             // Edit task name to be emtpy
@@ -323,7 +323,7 @@ describe("TaskList test", () => {
                 .then(
                     () => {
                         expect(JSON.parse(localStorage.getItem("tasks")).list.length)
-                        .to.eq(2);
+                            .to.eq(2);
                     }
                 );
             
@@ -408,7 +408,7 @@ describe("TaskList test", () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
-                .click()
+                .click();
             
             // Open the dropdown
             cy.get("#new-task")
@@ -445,15 +445,15 @@ describe("TaskList test", () => {
                 .get("#tasks")
                 .find(".taskItem")
                 .get("input[type=checkbox]")
-                .click()
+                .click();
 
-            cy.reload()
+            cy.reload();
 
             cy.get("#taskListContainer")
                 .get("#tasks")
                 .children()
                 .should("have.length", 1);
-        })
+        });
 
         it("reload a focused task", () => {
             cy.get("#new-task")
@@ -467,17 +467,17 @@ describe("TaskList test", () => {
                 .click()
                 .find(".dropdown")
                 .find(".dropdown-content")
-                .invoke('show')
+                .invoke("show")
                 .find("#mainTaskSelector")
-                .click()
+                .click();
 
-            cy.reload()
+            cy.reload();
 
             cy.get("#taskListContainer")
                 .get("#tasks")
                 .children()
                 .should("have.length", 1);
-        })
+        });
 
     });
 });
