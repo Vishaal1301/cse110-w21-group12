@@ -1,14 +1,12 @@
 /**
  * Functions to handle display of Task List, Settings, and Onboarding menu
- * @module scripts/handle-icons
-*/
+ */
 
 let onboardingIcon = document.getElementById("onboardingIcon");
 let onboardingContainer = document.getElementById("onboardingContainer");
 let rightSideContainer = document.getElementById("rightSideContainer");
 let sessionDisplay = document.getElementById("session");
 let clock = document.getElementById("clock");
-
 /**
  * Show TaskList or Settings based on the current display
  */

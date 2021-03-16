@@ -1,6 +1,6 @@
 /**
  * App module
- * @module app
+ * @module modules/app
 */
 
 // Import clock logic from clock module
@@ -84,9 +84,7 @@ cup.onclick = () => {
     }
 };
 
-/**
- * Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
- */
+// Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
 function changeScreen(){
     startStopTimer(clock, (state) => {
         currentState = state;

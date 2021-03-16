@@ -1,15 +1,10 @@
 /**
  * Clock module
- * @module scripts/clock
+ * @module modules/clock
 */
-
-/**
- * @constant {number} 
- * @default
-*/
-const POMO_CYCLES = 4; // Default Pomo cycle length
 
 // Timer setting variables
+const POMO_CYCLES = 4; // Default Pomo cycle length
 let sessionLengths = [1500, 300, 1500, 300, 1500, 300, 1500, 900];  // {defaultFocusTime: 1500, defaultShortBreak: 300, defaultLongBreak: 900}
 let sessionNum = 0; // Default start session is Focus Session
 
@@ -71,7 +66,7 @@ function displayFocusContent() {
  * Changes display of rightSideContainer (the blue box)
  * 
  * @param {object} clock - The HTML element for the clock
- * @param {requestCallback} callback - Callback gets called everytime the timer stops, or when the state changes
+ * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function startTimer(clock, callback) {
     const clickSound = document.getElementById("clickSound");
@@ -107,7 +102,7 @@ function startTimer(clock, callback) {
  * Plays alarm and updates background audio
  * 
  * @param {object} clock - The HTML element for the clock
- * @param {requestCallback} callback - Callback gets called everytime the timer stops, or when the state changes
+ * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function stopTimer(clock, resetSkip, callback) {
     // Get current state based on the current session number
@@ -204,7 +199,7 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
 /**
  * When the button is clicked, starts or stops timer based on timer state
  * @param {object} clock - The HTML element for the clock
- * @param {requestCallback} callback - Callback gets called everytime the timer stops, or when the state changes
+ * @param {function} callback - Callback gets called everytime the timer stops, or when the state changes
  */
 function startStopTimer(clock, callback) {
     if (!isCountdown) {
