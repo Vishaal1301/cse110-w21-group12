@@ -33,9 +33,9 @@ body {
 #navIconContainer {
     display: block;
     justify-content: space-between;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 #settingsContainer {
@@ -52,10 +52,10 @@ body {
     display: inline-block;
     width: 80%;
     padding-bottom: 1%;
-    margin: 10px auto;
+    margin: 10px auto 10px; 
     background-color: #181d28;
-    border-radius: 5px 0 0 5px;
-    position: absolute;
+    border-radius: 5px 0px 0px 5px;
+    position: absolute; 
     right: 0;
   }
   
@@ -84,7 +84,7 @@ body {
     margin-top: 9vh;
 }
 
-#clock {
+#clock { 
     display: none;
     color: white;
     font-size: 135px;
@@ -93,7 +93,7 @@ body {
     pointer-events: none;
     font-weight: 800;
     font-family: 'Open Sans', sans-serif;
-}
+} 
 
 @media only screen and (max-width: 2335px) {
     #clock{
