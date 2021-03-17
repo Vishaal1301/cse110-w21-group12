@@ -19,7 +19,7 @@ _Unresolved Business from Previous Meeting:_
 - Video
 
 _New Business to be Discussed:_
-- Final Testing updates
+- Final Testing updates - manual, cross browser, where are we going to store it in our repo?
 - Final Repo cleanup - delete branches, close remaining issues, move to main from testing
 - Final read through code
 - Onboarding doc
