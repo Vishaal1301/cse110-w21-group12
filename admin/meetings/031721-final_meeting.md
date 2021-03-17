@@ -24,7 +24,8 @@ _New Business to be Discussed:_
 - Final read through code
 - Onboarding doc
 - Add custom url
-  
+- Update Wiki - mention how to access JSDocs, how to access website, update pipeline text
+
 _Undiscussed Business from Today's Agenda:_
 - Last Meeting :(
 
