@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/73</span>
+                <span class='fraction'>0/76</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/73</span>
+                <span class='fraction'>0/76</span>
             </div>
         
             
@@ -195,7 +195,9 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,28 +286,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -313,6 +293,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -325,6 +307,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -360,7 +364,7 @@ let mouseOver = <span class="cstat-no" title="statement not covered" >false;</sp
 <span class="cstat-no" title="statement not covered" >    cafeSounds.loop = true;</span>
 <span class="cstat-no" title="statement not covered" >    cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;</span>
     // load popup images
-    var popupImages = <span class="cstat-no" title="statement not covered" >document.querySelectorAll("img.popup");</span>
+    const popupImages = <span class="cstat-no" title="statement not covered" >document.querySelectorAll("img.popup");</span>
 <span class="cstat-no" title="statement not covered" >    popupImages.forEach(<span class="fstat-no" title="function not covered" >fu</span>nction(img) {</span>
 <span class="cstat-no" title="statement not covered" >        img.src = img.dataset.src;</span>
     });
@@ -422,7 +426,7 @@ const updateCoffeeCup = <span class="cstat-no" title="statement not covered" ><s
 /**
  * Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
  */
-function <span class="fstat-no" title="function not covered" >changeScreen(</span>){
+const changeScreen = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    startStopTimer(clock, <span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        currentState = state;</span>
 <span class="cstat-no" title="statement not covered" >        if (!mouseOver){</span>
@@ -431,45 +435,47 @@ function <span class="fstat-no" title="function not covered" >changeScreen(</spa
     });
 <span class="cstat-no" title="statement not covered" >    currentState = session.innerHTML;</span>
 <span class="cstat-no" title="statement not covered" >    updateCoffeeCup();</span>
-}
+};
 &nbsp;
 /**
  * Display "Are You Sure?" pop up when trying to end focus session
  * Change the current session text accordingly
  */
-function <span class="fstat-no" title="function not covered" >displayAskResetFocus(</span>) {
+const displayAskResetFocus = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
     let rightHeader = <span class="cstat-no" title="statement not covered" >document.getElementById("rightSideHeader");</span>
-<span class="cstat-no" title="statement not covered" >    rightHeader.innerText = "RESET FOCUS?";</span>
     let areYouSureOptions = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureOptions");</span>
-<span class="cstat-no" title="statement not covered" >    areYouSureOptions.style.display = "block";</span>
     let focusTask = <span class="cstat-no" title="statement not covered" >document.getElementById("focusTask");</span>
-<span class="cstat-no" title="statement not covered" >    focusTask.style.display = "none";</span>
     let areYouSureYes = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureYes");</span>
-<span class="cstat-no" title="statement not covered" >    areYouSureYes.addEventListener("click", changeScreen);</span>
     let areYouSureNo = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureNo");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    rightHeader.innerText = "RESET FOCUS?";</span>
+<span class="cstat-no" title="statement not covered" >    areYouSureOptions.style.display = "block";</span>
+<span class="cstat-no" title="statement not covered" >    focusTask.style.display = "none";</span>
+<span class="cstat-no" title="statement not covered" >    areYouSureYes.addEventListener("click", changeScreen);</span>
 <span class="cstat-no" title="statement not covered" >    areYouSureNo.removeEventListener("click", displayBreakContent);</span>
 <span class="cstat-no" title="statement not covered" >    areYouSureNo.addEventListener("click", displayFocusContent);</span>
-}
+};
 &nbsp;
 /**
  * Display "Are You Sure?"" pop up when trying to end break session
  * Change the current session text accordingly
  * Update eventlisterners 
  */
-function <span class="fstat-no" title="function not covered" >displayAskResetBreak(</span>) {
+const displayAskResetBreak = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    displayFocusContent();</span>
     let rightHeader = <span class="cstat-no" title="statement not covered" >document.getElementById("rightSideHeader");</span>
-<span class="cstat-no" title="statement not covered" >    rightHeader.innerText = "SKIP BREAK?";</span>
     let areYouSureOptions = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureOptions");</span>
-<span class="cstat-no" title="statement not covered" >    areYouSureOptions.style.display = "block";</span>
     let focusTask = <span class="cstat-no" title="statement not covered" >document.getElementById("focusTask");</span>
-<span class="cstat-no" title="statement not covered" >    focusTask.style.display = "none";</span>
     let areYouSureYes = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureYes");</span>
-<span class="cstat-no" title="statement not covered" >    areYouSureYes.addEventListener("click", changeScreen);</span>
     let areYouSureNo = <span class="cstat-no" title="statement not covered" >document.getElementById("areYouSureNo");</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    rightHeader.innerText = "SKIP BREAK?";</span>
+<span class="cstat-no" title="statement not covered" >    areYouSureOptions.style.display = "block";</span>
+<span class="cstat-no" title="statement not covered" >    focusTask.style.display = "none";</span>
+<span class="cstat-no" title="statement not covered" >    areYouSureYes.addEventListener("click", changeScreen);</span>
 <span class="cstat-no" title="statement not covered" >    areYouSureNo.removeEventListener("click", displayFocusContent);</span>
 <span class="cstat-no" title="statement not covered" >    areYouSureNo.addEventListener("click", displayBreakContent);</span>
-}
+};
 &nbsp;
 export {changeScreen};</pre></td></tr></table></pre>
 
@@ -478,7 +484,7 @@ export {changeScreen};</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 16 2021 12:13:28 GMT-0700 (Pacific Daylight Time)
+                at Wed Mar 17 2021 15:47:02 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

@@ -177,13 +177,7 @@
 <a name='L118'></a><a href='#L118'>118</a>
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
-<a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a>
-<a name='L123'></a><a href='#L123'>123</a>
-<a name='L124'></a><a href='#L124'>124</a>
-<a name='L125'></a><a href='#L125'>125</a>
-<a name='L126'></a><a href='#L126'>126</a>
-<a name='L127'></a><a href='#L127'>127</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -219,11 +213,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -251,11 +243,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -283,11 +273,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -345,12 +333,10 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
 <span class="cstat-no" title="statement not covered" >    if (focusNumber.value &gt; parseInt(focusNumber.getAttribute("max"))) {</span>
 <span class="cstat-no" title="statement not covered" >        focusNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidFocusMessage.innerHTML = "(maximum: 60)";</span>
-    }
-    else <span class="cstat-no" title="statement not covered" >if(focusNumber.value &lt; parseInt(focusNumber.getAttribute("min"))) {</span>
+    } else <span class="cstat-no" title="statement not covered" >if (focusNumber.value &lt; parseInt(focusNumber.getAttribute("min"))) {</span>
 <span class="cstat-no" title="statement not covered" >        focusNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidFocusMessage.innerHTML = "(minimum: 15)";</span>
-    }
-    else {
+    } else {
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("focusTime", focusNumber.value);</span>
 <span class="cstat-no" title="statement not covered" >        focusNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidFocusMessage.innerHTML = " ";</span>
@@ -365,7 +351,7 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
 &nbsp;
 // Revert invalid input back to the last valid user input when exiting the input field
 <span class="cstat-no" title="statement not covered" >focusNumber.addEventListener("focusout", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if(focusNumber.style.backgroundColor == "red") {</span>
+<span class="cstat-no" title="statement not covered" >    if (focusNumber.style.backgroundColor == "red") {</span>
 <span class="cstat-no" title="statement not covered" >        focusNumber.value = localStorage.getItem("focusTime");</span>
 <span class="cstat-no" title="statement not covered" >        focusNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidFocusMessage.innerHTML = " ";</span>
@@ -377,12 +363,10 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
 <span class="cstat-no" title="statement not covered" >    if (shortBreakNumber.value &gt; parseInt(shortBreakNumber.getAttribute("max"))) {</span>
 <span class="cstat-no" title="statement not covered" >        shortBreakNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidShortBreakMessage.innerHTML = "(maximum: 20)";</span>
-    }
-    else <span class="cstat-no" title="statement not covered" >if (shortBreakNumber.value &lt; parseInt(shortBreakNumber.getAttribute("min"))) {</span>
+    } else <span class="cstat-no" title="statement not covered" >if (shortBreakNumber.value &lt; parseInt(shortBreakNumber.getAttribute("min"))) {</span>
 <span class="cstat-no" title="statement not covered" >        shortBreakNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidShortBreakMessage.innerHTML = "(minimum: 5)";</span>
-    }
-    else {
+    } else {
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("shortBreakTime", shortBreakNumber.value);</span>
 <span class="cstat-no" title="statement not covered" >        shortBreakNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidShortBreakMessage.innerHTML = " ";</span>
@@ -397,7 +381,7 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
  
 // Revert invalid input back to the last valid user input when exiting the input field
 <span class="cstat-no" title="statement not covered" >shortBreakNumber.addEventListener("focusout", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if(shortBreakNumber.style.backgroundColor == "red") {</span>
+<span class="cstat-no" title="statement not covered" >    if (shortBreakNumber.style.backgroundColor == "red") {</span>
 <span class="cstat-no" title="statement not covered" >        shortBreakNumber.value = localStorage.getItem("shortBreakTime");</span>
 <span class="cstat-no" title="statement not covered" >        shortBreakNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidShortBreakMessage.innerHTML = " ";</span>
@@ -409,12 +393,10 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
 <span class="cstat-no" title="statement not covered" >    if (longBreakNumber.value &gt; parseInt(longBreakNumber.getAttribute("max"))) {</span>
 <span class="cstat-no" title="statement not covered" >        longBreakNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidLongBreakMessage.innerHTML = "(maximum: 40)";</span>
-    }
-    else <span class="cstat-no" title="statement not covered" >if(longBreakNumber.value &lt; parseInt(longBreakNumber.getAttribute("min"))) {</span>
+    } else <span class="cstat-no" title="statement not covered" >if (longBreakNumber.value &lt; parseInt(longBreakNumber.getAttribute("min"))) {</span>
 <span class="cstat-no" title="statement not covered" >        longBreakNumber.style.backgroundColor = "red";</span>
 <span class="cstat-no" title="statement not covered" >        invalidLongBreakMessage.innerHTML = "(minimum: 10)";</span>
-    }
-    else {
+    } else {
 <span class="cstat-no" title="statement not covered" >        localStorage.setItem("longBreakTime", longBreakNumber.value);</span>
 <span class="cstat-no" title="statement not covered" >        longBreakNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidLongBreakMessage.innerHTML = " ";</span>
@@ -429,7 +411,7 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
  
 // Revert invalid input back to the last valid user input when exiting the input field
 <span class="cstat-no" title="statement not covered" >longBreakNumber.addEventListener("focusout", <span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if(longBreakNumber.style.backgroundColor == "red") {</span>
+<span class="cstat-no" title="statement not covered" >    if (longBreakNumber.style.backgroundColor == "red") {</span>
 <span class="cstat-no" title="statement not covered" >        longBreakNumber.value = localStorage.getItem("longBreakTime");</span>
 <span class="cstat-no" title="statement not covered" >        longBreakNumber.style.backgroundColor = "#181d28";</span>
 <span class="cstat-no" title="statement not covered" >        invalidLongBreakMessage.innerHTML = " ";</span>
@@ -442,7 +424,7 @@ let cafeSounds = <span class="cstat-no" title="statement not covered" >document.
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Mar 16 2021 12:13:28 GMT-0700 (Pacific Daylight Time)
+                at Wed Mar 17 2021 15:47:02 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
