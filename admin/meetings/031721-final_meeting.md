@@ -36,7 +36,18 @@ _Final Testing updates:_
   - include it in the pressentation
   - Manual testing: Alan will create the video w edge cases today, fine to shrink the time to go through sessions 45secs- 1 min long vid
   - 
-  - 
+  - Tristin- should pr to testing
+_Onboarding doc:_
+  - pipeline actions
+  - testing 
+  - using the website
+
+_Onboarding doc:_
+  - pipeline actions
+  - testing 
+  - using the website
+
+
 
 
 
