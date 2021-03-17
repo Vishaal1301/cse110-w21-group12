@@ -38,7 +38,7 @@ const TEXT_CROSSED_OUT_COLOR = "#b3b3b3";
  * @constant {number} 
  * @default
 */
-const MAX_INPUT_LENGTH = 20;
+const MAX_INPUT_LENGTH = 25;
 
 /**
  * The maximum number of tasks
@@ -314,7 +314,11 @@ let bindTaskEvents = function(taskListItem) {
                 children[i].children[1].id = i;
             }
         } else {
+            let mainTask = JSON.parse(stor.getItem("tasks")).mainTask;
             editTask(text.value, text.id);
+            if (text.id == mainTask.id) {
+                updateMainTask({value: text.value, id: text.id});
+            }
         }
     };
 
