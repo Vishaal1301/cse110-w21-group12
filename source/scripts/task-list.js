@@ -321,7 +321,12 @@ let bindTaskEvents = function(taskListItem) {
             }
         }
         else{
+            let mainTask = JSON.parse(stor.getItem("tasks")).mainTask;
             editTask(text.value, text.id);
+            if(text.id == mainTask.id){
+                updateMainTask({value: text.value, id: text.id});
+            }
+
         }
     };
 

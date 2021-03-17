@@ -81,6 +81,7 @@ function startTimer(clock, callback) {
     document.getElementById("session").innerHTML = state;
 
     if (state == "Focus Session") {
+        clickSound.volume = (localStorage.getItem("alarmVolume") / 100);
         clickSound.play();
         cafeSounds.volume = (localStorage.getItem("cafeVolume") / 100);
         cafeSounds.currentTime = 15; //try 14 or 15 for immediate music start
