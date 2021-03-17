@@ -31,5 +31,25 @@ _Undiscussed Business from Today's Agenda:_
 
 ### Decisions/Points Discussed
 
-_Decision 1:_
-  - text
+_Final Testing updates:_
+  - Just need a screenshot
+  - include it in the pressentation
+  - Manual testing: Alan will create the video w edge cases today, fine to shrink the time to go through sessions 45secs- 1 min long vid
+  - 
+  - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
