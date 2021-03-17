@@ -34,12 +34,10 @@ focusNumber.addEventListener("input", () => {
     if (focusNumber.value > parseInt(focusNumber.getAttribute("max"))) {
         focusNumber.style.backgroundColor = "red";
         invalidFocusMessage.innerHTML = "(maximum: 60)";
-    }
-    else if(focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
+    } else if (focusNumber.value < parseInt(focusNumber.getAttribute("min"))) {
         focusNumber.style.backgroundColor = "red";
         invalidFocusMessage.innerHTML = "(minimum: 15)";
-    }
-    else {
+    } else {
         localStorage.setItem("focusTime", focusNumber.value);
         focusNumber.style.backgroundColor = "#181d28";
         invalidFocusMessage.innerHTML = " ";
@@ -54,7 +52,7 @@ focusNumber.addEventListener("input", () => {
 
 // Revert invalid input back to the last valid user input when exiting the input field
 focusNumber.addEventListener("focusout", () => {
-    if(focusNumber.style.backgroundColor == "red") {
+    if (focusNumber.style.backgroundColor == "red") {
         focusNumber.value = localStorage.getItem("focusTime");
         focusNumber.style.backgroundColor = "#181d28";
         invalidFocusMessage.innerHTML = " ";
@@ -66,12 +64,10 @@ shortBreakNumber.addEventListener("input", () => {
     if (shortBreakNumber.value > parseInt(shortBreakNumber.getAttribute("max"))) {
         shortBreakNumber.style.backgroundColor = "red";
         invalidShortBreakMessage.innerHTML = "(maximum: 20)";
-    }
-    else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
+    } else if (shortBreakNumber.value < parseInt(shortBreakNumber.getAttribute("min"))) {
         shortBreakNumber.style.backgroundColor = "red";
         invalidShortBreakMessage.innerHTML = "(minimum: 5)";
-    }
-    else {
+    } else {
         localStorage.setItem("shortBreakTime", shortBreakNumber.value);
         shortBreakNumber.style.backgroundColor = "#181d28";
         invalidShortBreakMessage.innerHTML = " ";
@@ -86,7 +82,7 @@ shortBreakNumber.addEventListener("input", () => {
  
 // Revert invalid input back to the last valid user input when exiting the input field
 shortBreakNumber.addEventListener("focusout", () => {
-    if(shortBreakNumber.style.backgroundColor == "red") {
+    if (shortBreakNumber.style.backgroundColor == "red") {
         shortBreakNumber.value = localStorage.getItem("shortBreakTime");
         shortBreakNumber.style.backgroundColor = "#181d28";
         invalidShortBreakMessage.innerHTML = " ";
@@ -98,12 +94,10 @@ longBreakNumber.addEventListener("input", () => {
     if (longBreakNumber.value > parseInt(longBreakNumber.getAttribute("max"))) {
         longBreakNumber.style.backgroundColor = "red";
         invalidLongBreakMessage.innerHTML = "(maximum: 40)";
-    }
-    else if(longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
+    } else if (longBreakNumber.value < parseInt(longBreakNumber.getAttribute("min"))) {
         longBreakNumber.style.backgroundColor = "red";
         invalidLongBreakMessage.innerHTML = "(minimum: 10)";
-    }
-    else {
+    } else {
         localStorage.setItem("longBreakTime", longBreakNumber.value);
         longBreakNumber.style.backgroundColor = "#181d28";
         invalidLongBreakMessage.innerHTML = " ";
@@ -118,7 +112,7 @@ longBreakNumber.addEventListener("input", () => {
  
 // Revert invalid input back to the last valid user input when exiting the input field
 longBreakNumber.addEventListener("focusout", () => {
-    if(longBreakNumber.style.backgroundColor == "red") {
+    if (longBreakNumber.style.backgroundColor == "red") {
         longBreakNumber.value = localStorage.getItem("longBreakTime");
         longBreakNumber.style.backgroundColor = "#181d28";
         invalidLongBreakMessage.innerHTML = " ";
