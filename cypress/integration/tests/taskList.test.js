@@ -304,6 +304,40 @@ describe("TaskList test", () => {
                 );
         });
 
+        it("change focused task name", () => {
+
+            // Create a new task
+            cy.get("#new-task")
+                .type("task 1")
+                .type("{enter}", {force: true});
+
+            // Focus the task
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .click()
+                .find(".dropdown")
+                .find(".dropdown-content")
+                .invoke("show")
+                .find("#mainTaskSelector")
+                .click();
+
+            cy.get("#new-task")
+                .get("#tasks")
+                .find(".taskItem")
+                .get("[id=0]")
+                .click()
+                .clear()
+                .type("task 2")
+                .type("{enter}", {force: true})
+                .then(
+                    () => {
+                        expect(JSON.parse(localStorage.getItem("tasks")).mainTask.name)
+                            .to.eq("task 2");
+                    }
+                );
+        });
+
         it("change task name to be emtpy", () => {
 
             for(let i = 1; i <= 3; i++){
