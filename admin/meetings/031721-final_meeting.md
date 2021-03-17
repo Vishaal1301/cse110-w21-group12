@@ -20,7 +20,7 @@ _Unresolved Business from Previous Meeting:_
 
 _New Business to be Discussed:_
 - Final Testing updates
-- Final Repo cleanup - delete branches, move to main from testing
+- Final Repo cleanup - delete branches, close remaining issues, move to main from testing
 - Final read through code
 - Onboarding doc
 - Add custom url
