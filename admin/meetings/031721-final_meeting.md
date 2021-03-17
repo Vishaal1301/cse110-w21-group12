@@ -1,0 +1,34 @@
+## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Team Meeting
+###### Type: Team Cadance <br/> Location: Zoom <br/> Date: 03/17/21 <br/> Start Time: 1:00 p.m. <br/> End Time: 3:00 p.m.
+
+### Attendance:
+- [x] Alan Li
+- [x] Annie Van
+- [x] Jessica Lam
+- [x] Kevin Luo
+- [x] Muhammad Fajar
+- [ ] Nigel Lipps
+- [x] Tristin Xie
+- [x] Vishaal Ramaswamy Kasi Vasu
+- [x] Zhaoge Ouyang
+
+### Agenda
+
+_Unresolved Business from Previous Meeting:_
+- Refactoring
+- Video
+
+_New Business to be Discussed:_
+- Final Testing updates
+- Final Repo cleanup - delete branches, move to main from testing
+- Final read through code
+- Onboarding doc
+- Add custom url
+  
+_Undiscussed Business from Today's Agenda:_
+- Last Meeting :(
+
+### Decisions/Points Discussed
+
+_Decision 1:_
+  - text
