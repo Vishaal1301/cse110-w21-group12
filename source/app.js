@@ -25,7 +25,7 @@ window.addEventListener("load", function() {
     cafeSounds.loop = true;
     cafeSounds.volume = localStorage.getItem("cafeVolume") / 100;
     // load popup images
-    var popupImages = document.querySelectorAll("img.popup");
+    const popupImages = document.querySelectorAll("img.popup");
     popupImages.forEach(function(img) {
         img.src = img.dataset.src;
     });
@@ -87,7 +87,7 @@ cup.onclick = () => {
 /**
  * Starts/Stops timer depending on clock state and updates coffee cup display and session name accordingly
  */
-function changeScreen(){
+const changeScreen = () => {
     startStopTimer(clock, (state) => {
         currentState = state;
         if (!mouseOver){
@@ -96,44 +96,46 @@ function changeScreen(){
     });
     currentState = session.innerHTML;
     updateCoffeeCup();
-}
+};
 
 /**
  * Display "Are You Sure?" pop up when trying to end focus session
  * Change the current session text accordingly
  */
-function displayAskResetFocus() {
+const displayAskResetFocus = () => {
     let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "RESET FOCUS?";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "block";
     let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
     let areYouSureYes = document.getElementById("areYouSureYes");
-    areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
+
+    rightHeader.innerText = "RESET FOCUS?";
+    areYouSureOptions.style.display = "block";
+    focusTask.style.display = "none";
+    areYouSureYes.addEventListener("click", changeScreen);
     areYouSureNo.removeEventListener("click", displayBreakContent);
     areYouSureNo.addEventListener("click", displayFocusContent);
-}
+};
 
 /**
  * Display "Are You Sure?"" pop up when trying to end break session
  * Change the current session text accordingly
  * Update eventlisterners 
  */
-function displayAskResetBreak() {
+const displayAskResetBreak = () => {
     displayFocusContent();
     let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "SKIP BREAK?";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "block";
     let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
     let areYouSureYes = document.getElementById("areYouSureYes");
-    areYouSureYes.addEventListener("click", changeScreen);
     let areYouSureNo = document.getElementById("areYouSureNo");
+
+    rightHeader.innerText = "SKIP BREAK?";
+    areYouSureOptions.style.display = "block";
+    focusTask.style.display = "none";
+    areYouSureYes.addEventListener("click", changeScreen);
     areYouSureNo.removeEventListener("click", displayFocusContent);
     areYouSureNo.addEventListener("click", displayBreakContent);
-}
+};
 
 export {changeScreen};

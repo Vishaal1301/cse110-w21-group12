@@ -36,9 +36,9 @@ let unstoreTask = function(id) {
     let foundTask = false;
 
     // Find the task ID and remove it from local storage
-    for(let index = 0; index < tasks.list.length; index++){
+    for (let index = 0; index < tasks.list.length; index++) {
         const task = tasks.list[index];
-        if(task.id == id){
+        if (task.id == id) {
             tasks.list.splice(index, 1);
             foundTask = true;
             break;
@@ -49,18 +49,17 @@ let unstoreTask = function(id) {
         return false;
 
     // Shift the IDs of all other tasks
-    for(let index = 0; index < tasks.list.length; index++){
+    for (let index = 0; index < tasks.list.length; index++) {
         const task = tasks.list[index];
         task.id = index;
     }
 
     // Update main task ID
-    if(id == tasks.mainTask.id){
+    if (id == tasks.mainTask.id) {
         tasks.mainTask.name = null;
         tasks.mainTask.checked = false;
         tasks.mainTask.id = null;
-    }
-    else if (id < tasks.mainTask.id){
+    } else if (id < tasks.mainTask.id) {
         tasks.mainTask.id = id;
     }
 
@@ -78,16 +77,15 @@ let updateTask = function(id, state) {
     const tasks = JSON.parse(stor.getItem("tasks"));
 
     // Find the task by ID and update the checkbox
-    for(let index = 0; index < tasks.list.length; index++){
+    for (let index = 0; index < tasks.list.length; index++) {
         const task = tasks.list[index];
-        if(task.id == id){
+        if (task.id == id) {
             task.checked = state;
             stor.setItem("tasks", JSON.stringify(tasks));
             return true;
         }
     }
     return false;
-
 };
 
 /**
@@ -102,15 +100,14 @@ let editTask = function(name, id) {
     tasks = JSON.parse(stor.getItem("tasks"));
 
     // Update the task in local storage
-    for(let i=0; i < tasks.list.length; i++){
+    for (let i=0; i < tasks.list.length; i++) {
         let task = tasks.list[i];
-        if(task.id == id){
+        if (task.id == id) {
             task.name = newName;
             stor.setItem("tasks", JSON.stringify(tasks));
             return true;
         }
     }
-
     return false;
 };
 
@@ -118,7 +115,7 @@ let editTask = function(name, id) {
  * Updates the current main task in local storage
  * @param {object} mainTask - A reference to the task that is selected
  */
-let updateMainTask = function(mainTask){
+let updateMainTask = function(mainTask) {
     tasks = JSON.parse(stor.getItem("tasks"));
     let currMainTask = tasks.mainTask;
 

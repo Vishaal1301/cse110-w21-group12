@@ -23,19 +23,19 @@ let countdown;
  */
 function displayBreakContent() {
     let rightHeader = document.getElementById("rightSideHeader");
-    rightHeader.innerText = "TASK LIST";
     let focusTask = document.getElementById("focusTask");
-    focusTask.style.display = "none";
     let newTask = document.getElementById("new-task");
-    newTask.style.visibility = "visible";
     let taskListDiv = document.getElementById("taskListContainer");
-    taskListDiv.style.display = "block";
     let navIconContainer = document.getElementById("navIconContainer");
-    navIconContainer.style.display = "flex";
     let areYouSureOptions = document.getElementById("areYouSureOptions");
-    areYouSureOptions.style.display = "none";
-
     let navIcon = document.getElementById("navIcon");
+
+    rightHeader.innerText = "TASK LIST";
+    focusTask.style.display = "none";
+    newTask.style.visibility = "visible";
+    taskListDiv.style.display = "block";
+    navIconContainer.style.display = "flex";
+    areYouSureOptions.style.display = "none";
     navIcon.src = "./assets/setting-icon.png";
 }
 
@@ -46,23 +46,24 @@ function displayBreakContent() {
 function displayFocusContent() {
     // Set the current main task
     let currMainTask = JSON.parse(window.localStorage.getItem("tasks")).mainTask;
+    let rightHeader = document.getElementById("rightSideHeader");
+    let focusTask = document.getElementById("focusTask");
+    let settingsDiv = document.getElementById("settingsContainer");
+    let taskListDiv = document.getElementById("taskListContainer");
+    let navIconContainer = document.getElementById("navIconContainer");
+    let areYouSureOptions = document.getElementById("areYouSureOptions");
+
     if (currMainTask.name == null) {
         document.getElementById("focusTask").textContent = "No focus task selected";
     } else {
         document.getElementById("focusTask").textContent = currMainTask.name;
     }
 
-    let rightHeader = document.getElementById("rightSideHeader");
     rightHeader.innerText = "FOCUS";
-    let focusTask = document.getElementById("focusTask");
     focusTask.style.display = "block";
-    let settingsDiv = document.getElementById("settingsContainer");
     settingsDiv.style.display = "none";
-    let taskListDiv = document.getElementById("taskListContainer");
     taskListDiv.style.display = "none";
-    let navIconContainer = document.getElementById("navIconContainer");
     navIconContainer.style.display = "none";
-    let areYouSureOptions = document.getElementById("areYouSureOptions");
     areYouSureOptions.style.display = "none";
 }
 
@@ -143,7 +144,7 @@ function stopTimer(clock, resetSkip, callback) {
 
         // Change audio of alarm based on the current state  
         //switch (state) {
-        if( state == "Focus Session"){
+        if ( state == "Focus Session") {
         //case "Focus Session":
             //alarm = new Audio("./assets/focus.mp3");
             alarm = document.getElementById("alarm");
@@ -188,13 +189,14 @@ function updateTimerSettings(clock, focusLength, shortBreakLength, longBreakLeng
     sessionLengths = [];
     for (let i = 0; i < POMO_CYCLES; i++) {
         sessionLengths.push(focusLength);
-        if (i < POMO_CYCLES - 1)
+        if (i < POMO_CYCLES - 1) {
             sessionLengths.push(shortBreakLength);
-        else
+        } else {
             sessionLengths.push(longBreakLength);
+        }
     }
 
-    if(sessionNum %2 == 0){
+    if (sessionNum %2 == 0) {
         clock.innerHTML = secondsToString(sessionLengths[sessionNum]);
     }
 
@@ -210,8 +212,7 @@ function startStopTimer(clock, callback) {
     if (!isCountdown) {
         startTimer(clock, callback);
         return false;
-    }
-    else {
+    } else {
         const resetSkip = true;
         stopTimer(clock, resetSkip, callback);
         return true;

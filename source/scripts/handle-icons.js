@@ -25,8 +25,7 @@ let toggleTasksSettingsDisplay = function() { // eslint-disable-line no-unused-v
         rightHeader.innerText = "SETTINGS";
         taskInput.style.visibility = "hidden";
         navIcon.setAttribute("src", "assets/list-icon.png");
-    }
-    else {
+    } else {
         taskListDiv.style.display = "block";
         settingsDiv.style.display = "none";  
         taskInput.style.visibility = "visible";
