@@ -1,15 +1,5 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Repo and Website Guide
-### Decisions/Points Discussed
 
-_Agreed on the principles of the Pomodoro technique:_
-- Step 1: choose task(s)
-- Step 2: run Pomodoro timer for 25 mins
-- Step 3: 5-minute break between sessions
-- Step 4: every 4 sessions, 20-minute break
-
-### Source Code
-
-# Onboarding Guide
 ## Guide to Source Code Organization
 - All the source code lives under the `source` directory
 - `__tests__`: the Jest Unit test lives under this directory
