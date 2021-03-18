@@ -1,0 +1,236 @@
+body {
+    background:#fff url("../assets/CoffeetivityBackground.png") center center no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    overflow: hidden;
+}
+
+#gridContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+#rightSideHeader {
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 2.75vw;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#navIconContainer {
+    display: block;
+    justify-content: space-between;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#settingsContainer {
+    display: none;
+    top: 2vh;
+}
+
+#rightSideContainer {
+    grid-column-start: 3;
+    margin-left: auto;
+    position: absolute;
+    top: 10%;
+    color: white;
+    display: inline-block;
+    width: 80%;
+    padding-bottom: 1%;
+    background-color: #181d28;
+    border-radius: 5px 0 0 5px;
+    right: 0;
+  }
+
+#timerContainer {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    display: flex;
+    align-content: center;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    top: 5vh;
+    right: 2vw;
+}
+
+#cup {
+    display: flex;
+    cursor: pointer;
+    background: transparent;
+    border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    align-items: center;
+    justify-content: center;
+    margin-top: 9vh;
+}
+
+#clock {
+    display: none;
+    color: white;
+    font-size: 135px;
+    z-index: 100;
+    user-select: none;
+    pointer-events: none;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@media only screen and (max-width: 2335px) {
+    #clock{
+        display: none;
+        color: white;
+        font-size: 115px;
+        z-index: 100;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 800;
+        font-family: 'Open Sans', sans-serif;
+    }
+  }
+
+@media only screen and (max-width: 2000px) {
+    #clock{
+        display: none;
+        color: white;
+        font-size: 10vh;
+        z-index: 100;
+        user-select: none;
+        pointer-events: none;
+        font-weight: 800;
+        font-family: 'Open Sans', sans-serif;
+    }
+  }
+#session {
+    align-self: center;
+    text-align: center;
+    color: white;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #342d29;
+    border-radius: 5px;
+    font-size: 4vh;
+    margin-top: 8vh;
+    font-family: 'Open Sans', sans-serif;
+}
+
+input:focus {
+    outline: 0 !important;
+}
+
+#focusTask {
+    text-align: center;
+    margin-bottom: 3vh;
+    font-size: 1.35vw;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#areYouSureOptions {
+    font-size: 1.25vw;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: none;
+    justify-content: center;
+    margin-bottom: 3vh;
+}
+
+#areYouSureYes {
+    background: none;
+    border: none;
+    margin-right: 3.5vw;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+#areYouSureNo {
+    background: none;
+    border: none;
+    margin-left: 3.5vw;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+#onboardingIcon {
+    position: absolute;
+    bottom: 4px;
+    left: 1px;
+    width: 25px;
+    height: 25px;
+}
+
+#xicon {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#inMiddle {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    background-color: rgba(24, 29, 40, 0.25);
+}
+
+#popup {
+    background-color: #181d28;
+    width:1000px;
+    height:620px;
+}
+
+#carouselExampleIndicators {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:2%;
+    width: 100%;
+    max-width:850vw;
+    max-height:750vw;
+}
+
+#onboardingContainer {
+    margin: 0;
+    display:none;
+}
+
+#carouselInner {
+    width:820px;
+    height:560px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.carousel-indicators {
+    margin:0;
+}
+
+.carouselPara {
+    text-align: center;
+    font-size: 6vh;
+    margin-bottom: 0;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
