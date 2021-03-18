@@ -1,16 +1,4 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Onboarding
-
-### Decisions/Points Discussed
-
-_Agreed on the principles of the Pomodoro technique:_
-- Step 1: choose task(s)
-- Step 2: run Pomodoro timer for 25 mins
-- Step 3: 5-minute break between sessions
-- Step 4: every 4 sessions, 20-minute break
-
-### Source Code
-
-# Onboarding Guide
 ## Guide to Source Code Organization
 - All the source code lives under the `source` directory
 - `__tests__`: the Jest Unit test lives under this directory
@@ -62,7 +50,8 @@ _Agreed on the principles of the Pomodoro technique:_
 - In-Progress - issues currently being worked on
 - QA/Review - an issue that has to reviewed by the testers and other reviewers after the task is Complete. Testers and developers will interact closely when an issue is at this Stage.
 - Done - tester moves the issue to this section after the testing is complete and the task creator will close the issue
-## Onboarding: using the website
+
+## Using the website
 <ul>
     <li>Click on the help button on the bottom left side to see a basic guide on how to use the website</li>
    <li>Click out of the onboarding by clicking on X on the bottom left</li>
