@@ -1,6 +1,6 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Repo and Website Guide
 
-##Docs
+## Docs
 www.coffeetivity.tech/docs
 
 ## Guide to Source Code Organization
