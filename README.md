@@ -1,5 +1,8 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Repo and Website Guide
 
+##Docs
+www.coffeetivity.tech/docs
+
 ## Guide to Source Code Organization
 - All the source code lives under the `source` directory
 - `__tests__`: the Jest Unit test lives under this directory
@@ -19,6 +22,7 @@
 - `cypress`: contains all the Cypress unit test
 - `admin`: Meeting notes, videos live under this directory
 - `coverages`: has all Coverage reports
+- `testing`: testing related videos can be found here (includes manual testing)
 
 ## Workflow 
 <b>Creating a new issue:</b>
