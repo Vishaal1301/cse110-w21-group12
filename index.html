@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
 
@@ -46,7 +46,7 @@
                     </ul>
                     <ul style="list-style-type: none; margin-left:6%">
                         <li>
-                            <input id="new-task" maxlength="35" placeholder="Add new item">
+                            <input id="new-task" maxlength="25" placeholder="Add new item">
                         </li> 
                     </ul>
                 </div>
@@ -54,10 +54,9 @@
                 <div id="settingsContainer" class="settingsContainer">
                     <setting-content id="settingContent"></setting-content>
                 </div>
-            
-            <div id="navIconContainer">
+                <div id="navIconContainer">
                     <input id="navIcon" type="image" src="./assets/setting-icon.png" onclick="toggleTasksSettingsDisplay()">
-            </div>
+                </div>
 
                 <p id="focusTask" style="display:none">No focus task selected</p>
                 
@@ -66,7 +65,6 @@
                     <button id="areYouSureNo">No</button>
                 </div>
             </div>
-
         </main>
 
         <input id="onboardingIcon" type="image" src="./assets/question.png" onclick="displayOnboardingMenu()"> 
@@ -140,6 +138,7 @@
             </div> 
         </div>
 
+        <!-- Scripts that run application after HTML loads -->
         <script type="module" src="app.js"></script>
         <script src="./components/setting-content.js"></script>
         <script type="module" src="./scripts/setting-script.js"></script>
