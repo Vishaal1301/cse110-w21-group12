@@ -1,4 +1,9 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Onboarding
+## Website and Docs
+www.coffeetivity.tech
+
+www.coffeetivity.tech/docs
+
 ## Guide to Source Code Organization
 - All the source code lives under the `source` directory
 - `__tests__`: the Jest Unit test lives under this directory
@@ -18,6 +23,7 @@
 - `cypress`: contains all the Cypress unit test
 - `admin`: Meeting notes, videos live under this directory
 - `coverages`: has all Coverage reports
+- `testing`: testing related videos can be found here (includes manual testing)
 
 ## Workflow 
 <b>Creating a new issue:</b>
@@ -51,7 +57,7 @@
 - QA/Review - an issue that has to reviewed by the testers and other reviewers after the task is Complete. Testers and developers will interact closely when an issue is at this Stage.
 - Done - tester moves the issue to this section after the testing is complete and the task creator will close the issue
 
-## Using the website
+## Using the Website
 <ul>
     <li>Click on the help button on the bottom left side to see a basic guide on how to use the website</li>
    <li>Click out of the onboarding by clicking on X on the bottom left</li>
