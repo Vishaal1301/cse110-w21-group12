@@ -51,7 +51,8 @@
 - In-Progress - issues currently being worked on
 - QA/Review - an issue that has to reviewed by the testers and other reviewers after the task is Complete. Testers and developers will interact closely when an issue is at this Stage.
 - Done - tester moves the issue to this section after the testing is complete and the task creator will close the issue
-## Onboarding: using the website
+
+## Using the Website
 <ul>
     <li>Click on the help button on the bottom left side to see a basic guide on how to use the website</li>
    <li>Click out of the onboarding by clicking on X on the bottom left</li>
