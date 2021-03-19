@@ -121,9 +121,7 @@ function stopTimer(clock, resetSkip, callback) {
     if (state == "Focus Session") {
         displayBreakContent();
         cafeSounds.pause();
-        cafeSounds.currentTime = 0;
-        //         cafeSounds.currentTime = 0;}, 100); 
-        //setTimeout(fadeOutCafeMusic, 1000);
+        cafeSounds.currentTime = 15;
     } else {
         displayFocusContent();
     }
@@ -143,16 +141,12 @@ function stopTimer(clock, resetSkip, callback) {
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
 
-        // Change audio of alarm based on the current state  
-        //switch (state) {
+        // Change audio of alarm based on the current state
         if ( state == "Focus Session") {
-        //case "Focus Session":
-            //alarm = new Audio("./assets/focus.mp3");
             alarm = document.getElementById("alarm");
             alarm.volume = localStorage.getItem("alarmVolume") / 100;
             alarm.currentTime = .5;
             alarm.play();
-            //break;
         }
     }
 
