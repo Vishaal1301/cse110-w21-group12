@@ -85,7 +85,7 @@ function startTimer(clock, callback) {
         clickSound.volume = (localStorage.getItem("alarmVolume") / 100);
         clickSound.play();
         cafeSounds.volume = (localStorage.getItem("cafeVolume") / 100);
-        cafeSounds.currentTime = 15; //try 14 or 15 for immediate music start
+        cafeSounds.currentTime = 0;
         cafeSounds.play();
         displayFocusContent();
     }
@@ -121,7 +121,7 @@ function stopTimer(clock, resetSkip, callback) {
     if (state == "Focus Session") {
         displayBreakContent();
         cafeSounds.pause();
-        cafeSounds.currentTime = 15;
+        cafeSounds.currentTime = 0;
     } else {
         displayFocusContent();
     }
@@ -141,7 +141,7 @@ function stopTimer(clock, resetSkip, callback) {
     } else {
         sessionNum = ++sessionNum >= sessionLengths.length ? 0 : sessionNum;
 
-        // Change audio of alarm based on the current state
+        // Set audio of alarm based on the current state
         if ( state == "Focus Session") {
             alarm = document.getElementById("alarm");
             alarm.volume = localStorage.getItem("alarmVolume") / 100;
