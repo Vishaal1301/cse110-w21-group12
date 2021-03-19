@@ -22,7 +22,7 @@ www.coffeetivity.tech/docs
 - `task-list.html`: the skeleton of the task-list component
 - `cypress`: contains all the Cypress unit test
 - `admin`: Meeting notes, videos live under this directory
-- `coverages`: has all Coverage reports
+- `coverages`: has all Coverage reports - contained in testing branch
 - `testing`: testing related videos can be found here (includes manual testing)
 
 ## Workflow 
@@ -40,6 +40,12 @@ www.coffeetivity.tech/docs
 <b>Creating and Working with branches:</b>
 - Branch naming convention: issueid#_Word1_Wordx (where Word1 and Wordx are the same as for the corresponding issue)
 - Once you write your code and make sure it works on your side, commit it to your branch
+- Branch key:
+	- individual branches - contains seprate features
+	- features - contains seperate features merged together, integration takes place here, unit tests runs upon merge into it
+	- testing - after integration merge into this branch, testing takes place - unit and end to end
+	- gh-pages - manages deployment, automatically gets updated when PR is made into main
+	- main - contains final version
 
 <b>Creating and Managing Pull Requests:</b>
 - After you commit to your branch, make a pull request to merge to the features branch
