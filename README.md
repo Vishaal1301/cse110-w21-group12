@@ -1,6 +1,6 @@
 ## CSE 110 Team 12 Mighty Morphin Powell Rangers (MMPR) - Repo and Website Guide
 
-## Website and Docs
+## Website and Docs 
 www.coffeetivity.tech
 
 www.coffeetivity.tech/docs
