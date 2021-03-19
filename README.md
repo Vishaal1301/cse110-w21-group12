@@ -5,6 +5,11 @@ www.coffeetivity.tech
 
 www.coffeetivity.tech/docs
 
+Private Video: https://youtu.be/voBr36QNxJM
+
+Public Video: https://youtu.be/GTFCTdJJwts
+
+
 ## Guide to Source Code Organization
 - All the source code lives under the `source` directory
 - `__tests__`: the Jest Unit test lives under this directory
