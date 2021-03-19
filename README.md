@@ -23,7 +23,7 @@ www.coffeetivity.tech/docs
 - `task-list.html`: the skeleton of the task-list component
 - `cypress`: contains all the Cypress unit test
 - `admin`: Meeting notes, videos live under this directory
-- `coverages`: has all Coverage reports
+- `coverages`: has all Coverage reports - contained in testing branch
 - `testing`: testing related videos can be found here (includes manual testing)
 
 ## Workflow 
